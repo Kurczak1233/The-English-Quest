@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TheQuestOfEnglishDatabase\TheQuestOfEnglishDatabase.csproj" />
+    <ProjectReference Include="..\TheQuestOfEnglishDatabase\TheEnglishQuestDatabase.csproj" />
   </ItemGroup>
 
 </Project>

@@ -15,11 +15,10 @@ namespace TheQuestOfEnglishDatabase
             _db = db;
         }
 
-        public List<Entity> GetAll()
+        public virtual List<Entity> GetAll()
         {
             var list = new List<Entity>();
-            //var list2 = await _db.Settings.ToListAsync(); Simplier?
-            var entities = DbSet; //Wszystkie settingi się tutaj znajdą.
+            var entities = DbSet;
             foreach (var entity in entities)
             {
                 list.Add(entity);
