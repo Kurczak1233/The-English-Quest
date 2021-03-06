@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheQuestOfEnglish", "The quest of English\TheQuestOfEnglish.csproj", "{B01AC4FF-1012-49DF-8CDF-3C2B7B6F3EE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheQuestOfEnglishDatabase", "TheQuestOfEnglishDatabase\TheQuestOfEnglishDatabase.csproj", "{17D2FD83-E495-4B40-BC27-0AE08081DE93}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B01AC4FF-1012-49DF-8CDF-3C2B7B6F3EE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B01AC4FF-1012-49DF-8CDF-3C2B7B6F3EE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B01AC4FF-1012-49DF-8CDF-3C2B7B6F3EE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B01AC4FF-1012-49DF-8CDF-3C2B7B6F3EE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17D2FD83-E495-4B40-BC27-0AE08081DE93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17D2FD83-E495-4B40-BC27-0AE08081DE93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17D2FD83-E495-4B40-BC27-0AE08081DE93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17D2FD83-E495-4B40-BC27-0AE08081DE93}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {419D7920-F5D0-4FB0-BAE3-11F0A1C45448}
+	EndGlobalSection
+EndGlobal
