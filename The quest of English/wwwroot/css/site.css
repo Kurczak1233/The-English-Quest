@@ -102,7 +102,7 @@ height: 350px;
 .main-banner { /*Gold img standard!*/
     background-image: url('https://cdn.pixabay.com/photo/2016/11/29/09/16/architecture-1868667_960_720.jpg');
     max-width: 100%;
-    height: 450px;
+    height: 500px;
     background-position: center top;
     background-repeat: no-repeat;
     background-size: 100%;
@@ -118,8 +118,12 @@ height: 350px;
 }
 /*CARDS*/
 .card-width {
-    width: 18rem;
+    width: 20rem;
 }
 .card-height {
     height: 220px;
+}
+
+.card > img:hover{
+    opacity: 0.5;
 }
