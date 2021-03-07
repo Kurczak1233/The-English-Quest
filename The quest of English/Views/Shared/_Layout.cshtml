@@ -14,7 +14,7 @@
         </div>
     </div>
     <header>
-        <nav id="navbar" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav id="navbar" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">The English Quest</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -56,25 +56,21 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
-@section Scripts{
     <script>
         // When the user scrolls the page, execute myFunction
         window.onscroll = function () { myFunction() };
-
         // Get the navbar
         var navbar = document.getElementById("navbar");
-
         // Get the offset position of the navbar
         var sticky = navbar.offsetTop;
-
-
         // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
         function myFunction() {
             if (window.pageYOffset >= sticky) {
                 navbar.classList.add("fixed-top");
+                navbar.setAttribute("style", "background-color:rgb(66, 239, 245);;");
             } else {
                 navbar.classList.remove("fixed-top");
+                navbar.removeAttribute("style");
             }
         }
     </script>
-}
