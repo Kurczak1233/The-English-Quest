@@ -73,7 +73,7 @@ body {
 1.    background intro img*/
 .transparent-image {
     height: 400px;
-    background-image: linear-gradient(to right, rgba(30,32,135,1) 45%, rgba(0,0,0,0) 100%), url(https://cdn.pixabay.com/photo/2014/11/13/23/34/palace-530055_960_720.jpg);
+    background-image: linear-gradient(to right, rgba(30,32,135,1) 55%, rgba(0,0,0,0) 100%), url(https://cdn.pixabay.com/photo/2014/11/13/23/34/palace-530055_960_720.jpg);
     background-repeat: no-repeat;
     background-position-x: right;
 }
@@ -115,4 +115,11 @@ height: 350px;
     height: 4px;
     margin: 0 0 20px;
     background-color: rgb(66, 239, 245);
+}
+/*CARDS*/
+.card-width {
+    width: 18rem;
+}
+.card-height {
+    height: 220px;
 }
