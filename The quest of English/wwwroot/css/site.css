@@ -81,4 +81,12 @@ body {
     height: 500px;
     background-color: rgb(30, 32, 166);
 }
-
+.font-size-big{
+    font-size: 50px;
+}
+.height-400{
+height: 350px;
+}
+.font-size-medium {
+    font-size: 25px;
+}
