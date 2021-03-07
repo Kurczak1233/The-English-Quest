@@ -56,7 +56,7 @@ namespace The_quest_of_English
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-
+            
             serviceProvider.GetService<ApplicationDbContext>().Database.Migrate();
         }
     }

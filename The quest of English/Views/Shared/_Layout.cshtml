@@ -4,16 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - The_quest_of_English</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link href="~/css/site.css" rel="stylesheet"  asp-append-version="true"/>
 </head>
 <body>
-    <div container class="p-5" fluid style="height: 500px;background-color: rgb(30, 32, 166);" >
-        <div container fluid style="        height: 400px;
-        background-image: linear-gradient(to right, rgba(30,32,166,1) 45%, rgba(0,0,0,0) 100%), url(https://cdn.pixabay.com/photo/2014/11/13/23/34/palace-530055_960_720.jpg);
-        ;
-        background-repeat: no-repeat;
-        background-position-x: right;"/>
+    <div container class="p-5 intro-background" fluid" >
+        <div container fluid class="transparent-image">
         <span class="text-white font-weight-bold">Are you ready to take on THE QUEST?Are you ready to take on THE QUEST?Are you ready to take on THE QUEST?</span>
         </div>
     </div>
@@ -54,8 +50,8 @@
             &copy; 2021 - The_quest_of_English - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @*@RenderSection("Scripts", required: false)*@
 </body>

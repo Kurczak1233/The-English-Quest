@@ -69,3 +69,16 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+/*Custom styles
+1.    background intro img*/
+.transparent-image {
+    height: 400px;
+    background-image: linear-gradient(to right, rgba(30,32,166,1) 45%, rgba(0,0,0,0) 100%), url(https://cdn.pixabay.com/photo/2014/11/13/23/34/palace-530055_960_720.jpg);
+    background-repeat: no-repeat;
+    background-position-x: right;
+}
+.intro-background {
+    height: 500px;
+    background-color: rgb(30, 32, 166);
+}
+
