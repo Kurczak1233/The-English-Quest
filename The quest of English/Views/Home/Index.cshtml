@@ -58,17 +58,44 @@
 <div class="container">
     <div class="row justify-content-end">
         <div class="indent-blue mt-5"></div>
-        <div class="col-12 col-md-9 offset-3 font-size-big text-right mt-3">
-            <span class="light-blue-color-text">Why </span>you should learn english?
+        <div class="col-12 col-md-9 offset-3 font-size-big text-right">
+            <span class="light-blue-color-text">Why </span><span>you should learn english?</span>
         </div>
-        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            Link with href
-        </a>
-        <div class="collapse" id="collapseExample">
+        <div id="EncouragementLinks" class="text-right mt-3">
+            <a class="text-decoration-none" onclick="LinkClicked(event)" data-toggle="collapse" href="#firstCollapse" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <h4>Popularity&nbsp;&nbsp;<i id="plusIcon1"class="bi bi-plus-square-fill"></i></h4>
+            </a>
+        </div>
+        <div class="collapse" id="firstCollapse">
             <div class="card card-body border-0">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                <p>English is the most popular language over the world!</p>
             </div>
         </div>
 
     </div>
 </div>
+<script>
+    function LinkClicked() {
+
+        var i = event.target;
+        console.log(i.childNodes[1]);
+        if (i.childNodes[1].className === "bi bi-plus-square-fill") {
+            //Delete old
+            var icon = i.childNodes[1];
+            icon.remove();
+            //Add new
+            var node = document.createElement("i");
+            node.classList.add("bi");
+            node.classList.add("bi-dash-square-fill");
+            i.appendChild(node);
+        }
+        else {
+            var icon = i.childNodes[1];
+            icon.remove();
+            var node = document.createElement("i");
+            node.classList.add("bi");
+            node.classList.add("bi-plus-square-fill");
+            i.appendChild(node);
+        }
+    }
+</script>
