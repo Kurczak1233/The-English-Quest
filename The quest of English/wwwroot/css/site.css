@@ -93,12 +93,20 @@ height: 350px;
 .font-quicksand {
     font-family: 'Quicksand', sans-serif;
 }
+/*Colors*/
 .dark-blue-color {
     background-color: rgb(30, 32, 166);
 }
 .warm-orange-color {
     background-color: rgb(252, 186, 3);
 }
+.light-blue-color-text {
+    color: rgb(66, 239, 245)
+}
+.light-blue-color {
+    background-color: rgb(66, 239, 245)
+}
+
 .main-banner { /*Gold img standard!*/
     background-image: url('https://cdn.pixabay.com/photo/2016/11/29/09/16/architecture-1868667_960_720.jpg');
     max-width: 100%;
