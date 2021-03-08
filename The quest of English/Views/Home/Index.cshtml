@@ -62,8 +62,8 @@
             <span class="light-blue-color-text">Why </span><span>you should learn english?</span>
         </div>
         <div id="EncouragementLinks" class="text-right mt-3">
-            <a class="text-decoration-none" onclick="LinkClicked(event)" data-toggle="collapse" href="#firstCollapse" role="button" aria-expanded="false" aria-controls="collapseExample">
-                <h4>Popularity&nbsp;&nbsp;<i id="plusIcon1"class="bi bi-plus-square-fill"></i></h4>
+            <a class="text-decoration-none" onclick="LinkClicked(event)" data-toggle="collapse" href="#firstCollapse" role="button" aria-expanded="false" aria-controls="firstCollapse">
+                <h4>Popularity&nbsp;&nbsp;<i id="plusIcon1" class="bi bi-plus-square-fill"></i></h4>
             </a>
         </div>
         <div class="collapse" id="firstCollapse">
@@ -77,25 +77,50 @@
 <script>
     function LinkClicked() {
 
-        var i = event.target;
-        console.log(i.childNodes[1]);
-        if (i.childNodes[1].className === "bi bi-plus-square-fill") {
-            //Delete old
-            var icon = i.childNodes[1];
-            icon.remove();
-            //Add new
-            var node = document.createElement("i");
-            node.classList.add("bi");
-            node.classList.add("bi-dash-square-fill");
-            i.appendChild(node);
+        var i = event.target; // event target a (done) / i (bug)
+        if (i.tagName === "H4") //clicked on a
+        {
+            if (i.childNodes[1].className === "bi bi-plus-square-fill") {
+                //Delete old
+                var icon = i.childNodes[1];
+                icon.remove();
+                //Add new
+                var node = document.createElement("i");
+                node.classList.add("bi");
+                node.classList.add("bi-dash-square-fill");
+                i.appendChild(node);
+            }
+            else {
+                var icon = i.childNodes[1];
+                icon.remove();
+                var node2 = document.createElement("i");
+                node2.classList.add("bi");
+                node2.classList.add("bi-plus-square-fill");
+                i.appendChild(node2);
+            }
         }
-        else {
-            var icon = i.childNodes[1];
-            icon.remove();
-            var node2 = document.createElement("i");
-            node2.classList.add("bi");
-            node2.classList.add("bi-plus-square-fill");
-            i.appendChild(node2);
+        else // clicked on i
+        {
+            if (i.className === "bi bi-plus-square-fill") {
+                //Delete old
+                var iconFather = i.parentNode;
+                i.remove();
+                //Add new
+                var node = document.createElement("i");
+                node.classList.add("bi");
+                node.classList.add("bi-dash-square-fill");
+                iconFather.appendChild(node);
+                console.log(i);
+            }
+            else {
+                console.log(i.parentNode)
+                var iconFather = i.parentNode;
+                i.remove();
+                var node2 = document.createElement("i");
+                node2.classList.add("bi");
+                node2.classList.add("bi-plus-square-fill");
+                iconFather.appendChild(node2);
+            }
         }
     }
 </script>
