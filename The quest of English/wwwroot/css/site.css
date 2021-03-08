@@ -165,3 +165,7 @@ EncouragementSectionInMain*/
 #EncouragementLinks > a:active {
     color: rgb(30, 32, 166);
 }
+
+.font-size-rather-small{
+    font-size: 20px;
+}
