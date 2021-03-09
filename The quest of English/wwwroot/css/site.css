@@ -117,6 +117,13 @@ body {
 .light-blue-color {
     background-color: rgb(66, 239, 245)
 }
+.warm-orange-text-color {
+    color: rgb(252, 186, 3);
+}
+.dark-blue-text-color {
+    color: rgb(30, 32, 166);
+}
+
 
 .main-banner { /*Gold img standard!*/
     background-image: url('https://cdn.pixabay.com/photo/2016/11/29/09/16/architecture-1868667_960_720.jpg');
