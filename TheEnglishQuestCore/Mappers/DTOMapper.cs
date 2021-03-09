@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using TheEnglishQuestDatabase.Entities;
 using TheEnglishQuestDatabase;
+using System.Threading.Tasks;
+
 namespace TheEnglishQuestCore
 {
     public class DTOMapper
@@ -17,9 +19,13 @@ namespace TheEnglishQuestCore
             }).CreateMapper();
         }
         public EncouragementPositionDto Map(EncouragementPosition position) => _Mapper.Map<EncouragementPositionDto>(position);
-        public List<EncouragementPositionDto> Map(List<EncouragementPosition> positions) => _Mapper.Map<List<EncouragementPositionDto>>(positions);
+        public IEnumerable<EncouragementPositionDto> Map(IEnumerable<EncouragementPosition> positions) => _Mapper.Map<IEnumerable<EncouragementPositionDto>>(positions);
         public EncouragementPosition Map(EncouragementPositionDto position) => _Mapper.Map<EncouragementPosition>(position);
-        public List<EncouragementPosition> Map(List<EncouragementPositionDto> positions) => _Mapper.Map<List<EncouragementPosition>>(positions);
+        public IEnumerable<EncouragementPosition> Map(IEnumerable<EncouragementPositionDto> positions) => _Mapper.Map<IEnumerable<EncouragementPosition>>(positions);
+        //public Task<EncouragementPositionDto> Map(Task<EncouragementPosition> position) => _Mapper.Map<Task<EncouragementPositionDto>>(position);
+        //public Task<IEnumerable<EncouragementPositionDto>> Map(Task<IEnumerable<EncouragementPosition>> positions) => _Mapper.Map<Task<IEnumerable<EncouragementPositionDto>>>(positions);
+        //public Task<EncouragementPosition> Map(Task<EncouragementPositionDto> position) => _Mapper.Map<Task<EncouragementPosition>>(position);
+        //public Task<IEnumerable<EncouragementPosition>> Map(Task<IEnumerable<EncouragementPositionDto>> positions) => _Mapper.Map<Task<IEnumerable<EncouragementPosition>>>(positions);
 
     }
 }

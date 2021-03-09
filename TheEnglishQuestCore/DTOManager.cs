@@ -20,8 +20,8 @@ namespace TheEnglishQuestCore
 
         public async Task<bool> AddNewPosition(EncouragementPositionDto encPosition)
         {
-            
-            var entity = _DTOMapper.Map(encPosition);
+
+            var entity = _DTOMapper.Map(encPosition); //Without await
             return await _EncouragementPostionRepository.AddNew(entity);
         }
 
@@ -31,9 +31,9 @@ namespace TheEnglishQuestCore
             return await _EncouragementPostionRepository.Delete(entity);
         }
 
-        public  List<EncouragementPositionDto> GetAllPositions()
+        public async Task<IEnumerable<EncouragementPositionDto>> GetAllPositions()
         {
-            var encPositions =  _EncouragementPostionRepository.GetAllPositions().ToList();
+            var encPositions = await _EncouragementPostionRepository.GetAllPositions();
             return  _DTOMapper.Map(encPositions);
         }
     }

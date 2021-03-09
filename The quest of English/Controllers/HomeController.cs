@@ -25,18 +25,21 @@ namespace The_quest_of_English.Controllers
 
         public async Task<IActionResult> Index()
         {
-            EncouragementPositionViewModel model = new EncouragementPositionViewModel()
-            {
-                HtmlIdName = "seventhCollapse",
-                Content = "After a while, you will be able to take some English tests. If you pass those, you will be able to work up your way to the top in your company.",
-                ReferenceToCollapse = "linkCollapse7"
+            var positions = await _DTOManager.GetAllPositions();
+            var entities = _VMMapper.Map(positions);
+            //CurrentyAddedOne.
+            //EncouragementPositionViewModel model = new EncouragementPositionViewModel()
+            //{
+            //    HtmlIdName = "seventhCollapse",
+            //    Content = "After a while, you will be able to take some English tests. If you pass those, you will be able to work up your way to the top in your company.",
+            //    ReferenceToCollapse = "linkCollapse7"
 
 
-            };
-            var dto = _VMMapper.Map(model);
-            await _DTOManager.AddNewPosition(dto);
+            //};
+            //var dto = _VMMapper.Map(model);
+            //await _DTOManager.AddNewPosition(dto);
 
-            return View();
+            return View(entities);
         }
 
         public IActionResult Privacy()

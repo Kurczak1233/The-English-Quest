@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using TheEnglishQuestDatabase.Entities;
 using TheEnglishQuestDatabase.Repositories.Interfaces;
 using TheQuestOfEnglishDatabase;
@@ -15,9 +16,9 @@ namespace TheEnglishQuestDatabase
 
         }
 
-        public IEnumerable<EncouragementPosition> GetAllPositions()
+        public async Task<IEnumerable<EncouragementPosition>> GetAllPositions()
         {
-            return DbSet.Select(x => x);
+            return await DbSet.Select(x => x).ToListAsync();
         }
     }
 }

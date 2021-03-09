@@ -10,6 +10,6 @@ namespace TheEnglishQuestCore
     {
          Task<bool> AddNewPosition(EncouragementPositionDto encPosition);
          Task<bool> DeletePosition(EncouragementPositionDto encPosition);
-        List<EncouragementPositionDto> GetAllPositions();
+         Task<IEnumerable<EncouragementPositionDto>> GetAllPositions();
     }
 }
