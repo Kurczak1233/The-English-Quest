@@ -27,16 +27,16 @@ namespace The_quest_of_English.Controllers
         {
             var positions = await _DTOManager.GetAllPositions();
             var entities = _VMMapper.Map(positions);
-            EncouragementPositionViewModel model = new EncouragementPositionViewModel()
-            {
-                HtmlIdName = "firstCollapse",
-                Content = "English is the most popular language over the world!",
-                ReferenceToCollapse = "linkCollapse1",
-                Title = "Popularity"
-            };
-            var dto = _VMMapper.Map(model);
-            await _DTOManager.AddNewPosition(dto);
-            //var deleteEntity = entities.Where(x => x.Id == 2).FirstOrDefault();
+            //EncouragementPositionViewModel model = new EncouragementPositionViewModel()
+            //{
+            //    HtmlIdName = "seventhCollapse",
+            //    Content = "After a while, you will be able to take some English tests. If you pass those, you will be able to work up your way to the top in your company.",
+            //    ReferenceToCollapse = "linkCollapse7",
+            //    Title = "Development"
+            //};
+            //var dto = _VMMapper.Map(model);
+            //await _DTOManager.AddNewPosition(dto);
+            //var deleteEntity = entities.Where(x => x.Id == 9).FirstOrDefault();
             //var dtoEntity = _VMMapper.Map(deleteEntity);
             //await _DTOManager.DeletePosition(dtoEntity);
             return View(entities);
