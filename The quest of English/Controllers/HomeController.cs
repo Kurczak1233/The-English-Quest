@@ -20,9 +20,14 @@ namespace The_quest_of_English.Controllers
             _db = db;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            List<Encouragement>
+            for(int i = 1; i > 8; i++)
+            {
 
+            }
+            await _db.EncouragementPositions.AddAsync();
             string[] EncouragementStrings = { "linkCollapse", "Collapse" };
             return View(EncouragementStrings);
         }

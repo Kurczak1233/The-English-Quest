@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TheEnglishQuestCore\TheEnglishQuestCore.csproj" />
     <ProjectReference Include="..\TheQuestOfEnglishDatabase\TheEnglishQuestDatabase.csproj" />
   </ItemGroup>
 

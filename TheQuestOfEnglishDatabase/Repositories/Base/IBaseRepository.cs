@@ -8,6 +8,5 @@ namespace TheQuestOfEnglishDatabase
         Task<bool> AddNew(Entity entity);
         Task<bool> Delete(Entity entity);
         List<Entity> GetAll();
-        Task<bool> SaveChanges();
     }
 }
