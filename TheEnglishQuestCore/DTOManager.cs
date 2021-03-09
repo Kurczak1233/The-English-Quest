@@ -8,7 +8,7 @@ using TheEnglishQuestDatabase.Repositories.Interfaces;
 
 namespace TheEnglishQuestCore
 {
-    public class DTOManager
+    public class DTOManager : IDTOManager
     {
         private readonly IEncouragementPositionRepository _EncouragementPostionRepository;
         private readonly DTOMapper _DTOMapper;
@@ -17,10 +17,24 @@ namespace TheEnglishQuestCore
             _DTOMapper = mapper;
             _EncouragementPostionRepository = _enc;
         }
-        public List<EncouragementPositionDto> GetAllEncouagementPositons()
+
+        public async Task<bool> AddNewPosition(EncouragementPositionDto encPosition)
         {
-            var encPositions = _EncouragementPostionRepository.GetAllPositions().ToList();
-            return _DTOMapper.Map(encPositions);
+            
+            var entity = _DTOMapper.Map(encPosition);
+            return await _EncouragementPostionRepository.AddNew(entity);
+        }
+
+        public async Task<bool> DeletePosition(EncouragementPositionDto encPosition)
+        {
+            var entity = _DTOMapper.Map(encPosition);
+            return await _EncouragementPostionRepository.Delete(entity);
+        }
+
+        public  List<EncouragementPositionDto> GetAllPositions()
+        {
+            var encPositions =  _EncouragementPostionRepository.GetAllPositions().ToList();
+            return  _DTOMapper.Map(encPositions);
         }
     }
 }

@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TheEnglishQuestCore;
 using TheQuestOfEnglishDatabase;
 
 namespace The_quest_of_English
@@ -28,6 +29,10 @@ namespace The_quest_of_English
             services.AddControllersWithViews();
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer("Server=FLUTTERSHY\\SQLEXPRESS;Database=TheQuestOfEnglish;Trusted_Connection=True;"));
             services.AddRazorPages().AddRazorRuntimeCompilation();
+            services.AddTransient<DTOMapper>();
+            services.AddTransient<IDTOManager, DTOManager>();
+            //Mapper ViewModel
+            services.AddTransient<ViewModelMapper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

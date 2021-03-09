@@ -8,6 +8,6 @@ namespace TheEnglishQuestDatabase.Repositories.Interfaces
 {
     public interface IEncouragementPositionRepository : IBaseRepository<EncouragementPosition>
     {
-        IEnumerable<EncouragementPosition> GetAllPositions();
+        List<EncouragementPosition> GetAllPositions();
     }
 }
