@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TheEnglishQuestCore;
+using TheEnglishQuestDatabase;
+using TheEnglishQuestDatabase.Repositories.Interfaces;
 using TheQuestOfEnglishDatabase;
 
 namespace The_quest_of_English
@@ -29,6 +31,7 @@ namespace The_quest_of_English
             services.AddControllersWithViews();
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer("Server=FLUTTERSHY\\SQLEXPRESS;Database=TheQuestOfEnglish;Trusted_Connection=True;"));
             services.AddRazorPages().AddRazorRuntimeCompilation();
+            services.AddTransient<IEncouragementPositionRepository, EncouragementPositionRepository>();
             services.AddTransient<DTOMapper>();
             services.AddTransient<IDTOManager, DTOManager>();
             //Mapper ViewModel

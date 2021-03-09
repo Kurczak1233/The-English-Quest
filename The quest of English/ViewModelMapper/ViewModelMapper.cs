@@ -8,7 +8,7 @@ namespace TheEnglishQuestCore
 {
     public class ViewModelMapper
     {
-        private readonly IMapper _Mapper;
+        private IMapper _Mapper;
 
         public ViewModelMapper()
         {

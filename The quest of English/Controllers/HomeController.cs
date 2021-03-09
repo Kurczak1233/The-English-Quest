@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using The_quest_of_English.Models;
+using TheEnglishQuestCore;
 using TheQuestOfEnglishDatabase;
 
 namespace The_quest_of_English.Controllers
@@ -13,23 +14,29 @@ namespace The_quest_of_English.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly ApplicationDbContext _db;
-        public HomeController(ILogger<HomeController> logger , ApplicationDbContext db)
+        private readonly ViewModelMapper _VMMapper;
+        private readonly IDTOManager _DTOManager;
+        public HomeController(ILogger<HomeController> logger , ViewModelMapper mapper, IDTOManager manager)
         {
             _logger = logger;
-            _db = db;
+            _VMMapper = mapper;
+            _DTOManager = manager;
         }
 
         public async Task<IActionResult> Index()
         {
-            List<Encouragement>
-            for(int i = 1; i > 8; i++)
+            EncouragementPositionViewModel model = new EncouragementPositionViewModel()
             {
+                HtmlIdName = "seventhCollapse",
+                Content = "After a while, you will be able to take some English tests. If you pass those, you will be able to work up your way to the top in your company.",
+                ReferenceToCollapse = "linkCollapse7"
 
-            }
-            await _db.EncouragementPositions.AddAsync();
-            string[] EncouragementStrings = { "linkCollapse", "Collapse" };
-            return View(EncouragementStrings);
+
+            };
+            var dto = _VMMapper.Map(model);
+            await _DTOManager.AddNewPosition(dto);
+
+            return View();
         }
 
         public IActionResult Privacy()
