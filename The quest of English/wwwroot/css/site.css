@@ -196,3 +196,13 @@ EncouragementSectionInMain*/
     top: 0;
     position: absolute;
 }
+
+/*#secondBlock {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    left: 0;
+    top: 0;
+    background-color: rgba(252, 186, 3, 1);
+    position: absolute;
+}*/
