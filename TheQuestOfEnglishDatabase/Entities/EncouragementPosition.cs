@@ -8,6 +8,8 @@ namespace TheEnglishQuestDatabase.Entities
         [Required]
         public string Content { get; set; }
         [Required]
+        public string Title { get; set; }
+        [Required]
         public string ReferenceToCollapse  { get; set; }
         [Required]
         public string HtmlIdName { get; set; }
