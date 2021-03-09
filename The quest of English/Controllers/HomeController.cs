@@ -38,7 +38,9 @@ namespace The_quest_of_English.Controllers
             //};
             //var dto = _VMMapper.Map(model);
             //await _DTOManager.AddNewPosition(dto);
-
+            //var deleteEntity = entities.Where(x => x.Id == 1).FirstOrDefault();
+            //var dtoEntity = _VMMapper.Map(deleteEntity);
+            await _DTOManager.DeletePosition(dtoEntity);
             return View(entities);
         }
 

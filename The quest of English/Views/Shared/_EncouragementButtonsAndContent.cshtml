@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<EncouragementPositionViewModel>
 @foreach (var item in @Model)
 {
-    <a id="@item.HtmlIdName" class="text-decoration-none mb-5" data-toggle="collapse" href="#@item.ReferenceToCollapse" role="button" aria-expanded="false" aria-controls="seventhCollapse">
+    <a id="@item.HtmlIdName" class="text-decoration-none mb-5" data-toggle="collapse" href="@item.ReferenceToCollapse" role="button" aria-expanded="false" aria-controls="seventhCollapse">
         <h2 class="d-block">Development&nbsp;&nbsp;<i class="bi bi-plus-square-fill"></i></h2>
     </a>
-    <div class="collapse text-right font-size-rather-small" id="#@item.ReferenceToCollapse">
+    <div class="collapse text-right font-size-rather-small" id="@item.ReferenceToCollapse">
         <div class="card col-12 card-body border-0">
             <p>"@item.Content"</p>
         </div> @*//Zrobić z tego partial views!*@
@@ -12,7 +12,7 @@
 
 <script>
     $('@item.HtmlIdName').click(function () {
-        $('#@item.ReferenceToCollapse').toggle('500');
+        $('@item.ReferenceToCollapse').toggle('500');
         $("i", this).toggleClass("bi-plus-square-fill bi-dash-square-fill");
     });
 </script>
