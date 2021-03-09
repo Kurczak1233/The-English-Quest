@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
+using TheEnglishQuestDatabase.Entities;
 
 namespace TheQuestOfEnglishDatabase
 {
@@ -9,7 +9,7 @@ namespace TheQuestOfEnglishDatabase
         {
 
         }
+        public DbSet<EncouragementPosition> EncouragementPositions{ get; set; }
 
-        
     }
 }

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model string[]
+@{
     ViewData["Title"] = "Home Page";
 }
 <div container-fluid>
@@ -110,14 +111,15 @@
                     <p>Not only will you learn the basics of English grammar, but also of other subjects! When you read a text you will have to understand it's merits which may broaden your horizons.</p>
                 </div>
             </div>
-            <a id="linkCollapse7" class="text-decoration-none mb-5" data-toggle="collapse" href="#seventhCollapse" role="button" aria-expanded="false" aria-controls="seventhCollapse">
+            <!--<a id="linkCollapse7" class="text-decoration-none mb-5" data-toggle="collapse" href="#seventhCollapse" role="button" aria-expanded="false" aria-controls="seventhCollapse">
                 <h2 class="d-block">Development&nbsp;&nbsp;<i class="bi bi-plus-square-fill"></i></h2>
             </a>
             <div class="collapse text-right font-size-rather-small" id="seventhCollapse">
                 <div class="card col-12 card-body border-0">
                     <p>After a while, you will be able to take some English tests. If you pass those, you will be able to work up your way to the top in your company.</p>
-                </div> @*//Zrobić z tego partial views!*@
-            </div>
+                </div>--> @*//Zrobić z tego partial views!*@
+            <!--</div>--> 
+            <partial name="_EncouragementButtonsAndContent" model="@Model"/>
         </div>
     </div>
 </div>
