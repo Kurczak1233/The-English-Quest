@@ -71,7 +71,7 @@
     </div>
 </div>
 <div fluid class="mb-5 mt-5 light-blue-color">
-    <div id="visability" class="p-0 col-12 font-size-big text-center d-flex align-items-center justify-content-center position-relative" style="height:300px;">
+    <div class="p-0 col-12 font-size-big text-center d-flex align-items-center justify-content-center position-relative" style="height:300px;">
         <div id="firstBlock" class="justify-content-center" style="top:15%; left:auto;">
             <p class="dark-blue-text-color col-12">Discover your chance</p><!--Explore the platform!-->
             @*<button id="invisible" class=" btn text-white btn-lg dark-blue-color">Sign up</button>*@
@@ -85,15 +85,15 @@
         @*<div id="circle"></div>*@
     </div>
 </div>
-<div fluid class="mb-5 mt-5 warm-orange-color position-relative" style="top:0px; left:0px;">
-    <div id="visability" class="p-0 col-12 font-size-big text-center d-flex align-items-center justify-content-center" style="height:300px;">
+<div id="visability" fluid class="circle mb-5 mt-5 warm-orange-color position-relative " style="clip-path: circle(80px at 50% 50%); top: -348px; left: 0px;">
+    <div class="p-0 col-12 font-size-big text-center d-flex align-items-center justify-content-center" style="height:300px;">
         <div id="secondBlock" class="" style="top: 15%;left: auto;">
             <div class="justify-content-center">
                 <p class="dark-blue-text-color col-12">Explore the platform!</p><!--Explore the platform!-->
                 @*<button id="visable" class=" btn text-white btn-lg dark-blue-color">Sign up</button>*@
+                @*<div id="circle"></div>*@
             </div>
         </div>
-        @*<div id="circle"></div>*@
     </div>
 </div>
     <script>
@@ -106,8 +106,9 @@
             //$(document.getElementById('invisible')).removeClass('invisible');
             // $(document.getElementById(circle).css({ top: event.pageY, left: event.pageX });
             $("#circle").css({ left: event.pageX - 50, top: event.pageY - 2468 - 50 });
-            $('#firstBlock').addClass("invisibile");
-            $('#secondBlock').removeClass("invisibile");
+            //$("#visability").addClass("invisible");
+            //$('#firstBlock').addClass("invisibile");
+            //$('#secondBlock').removeClass("invisibile");
         });
 
         //jQuery(document.getElementById('visability')).mousemove(function (event) {
