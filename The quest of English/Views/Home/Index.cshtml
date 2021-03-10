@@ -77,7 +77,7 @@
             <button id="invisible" class="invisible btn text-white btn-lg dark-blue-color">Sign up</button>
         </div>
     </div>
-    <div id="visability" class="circle warm-orange-color position-absolute p-0 col-12 font-size-big text-center d-flex align-items-center justify-content-center" style="height:300px; top: 0px;">
+    <div id="visability" class="invisible circle warm-orange-color position-absolute p-0 col-12 font-size-big text-center d-flex align-items-center justify-content-center" style="height:300px; top: 0px;">
         <div id="secondBlock" @*style="top: 15%;left: auto;*@>
             <div class="justify-content-center">
                 <p class="dark-blue-text-color col-12">Explore the platform!</p>
@@ -94,9 +94,21 @@
     </div>
 </div>
 <script>
-    var scrollTop = $(document).scrollTop(),
-        elementOffset = $('#visability').offset().top,
-        distance = (elementOffset -60);
+    //Initial values
+    var scrollTop = $(document).scrollTop();
+    var elementOffset = $('#visability').offset().top;
+    var distance = (elementOffset);
+    var document = $(document);
+    //Resizer API (get new values)
+    const resizeObserver = new ResizeObserver(entries => {
+        scrollTop = $(document).scrollTop();
+        elementOffset = $('#visability').offset().top;
+        distance = (elementOffset);
+        console.log(elementOffset);
+        console.log(distance);
+    });
+    resizeObserver.observe(document.body)
+    //
     $(window).mousemove(function (event) {
         $("#visability").removeClass("invisible");
         var x = (event.pageX);
