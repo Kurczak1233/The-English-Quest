@@ -199,7 +199,7 @@ EncouragementSectionInMain*/
     overflow: hidden;
 }
 .circle {
-    clip-path: circle(150px at 0 0);
+   /* clip-path: circle(150px at 0 0);*/
     top: -348px;
     left: 0px;
 }

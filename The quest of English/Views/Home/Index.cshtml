@@ -71,7 +71,7 @@
     </div>
 </div>
 <div fluid class="mb-5 mt-5 light-blue-color">
-    <div class="p-0 col-12 font-size-big text-center d-flex align-items-center justify-content-center position-relative" style="height:300px;">
+    <div id="vis" class="p-0 col-12 font-size-big text-center d-flex align-items-center justify-content-center position-relative" style="height:300px;">
         <div id="firstBlock" class="justify-content-center" style="top:15%; left:auto;">
             <p class="dark-blue-text-color col-12">Discover your chance</p><!--Explore the platform!-->
             @*<button id="invisible" class=" btn text-white btn-lg dark-blue-color">Sign up</button>*@
@@ -97,49 +97,17 @@
     </div>
 </div>
 <script>
-    $(document.getElementById('visability')).mousemove(function (event) {
-        //1. Circle ma być transparentny?
-        //2. Ma zmieniać klasę pierwszego w okręgu na niewidoczny a drugiego na widoczny //2468
+    $(window).mousemove(function (event) {
+        $("#visability").removeClass("invisible");
         var x = (event.pageX);
-        var y = (event.pageY - 2468 - 50);
+        var y = (event.pageY - 2468);
         $("span").text(y + ", " + (event.pageY - 2468));
-        //$(document.getElementById('invisible')).removeClass('invisible');
-        // $(document.getElementById(circle).css({ top: event.pageY, left: event.pageX });
-        //("visability").css({/* left: event.pageX - 50, top: event.pageY - 2468 - 50, */clip- path: 'circle(65px at ' + x + ' px ' + y + ' px )' });
-        //$('.circle').css({ "clip-path": 'circle(65px at' + (event.pageX - 50) + ' ' + (event.pageY - 2468) + ')' });
-        //$('.circle').css({ "clip-path": 'circle(65px at 50% 50%)' }); //WORKS
-        //var str = 'circle(65px at 50% 50%)'; // WORKS!
-        // var str = "circle(65px at " + ((event.pageX - 50)/100) + "% " + ((event.pageY - 2468)/100) + "%)"; // WORKS!
-        //console.log((event.PageY));
-        var height = 300; //Co 3 1 procent //Kursor height/to?
+        var height = 300;
         var width = $(window).width();
         var section = document.getElementById('visability');
-        section.style.clipPath = "circle(65px at " + ((x / width) * 100) + "% " + ((y / height)*100 )+ "%)";
-        // $('.circle').css({ "clip-path": "circle(65px at " + (event.pageX - 50) + " " + (event.pageY - 2468) + ")" });
-
-        // $('.circle').css({ "clip-path": 'none'});// works!
-        //$('.circle').css({ "background": 'red' }); WORKS
-        //$("#visability").addClass("invisible");
-        //$('#firstBlock').addClass("invisibile");
-        //$('#secondBlock').removeClass("invisibile");
+        section.style.clipPath = "circle(65px at " + (parseFloat(x / width) * 100) + "% " + (parseFloat(y / height) * 100) + "%)";
+        if (y < 0 || y > 296) {
+        $("#visability").addClass("invisible");
+        }
     });
-
-        //jQuery(document.getElementById('visability')).mousemove(function (event) {
-        //    var xp = 0, yp = 0;
-
-        //    $(document).mousemove(function (e) {
-        //        mouseX = e.pageX - 30;
-        //        mouseY = e.pageY - 30;
-        //    });
-
-        //    setInterval(function () {
-        //        //xp += ((mouseX - xp) / 6);
-        //        //yp += ((mouseY - yp) / 6);
-        //        $("#visability").css({ left: xp + 'px', top: yp + 'px' });
-        //    }, 20);
-
-        //});
-
-
-
 </script>
