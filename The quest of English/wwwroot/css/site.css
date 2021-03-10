@@ -198,7 +198,11 @@ EncouragementSectionInMain*/
     position: absolute;
     overflow: hidden;
 }
-
+.circle {
+    clip-path: circle(150px at 50% 50%);
+    top: -348px;
+    left: 0px;
+}
 /*#secondBlock {
     border-radius: 50%;
     width: 100px;

@@ -85,7 +85,7 @@
         @*<div id="circle"></div>*@
     </div>
 </div>
-<div id="visability" fluid class="circle mb-5 mt-5 warm-orange-color position-relative " style="clip-path: circle(80px at 50% 50%); top: -348px; left: 0px;">
+<div id="visability" fluid class="circle mb-5 mt-5 warm-orange-color position-relative">
     <div class="p-0 col-12 font-size-big text-center d-flex align-items-center justify-content-center" style="height:300px;">
         <div id="secondBlock" class="" style="top: 15%;left: auto;">
             <div class="justify-content-center">
@@ -96,16 +96,17 @@
         </div>
     </div>
 </div>
-    <script>
-        $(document.getElementById('visability')).mousemove(function (event) {
-            //1. Circle ma być transparentny?
-            //2. Ma zmieniać klasę pierwszego w okręgu na niewidoczny a drugiego na widoczny
-            //$("span").text(event.pageX + ", " + event.pageY); //2468
-            //var x = event.PageX;
-            //var y = event.PageY;
-            //$(document.getElementById('invisible')).removeClass('invisible');
-            // $(document.getElementById(circle).css({ top: event.pageY, left: event.pageX });
-            $("#circle").css({ left: event.pageX - 50, top: event.pageY - 2468 - 50 });
+<script>
+    $(document.getElementById('visability')).mousemove(function (event) {
+        //1. Circle ma być transparentny?
+        //2. Ma zmieniać klasę pierwszego w okręgu na niewidoczny a drugiego na widoczny //2468
+        var x = event.PageX - 50;
+        var y = event.PageY - 2468 - 50;
+        $("span").text((event.pageX - 50)+ ", " + (event.pageY - 2468));
+        //$(document.getElementById('invisible')).removeClass('invisible');
+        // $(document.getElementById(circle).css({ top: event.pageY, left: event.pageX });
+        //$("visability").css({/* left: event.pageX - 50, top: event.pageY - 2468 - 50, */clip- path: 'circle(65px at ' + x + ' px ' + y + ' px )' });
+        //$('.circle').css({ "clip-path": "circle(30% 0%, 100% 23%, 54% 50%, 100% 100%, 70% 100%, 79% 59%, 10% 84%, 52% 49%)" });
             //$("#visability").addClass("invisible");
             //$('#firstBlock').addClass("invisibile");
             //$('#secondBlock').removeClass("invisibile");
@@ -129,4 +130,4 @@
 
 
 
-    </script>
+</script>
