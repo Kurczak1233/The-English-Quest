@@ -70,17 +70,15 @@
         </div>
     </div>
 </div>
-<div id="vis" fluid class="mb-5 mt-5 light-blue-color d-none d-md-block">
-    <div  class="p-0 col-12 font-size-big text-center d-flex align-items-center justify-content-center position-relative" style="height:300px;">
+<div id="vis" fluid class="light-blue-color d-none d-md-block position-relative">
+    <div class="p-0 col-12 font-size-big text-center d-flex align-items-center justify-content-center" style="height:300px;">
         <div id="firstBlock" class="justify-content-center" style="top:15%; left:auto;">
             <p class="col-12">Discover your chance</p>
             <button id="invisible" class="invisible btn text-white btn-lg dark-blue-color">Sign up</button>
         </div>
     </div>
-</div>
-<div id="visability" fluid class="invisible circle mb-5 mt-5 warm-orange-color position-relative d-none d-md-block">
-    <div class="p-0 col-12 font-size-big text-center d-flex align-items-center justify-content-center" style="height:300px;">
-        <div id="secondBlock" style="top: 15%;left: auto;">
+    <div id="visability" class="circle warm-orange-color position-absolute p-0 col-12 font-size-big text-center d-flex align-items-center justify-content-center" style="height:300px; top: 0px;">
+        <div id="secondBlock" @*style="top: 15%;left: auto;*@>
             <div class="justify-content-center">
                 <p class="dark-blue-text-color col-12">Explore the platform!</p>
                 <button id="visable" class=" btn text-white btn-lg dark-blue-color">Sign up</button>
@@ -88,10 +86,17 @@
         </div>
     </div>
 </div>
+<div class="container">
+    <div class="row">
+        <div class="col-4">test</div>
+        <div class="col-4">sttst</div>
+        <div class="col-4"></div>
+    </div>
+</div>
 <script>
     var scrollTop = $(document).scrollTop(),
         elementOffset = $('#visability').offset().top,
-        distance = (elementOffset - 60);
+        distance = (elementOffset -60);
     $(window).mousemove(function (event) {
         $("#visability").removeClass("invisible");
         var x = (event.pageX);
