@@ -100,17 +100,29 @@
     $(document.getElementById('visability')).mousemove(function (event) {
         //1. Circle ma być transparentny?
         //2. Ma zmieniać klasę pierwszego w okręgu na niewidoczny a drugiego na widoczny //2468
-        var x = event.PageX - 50;
-        var y = event.PageY - 2468 - 50;
-        $("span").text((event.pageX - 50)+ ", " + (event.pageY - 2468));
+        var x = (event.PageX - 50);
+        var y = (event.PageY - 2468 - 50);
+        //$("span").text((event.pageX - 50) + ", " + (event.pageY - 2468));
         //$(document.getElementById('invisible')).removeClass('invisible');
         // $(document.getElementById(circle).css({ top: event.pageY, left: event.pageX });
-        //$("visability").css({/* left: event.pageX - 50, top: event.pageY - 2468 - 50, */clip- path: 'circle(65px at ' + x + ' px ' + y + ' px )' });
-        //$('.circle').css({ "clip-path": "circle(30% 0%, 100% 23%, 54% 50%, 100% 100%, 70% 100%, 79% 59%, 10% 84%, 52% 49%)" });
-            //$("#visability").addClass("invisible");
-            //$('#firstBlock').addClass("invisibile");
-            //$('#secondBlock').removeClass("invisibile");
-        });
+        //("visability").css({/* left: event.pageX - 50, top: event.pageY - 2468 - 50, */clip- path: 'circle(65px at ' + x + ' px ' + y + ' px )' });
+        //$('.circle').css({ "clip-path": 'circle(65px at' + (event.pageX - 50) + ' ' + (event.pageY - 2468) + ')' });
+        //$('.circle').css({ "clip-path": 'circle(65px at 50% 50%)' }); //WORKS
+        var str = 'circle(65px at ' + (event.pageX - 50) + ' ' + (event.pageY - 2468) + ')';
+        //var str = 'circle(65px at 50% 50%)'; // WORKS!
+        var str = "circle(65px at " + ((event.pageX - 50)/100) + "% " + (event.pageY - 2468) + "%)"; // WORKS!
+        $("span").text(str);
+        console.log(str);
+        var section = document.getElementById('visability');
+        section.style.clipPath = "circle(65px at "+((event.pageX - 50)/100)+"% 50%)";
+        // $('.circle').css({ "clip-path": "circle(65px at " + (event.pageX - 50) + " " + (event.pageY - 2468) + ")" });
+
+        // $('.circle').css({ "clip-path": 'none'});// works!
+        //$('.circle').css({ "background": 'red' }); WORKS
+        //$("#visability").addClass("invisible");
+        //$('#firstBlock').addClass("invisibile");
+        //$('#secondBlock').removeClass("invisibile");
+    });
 
         //jQuery(document.getElementById('visability')).mousemove(function (event) {
         //    var xp = 0, yp = 0;
