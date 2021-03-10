@@ -100,21 +100,21 @@
     $(document.getElementById('visability')).mousemove(function (event) {
         //1. Circle ma być transparentny?
         //2. Ma zmieniać klasę pierwszego w okręgu na niewidoczny a drugiego na widoczny //2468
-        var x = (event.PageX - 50);
-        var y = (event.PageY - 2468 - 50);
-        //$("span").text((event.pageX - 50) + ", " + (event.pageY - 2468));
+        var x = (event.pageX);
+        var y = (event.pageY - 2468 - 50);
+        $("span").text(y + ", " + (event.pageY - 2468));
         //$(document.getElementById('invisible')).removeClass('invisible');
         // $(document.getElementById(circle).css({ top: event.pageY, left: event.pageX });
         //("visability").css({/* left: event.pageX - 50, top: event.pageY - 2468 - 50, */clip- path: 'circle(65px at ' + x + ' px ' + y + ' px )' });
         //$('.circle').css({ "clip-path": 'circle(65px at' + (event.pageX - 50) + ' ' + (event.pageY - 2468) + ')' });
         //$('.circle').css({ "clip-path": 'circle(65px at 50% 50%)' }); //WORKS
-        var str = 'circle(65px at ' + (event.pageX - 50) + ' ' + (event.pageY - 2468) + ')';
         //var str = 'circle(65px at 50% 50%)'; // WORKS!
-        var str = "circle(65px at " + ((event.pageX - 50)/100) + "% " + (event.pageY - 2468) + "%)"; // WORKS!
-        $("span").text(str);
-        console.log(str);
+        // var str = "circle(65px at " + ((event.pageX - 50)/100) + "% " + ((event.pageY - 2468)/100) + "%)"; // WORKS!
+        //console.log((event.PageY));
+        var height = 300; //Co 3 1 procent //Kursor height/to?
+        var width = $(window).width();
         var section = document.getElementById('visability');
-        section.style.clipPath = "circle(65px at "+((event.pageX - 50)/100)+"% 50%)";
+        section.style.clipPath = "circle(65px at " + ((x / width) * 100) + "% " + ((y / height)*100 )+ "%)";
         // $('.circle').css({ "clip-path": "circle(65px at " + (event.pageX - 50) + " " + (event.pageY - 2468) + ")" });
 
         // $('.circle').css({ "clip-path": 'none'});// works!
