@@ -9,7 +9,7 @@
                 <div class="indent-blue mt-5"></div>
                 <p class="font-size-big text-white">Improve your english.</p>
                 <p class="font-size-medium text-white">Work your way up to the fluency.</p>
-                <button class="btn btn-info mt-5 font-size-medium" type="button" aria-labelledby="Sign up button">Sing up today</button>
+                <button asp-controller="User" asp-action="Register" class="btn btn-info mt-5 font-size-medium" type="button" aria-labelledby="Sign up button">Sing up today</button>
             </div>
         </div>
     </div>
@@ -53,7 +53,7 @@
         <div class="text-center col-12 font-size-medium">Is an open source platform.</div>
         <div class=" text-center col-12 font-size-medium">Do not charge you for learning.</div>
         <div class=" text-center col-12 font-size-medium font-italic mt-4">Want to contribute to the platform?</div>
-        <button class="btn btn-info mb-5 mt-3 font-size-medium" type="button" aria-labelledby="Contact us button">Contact us</button>
+        <button asp-controller="Home" asp-action="Contact" class="btn btn-info mb-5 mt-3 font-size-medium" type="button" aria-labelledby="Contact us button">Contact us</button>
     </div>
 </div>
 <div class="container">
@@ -74,7 +74,7 @@
     <div class="p-0 col-12 font-size-big text-center d-flex align-items-center justify-content-center" style="height:300px;">
         <div id="firstBlock" class="justify-content-center" style="top:15%; left:auto;">
             <p class="col-12">Discover your chance</p>
-            <button id="invisible" class="invisible btn text-white btn-lg dark-blue-color">Sign up</button>
+            <button asp-controller="User" asp-action="Register" id="invisible" class="invisible btn text-white btn-lg dark-blue-color">Sign up</button>
         </div>
     </div>
     <div id="visability" class="invisible circle warm-orange-color position-absolute p-0 col-12 font-size-big text-center d-flex align-items-center justify-content-center" style="height:300px; top: 0px;">
