@@ -1,24 +1,24 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
+using TheEnglishQuestCore.Interfaces;
 using TheEnglishQuestDatabase;
 using TheEnglishQuestDatabase.Entities;
 
-namespace TheEnglishQuestCore
+namespace TheEnglishQuestCore.Managers
 {
-    public class DTOManager : IDTOManager
+    public class EncouragementPostitionManager : DTOManager, IEncouragementPositionDto
     {
-        private readonly IEncouragementPositionRepository _EncouragementPostionRepository;
-        private readonly DTOMapper _DTOMapper;
-        public DTOManager(IEncouragementPositionRepository _enc, DTOMapper mapper)
+        public EncouragementPostitionManager(IEncouragementPositionRepository _enc, DTOMapper mapper) : base(_enc, mapper)
         {
-            _DTOMapper = mapper;
-            _EncouragementPostionRepository = _enc;
+
         }
 
         public async Task<bool> AddNewPosition(EncouragementPositionDto encPosition)
         {
 
-            var entity = _DTOMapper.Map(encPosition); //Without await
+            var entity = _DTOMapper.Map(encPosition); 
             return await _EncouragementPostionRepository.AddNew(entity);
         }
 
@@ -31,7 +31,7 @@ namespace TheEnglishQuestCore
         public async Task<IEnumerable<EncouragementPositionDto>> GetAllPositions()
         {
             var encPositions = await _EncouragementPostionRepository.GetAllPositions();
-            return  _DTOMapper.Map(encPositions);
+            return _DTOMapper.Map(encPositions);
         }
     }
 }

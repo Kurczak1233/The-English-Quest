@@ -7,5 +7,6 @@ namespace TheEnglishQuestDatabase
     public interface IApplicationUserRepository : IBaseRepository<ApplicationUser>
     {
         Task<ApplicationUser> GetUser(string id);
+        Task<bool> DeleteUser(string id);
     }
 }
