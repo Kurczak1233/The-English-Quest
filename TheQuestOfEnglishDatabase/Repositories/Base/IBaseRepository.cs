@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace TheQuestOfEnglishDatabase
 {
-    public interface IBaseRepository<Entity> where Entity : BaseEntity
+    public interface IBaseRepository<Entity> where Entity : class
     {
         Task<bool> AddNew(Entity entity);
         Task<bool> Delete(Entity entity);

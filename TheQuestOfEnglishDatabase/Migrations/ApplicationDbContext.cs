@@ -10,6 +10,7 @@ namespace TheQuestOfEnglishDatabase
 
         }
         public DbSet<EncouragementPosition> EncouragementPositions{ get; set; }
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
 
     }
 }

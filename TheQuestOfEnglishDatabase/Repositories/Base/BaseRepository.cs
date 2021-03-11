@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TheQuestOfEnglishDatabase
 {
-    public abstract class BaseRepository<Entity> : IBaseRepository<Entity> where Entity : BaseEntity
+    public abstract class BaseRepository<Entity> : IBaseRepository<Entity> where Entity : class
     {
         protected ApplicationDbContext _db;
         protected abstract DbSet<Entity> DbSet { get; }

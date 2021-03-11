@@ -3,8 +3,10 @@ using TheQuestOfEnglishDatabase;
 
 namespace TheEnglishQuestDatabase.Entities
 {
-    public class EncouragementPosition : BaseEntity
-    { 
+    public class EncouragementPosition
+    {
+        [Key]
+        public int Id { get; set; }
         [Required]
         public string Content { get; set; }
         [Required]
