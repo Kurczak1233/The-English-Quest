@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TheEnglishQuestDatabase.Entities;
-using TheEnglishQuestDatabase.Repositories.Interfaces;
 using TheQuestOfEnglishDatabase;
 
 namespace TheEnglishQuestDatabase
@@ -19,6 +18,16 @@ namespace TheEnglishQuestDatabase
         public async Task<IEnumerable<EncouragementPosition>> GetAllPositions()
         {
             return await DbSet.Select(x => x).ToListAsync();
+        }
+        public async Task<bool> Delete(EncouragementPosition entity)
+        {
+            var foundEntity = await DbSet.FirstOrDefaultAsync(x => x.Id == entity.Id);
+            if (foundEntity != null)
+            {
+                DbSet.Remove(foundEntity);
+                return await SaveChanges();
+            }
+            return false;
         }
     }
 }

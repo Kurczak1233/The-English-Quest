@@ -35,15 +35,5 @@ namespace TheQuestOfEnglishDatabase
             await DbSet.AddAsync(entity);
             return await SaveChanges();
         }
-        public async Task<bool> Delete(Entity entity)
-        {
-            var foundEntity = await DbSet.FirstOrDefaultAsync(x => x.Id == entity.Id);
-            if (foundEntity != null)
-            {
-                DbSet.Remove(foundEntity);
-                return await SaveChanges();
-            }
-            return false;
-        }
     }
 }

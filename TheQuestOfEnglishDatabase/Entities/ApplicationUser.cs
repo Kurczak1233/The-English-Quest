@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNetCore.Identity;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace TheEnglishQuestDatabase.Entities
 {
@@ -13,6 +11,8 @@ namespace TheEnglishQuestDatabase.Entities
         [Required]
         public int LastName { get; set; }
         [Required]
+        public string Login{ get; set; }
+        public string Password{ get; set; }
         public string EmailAdress { get; set; }
         [Range(0, 100)]
         public int GrammarPercentagePoints { get; set; } = 0;

@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using TheEnglishQuestDatabase.Entities;
-using TheQuestOfEnglishDatabase;
 
-namespace TheEnglishQuestDatabase.Repositories.Interfaces
+namespace TheEnglishQuestDatabase
 {
-    public interface IEncouragementPositionRepository : IBaseRepository<EncouragementPosition>
+    public interface IEncouragementPositionRepository
     {
+        Task<bool> Delete(EncouragementPosition entity);
+        Task<bool> AddNew(EncouragementPosition entity);
         Task<IEnumerable<EncouragementPosition>> GetAllPositions();
     }
 }
