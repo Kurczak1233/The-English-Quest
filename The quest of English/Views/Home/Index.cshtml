@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-<div container-fluid>
+<section container-fluid>
     <div class="row m-0" style="width:100%">
         <div class="col-12 main-banner">
             <div class="col-12 pl-5 offset-md-4 col-md-7">
@@ -13,8 +13,8 @@
             </div>
         </div>
     </div>
-</div>
-<div class="container">
+</section>
+<section class="container">
     <div class="row justify-content-center  mt-3">
         <div class="indent-blue mt-5"></div>
         <div class="col-12 text-center font-size-big mb-3">Available levels:</div>
@@ -43,8 +43,8 @@
             </div>
         </div>
     </div>
-</div>
-<div class="container-fluid warm-orange-color">
+</section>
+<section class="container-fluid warm-orange-color">
     <div class="row justify-content-center">
         <div class="indent-blue mt-5 "></div>
         <div class="col-12 text-center">
@@ -55,8 +55,8 @@
         <div class=" text-center col-12 font-size-medium font-italic mt-4">Want to contribute to the platform?</div>
         <button asp-controller="Home" asp-action="Contact" class="btn btn-info mb-5 mt-3 font-size-medium" type="button" aria-labelledby="Contact us button">Contact us</button>
     </div>
-</div>
-<div class="container">
+</section>
+<section class="container">
     <div class="row justify-content-center">
         <div class="indent-blue mt-5"></div>
         <div class="col-12 font-size-big text-center">
@@ -69,8 +69,8 @@
             <partial name="_EncouragementButtonsAndContent" model="@Model" />
         </div>
     </div>
-</div>
-<div id="vis" fluid class="light-blue-color d-none d-md-block position-relative">
+</section>
+<section id="vis" fluid class="light-blue-color d-none d-md-block position-relative">
     <div class="p-0 col-12 font-size-big text-center d-flex align-items-center justify-content-center" style="height:300px;">
         <div id="firstBlock" class="justify-content-center" style="top:15%; left:auto;">
             <p class="col-12">Discover your chance</p>
@@ -85,8 +85,8 @@
             </div>
         </div>
     </div>
-</div>
-<div class="container">
+</section>
+<section class="container">
     <div class="row  text-center justify-content-center">
         <div class="indent-blue mt-5 "></div>
         <div class="col-12 font-size-medium mb-3">The platform consists of:</div>
@@ -103,7 +103,7 @@
             <p class="font-size-rather-small">Registered users</p>
         </div>
     </div>
-</div>
+</section>
 <script>
     //Initial values
     var scrollTop = $(document).scrollTop();
