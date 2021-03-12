@@ -1,0 +1,25 @@
+﻿<nav id="navbar" class="navbar navbar-expand-xl navbar-toggleable-xl navbar-light box-shadow">
+    <div class="container">
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><span class="hoverButton dark-blue-text-color font-weight-bold">The English Quest &nbsp;</span><img src="/images/Logo.png" style="height:50px;" /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse d-xl-inline-flex flex-xl-row-reverse">
+            <ul class="navbar-nav flex-grow-0">
+                <li class="nav-item mr-3 p-1">
+                    <a class="nav-link text-dark btn btn-outline-secondary" asp-area="" asp-controller="Home" asp-action="Contact">Contact&nbsp;<i class="bi bi-person-lines-fill"></i></a>
+                </li>
+                <li class="nav-item mr-3 p-1">
+                    <a class="nav-link text-dark btn btn-outline-info" asp-area="" asp-controller="Home" asp-action="AboutUs">About us&nbsp;<i class="bi bi-info-circle-fill"></i></a>
+                </li>
+                <li class="nav-item mr-3 p-1">
+                    <button class="nav-link text-white btn dark-blue-color hoverButton form-control " asp-area="" asp-controller="User" asp-action="Register">Register&nbsp;<i class="bi bi-person-plus-fill"></i></button>
+                </li>
+                <li class="nav-item mr-3 p-1">
+                    <button class="nav-link text-dark btn warm-orange-color hoverButton form-control" asp-area="" asp-controller="User" asp-action="Login">Login&nbsp;<i class="bi bi-person-check-fill"></i></button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
