@@ -16,19 +16,22 @@ namespace TheEnglishQuestCore.Managers
             _ApplicationUserRepository = _enc;
         }
 
-        public Task<bool> AddNewUser(IApplicationUserDto user)
+        public async Task<bool> AddNewUser(ApplicationUserDto user)
         {
-            throw new NotImplementedException();
+            var entity = _DTOMapper.Map(user);
+            return await _ApplicationUserRepository.AddNew(entity);
         }
 
-        public Task<bool> DeleteUser(IApplicationUserDto user)
+        public async Task<bool> DeleteUser(string userid)
         {
-            throw new NotImplementedException();
+            return await _ApplicationUserRepository.DeleteUser(userid);
         }
 
-        public Task<IEnumerable<IApplicationUserDto>> GetUser(IApplicationUserDto user)
+        public async Task<ApplicationUserDto> GetUser(string userid)
         {
-            throw new NotImplementedException();
+            var entity = await _ApplicationUserRepository.GetUser(userid);
+            var user = _DTOMapper.Map(entity);
+            return user;
         }
     }
 }

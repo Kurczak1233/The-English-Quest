@@ -8,8 +8,8 @@ namespace TheEnglishQuestCore.Interfaces
 {
     public interface IApplicationUserDto
     {
-        Task<bool> AddNewUser(IApplicationUserDto user);
-        Task<bool> DeleteUser(IApplicationUserDto user);
-        Task<IEnumerable<IApplicationUserDto>> GetUser(IApplicationUserDto user);
+        Task<bool> AddNewUser(ApplicationUserDto user);
+        Task<bool> DeleteUser(string id);
+        Task<ApplicationUserDto> GetUser(string id);
     }
 }
