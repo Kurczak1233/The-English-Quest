@@ -5,11 +5,11 @@ using TheEnglishQuestDatabase.Entities;
 
 namespace TheEnglishQuestCore
 {
-    public class DTOManager
+    public class DTOManager<Entity, EntityDto>
     {
         protected readonly IEncouragementPositionRepository _EncouragementPostionRepository;
-        protected readonly DTOMapper _DTOMapper;
-        public DTOManager(IEncouragementPositionRepository _enc, DTOMapper mapper)
+        protected readonly DTOMapper<Entity, EntityDto> _DTOMapper;
+        public DTOManager(IEncouragementPositionRepository _enc, DTOMapper<Entity, EntityDto> mapper)
         {
             _DTOMapper = mapper;
             _EncouragementPostionRepository = _enc;

@@ -4,12 +4,13 @@ using System.Text;
 using System.Threading.Tasks;
 using TheEnglishQuestCore.Interfaces;
 using TheEnglishQuestDatabase;
+using TheEnglishQuestDatabase.Entities;
 
 namespace TheEnglishQuestCore.Managers
 {
-    public class ApplicationUserManager : DTOManager, IApplicationUserDto
+    public class ApplicationUserManager : DTOManager<ApplicationUser ,ApplicationUserDto>, IApplicationUserDto
     {
-        public ApplicationUserManager(IEncouragementPositionRepository _enc, DTOMapper mapper) : base(_enc, mapper)
+        public ApplicationUserManager(IEncouragementPositionRepository _enc, DTOMapper<ApplicationUser, ApplicationUserDto> mapper) : base(_enc, mapper)
         {
 
         }

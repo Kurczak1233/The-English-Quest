@@ -30,6 +30,7 @@ namespace TheQuestOfEnglishDatabase
         {
             return await _db.SaveChangesAsync() > 0;
         }
+
         public async Task<bool> AddNew(Entity entity)
         {
             await DbSet.AddAsync(entity);

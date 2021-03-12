@@ -8,9 +8,9 @@ using TheEnglishQuestDatabase.Entities;
 
 namespace TheEnglishQuestCore.Managers
 {
-    public class EncouragementPostitionManager : DTOManager, IEncouragementPositionDto
+    public class EncouragementPostitionManager : DTOManager<EncouragementPosition, EncouragementPositionDto>, IEncouragementPositionDto
     {
-        public EncouragementPostitionManager(IEncouragementPositionRepository _enc, DTOMapper mapper) : base(_enc, mapper)
+        public EncouragementPostitionManager(IEncouragementPositionRepository _enc, DTOMapper<EncouragementPosition, EncouragementPositionDto> mapper) : base(_enc, mapper)
         {
 
         }
