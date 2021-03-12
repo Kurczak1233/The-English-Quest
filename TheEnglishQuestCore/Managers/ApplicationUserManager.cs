@@ -10,9 +10,10 @@ namespace TheEnglishQuestCore.Managers
 {
     public class ApplicationUserManager : DTOManager<ApplicationUser ,ApplicationUserDto>, IApplicationUserDto
     {
-        public ApplicationUserManager(IEncouragementPositionRepository _enc, DTOMapper<ApplicationUser, ApplicationUserDto> mapper) : base(_enc, mapper)
+        protected readonly IApplicationUserRepository _ApplicationUserRepository;
+        public ApplicationUserManager(IApplicationUserRepository _enc, DTOMapper<ApplicationUser, ApplicationUserDto> mapper) : base(mapper)
         {
-
+            _ApplicationUserRepository = _enc;
         }
 
         public Task<bool> AddNewUser(IApplicationUserDto user)

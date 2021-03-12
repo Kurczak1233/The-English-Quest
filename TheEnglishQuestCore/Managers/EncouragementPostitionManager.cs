@@ -10,9 +10,10 @@ namespace TheEnglishQuestCore.Managers
 {
     public class EncouragementPostitionManager : DTOManager<EncouragementPosition, EncouragementPositionDto>, IEncouragementPositionDto
     {
-        public EncouragementPostitionManager(IEncouragementPositionRepository _enc, DTOMapper<EncouragementPosition, EncouragementPositionDto> mapper) : base(_enc, mapper)
+        protected readonly IEncouragementPositionRepository _EncouragementPostionRepository;
+        public EncouragementPostitionManager(IEncouragementPositionRepository _enc, DTOMapper<EncouragementPosition, EncouragementPositionDto> mapper) : base(mapper)
         {
-
+            _EncouragementPostionRepository = _enc;
         }
 
         public async Task<bool> AddNewPosition(EncouragementPositionDto encPosition)

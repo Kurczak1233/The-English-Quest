@@ -6,7 +6,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using TheEnglishQuestCore;
+using TheEnglishQuestCore.Managers;
 using TheEnglishQuestDatabase;
+using TheEnglishQuestDatabase.Entities;
 using TheQuestOfEnglishDatabase;
 
 namespace The_quest_of_English
@@ -26,11 +28,15 @@ namespace The_quest_of_English
             services.AddControllersWithViews();
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer("Server=FLUTTERSHY\\SQLEXPRESS;Database=TheQuestOfEnglish;Trusted_Connection=True;"));
             services.AddRazorPages().AddRazorRuntimeCompilation();
+            //Db
             services.AddTransient<IEncouragementPositionRepository, EncouragementPositionRepository>();
-            services.AddTransient<DTOMapper>();
-            services.AddTransient<IDTOManager, DTOManager>();
-            //Mapper ViewModel
-            services.AddTransient<ViewModelMapper>();
+            services.AddTransient<IApplicationUserRepository, ApplicationUserRepository>();
+            //Mapper
+            services.AddTransient<DTOMapper<ApplicationUser, ApplicationUserDto>>();
+            services.AddTransient<DTOMapper<EncouragementPosition, EncouragementPositionDto>>();
+            //Main ViewModel
+            services.AddTransient<EncouragementPoisitonViewModelMapper>();
+            services.AddTransient<ApplicationUserViewModelMapper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
