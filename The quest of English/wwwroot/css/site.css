@@ -133,6 +133,9 @@ body {
 .dark-blue-text-color {
     color: rgb(30, 32, 166);
 }
+.grey-text-color {
+    color: rgb(115, 115, 115);
+}
 .hoverButton:hover{
     opacity: 0.8;
 }
