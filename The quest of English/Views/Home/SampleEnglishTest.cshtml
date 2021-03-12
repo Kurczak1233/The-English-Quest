@@ -13,10 +13,10 @@
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 
 </head>
-<body>
+<body class="mb-0">
     <partial name="NavigationBar" />
 
-    <main>
+    <main id="main">
         <section class="container">
             <div class="row">
                 <div class="col-md-8 col-12">
@@ -31,39 +31,50 @@
                         </div>
                     </div>
                     <hr />
-                    <div data-bs-spy="scroll" data-bs-target="#aside" data-bs-offset="0" class="scrollspy-example " tabindex="0">
+                    <div data-bs-spy="scroll" data-bs-target="#NavigationList" data-bs-offset="0" class="scrollspy-example " tabindex="0">
                         <section id="grammarSection">
                             <div class="row justify-content-center">
-                                <div class="indent-blue mt-5"></div>
                                 <div class="col-12 light-blue-color-text text-center font-size-big">
                                     Grammar
+                                </div>
+                            </div>
+                            <div>
+                                Lorem iop stpisum stsk ddlolre doler met Lorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler metLorem iop stpisum stsk ddlolre doler met
+                            </div>
+                        </section>
+                        <hr />
+                        <section id="readingSection">
+                            <div class="row justify-content-center">
+                                <div class="col-12 light-blue-color-text text-center font-size-big">
+                                    Reading
                                 </div>
                             </div>
                             <div>
 
                             </div>
                         </section>
-                        <div class="row justify-content-center">
-                            <div class="indent-blue mt-5"></div>
-                            <div class="col-12 light-blue-color-text text-center font-size-big">
-                                Reading
+                        <hr />
+                        <section id="writingSection">
+                            <div class="row justify-content-center">
+                                <div class="col-12 light-blue-color-text text-center font-size-big">
+                                    Writing
+                                </div>
                             </div>
-                        </div>
-                        <div class="row justify-content-center">
-                            <div class="indent-blue mt-5"></div>
-                            <div class="col-12 light-blue-color-text text-center font-size-big">
-                                Writing
+                            <div>
+
                             </div>
-                        </div>
+                        </section>
+                        <hr />
                     </div>
                 </div>
-                <aside id="aside" class="col-4 d-none d-md-block mt-5 position-sticky">
-                    <div id="NavigationListG" class="list-group">
+                <aside id="aside" class="col-4 d-none d-md-block mt-5">
+                    <div id="NavigationList" class="list-group">
                         <div class="indent-blue"></div>
                         <span class="font-size-rather-small mb-3 font-weight-bold dark-blue-text-color">Test sections:</span>
                         <div id="SpecialBorderG" class="border-left-style mb-3">
                             <a id="GrammarNavCollapse" class="list-group-item list-group-item-action border-0 font-size-medium" role="button" aria-expanded="false" aria-controls="grammar" href="#grammar">
                                 Grammar
+
                             </a>
                             <div class="collapse text-right font-size-rather-small" id="grammar">
                                 <div class="col-12 card card-body border-0 text-left">
@@ -104,11 +115,14 @@
 </body>
 </html>
 <script>
+
+    //Navbar dynamics
     $(document).ready(function () {
         var navbar = $("#navbar");
         navbar.css("background-color", "rgb(66, 239, 245)");
         navbar.css("transition", "all 1s");
     });
+    //Interactive menu dynamics
     function AnimateTransition(ObjId, ToogledId) {
         $(ObjId).mouseover(function () {
             $(ToogledId).removeClass("collapse");
@@ -124,6 +138,20 @@
     AnimateTransition('#SpecialBorderG', '#grammar');
     AnimateTransition('#SpecialBorderR', '#reading');
     AnimateTransition('#SpecialBorderW', '#writing');
+    //Navbar slides down
+    var navListOffset = $('#grammarSection').offset().top - $('#main').offset().top - 66;
+    console.log(navListOffset);
+    $('#NavigationList').css("margin-top", navListOffset)
+    $(document).scroll(function () {
+        var topOffset = $('#NavigationList').offset().top;
+        var windowTopOffset = $(window).scrollTop();
+        var result = topOffset - windowTopOffset;
+        console.log(result);
+        if (result < 50) { // różnica?
+            console.log(result);
+            $('#NavigationList').css("margin-top", windowTopOffset - 80);
+        }
+    });
 </script>
 
 
