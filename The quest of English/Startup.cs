@@ -34,6 +34,8 @@ namespace The_quest_of_English
             //Mapper
             services.AddTransient<DTOMapper<ApplicationUser, ApplicationUserDto>>();
             services.AddTransient<DTOMapper<EncouragementPosition, EncouragementPositionDto>>();
+            services.AddTransient<ApplicationUserManager>();
+            services.AddTransient<EncouragementPostitionManager>();
             //Main ViewModel
             services.AddTransient<EncouragementPoisitonViewModelMapper>();
             services.AddTransient<ApplicationUserViewModelMapper>();
