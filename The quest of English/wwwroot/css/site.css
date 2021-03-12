@@ -213,3 +213,9 @@ EncouragementSectionInMain*/
 {
     color: goldenrod;
 }
+
+/*HomeController/SampleEnglishTest*/
+
+.border-left-style {
+    border-left: 5px solid rgb(30, 32, 166);
+}
