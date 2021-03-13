@@ -45,24 +45,25 @@ namespace The_quest_of_English.Controllers
 
         public async Task<IActionResult> SampleEnglishTest()
         {
-            SampleTestQAViewModel vm = new SampleTestQAViewModel()
-            {
-                Question = "Test",
-                QuestionDecorationPart = "Test",
-                FirstQuestionRadioName = "Test1",
-                FirstQuestionId = "Test1",
-                FirstQuestionAnswear = "Test1",
-                SecondQuestionRadioName = "Test2",
-                SecondQuestionId = "Test2",
-                SecondQuestionAnswear = "Test2",
-                ThirdQuestionRadioName = "Test3",
-                ThirdQuestionId = "Test3",
-                ThirdQuestionAnswear = "Test3"
-            };
-            var entity = _SampleTestQAViewModelMapper.Map(vm);
-            await _SampleTestQAMaganer.AddNew(entity);
-
-            return View();
+            //SampleTestQAViewModel vm = new SampleTestQAViewModel()
+            //{
+            //    Question = "Test",
+            //    QuestionDecorationPart = "Test",
+            //    FirstQuestionRadioName = "Test1",
+            //    FirstQuestionId = "Test1",
+            //    FirstQuestionAnswear = "Test1",
+            //    SecondQuestionRadioName = "Test2",
+            //    SecondQuestionId = "Test2",
+            //    SecondQuestionAnswear = "Test2",
+            //    ThirdQuestionRadioName = "Test3",
+            //    ThirdQuestionId = "Test3",
+            //    ThirdQuestionAnswear = "Test3"
+            //};
+            //var entity = _SampleTestQAViewModelMapper.Map(vm);
+            //await _SampleTestQAMaganer.AddNew(entity);
+            var ListOfEntities = await _SampleTestQAMaganer.GetAllValues();
+            var entities = _SampleTestQAViewModelMapper.Map(ListOfEntities);
+            return View(entities);
         }
     }
 }

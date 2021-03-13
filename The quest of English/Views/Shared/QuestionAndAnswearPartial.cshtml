@@ -1,0 +1,36 @@
+﻿@model IEnumerable<SampleTestQAViewModel>
+@{int counter = 1;}
+@foreach (var item in Model)
+{
+
+    
+    <section id="questionAndAnswears">
+        <div class="row mt-3">
+            <div class="question-circle text-center ml-4">
+                <strong class="font-size-medium question">@counter</strong>
+            </div>
+            <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small">
+                @item.Question&nbsp;<span class="font-weight-bold font-italic dark-blue-text-color">@item.QuestionDecorationPart</span>
+            </div>
+        </div>
+        <div class="mt-1 form-check offset-1 answearRadio">
+            <input class="form-check-input" type="radio" name="@item.FirstQuestionRadioName" id="@item.FirstQuestionId">
+            <label class="form-check-label" for="@item.FirstQuestionId">
+                @item.FirstQuestionAnswear
+            </label>
+        </div>
+        <div class="mt-1 form-check offset-1 answearRadio">
+            <input class="form-check-input" type="radio" name="@item.SecondQuestionRadioName" id="@item.SecondQuestionId">
+            <label class="form-check-label" for="@item.SecondQuestionId">
+                @item.SecondQuestionAnswear
+            </label>
+        </div>
+        <div class="mt-1 form-check offset-1 answearRadio">
+            <input class="form-check-input" type="radio" name="@item.ThirdQuestionRadioName" id="@item.ThirdQuestionId">
+            <label class="form-check-label" for="@item.ThirdQuestionId">
+                @item.ThirdQuestionAnswear
+            </label>
+        </div>
+    </section>
+    counter++;
+}

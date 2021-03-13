@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<SampleTestQAViewModel> 
+@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -39,7 +40,7 @@
                                     Grammar
                                 </div>
                             </div>
-                            <section id="questionAndAnswears">
+                            @*<section id="questionAndAnswears">
                                 <div class="row mt-3">
                                     <div class="question-circle text-center ml-4">
                                         <strong class="font-size-medium question">1</strong>
@@ -66,7 +67,8 @@
                                         Whatever happens I will be there
                                     </label>
                                 </div>
-                            </section>
+                            </section>*@
+                            <partial name="QuestionAndAnswearPartial" model="@Model">
                             <div class="text-center">
                                 <button type="submit" class="btn btn-info">Submit</button>
                             </div>
