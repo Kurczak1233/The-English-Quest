@@ -147,9 +147,11 @@
         var windowTopOffset = $(window).scrollTop();
         var result = topOffset - windowTopOffset;
         console.log(result);
-        if (result < 50) { // różnica?
-            console.log(result);
+        if (windowTopOffset > 260) { // różnica?
             $('#NavigationList').css("margin-top", windowTopOffset - 80);
+        }
+        else {
+            $('#NavigationList').css("margin-top", navListOffset)
         }
     });
 </script>
