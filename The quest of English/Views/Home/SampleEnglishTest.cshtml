@@ -69,9 +69,6 @@
                                 </div>
                             </section>*@
                             <partial name="QuestionAndAnswearPartial" model="@Model">
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-info">Submit</button>
-                            </div>
                         </section>
                         <hr />
                         <section id="readingSection">
@@ -172,13 +169,11 @@
     AnimateTransition('#SpecialBorderW', '#writing');
     //Navbar slides down
     var navListOffset = $('#grammarSection').offset().top - $('#main').offset().top - 66;
-    console.log(navListOffset);
     $('#NavigationList').css("margin-top", navListOffset)
     $(document).scroll(function () {
         var topOffset = $('#NavigationList').offset().top;
         var windowTopOffset = $(window).scrollTop();
         var result = topOffset - windowTopOffset;
-        console.log(result);
         if (windowTopOffset > 260) { // różnica?
             $('#NavigationList').css("margin-top", windowTopOffset - 80);
         }
