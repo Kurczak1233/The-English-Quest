@@ -5,7 +5,7 @@ using TheEnglishQuestDatabase.Entities;
 
 namespace TheEnglishQuestCore.Mappers
 {
-    class EncouragementPositionMapper : DTOMapper<EncouragementPosition, EncouragementPositionDto>
+    public class EncouragementPositionMapper : DTOMapper<EncouragementPosition, EncouragementPositionDto>
     {
     }
 }

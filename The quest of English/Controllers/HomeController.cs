@@ -40,6 +40,24 @@ namespace The_quest_of_English.Controllers
 
         public IActionResult SampleEnglishTest()
         {
+            string[] questions = new string[5];
+            for(int i = 0; i<5; i++)
+            {
+
+            }
+            var Question = new { QuestionNumber = 1,
+                Question= "" ,
+                QuestionDecorationPart = "",
+                FirstQuestionRadioName ="",
+                FirstQuestionId = "",
+                FirstQuestionAnswear="",
+                SecondQuestionRadioName = "",
+                SecondQuestionId = "",
+                SecondQuestionAnswear = "",
+                ThirdQuestionRadioName = "",
+                ThirdQuestionId = "",
+                ThirdQuestionAnswear = "",
+            };
             return View();
         }
     }
