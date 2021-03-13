@@ -9,6 +9,7 @@ namespace The_quest_of_English.Models
     {
         public int Id { get; set; }
         public string Question { get; set; }
+        public string Question2 { get; set; }
         public string QuestionDecorationPart { get; set; }
         public string FirstQuestionRadioName { get; set; }
         public string FirstQuestionId { get; set; }

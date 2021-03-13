@@ -48,29 +48,30 @@ namespace The_quest_of_English.Controllers
             //Add
             //SampleTestQAViewModel vm = new SampleTestQAViewModel()
             //{
-            //    Question = "I shall be there tonight",
-            //    QuestionDecorationPart = "come what may.",
-            //    FirstQuestionRadioName = "GrammarAnswear1",
-            //    FirstQuestionId = "GrammarAnswear1",
-            //    FirstQuestionAnswear = "Maybe I won't be late to get there",
-            //    SecondQuestionRadioName = "GrammarAnswear2",
-            //    SecondQuestionId = "GrammarAnswear2",
-            //    SecondQuestionAnswear = "There is a huge chance I will come",
+            //    Question = "",
+            //    Question2 = "there is an issue I can not solve.",
+            //    QuestionDecorationPart = "Once in a blue moon,",
+            //    FirstQuestionRadioName = "GrammarAnswear3",
+            //    FirstQuestionId = "GrammarAnswear7",
+            //    FirstQuestionAnswear = "It happens very often",
+            //    SecondQuestionRadioName = "GrammarAnswear3",
+            //    SecondQuestionId = "GrammarAnswear8",
+            //    SecondQuestionAnswear = "It happens seldom",
             //    ThirdQuestionRadioName = "GrammarAnswear3",
-            //    ThirdQuestionId = "GrammarAnswear3",
-            //    ThirdQuestionAnswear = "Whatever happens I will be there",
-            //    Answear = "Whatever happens I will be there"
+            //    ThirdQuestionId = "GrammarAnswear9",
+            //    ThirdQuestionAnswear = "It almost do not happen",
+            //    Answear = "It almost do not happen"
             //};
             //var entity = _SampleTestQAViewModelMapper.Map(vm);
-            //await _SampleTestQAMaganer.AddNew(entity);
+            //await _SampleTestQAMaganer.AddNew(entity); 
 
             //Delete
             //var allEntities = await _SampleTestQAMaganer.GetAllValues();
-            //var deletedObj = allEntities.Where(x => x.Id == 1).SingleOrDefault();
+            //var deletedObj = allEntities.Where(x => x.Id == 13).SingleOrDefault();
             //await _SampleTestQAMaganer.Delete(deletedObj);
-            //var deletedObj2 = allEntities.Where(x => x.Id == 2).SingleOrDefault();
+            //var deletedObj2 = allEntities.Where(x => x.Id == 6).SingleOrDefault();
             //await _SampleTestQAMaganer.Delete(deletedObj2);
-            //var deletedObj3 = allEntities.Where(x => x.Id == 3).SingleOrDefault();
+            //var deletedObj3 = allEntities.Where(x => x.Id == 7).SingleOrDefault();
             //await _SampleTestQAMaganer.Delete(deletedObj3);
 
 

@@ -11,6 +11,7 @@ namespace TheEnglishQuestDatabase.Entities
         public int Id { get; set; }
         [Required]
         public string Question { get; set; }
+        public string Question2 { get; set; }
         public string QuestionDecorationPart { get; set; }
         [Required]
         public string FirstQuestionRadioName { get; set; }
