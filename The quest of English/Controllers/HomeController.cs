@@ -45,24 +45,37 @@ namespace The_quest_of_English.Controllers
 
         public async Task<IActionResult> SampleEnglishTest()
         {
+            //Add
             //SampleTestQAViewModel vm = new SampleTestQAViewModel()
             //{
-            //    Question = "Test",
-            //    QuestionDecorationPart = "Test",
-            //    FirstQuestionRadioName = "Test1",
-            //    FirstQuestionId = "Test1",
-            //    FirstQuestionAnswear = "Test1",
-            //    SecondQuestionRadioName = "Test2",
-            //    SecondQuestionId = "Test2",
-            //    SecondQuestionAnswear = "Test2",
-            //    ThirdQuestionRadioName = "Test3",
-            //    ThirdQuestionId = "Test3",
-            //    ThirdQuestionAnswear = "Test3"
+            //    Question = "I shall be there tonight",
+            //    QuestionDecorationPart = "come what may.",
+            //    FirstQuestionRadioName = "GrammarAnswear1",
+            //    FirstQuestionId = "GrammarAnswear1",
+            //    FirstQuestionAnswear = "Maybe I won't be late to get there",
+            //    SecondQuestionRadioName = "GrammarAnswear2",
+            //    SecondQuestionId = "GrammarAnswear2",
+            //    SecondQuestionAnswear = "There is a huge chance I will come",
+            //    ThirdQuestionRadioName = "GrammarAnswear3",
+            //    ThirdQuestionId = "GrammarAnswear3",
+            //    ThirdQuestionAnswear = "Whatever happens I will be there",
+            //    Answear = "Whatever happens I will be there"
             //};
             //var entity = _SampleTestQAViewModelMapper.Map(vm);
             //await _SampleTestQAMaganer.AddNew(entity);
-            var ListOfEntities = await _SampleTestQAMaganer.GetAllValues();
-            var entities = _SampleTestQAViewModelMapper.Map(ListOfEntities);
+
+            //Delete
+            //var allEntities = await _SampleTestQAMaganer.GetAllValues();
+            //var deletedObj = allEntities.Where(x => x.Id == 1).SingleOrDefault();
+            //await _SampleTestQAMaganer.Delete(deletedObj);
+            //var deletedObj2 = allEntities.Where(x => x.Id == 2).SingleOrDefault();
+            //await _SampleTestQAMaganer.Delete(deletedObj2);
+            //var deletedObj3 = allEntities.Where(x => x.Id == 3).SingleOrDefault();
+            //await _SampleTestQAMaganer.Delete(deletedObj3);
+
+
+            var dtos = await _SampleTestQAMaganer.GetAllValues();
+            var entities = _SampleTestQAViewModelMapper.Map(dtos);
             return View(entities);
         }
     }

@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<SampleTestQAViewModel>
-@{int counter = 1;}
+@{int counter = 0;}
+@{int QuestionNumber = 1;}
 @foreach (var item in Model)
 {
 
@@ -7,7 +8,7 @@
     <section id="questionAndAnswears">
         <div class="row mt-3">
             <div class="question-circle text-center ml-4">
-                <strong class="font-size-medium question">@counter</strong>
+                <strong class="font-size-medium question">@QuestionNumber</strong>
             </div>
             <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small">
                 @item.Question&nbsp;<span class="font-weight-bold font-italic dark-blue-text-color">@item.QuestionDecorationPart</span>
@@ -40,14 +41,31 @@
     <button id="submitAnswears" type="submit" class="btn btn-info">Submit</button>
 </div>
 <script>
-    $('#submitAnswears').click(function () {
-        var counter = 0;
+
+    @{ List<string> AnswearList = new List<string>();
+        foreach (var item in Model) {
+            AnswearList.Add(item.Answear);
+        }
+     }
+     var ar = @Html.Raw(Json.Serialize(AnswearList));
+
+    var counter = 0;
+    $('#submitAnswears').one("click", function () {
         $('#radioCheck').each(function () {
             var radioValue = $("input[type=radio]:checked").val();
             var elId = $("input[type=radio]:checked").attr('id');
-            if (radioValue == ) {
+            var radioLabelValue = $("label[for='" + elId + "']").text();
+            var trimStr = $.trim(radioLabelValue);
+            var trimStr2 = $.trim(ar[counter]);
+            console.log(ar[counter]);
+            console.log(trimStr);
+            if (trimStr2 == trimStr) {
                 $("label[for='" + elId + "']").css("background-color", "rgba(0,255,127, 0.2)");
             }
+            else {
+                $("label[for='" + elId + "']").css("background-color", "rgba(255, 77, 71, 0.2)");
+            }
+            counter++;
         })
     })
 
