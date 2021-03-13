@@ -19,5 +19,7 @@ namespace The_quest_of_English.Models
         public string ThirdQuestionRadioName { get; set; }
         public string ThirdQuestionId { get; set; }
         public string ThirdQuestionAnswear { get; set; }
+        public string Answear { get; set; }
+
     }
 }

@@ -30,5 +30,7 @@ namespace TheEnglishQuestDatabase.Entities
         public string ThirdQuestionId { get; set; }
         [Required]
         public string ThirdQuestionAnswear { get; set; }
+        [Required]
+        public string Answear { get; set; }
     }
 }

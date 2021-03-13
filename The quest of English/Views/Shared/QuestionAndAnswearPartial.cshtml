@@ -41,11 +41,12 @@
 </div>
 <script>
     $('#submitAnswears').click(function () {
+        var counter = 0;
         $('#radioCheck').each(function () {
             var radioValue = $("input[type=radio]:checked").val();
             var elId = $("input[type=radio]:checked").attr('id');
-            if (radioValue) {
-                $("label[for='" + elId + "']").css("background-color", "green");
+            if (radioValue == ) {
+                $("label[for='" + elId + "']").css("background-color", "rgba(0,255,127, 0.2)");
             }
         })
     })

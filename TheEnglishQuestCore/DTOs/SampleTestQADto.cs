@@ -19,5 +19,7 @@ namespace TheEnglishQuestDatabase.Entities
         public string ThirdQuestionRadioName { get; set; }
         public string ThirdQuestionId { get; set; }
         public string ThirdQuestionAnswear { get; set; }
+        public string Answear { get; set; }
+
     }
 }
