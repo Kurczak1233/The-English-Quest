@@ -48,22 +48,22 @@ namespace The_quest_of_English.Controllers
             //Add
             //SampleTestQAViewModel vm = new SampleTestQAViewModel()
             //{
-            //    Question = "",
-            //    Question2 = "there is an issue I can not solve.",
-            //    QuestionDecorationPart = "Once in a blue moon,",
-            //    FirstQuestionRadioName = "GrammarAnswear3",
-            //    FirstQuestionId = "GrammarAnswear7",
-            //    FirstQuestionAnswear = "It happens very often",
-            //    SecondQuestionRadioName = "GrammarAnswear3",
-            //    SecondQuestionId = "GrammarAnswear8",
-            //    SecondQuestionAnswear = "It happens seldom",
-            //    ThirdQuestionRadioName = "GrammarAnswear3",
-            //    ThirdQuestionId = "GrammarAnswear9",
-            //    ThirdQuestionAnswear = "It almost do not happen",
-            //    Answear = "It almost do not happen"
+            //    Question = "It looks like he is the most",
+            //    Question2 = "person I have ever heard of",
+            //    QuestionDecorationPart = "disinterested",
+            //    FirstQuestionRadioName = "GrammarAnswear5",
+            //    FirstQuestionId = "GrammarAnswear13",
+            //    FirstQuestionAnswear = "The person is not interesting",
+            //    SecondQuestionRadioName = "GrammarAnswear5",
+            //    SecondQuestionId = "GrammarAnswear14",
+            //    SecondQuestionAnswear = "The person is very knowledgable",
+            //    ThirdQuestionRadioName = "GrammarAnswear5",
+            //    ThirdQuestionId = "GrammarAnswear15",
+            //    ThirdQuestionAnswear = "The person does not take sides",
+            //    Answear = "The person does not take sides"
             //};
             //var entity = _SampleTestQAViewModelMapper.Map(vm);
-            //await _SampleTestQAMaganer.AddNew(entity); 
+            //await _SampleTestQAMaganer.AddNew(entity);
 
             //Delete
             //var allEntities = await _SampleTestQAMaganer.GetAllValues();

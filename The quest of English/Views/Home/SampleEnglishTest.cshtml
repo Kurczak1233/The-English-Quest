@@ -40,57 +40,25 @@
                                     Grammar
                                 </div>
                             </div>
-                            @*<section id="questionAndAnswears">
-                                <div class="row mt-3">
-                                    <div class="question-circle text-center ml-4">
-                                        <strong class="font-size-medium question">1</strong>
-                                    </div>
-                                    <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small">
-                                        I shall be there tonight&nbsp;<span class="font-weight-bold font-italic dark-blue-text-color">come what may.</span>
-                                    </div>
-                                </div>
-                                <div class="mt-1 form-check offset-1 answearRadio">
-                                    <input class="form-check-input" type="radio" name="GrammarAnswear1" id="GrammarAnswear1">
-                                    <label class="form-check-label" for="GrammarAnswear1">
-                                        Maybe I won't be late to get there
-                                    </label>
-                                </div>
-                                <div class="mt-1 form-check offset-1 answearRadio">
-                                    <input class="form-check-input" type="radio" name="GrammarAnswear2" id="GrammarAnswear2">
-                                    <label class="form-check-label" for="GrammarAnswear2">
-                                        There is a huge chance I will come
-                                    </label>
-                                </div>
-                                <div class="mt-1 form-check offset-1 answearRadio">
-                                    <input class="form-check-input" type="radio" name="GrammarAnswear3" id="GrammarAnswear3">
-                                    <label class="form-check-label" for="GrammarAnswear3">
-                                        Whatever happens I will be there
-                                    </label>
-                                </div>
-                            </section>*@
                             <partial name="QuestionAndAnswearPartial" model="@Model">
                         </section>
                         <hr />
                         <section id="readingSection">
                             <div class="row justify-content-center">
-                                <div class="col-12 light-blue-color-text text-center font-size-big">
+                                <div class="col-12 dark-blue-text-color  text-center font-size-big">
                                     Reading
                                 </div>
                             </div>
-                            <div>
-
-                            </div>
+                            <partial name="QuestionAndAnswearPartial" model="@Model.Skip(5)">
                         </section>
                         <hr />
                         <section id="writingSection">
                             <div class="row justify-content-center">
-                                <div class="col-12 light-blue-color-text text-center font-size-big">
+                                <div class="col-12 dark-blue-text-color  text-center font-size-big">
                                     Writing
                                 </div>
                             </div>
-                            <div>
-
-                            </div>
+                            <partial name="QuestionAndAnswearPartial" model="@Model.Skip(10)">
                         </section>
                         <hr />
                     </div>
