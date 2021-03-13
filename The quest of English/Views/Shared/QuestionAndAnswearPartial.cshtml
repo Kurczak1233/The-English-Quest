@@ -1,10 +1,11 @@
 ﻿@model IEnumerable<SampleTestQAViewModel>
 @{int counter = 0;}
 @{int QuestionNumber = 1;}
+@{int id = 0; }
 @foreach (var item in Model)
 {
 
-
+    id = item.Id;
     <section id="questionAndAnswears">
         <div class="row mt-3">
             <div class="question-circle text-center ml-4">
@@ -39,20 +40,22 @@
     QuestionNumber++;
 }
 <div class="text-center mt-5">
-    <button id="submitAnswears" type="submit" class="btn warm-orange-color">Check answears</button>
+    <button id="@id" type="submit" class="btn warm-orange-color">Check answears</button>
 </div>
 <script>
 
-    @{ List<string> AnswearList = new List<string>();
-        foreach (var item in Model) {
+    @{ List<string> AnswearList = new List<string>(); //Stworzyć ViewModel z listą odpowiedzi?
+        foreach (var item in Model.Take(5)) {
             AnswearList.Add(item.Answear);
         }
      }
-     var ar = @Html.Raw(Json.Serialize(AnswearList));
+        var ar = @Html.Raw(Json.Serialize(AnswearList));
+        console.log(ar)
+
 
     var counter = 0;
-    var string = '#' + counter;
-    $('#submitAnswears').one("click", function () {
+    var string = '#' + @id;
+    $(string).one("click", function () {
         console.log($('#checkAnswears'));
         $('[id = "checkAnswears"]').each(function () {
             //var radioValue = $("input[type=radio]:checked").val();
@@ -62,6 +65,7 @@
             var trimStr2 = $.trim(ar[counter]);
             console.log(trimStr2);
             console.log(trimStr);
+            console.log(elId);
             if (trimStr2 == trimStr) {
                 $("label[for='" + elId + "']").css("background-color", "rgba(0,255,127, 0.2)");
             }

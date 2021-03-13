@@ -48,26 +48,26 @@ namespace The_quest_of_English.Controllers
             //Add
             //SampleTestQAViewModel vm = new SampleTestQAViewModel()
             //{
-            //    Question = "It looks like he is the most",
-            //    Question2 = "person I have ever heard of",
-            //    QuestionDecorationPart = "disinterested",
-            //    FirstQuestionRadioName = "GrammarAnswear5",
-            //    FirstQuestionId = "GrammarAnswear13",
-            //    FirstQuestionAnswear = "The person is not interesting",
-            //    SecondQuestionRadioName = "GrammarAnswear5",
-            //    SecondQuestionId = "GrammarAnswear14",
-            //    SecondQuestionAnswear = "The person is very knowledgable",
-            //    ThirdQuestionRadioName = "GrammarAnswear5",
-            //    ThirdQuestionId = "GrammarAnswear15",
-            //    ThirdQuestionAnswear = "The person does not take sides",
-            //    Answear = "The person does not take sides"
+            //    Question = "In 1991, a ceasefire agreement was drawn up, in which a referendum on self-determination was promised to decide the fate of the country and its people.",
+            //    Question2 = "",
+            //    QuestionDecorationPart = "",
+            //    FirstQuestionRadioName = "ReadingAnswear1",
+            //    FirstQuestionId = "ReadingAnswear1",
+            //    FirstQuestionAnswear = "There was a conflict",
+            //    SecondQuestionRadioName = "ReadingAnswear1",
+            //    SecondQuestionId = "ReadingAnswear2",
+            //    SecondQuestionAnswear = "There was a debate",
+            //    ThirdQuestionRadioName = "ReadingAnswear1",
+            //    ThirdQuestionId = "ReadingAnswear3",
+            //    ThirdQuestionAnswear = "There was a meeting",
+            //    Answear = "There was a conflict"
             //};
             //var entity = _SampleTestQAViewModelMapper.Map(vm);
             //await _SampleTestQAMaganer.AddNew(entity);
 
             //Delete
             //var allEntities = await _SampleTestQAMaganer.GetAllValues();
-            //var deletedObj = allEntities.Where(x => x.Id == 13).SingleOrDefault();
+            //var deletedObj = allEntities.Where(x => x.Id == 18).SingleOrDefault();
             //await _SampleTestQAMaganer.Delete(deletedObj);
             //var deletedObj2 = allEntities.Where(x => x.Id == 6).SingleOrDefault();
             //await _SampleTestQAMaganer.Delete(deletedObj2);
