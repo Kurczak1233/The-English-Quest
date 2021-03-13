@@ -15,20 +15,25 @@ namespace The_quest_of_English.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger; 
+        private readonly ILogger<HomeController> _logger;
         //Żeby nie trzeba było wypisywać, wszystko do jednej klasy? Interefejsy?
         private readonly EncouragementPoisitonViewModelMapper _EPositionsMapper;
         private readonly ApplicationUserViewModelMapper _ApplicationUserMapper;
         private readonly ApplicationUserManager _ApplicationUserManager;
         private readonly EncouragementPostitionManager _EnouragementPositionManager;
+        private readonly SampleTestQAViewModelMapper _SampleTestQAViewModelMapper;
+        private readonly SampleTestQAManager _SampleTestQAMaganer;
         public HomeController(ILogger<HomeController> logger, EncouragementPoisitonViewModelMapper eMapper,
-            ApplicationUserViewModelMapper aMapper, ApplicationUserManager aManager, EncouragementPostitionManager eManager)
+            ApplicationUserViewModelMapper aMapper, ApplicationUserManager aManager, EncouragementPostitionManager eManager
+            , SampleTestQAViewModelMapper sampletestmodel, SampleTestQAManager stQA)
         {
             _logger = logger;
             _EPositionsMapper = eMapper;
             _EnouragementPositionManager = eManager;
             _ApplicationUserMapper = aMapper;
             _ApplicationUserManager = aManager;
+            _SampleTestQAViewModelMapper = sampletestmodel;
+            _SampleTestQAMaganer = stQA;
         }
 
         public async Task<IActionResult> Index()
@@ -38,26 +43,25 @@ namespace The_quest_of_English.Controllers
             return View(entities);
         }
 
-        public IActionResult SampleEnglishTest()
+        public async Task<IActionResult> SampleEnglishTest()
         {
-            string[] questions = new string[5];
-            for(int i = 0; i<5; i++)
+            SampleTestQAViewModel vm = new SampleTestQAViewModel()
             {
-
-            }
-            var Question = new { QuestionNumber = 1,
-                Question= "" ,
-                QuestionDecorationPart = "",
-                FirstQuestionRadioName ="",
-                FirstQuestionId = "",
-                FirstQuestionAnswear="",
-                SecondQuestionRadioName = "",
-                SecondQuestionId = "",
-                SecondQuestionAnswear = "",
-                ThirdQuestionRadioName = "",
-                ThirdQuestionId = "",
-                ThirdQuestionAnswear = "",
+                Question = "Test",
+                QuestionDecorationPart = "Test",
+                FirstQuestionRadioName = "Test1",
+                FirstQuestionId = "Test1",
+                FirstQuestionAnswear = "Test1",
+                SecondQuestionRadioName = "Test2",
+                SecondQuestionId = "Test2",
+                SecondQuestionAnswear = "Test2",
+                ThirdQuestionRadioName = "Test3",
+                ThirdQuestionId = "Test3",
+                ThirdQuestionAnswear = "Test3"
             };
+            var entity = _SampleTestQAViewModelMapper.Map(vm);
+            await _SampleTestQAMaganer.AddNew(entity);
+
             return View();
         }
     }

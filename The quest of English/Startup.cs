@@ -5,10 +5,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using The_quest_of_English.Controllers;
 using TheEnglishQuestCore;
 using TheEnglishQuestCore.Managers;
 using TheEnglishQuestDatabase;
 using TheEnglishQuestDatabase.Entities;
+using TheEnglishQuestDatabase.Repositories;
+using TheEnglishQuestDatabase.Repositories.Interfaces;
 using TheQuestOfEnglishDatabase;
 
 namespace The_quest_of_English
@@ -31,14 +34,18 @@ namespace The_quest_of_English
             //Db
             services.AddTransient<IEncouragementPositionRepository, EncouragementPositionRepository>();
             services.AddTransient<IApplicationUserRepository, ApplicationUserRepository>();
+            services.AddTransient<ISampleTestQARepostitory, SampleTestQARepository>();
             //Mapper
             services.AddTransient<DTOMapper<ApplicationUser, ApplicationUserDto>>();
             services.AddTransient<DTOMapper<EncouragementPosition, EncouragementPositionDto>>();
+            services.AddTransient<DTOMapper<SampleTestQA, SampleTestQADto>>();
             services.AddTransient<ApplicationUserManager>();
             services.AddTransient<EncouragementPostitionManager>();
+            services.AddTransient<SampleTestQAManager>();
             //Main ViewModel
             services.AddTransient<EncouragementPoisitonViewModelMapper>();
             services.AddTransient<ApplicationUserViewModelMapper>();
+            services.AddTransient<SampleTestQAViewModelMapper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
