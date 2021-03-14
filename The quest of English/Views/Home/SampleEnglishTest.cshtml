@@ -41,7 +41,6 @@
                                     Grammar
                                 </div>
                             </div>
-                            @*<partial name="QuestionAndAnswearPartial" model="@Model">*@
                             @await Html.PartialAsync("QuestionAndAnswearPartial", new AnswearsAndQuestionsList { Answears = Model.Answears.Take(5) , SampleTestQAViewModels = @Model.SampleTestQAViewModels.Take(5)});
                         <div class="text-center mt-5 mb-5">
                             <button id="checkAnswearsGrammar" type="submit" class="btn warm-orange-color">Check answears</button>
@@ -200,7 +199,6 @@
         $(string).one("click", function () {
             console.log($('#checkAnswears'));
             $('[id = "checkAnswears"]').each(function () {
-                //var radioValue = $("input[type=radio]:checked").val();
                 var elId = $(this).find("input[type=radio]:checked").attr('id');
                 var radioLabelValue = $("label[for='" + elId + "']").text();
                 var trimStr = $.trim(radioLabelValue);
