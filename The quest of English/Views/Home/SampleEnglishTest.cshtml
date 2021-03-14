@@ -43,6 +43,9 @@
                             </div>
                             @*<partial name="QuestionAndAnswearPartial" model="@Model">*@
                             @await Html.PartialAsync("QuestionAndAnswearPartial", new AnswearsAndQuestionsList { Answears = Model.Answears.Take(5) , SampleTestQAViewModels = @Model.SampleTestQAViewModels.Take(5)});
+                        <div class="text-center mt-5 mb-5">
+                            <button id="checkAnswearsGrammar" type="submit" class="btn warm-orange-color">Check answears</button>
+                        </div>
                         </section>
                         <hr id="secondSection" />
                         <section id="readingSection">
@@ -53,6 +56,9 @@
                                 </div>
                             </div>
                             @await Html.PartialAsync("QuestionAndAnswearPartial", new AnswearsAndQuestionsList { Answears = Model.Answears.Skip(5).Take(5), SampleTestQAViewModels = @Model.SampleTestQAViewModels.Skip(5).Take(5) });
+                        <div class="text-center mt-5 mb-5">
+                            <button id="checkAnswearsReading" type="submit" class="btn warm-orange-color">Check answears</button>
+                        </div>
                         </section>
                         <hr id="thirdsection" />
                         <section id="writingSection">
@@ -63,6 +69,9 @@
                                 </div>
                             </div>
                             @await Html.PartialAsync("QuestionAndAnswearPartial", new AnswearsAndQuestionsList { Answears = Model.Answears.Skip(10).Take(5), SampleTestQAViewModels = @Model.SampleTestQAViewModels.Skip(10).Take(5) });
+                        <div class="text-center mt-5 mb-5">
+                            <button id="checkAnswearsWriting" onclick="CheckAnswears" type="submit" class="btn warm-orange-color">Check answears</button>
+                        </div>
                         </section>
                         <hr id="lastSectionn" />
                     </div>
@@ -126,13 +135,6 @@
 </body>
 </html>
 <script>
-    //Answears
-    $(document).ready(function () {
-        var ar = @Html.Raw(Json.Serialize(Model.Answears));
-    })
-    //window.Answears = ar;
-
-    //console.log(ar);
     //Navbar dynamics
     $(document).ready(function () {
         var navbar = $("#navbar");
@@ -189,6 +191,36 @@
             $('#NavigationList').css("margin-top", lastSectiontopOffset);
         }
     });
+    //Checking answears
+    var ar = @Html.Raw(Json.Serialize(Model.Answears));
+    console.log(ar);
+
+    function CheckAnswears(string) {
+        var counter = 0;
+        $(string).one("click", function () {
+            console.log($('#checkAnswears'));
+            $('[id = "checkAnswears"]').each(function () {
+                //var radioValue = $("input[type=radio]:checked").val();
+                var elId = $(this).find("input[type=radio]:checked").attr('id');
+                var radioLabelValue = $("label[for='" + elId + "']").text();
+                var trimStr = $.trim(radioLabelValue);
+                var trimStr2 = $.trim(ar[counter]);
+                console.log(trimStr2);
+                console.log(trimStr);
+                console.log(elId);
+                if (trimStr2 == trimStr) {
+                    $("label[for='" + elId + "']").css("background-color", "rgba(0,255,127, 0.2)");
+                }
+                else {
+                    $("label[for='" + elId + "']").css("background-color", "rgba(255, 77, 71, 0.2)");
+                }
+                counter++;
+            })
+        })
+    }
+    CheckAnswears(checkAnswearsGrammar);
+    CheckAnswears(checkAnswearsReading);
+    CheckAnswears(checkAnswearsWriting);
 </script>
 
 
