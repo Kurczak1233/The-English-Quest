@@ -62,7 +62,7 @@
                             </div>
                             <partial name="QuestionAndAnswearPartial" model="@Model.Skip(10).Take(5)">
                         </section>
-                        <hr id="lastSection" />
+                        <hr id="lastSectionn" />
                     </div>
                     <div class="row">
                         <div class="col-12 text-center font-size-medium mt-5 mb-5">
@@ -152,6 +152,7 @@
         if (windowTopOffset >= start && windowTopOffset <= secondSectiontopOffset) {
             OpenCollapse('#SpecialBorderG', '#grammar');
             CloseCollapse('#SpecialBorderR', '#reading');
+            CloseCollapse('#SpecialBorderW', '#writing');
         }
         else if (windowTopOffset > secondSectiontopOffset && windowTopOffset < lastSectiontopOffset) {
             CloseCollapse('#SpecialBorderG', '#grammar');
@@ -161,6 +162,7 @@
         else if (windowTopOffset > lastSectiontopOffset) {
             CloseCollapse('#SpecialBorderR', '#reading');
             OpenCollapse('#SpecialBorderW', '#writing');
+            CloseCollapse('#SpecialBorderG', '#grammar');
         }
 
     });
@@ -172,22 +174,12 @@
         var lastSectiontopOffset = $('#thirdsection').offset().top + 160;
         var windowTopOffset = $(window).scrollTop();
         var $el = $('#NavigationList');
-        var NaviToTopBottomLine = $el.offset().top + $el.outerHeight(true);
-        var bottom = $el.position().top + $el.outerHeight(true);
-        var lastNaviPosition = lastSectiontopOffset - $el.outerHeight(true);
-        console.log(windowTopOffset); // około 700 mniej!
-        console.log(lastSectiontopOffset);
-        if (windowTopOffset > start && windowTopOffset <= lastSectiontopOffset) { 
+        if (windowTopOffset > start && windowTopOffset <= lastSectiontopOffset) {
             $('#NavigationList').css("margin-top", windowTopOffset - 80);
         }
-        else if (windowTopOffset > lastSectiontopOffset) { //Został jeszcze powrót?
-            //$('#NavigationList').css("margin-top", lastNaviPosition-15);
+        else if (windowTopOffset > lastSectiontopOffset) {
             $('#NavigationList').css("margin-top", lastSectiontopOffset);
-            //$('#NavigationList').css("margin-top", lastSectiontopOffset);
         }
-        //else {
-        //    $('#NavigationList').css("margin-top", navListOffset)
-        //}
     });
 </script>
 
