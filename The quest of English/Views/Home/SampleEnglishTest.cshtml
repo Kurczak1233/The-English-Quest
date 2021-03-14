@@ -1,4 +1,5 @@
-﻿@model IEnumerable<SampleTestQAViewModel>
+﻿@model The_quest_of_English.Models.ViewModels.AnswearsAndQuestionsList
+@using The_quest_of_English.Models.ViewModels
 @{
     Layout = null;
 }
@@ -40,7 +41,8 @@
                                     Grammar
                                 </div>
                             </div>
-                            <partial name="QuestionAndAnswearPartial" model="@Model.Take(5)">
+                            @*<partial name="QuestionAndAnswearPartial" model="@Model">*@
+                            @await Html.PartialAsync("QuestionAndAnswearPartial", new AnswearsAndQuestionsList { Answears = Model.Answears.Take(5) , SampleTestQAViewModels = @Model.SampleTestQAViewModels.Take(5)});
                         </section>
                         <hr id="secondSection" />
                         <section id="readingSection">
@@ -50,7 +52,7 @@
                                     Reading
                                 </div>
                             </div>
-                            <partial name="QuestionAndAnswearPartial" model="@Model.Skip(5).Take(5)">
+                            @await Html.PartialAsync("QuestionAndAnswearPartial", new AnswearsAndQuestionsList { Answears = Model.Answears.Skip(5).Take(5), SampleTestQAViewModels = @Model.SampleTestQAViewModels.Skip(5).Take(5) });
                         </section>
                         <hr id="thirdsection" />
                         <section id="writingSection">
@@ -60,7 +62,7 @@
                                     Writing
                                 </div>
                             </div>
-                            <partial name="QuestionAndAnswearPartial" model="@Model.Skip(10).Take(5)">
+                            @await Html.PartialAsync("QuestionAndAnswearPartial", new AnswearsAndQuestionsList { Answears = Model.Answears.Skip(10).Take(5), SampleTestQAViewModels = @Model.SampleTestQAViewModels.Skip(10).Take(5) });
                         </section>
                         <hr id="lastSectionn" />
                     </div>
@@ -124,7 +126,13 @@
 </body>
 </html>
 <script>
+    //Answears
+    $(document).ready(function () {
+        var ar = @Html.Raw(Json.Serialize(Model.Answears));
+    })
+    //window.Answears = ar;
 
+    //console.log(ar);
     //Navbar dynamics
     $(document).ready(function () {
         var navbar = $("#navbar");

@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using The_quest_of_English.Models;
+using The_quest_of_English.Models.ViewModels;
 using TheEnglishQuestCore;
 using TheEnglishQuestCore.Managers;
 using TheEnglishQuestDatabase.Entities;
@@ -22,7 +23,7 @@ namespace The_quest_of_English.Controllers
         private readonly ApplicationUserManager _ApplicationUserManager;
         private readonly EncouragementPostitionManager _EnouragementPositionManager;
         private readonly SampleTestQAViewModelMapper _SampleTestQAViewModelMapper;
-        private readonly SampleTestQAManager _SampleTestQAMaganer;
+        private readonly SampleTestQAManager _SampleTestQAManager;
         public HomeController(ILogger<HomeController> logger, EncouragementPoisitonViewModelMapper eMapper,
             ApplicationUserViewModelMapper aMapper, ApplicationUserManager aManager, EncouragementPostitionManager eManager
             , SampleTestQAViewModelMapper sampletestmodel, SampleTestQAManager stQA)
@@ -33,7 +34,7 @@ namespace The_quest_of_English.Controllers
             _ApplicationUserMapper = aMapper;
             _ApplicationUserManager = aManager;
             _SampleTestQAViewModelMapper = sampletestmodel;
-            _SampleTestQAMaganer = stQA;
+            _SampleTestQAManager = stQA;
         }
 
         public async Task<IActionResult> Index()
@@ -74,10 +75,18 @@ namespace The_quest_of_English.Controllers
             //var deletedObj3 = allEntities.Where(x => x.Id == 7).SingleOrDefault();
             //await _SampleTestQAMaganer.Delete(deletedObj3);
 
-
-            var dtos = await _SampleTestQAMaganer.GetAllValues();
+            var AllListDto = await _SampleTestQAManager.GetAllValues();
+            var AnswearList = AllListDto.Select(x => x.Answear).ToList();
+            var dtos = await _SampleTestQAManager.GetAllValues();
             var entities = _SampleTestQAViewModelMapper.Map(dtos);
-            return View(entities);
+            AnswearsAndQuestionsList model = new AnswearsAndQuestionsList()
+            {
+                Answears = AnswearList,
+                SampleTestQAViewModels = entities.ToList()
+            };
+
+
+            return View(model);
         }
     }
 }

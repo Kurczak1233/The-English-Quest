@@ -1,8 +1,8 @@
-﻿@model IEnumerable<SampleTestQAViewModel>
+﻿@model The_quest_of_English.Models.ViewModels.AnswearsAndQuestionsList
 @{int counter = 0;}
 @{int QuestionNumber = 1;}
 @{int id = 0; }
-@foreach (var item in Model)
+@foreach (var item in Model.SampleTestQAViewModels)
 {
 
     id = item.Id;
@@ -44,13 +44,12 @@
 </div>
 <script>
 
-    @{ List<string> AnswearList = new List<string>(); //Stworzyć ViewModel z listą odpowiedzi?
+    @*@{ List<string> AnswearList = new List<string>(); //Stworzyć ViewModel z listą odpowiedzi?
         foreach (var item in Model.Take(5)) {
             AnswearList.Add(item.Answear);
         }
-     }
-        var ar = @Html.Raw(Json.Serialize(AnswearList));
-        //console.log(ar)
+     }*@
+    //alert(window.Answears);
 
 
     var counter = 0;
