@@ -37,31 +37,3 @@
     counter++;
     QuestionNumber++;
 }
-<script>
-
-    @*var ar = @Html.Raw(Json.Serialize(Model.Answears));
-    console.log(ar);
-    var counter = 0;
-    var string = '#' + @id;
-    $(string).one("click", function () {
-        console.log($('#checkAnswears'));
-        $('[id = "checkAnswears"]').each(function () {
-            //var radioValue = $("input[type=radio]:checked").val();
-            var elId = $(this).find("input[type=radio]:checked").attr('id');
-            var radioLabelValue = $("label[for='" + elId + "']").text();
-            var trimStr = $.trim(radioLabelValue);
-            var trimStr2 = $.trim(ar[counter]);
-            console.log(trimStr2);
-            console.log(trimStr);
-            console.log(elId);
-            if (trimStr2 == trimStr) {
-                $("label[for='" + elId + "']").css("background-color", "rgba(0,255,127, 0.2)");
-            }
-            else {
-                $("label[for='" + elId + "']").css("background-color", "rgba(255, 77, 71, 0.2)");
-            }
-            counter++;
-        })
-    })*@
-
-</script>
