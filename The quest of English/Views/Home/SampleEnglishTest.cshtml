@@ -52,7 +52,7 @@
                             </div>
                             <partial name="QuestionAndAnswearPartial" model="@Model.Skip(5).Take(5)">
                         </section>
-                        <hr />
+                        <hr id="thirdsection" />
                         <section id="writingSection">
                             <div class="row justify-content-center">
                                 <div class="indent-blue mt-3"></div>
@@ -132,21 +132,6 @@
         navbar.css("transition", "all 1s");
     });
     //Interactive menu dynamics
-    //function AnimateTransition(ObjId, ToogledId) {
-    //    $(ObjId).mouseover(function () {
-    //        $(ToogledId).removeClass("collapse");
-    //        $(ObjId).css("border-left", "5px solid rgb(252, 186, 3)");
-    //        $(ObjId).css("transition", "all 0.3s");
-    //    });
-    //    $(ObjId).mouseleave(function () {
-    //        $(ToogledId).addClass("collapse");
-    //        $(ObjId).css("border-left", "5px solid rgb(30, 32, 166)");
-    //        $(ObjId).css("transition", "all 0.3s");
-    //    });
-    //}
-    //AnimateTransition('#SpecialBorderG', '#grammar');
-    //AnimateTransition('#SpecialBorderR', '#reading');
-    //AnimateTransition('#SpecialBorderW', '#writing');
     function CloseCollapse(ObjId, ToggleId) {
         $(ToggleId).addClass("collapse");
         $(ObjId).css("border-left", "5px solid rgb(30, 32, 166)");
@@ -164,26 +149,18 @@
         var windowTopOffset = $(window).scrollTop();
         var lastSectiontopOffset = $('#secondSection').offset().top + 400;
         var secondSectiontopOffset = $('#secondSection').offset().top - 400;
-        var firstSectiontopOffset = $('#firstSection').offset().top ;
-        console.log(windowTopOffset);
-        console.log(lastSectiontopOffset);
         if (windowTopOffset >= start && windowTopOffset <= secondSectiontopOffset) {
             OpenCollapse('#SpecialBorderG', '#grammar');
             CloseCollapse('#SpecialBorderR', '#reading');
-           
         }
         else if (windowTopOffset > secondSectiontopOffset && windowTopOffset < lastSectiontopOffset) {
-
             CloseCollapse('#SpecialBorderG', '#grammar');
             OpenCollapse('#SpecialBorderR', '#reading');
             CloseCollapse('#SpecialBorderW', '#writing');
-
         }
         else if (windowTopOffset > lastSectiontopOffset) {
-
             CloseCollapse('#SpecialBorderR', '#reading');
             OpenCollapse('#SpecialBorderW', '#writing');
-
         }
 
     });
@@ -192,19 +169,21 @@
     var navListOffset = $('#grammarSection').offset().top - $('#main').offset().top - 66;
     $('#NavigationList').css("margin-top", navListOffset)
     $(document).scroll(function () {
-        var lastSectiontopOffset = $('#lastSection').offset().top;
+        var lastSectiontopOffset = $('#thirdsection').offset().top + 160;
         var windowTopOffset = $(window).scrollTop();
         var $el = $('#NavigationList');
-        var NaviToTop = $el.offset().top;
-        var bottom = $el.position().top + $el.outerHeight(true) + 50;
+        var NaviToTopBottomLine = $el.offset().top + $el.outerHeight(true);
+        var bottom = $el.position().top + $el.outerHeight(true);
         var lastNaviPosition = lastSectiontopOffset - $el.outerHeight(true);
-        //console.log(bottom);
-        //console.log(lastSectiontopOffset);
-        if (windowTopOffset > start && lastSectiontopOffset > bottom) { //Początek odpada
+        console.log(windowTopOffset); // około 700 mniej!
+        console.log(lastSectiontopOffset);
+        if (windowTopOffset > start && windowTopOffset <= lastSectiontopOffset) { 
             $('#NavigationList').css("margin-top", windowTopOffset - 80);
         }
-        else if (bottom <= lastSectiontopOffset) { //Został jeszcze powrót?
+        else if (windowTopOffset > lastSectiontopOffset) { //Został jeszcze powrót?
             //$('#NavigationList').css("margin-top", lastNaviPosition-15);
+            $('#NavigationList').css("margin-top", lastSectiontopOffset);
+            //$('#NavigationList').css("margin-top", lastSectiontopOffset);
         }
         //else {
         //    $('#NavigationList').css("margin-top", navListOffset)
