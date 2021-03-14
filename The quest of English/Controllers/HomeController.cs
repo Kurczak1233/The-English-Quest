@@ -48,26 +48,26 @@ namespace The_quest_of_English.Controllers
             //Add
             //SampleTestQAViewModel vm = new SampleTestQAViewModel()
             //{
-            //    Question = "In 1991, a ceasefire agreement was drawn up, in which a referendum on self-determination was promised to decide the fate of the country and its people.",
+            //    Question = "Is the following word correct?",
             //    Question2 = "",
-            //    QuestionDecorationPart = "",
-            //    FirstQuestionRadioName = "ReadingAnswear1",
-            //    FirstQuestionId = "ReadingAnswear1",
-            //    FirstQuestionAnswear = "There was a conflict",
-            //    SecondQuestionRadioName = "ReadingAnswear1",
-            //    SecondQuestionId = "ReadingAnswear2",
-            //    SecondQuestionAnswear = "There was a debate",
-            //    ThirdQuestionRadioName = "ReadingAnswear1",
-            //    ThirdQuestionId = "ReadingAnswear3",
-            //    ThirdQuestionAnswear = "There was a meeting",
-            //    Answear = "There was a conflict"
+            //    QuestionDecorationPart = "Explainatory",
+            //    FirstQuestionRadioName = "WritingAnswear5",
+            //    FirstQuestionId = "WritingAnswear13",
+            //    FirstQuestionAnswear = "Yes, it is.",
+            //    SecondQuestionRadioName = "WritingAnswear5",
+            //    SecondQuestionId = "WritingAnswear14",
+            //    SecondQuestionAnswear = "No, it should be spelled: Explanatory",
+            //    ThirdQuestionRadioName = "WritingAnswear5",
+            //    ThirdQuestionId = "WritingAnswear15",
+            //    ThirdQuestionAnswear = "No, it should be spelled: Explainattory",
+            //    Answear = "No, it should be spelled: Explanatory"
             //};
             //var entity = _SampleTestQAViewModelMapper.Map(vm);
             //await _SampleTestQAMaganer.AddNew(entity);
 
             //Delete
             //var allEntities = await _SampleTestQAMaganer.GetAllValues();
-            //var deletedObj = allEntities.Where(x => x.Id == 18).SingleOrDefault();
+            //var deletedObj = allEntities.Where(x => x.Id == 21).SingleOrDefault();
             //await _SampleTestQAMaganer.Delete(deletedObj);
             //var deletedObj2 = allEntities.Where(x => x.Id == 6).SingleOrDefault();
             //await _SampleTestQAMaganer.Delete(deletedObj2);
