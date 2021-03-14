@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SampleTestQAViewModel> 
+﻿@model IEnumerable<SampleTestQAViewModel>
 @{
     Layout = null;
 }
@@ -65,7 +65,10 @@
                         <hr id="lastSection" />
                     </div>
                     <div class="row">
-                        <div class="col-12 text-center font-size-medium mt-5 mb-5">You have just looked at some tricky questions, which were quite difficult. If you would like attempt some more of this, just sign in to the platform!</div>
+                        <div class="col-12 text-center font-size-medium mt-5 mb-5">
+                            <p>You have just looked at some tricky questions, which were quite difficult. If you would like attempt some more of this, just sign in to the platform!</p>
+                            <a asp-controller="Home" asp-action="Index" class="btn btn-info" aria-label="button" type="button">Back to main page</a>
+                        </div>
                     </div>
                 </div>
                 <aside id="aside" class="col-4 d-none d-md-block mt-5">
@@ -96,7 +99,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="SpecialBorderW"  class="border-left-style mb-3">
+                        <div id="SpecialBorderW" class="border-left-style mb-3">
                             <a id="WritingNavCollapse" class="list-group-item list-group-item-action border-0 font-size-medium" role="button" aria-expanded="false" aria-controls="writing" href="#writingSection">
                                 Writing
                             </a>
@@ -144,17 +147,45 @@
     //AnimateTransition('#SpecialBorderG', '#grammar');
     //AnimateTransition('#SpecialBorderR', '#reading');
     //AnimateTransition('#SpecialBorderW', '#writing');
+    function CloseCollapse(ObjId, ToggleId) {
+        $(ToggleId).addClass("collapse");
+        $(ObjId).css("border-left", "5px solid rgb(30, 32, 166)");
+        $(ObjId).css("transition", "all 0.3s");
+    }
 
+    function OpenCollapse(ObjId, ToggleId) {
+        $(ToggleId).removeClass("collapse");
+        $(ObjId).css("border-left", "5px solid rgb(252, 186, 3)");
+        $(ObjId).css("transition", "all 0.3s");
+    }
+
+    var start = $('#startScrolling').offset().top - 50;
     $(document).scroll(function () {
         var windowTopOffset = $(window).scrollTop();
-        var lastSectiontopOffset = $('#lastSection').offset().top;
-        var secondSectiontopOffset = $('#secondSection').offset().top;
-        var firstSectiontopOffset = $('#firstSection').offset().top;
-        if (windowTopOffset > 260) {
-            $('#grammar').removeClass("collapse");
-            $('#SpecialBorderG').css("border-left", "5px solid rgb(252, 186, 3)");
-            $('#SpecialBorderG').css("transition", "all 0.3s"); //Pierwsze dodać pytania, później te funkcje a potem naprawić scroll.
+        var lastSectiontopOffset = $('#secondSection').offset().top + 400;
+        var secondSectiontopOffset = $('#secondSection').offset().top - 400;
+        var firstSectiontopOffset = $('#firstSection').offset().top ;
+        console.log(windowTopOffset);
+        console.log(lastSectiontopOffset);
+        if (windowTopOffset >= start && windowTopOffset <= secondSectiontopOffset) {
+            OpenCollapse('#SpecialBorderG', '#grammar');
+            CloseCollapse('#SpecialBorderR', '#reading');
+           
         }
+        else if (windowTopOffset > secondSectiontopOffset && windowTopOffset < lastSectiontopOffset) {
+
+            CloseCollapse('#SpecialBorderG', '#grammar');
+            OpenCollapse('#SpecialBorderR', '#reading');
+            CloseCollapse('#SpecialBorderW', '#writing');
+
+        }
+        else if (windowTopOffset > lastSectiontopOffset) {
+
+            CloseCollapse('#SpecialBorderR', '#reading');
+            OpenCollapse('#SpecialBorderW', '#writing');
+
+        }
+
     });
 
     //Navbar slides down
@@ -167,7 +198,6 @@
         var NaviToTop = $el.offset().top;
         var bottom = $el.position().top + $el.outerHeight(true) + 50;
         var lastNaviPosition = lastSectiontopOffset - $el.outerHeight(true);
-        var start = $('#startScrolling').offset().top - 50;
         //console.log(bottom);
         //console.log(lastSectiontopOffset);
         if (windowTopOffset > start && lastSectiontopOffset > bottom) { //Początek odpada
