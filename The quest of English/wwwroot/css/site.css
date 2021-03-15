@@ -165,6 +165,14 @@ body {
     margin: 0 0 20px;
     background-color: rgb(66, 239, 245);
 }
+.indent-orange {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    margin: 0 0 20px;
+    background-color: rgb(252, 186, 3);
+}
 /*CARDS*/
 .card-width {
     width: 20rem;
