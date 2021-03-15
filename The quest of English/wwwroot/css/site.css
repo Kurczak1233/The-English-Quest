@@ -100,7 +100,9 @@ body {
 .font-size-big {
     font-size: 50px;
 }
-
+.font-size-biggish {
+    font-size: 40px;
+}
 .height-400 {
     height: 350px;
 }
@@ -249,4 +251,15 @@ input[type="radio"] {
 
 .answearRadio :hover {
     background-color: rgba(66, 239, 245, 0.2);
+}
+
+.background-whitish{
+    background-color: aliceblue;
+}
+
+.margin-top-custom {
+    margin-top:100px;
+}
+.rounded-edges{
+    border-radius: 25px;
 }
