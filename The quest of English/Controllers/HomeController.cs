@@ -45,5 +45,10 @@ namespace The_quest_of_English.Controllers
 
             return View(model);
         }
+
+        public IActionResult Contact()
+        {
+            return View();
+        }
     }
 }
