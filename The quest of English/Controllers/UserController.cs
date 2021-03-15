@@ -12,5 +12,10 @@ namespace The_quest_of_English.Controllers
         {
             return View();
         }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
     }
 }
