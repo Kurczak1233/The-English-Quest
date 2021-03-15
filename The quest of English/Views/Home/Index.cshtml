@@ -9,7 +9,7 @@
                 <div class="indent-blue mt-5"></div>
                 <p class="font-size-big text-white">Improve your english.</p>
                 <p class="font-size-medium text-white">Work your way up to the fluency.</p>
-                <button asp-controller="User" asp-action="Register" class="btn btn-info mt-5 font-size-medium" type="button" aria-labelledby="Sign up button">Sing up today</button>
+                <a asp-controller="User" asp-action="Register" class="btn btn-info mt-5 font-size-medium" type="button" aria-labelledby="Sign up button">Sing up today</a>
             </div>
         </div>
     </div>
@@ -74,14 +74,14 @@
     <div class="p-0 col-12 font-size-big text-center d-flex align-items-center justify-content-center" style="height:300px;">
         <div id="firstBlock" class="justify-content-center" style="top:15%; left:auto;">
             <p class="col-12">Discover your chance</p>
-            <button asp-controller="User" asp-action="Register" id="invisible" class="invisible btn text-white btn-lg dark-blue-color">Sign up</button>
+            <a id="invisible" class="invisible btn text-white btn-lg dark-blue-color">Sign up</a>
         </div>
     </div>
     <div id="visability" class="invisible circle warm-orange-color position-absolute p-0 col-12 font-size-big text-center d-flex align-items-center justify-content-center" style="height:300px; top: 0px;">
         <div id="secondBlock" @*style="top: 15%;left: auto;*@>
             <div class="justify-content-center">
                 <p class="dark-blue-text-color col-12">Explore the platform!</p>
-                <button id="visable" class=" btn text-white btn-lg dark-blue-color">Sign up</button>
+                <a asp-controller="User" asp-action="Register" id="visable" class=" btn text-white btn-lg dark-blue-color">Sign up</a>
             </div>
         </div>
     </div>
