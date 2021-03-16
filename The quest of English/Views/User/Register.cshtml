@@ -89,6 +89,7 @@
 </body>
 </html>
 <script>
+    //Remove error on change
     $("form").on("change", function () {
         $("#allRequired").remove();
     });
@@ -102,14 +103,15 @@
             AppendError(passwordsDoNotMatch, "#test", "reapeatError")
         }
         //Prevent empty fields
-        if ($("#login").val() === "" || $("#email").val() === "" || $("#password").val() === "" || $("#passwordrepeat").val() === "") {
+        var response = grecaptcha.getResponse(); //Getting captcha response
+        if ($("#login").val() === "" || $("#email").val() === "" || $("#password").val() === "" || $("#passwordrepeat").val() === "" || response === "") {
             $("#submit").after($("<div></div>").text("All fields are required!").attr('id', "allRequired").addClass("text-center").addClass("col-12 mt-3").css("color", "red"));
+            e.preventDefault();
         }
-
+        //If there is one invalid feedback-prevent from uploading data
         if ($("form").children().find("div").hasClass("invalid-feedback")) {
             e.preventDefault();
         }
-        e.preventDefault();
     });
 
     $("#login").on('change', function () {
