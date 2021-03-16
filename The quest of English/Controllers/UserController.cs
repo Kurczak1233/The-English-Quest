@@ -1,13 +1,40 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Identity.UI.V4.Pages.Account.Internal;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TheEnglishQuestCore.Managers;
 
 namespace The_quest_of_English.Controllers
 {
     public class UserController : Controller
     {
+        private readonly ApplicationUserViewModelMapper _applicationUserViewModelMapper;
+        private readonly ApplicationUserManager _applicationUserManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly ILogger<RegisterModel> _logger;
+        //private readonly IEmailSender _emailSender;
+        private readonly RoleManager<IdentityRole> _roleManager;
+        public UserController(ApplicationUserManager applicationUserManager,
+            ApplicationUserViewModelMapper applicationUserViewModelMapper,
+            UserManager<IdentityUser> userManager,
+            SignInManager<IdentityUser> signInManager,
+            ILogger<RegisterModel> logger,
+            
+            RoleManager<IdentityRole> roleManager)
+        {
+            _applicationUserManager = applicationUserManager;
+            _applicationUserViewModelMapper = applicationUserViewModelMapper;
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _logger = logger;
+            _roleManager = roleManager;
+        }
         public IActionResult Register()
         {
             return View();

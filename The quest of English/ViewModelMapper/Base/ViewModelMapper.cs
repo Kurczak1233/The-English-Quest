@@ -5,7 +5,7 @@ namespace TheEnglishQuestCore
 {
     public class ViewModelMapper<EntityDto, EntityViewModel>
     {
-        private IMapper _Mapper;
+        private readonly IMapper _Mapper;
 
         public ViewModelMapper()
         {
