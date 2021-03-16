@@ -113,7 +113,7 @@
             e.preventDefault();
         }
     });
-
+    //Login field validation
     $("#login").on('change', function () {
         var minLength = 6;
         var maxLength = 25;
@@ -132,6 +132,7 @@
             AppendCorrect("#login");
         }
     })
+    //Email field validation
     $("#email").on('change', function () {
         var minLength = 6;
         var maxLength = 25;
@@ -150,9 +151,10 @@
             AppendCorrect("#email");
         }
     })
+    //Passwords validation
     $("#password").on('change', checkPasswords("#password", "passwordError"));
     $("#passwordrepeat").on('change', checkPasswords("#passwordrepeat", "reapeatError"));
-
+    //Functions 
     function hasNumber(myString) {
         return /\d/.test(myString);
     }

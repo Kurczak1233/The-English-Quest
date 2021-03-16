@@ -12,6 +12,13 @@ namespace The_quest_of_English.Controllers
         {
             return View();
         }
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        [ActionName("Register")]
+        public async Task<IActionResult> RegisterFunction()
+        {
+            return View();
+        }
 
         public IActionResult Login()
         {
