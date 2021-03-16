@@ -111,31 +111,32 @@
             AppendCorrect("#login");
         }
     })
-    $("#password").on('change', checkPasswords("#password"));
-    $("#passwordrepeat").on('change', checkPasswords("#passwordrepeat"));
+    $("#password").on('change', checkPasswords("#password", "passwordError"));
+    $("#passwordrepeat").on('change', checkPasswords("#passwordrepeat", "reapeatError"));
 
     function hasNumber(myString) {
         return /\d/.test(myString);
     }
 
-    function checkPasswords(id) {
+    function checkPasswords(id, errorid) {
         $(id).on('change', function () {
             var minLength = 6;
             var maxLength = 25;
             var messageToShort = "Your password is too short!";
             var messageToLong = "Your password is too long!";
             var messageDoesNotContainNumber = "Your password does not contain of numbers!";
-            var passwordError = "passwordError"; //Add To function above additional parameter
-            var passwordErrorId = "#" + passwordError;
-            $().remove();
+            var error = errorid;
+            var idError = "#" + errorid;
+            //var passwordError = "passwordError"; //Add To function above additional parameter
+            $(idError).remove();
             if ($(id).val().length < minLength) {
-                AppendError(messageToShort, id, passwordError);
+                AppendError(messageToShort, id, error);
             }
             else if ($(id).val().length > maxLength) {
-                AppendError(messageToLong, id, passwordError);
+                AppendError(messageToLong, id, error);
             }
             else if ($(id).val().length < maxLength && $(id).val().length > minLength && !(hasNumber($(id).val()))) {
-                AppendError(messageDoesNotContainNumber, id, passwordError);
+                AppendError(messageDoesNotContainNumber, id, error);
             }
             else {
                 AppendCorrect(id);
