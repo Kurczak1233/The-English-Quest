@@ -42,6 +42,17 @@
                             <input type="text" required class="form-control" id="login" aria-describedby="login">
                         </div>
                     </div>
+                    <div class="row mb-3 form-group">
+                        <div class="pt-1 col-sm-3 d-inline text-center text-sm-left offset-1 mr-5 mr-sm-0">
+                            <label for="email" class="form-label">Email:</label>
+                        </div>
+                        <div class="col-sm-7 mr-5 ml-5 mr-sm-0 ml-sm-0 d-inline">
+                            <input type="email" required class="form-control" id="email" aria-describedby="email">
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                    </div>
                     <div class="row mb-3 form-group ">
                         <div class="pt-1 col-sm-3 d-inline text-center text-sm-left offset-1 mr-5 mr-sm-0">
                             <label for="password" class="form-label">Password:</label>
@@ -55,7 +66,7 @@
                     </div>
                     <div class="row mb-3 form-group">
                         <div class="pt-1 col-sm-3 d-inline text-center text-sm-left offset-1 mr-5 mr-sm-0">
-                            <label for="passwordrepeat" class="form-label">Repeat password:</label>
+                            <label for="passwordrepeat" class="form-label">Confirm password:</label>
                         </div>
                         <div class="col-sm-7 mr-5 ml-5 mr-sm-0 ml-sm-0 d-inline">
                             <input type="password" required class="form-control" id="passwordrepeat" aria-describedby="password repeat">
@@ -65,18 +76,7 @@
                         </div>
                     </div>
                     <div class="row mb-3 form-group">
-                        <div class="pt-1 col-sm-3 d-inline text-center text-sm-left offset-1 mr-5 mr-sm-0">
-                            <label for="email" class="form-label">Email:</label>
-                        </div>
-                        <div class="col-sm-7 mr-5 ml-5 mr-sm-0 ml-sm-0 d-inline">
-                            <input type="email" required class="form-control" id="email" aria-describedby="email">
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mb-3 form-group">
-                        <div class="offset-sm-4 col-sm-7 d-inline d-flex justify-content-center">
+                        <div class="offset-sm-4 col-sm-7 d-inline d-flex justify-content-center justify-content-sm-start">
                             <div class="g-recaptcha" data-sitekey="6LdLjIEaAAAAAMPlUTr1uktnGhmQvnSWImZ5uNiY"></div>
                             <div id="invalidCheck3Feedback" class="invalid-feedback">
                                 You must agree before submitting.
@@ -98,20 +98,36 @@
 </body>
 </html>
 <script>
-    function AppendError(message, elementId) {
-        var error = $("<div></div>").addClass("invalid-feedback").text(message);
-        var elId = "#" + elementId;
-        $(elId).addClass("is-invalid");
-        $(elId).append(error);
-    }
-    function AppendCorrect(elementId) {
-        var elId = "#" + elementId;
-        $(elId).addClass("is-valid");
-    }
     $("#submit").on('click', function () {
-        console.log($("#login").val);
 
     })
+
+    $("#login").on('change', function () {
+        var minLength = 6;
+        var maxLength = 25;
+        var messageToShort = "Your password is too short!";
+        var messageToLong = "Your password is too long!";
+        $("#error").remove();
+        if ($("#login").val().length < minLength) {
+            AppendError(messageToShort, "#login")
+        }
+        else if ($("#login").val().length > maxLength) {
+            AppendError(messageToLong, "#login")
+        }
+        else {
+            AppendCorrect("#login");
+        }
+    })
+    function AppendError(message, elementId) {
+        $(elementId).after($("<div></div>").text(message).addClass("invalid-feedback").attr('id', 'error'));
+        $(elementId).addClass("is-invalid");
+        return false;
+    }
+    function AppendCorrect(elementId) {
+
+        $(elementId).removeClass("is-invalid").addClass("is-valid");
+        return true;
+    }
 
 
 </script>
