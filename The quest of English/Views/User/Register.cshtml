@@ -87,12 +87,15 @@
 </html>
 <script>
     $("form").on('submit', function (e) {
-        if ($("form").children().find("div").hasClass("is-invalid")) {
-            console.log("TUTAJ")
-            
+        $("#passwordrepeaterror").remove();
+        if ($("#password").val() != $("#passwordrepeat").val()) {
+            var passwordsDoNotMatch = "Passwords do not match!";
+            AppendError(passwordsDoNotMatch, "#passwordrepeat", "passwordrepeaterror")
         }
-        console.log($("form").children().find("div").hasClass("invalid-feedback"));
-        e.preventDefault();
+
+        if ($("form").children().find("div").hasClass("invalid-feedback")) {
+            e.preventDefault();
+        }
     });
 
     $("#login").on('change', function () {
