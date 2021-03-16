@@ -48,9 +48,6 @@
                         </div>
                         <div class="col-sm-7 mr-5 ml-5 mr-sm-0 ml-sm-0 d-inline">
                             <input type="email" required class="form-control" id="email" aria-describedby="email">
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
                         </div>
                     </div>
                     <div class="row mb-3 form-group ">
@@ -59,9 +56,6 @@
                         </div>
                         <div class="col-sm-7 mr-5 ml-5 mr-sm-0 ml-sm-0 d-inline">
                             <input type="password" required class="form-control" id="password" aria-describedby="password">
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
                         </div>
                     </div>
                     <div class="row mb-3 form-group">
@@ -70,9 +64,6 @@
                         </div>
                         <div class="col-sm-7 mr-5 ml-5 mr-sm-0 ml-sm-0 d-inline">
                             <input type="password" required class="form-control" id="passwordrepeat" aria-describedby="password repeat">
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
                         </div>
                     </div>
                     <div class="row mb-3 form-group">
@@ -105,26 +96,59 @@
     $("#login").on('change', function () {
         var minLength = 6;
         var maxLength = 25;
-        var messageToShort = "Your password is too short!";
-        var messageToLong = "Your password is too long!";
-        $("#error").remove();
+        var messageToShort = "Your login is too short!";
+        var messageToLong = "Your login is too long!";
+        var loginError = "loginError";
+        var loginErrorId = "#" + loginError;
+        $(loginErrorId).remove();
         if ($("#login").val().length < minLength) {
-            AppendError(messageToShort, "#login")
+            AppendError(messageToShort, "#login", loginError)
         }
         else if ($("#login").val().length > maxLength) {
-            AppendError(messageToLong, "#login")
+            AppendError(messageToLong, "#login", loginError)
         }
         else {
             AppendCorrect("#login");
         }
     })
-    function AppendError(message, elementId) {
-        $(elementId).after($("<div></div>").text(message).addClass("invalid-feedback").attr('id', 'error'));
+    $("#password").on('change', checkPasswords("#password"));
+    $("#passwordrepeat").on('change', checkPasswords("#passwordrepeat"));
+
+    function hasNumber(myString) {
+        return /\d/.test(myString);
+    }
+
+    function checkPasswords(id) {
+        $(id).on('change', function () {
+            var minLength = 6;
+            var maxLength = 25;
+            var messageToShort = "Your password is too short!";
+            var messageToLong = "Your password is too long!";
+            var messageDoesNotContainNumber = "Your password does not contain of numbers!";
+            var passwordError = "passwordError"; //Add To function above additional parameter
+            var passwordErrorId = "#" + passwordError;
+            $().remove();
+            if ($(id).val().length < minLength) {
+                AppendError(messageToShort, id, passwordError);
+            }
+            else if ($(id).val().length > maxLength) {
+                AppendError(messageToLong, id, passwordError);
+            }
+            else if ($(id).val().length < maxLength && $(id).val().length > minLength && !(hasNumber($(id).val()))) {
+                AppendError(messageDoesNotContainNumber, id, passwordError);
+            }
+            else {
+                AppendCorrect(id);
+            }
+        })
+    }
+
+    function AppendError(message, elementId, errorName) {
+        $(elementId).after($("<div></div>").text(message).addClass("invalid-feedback").attr('id', errorName));
         $(elementId).addClass("is-invalid");
         return false;
     }
     function AppendCorrect(elementId) {
-
         $(elementId).removeClass("is-invalid").addClass("is-valid");
         return true;
     }
