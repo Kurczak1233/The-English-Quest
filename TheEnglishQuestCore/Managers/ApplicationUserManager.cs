@@ -34,5 +34,19 @@ namespace TheEnglishQuestCore.Managers
             var user = _DTOMapper.Map(entity);
             return user;
         }
+
+        public async Task<IdentityResult> CreateAdminRole()
+        {
+            return await _ApplicationUserRepository.CreateAdminRole();
+        }
+        public async Task<IdentityResult> CreateUserRole()
+        {
+            return await _ApplicationUserRepository.CreateUserRole();
+        }
+        public async Task LogIn(ApplicationUserDto user)
+        {
+            var userDto = _DTOMapper.Map(user);
+            await _ApplicationUserRepository.LogIn(userDto);
+        }
     }
 }

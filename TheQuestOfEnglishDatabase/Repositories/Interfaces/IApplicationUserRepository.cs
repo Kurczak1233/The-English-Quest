@@ -10,7 +10,8 @@ namespace TheEnglishQuestDatabase
         Task<ApplicationUser> GetUser(string id);
         Task<bool> DeleteUser(string id);
         Task<IdentityResult> AddUser(ApplicationUser user, string inputPassword);
-        Task CreateAdminRole();
-        Task CreateUserRole();
+        Task LogIn(ApplicationUser user);
+        Task<IdentityResult> CreateAdminRole();
+        Task<IdentityResult> CreateUserRole();
     }
 }

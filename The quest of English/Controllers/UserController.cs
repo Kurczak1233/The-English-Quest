@@ -50,10 +50,11 @@ namespace The_quest_of_English.Controllers
                 EmailAdress = ApplicaitonUserInput.EmailAdress,
                 Password = ApplicaitonUserInput.Password
             };
-
-            CreateAdminRole();
+            await _applicationUserManager.CreateAdminRole();
+            await _applicationUserManager.CreateUserRole();
             var userDto = _applicationUserViewModelMapper.Map(user);
             await _applicationUserManager.AddUser(userDto, ApplicaitonUserInput.Password);
+            await _applicationUserManager.LogIn(userDto);
             return RedirectToAction("Home", "Index");
         }
 
