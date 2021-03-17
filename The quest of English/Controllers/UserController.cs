@@ -16,21 +16,18 @@ namespace The_quest_of_English.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         //private readonly IEmailSender _emailSender;
-        private readonly RoleManager<IdentityRole> _roleManager;
         public UserController(ApplicationUserManager applicationUserManager,
             ApplicationUserViewModelMapper applicationUserViewModelMapper,
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
-            ILogger<RegisterModel> logger,
-            
-            RoleManager<IdentityRole> roleManager)
+            ILogger<RegisterModel> logger
+            )
         {
             _applicationUserManager = applicationUserManager;
             _applicationUserViewModelMapper = applicationUserViewModelMapper;
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
-            _roleManager = roleManager;
         }
         [BindProperty]
         public ApplicationUserViewModel ApplicaitonUserInput { get; set; }
@@ -50,8 +47,6 @@ namespace The_quest_of_English.Controllers
                 EmailAdress = ApplicaitonUserInput.EmailAdress,
                 Password = ApplicaitonUserInput.Password
             };
-            await _applicationUserManager.CreateAdminRole();
-            await _applicationUserManager.CreateUserRole();
             var userDto = _applicationUserViewModelMapper.Map(user);
             await _applicationUserManager.AddUser(userDto, ApplicaitonUserInput.Password);
             await _applicationUserManager.LogIn(userDto);

@@ -13,16 +13,13 @@ namespace TheEnglishQuestDatabase
     {
         protected override DbSet<ApplicationUser> DbSet => _db.ApplicationUser;
         private readonly UserManager<IdentityUser> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<IdentityUser> _signInManager;
 
         public ApplicationUserRepository(ApplicationDbContext db,
             UserManager<IdentityUser> userManager,
-            RoleManager<IdentityRole> roleManager,
             SignInManager<IdentityUser> signInManager) : base(db)
         {
             _userManager = userManager;
-            _roleManager = roleManager;
             _signInManager = signInManager;
         }
 
@@ -42,8 +39,6 @@ namespace TheEnglishQuestDatabase
         }
         public async Task<IdentityResult> AddUser(ApplicationUser user, string inputPassword)
         {
-            await _userManager.AddToRoleAsync(user, SD.AdminUser);//Statycznie wszyscy są adminami teraz.
-            
             return await _userManager.CreateAsync(user, inputPassword);
         }
 
@@ -52,28 +47,5 @@ namespace TheEnglishQuestDatabase
             await _signInManager.SignInAsync(user, isPersistent: false);
         }
 
-        public async Task<IdentityResult> CreateAdminRole()
-        {
-            if (!await _roleManager.RoleExistsAsync(SD.AdminUser))
-            {
-                return await _roleManager.CreateAsync(new IdentityRole(SD.AdminUser));
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        public async Task<IdentityResult> CreateUserRole()
-        {
-            if (!await _roleManager.RoleExistsAsync(SD.OrdinaryUser))
-            {
-                return await _roleManager.CreateAsync(new IdentityRole(SD.OrdinaryUser));
-            }
-            else
-            {
-                return null;
-            }
-        }
     }
 }
