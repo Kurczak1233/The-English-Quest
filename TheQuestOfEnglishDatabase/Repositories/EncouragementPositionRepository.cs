@@ -29,5 +29,11 @@ namespace TheEnglishQuestDatabase
             }
             return false;
         }
+
+        public async Task<bool> AddNew(EncouragementPosition entity)
+        {
+            await DbSet.AddAsync(entity);
+            return await SaveChanges();
+        }
     }
 }

@@ -33,5 +33,11 @@ namespace TheEnglishQuestDatabase.Repositories
             }
             return false;
         }
+
+        public async Task<bool> AddNew(SampleTestQA entity)
+        {
+            await DbSet.AddAsync(entity);
+            return await SaveChanges();
+        }
     }
 }

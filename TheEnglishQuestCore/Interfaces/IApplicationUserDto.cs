@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ namespace TheEnglishQuestCore.Interfaces
 {
     public interface IApplicationUserDto
     {
-        Task<bool> AddNewUser(ApplicationUserDto user);
+        Task<IdentityResult> AddUser(ApplicationUserDto user, string indexPassword);
         Task<bool> DeleteUser(string id);
         Task<ApplicationUserDto> GetUser(string id);
     }

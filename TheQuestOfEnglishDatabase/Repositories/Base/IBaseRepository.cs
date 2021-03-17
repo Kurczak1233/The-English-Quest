@@ -5,7 +5,7 @@ namespace TheQuestOfEnglishDatabase
 {
     public interface IBaseRepository<Entity> where Entity : class
     {
-        Task<bool> AddNew(Entity entity);
+        //Task<bool> AddNew(Entity entity);
         /*List<Entity> GetAll();*/
     }
 }
