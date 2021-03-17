@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using The_quest_of_English.Utilities;
 using TheEnglishQuestDatabase.Entities;
 using TheQuestOfEnglishDatabase;
 
@@ -45,5 +46,15 @@ namespace TheEnglishQuestDatabase
             }
             return false;
         }
+        public async Task<IdentityResult> AddUser(ApplicationUser user, string inputPassword)
+        {
+            return await _userManager.CreateAsync(user, inputPassword);
+        }
+
+        public async Task LogIn(ApplicationUser user)
+        {
+            await _signInManager.SignInAsync(user, isPersistent: false);
+        }
+
     }
 }

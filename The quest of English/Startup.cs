@@ -33,6 +33,9 @@ namespace The_quest_of_English
             services.AddControllersWithViews();
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer("Server=FLUTTERSHY\\SQLEXPRESS;Database=TheQuestOfEnglish;Trusted_Connection=True;"));
             services.AddRazorPages().AddRazorRuntimeCompilation();
+            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //.AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddControllersWithViews();
             //Db
             services.AddTransient<IEncouragementPositionRepository, EncouragementPositionRepository>();
             services.AddTransient<IApplicationUserRepository, ApplicationUserRepository>();
@@ -49,7 +52,7 @@ namespace The_quest_of_English
             services.AddTransient<ApplicationUserViewModelMapper>();
             services.AddTransient<SampleTestQAViewModelMapper>();
             // Identity
-            services.AddIdentity<IdentityUser, IdentityRole>(/*options => options.SignIn.RequireConfirmedAccount = true*/)
+            services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
             .AddDefaultTokenProviders() //Tokeny gdy ktoœ zapomni has³a
             .AddEntityFrameworkStores<ApplicationDbContext>();
         }
@@ -80,7 +83,7 @@ namespace The_quest_of_English
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-            
+
             serviceProvider.GetService<ApplicationDbContext>().Database.Migrate();
         }
     }

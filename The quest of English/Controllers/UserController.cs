@@ -16,21 +16,18 @@ namespace The_quest_of_English.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         //private readonly IEmailSender _emailSender;
-        private readonly RoleManager<IdentityRole> _roleManager;
         public UserController(ApplicationUserManager applicationUserManager,
             ApplicationUserViewModelMapper applicationUserViewModelMapper,
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
-            ILogger<RegisterModel> logger,
-            
-            RoleManager<IdentityRole> roleManager)
+            ILogger<RegisterModel> logger
+            )
         {
             _applicationUserManager = applicationUserManager;
             _applicationUserViewModelMapper = applicationUserViewModelMapper;
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
-            _roleManager = roleManager;
         }
         [BindProperty]
         public ApplicationUserViewModel ApplicaitonUserInput { get; set; }
