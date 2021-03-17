@@ -51,7 +51,7 @@ namespace The_quest_of_English.Controllers
             await _applicationUserManager.AddUser(userDto, ApplicaitonUserInput.Password);
             //await _applicationUserManager.LogIn(userDto);
             return RedirectToAction("Home", "Index");
-            // _applicationUserViewModelMapper.Map(user);
+
         }
 
         public IActionResult Login()

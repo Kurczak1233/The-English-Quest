@@ -12,5 +12,6 @@ namespace TheEnglishQuestCore.Interfaces
         Task<IdentityResult> AddUser(ApplicationUserDto user, string indexPassword);
         Task<bool> DeleteUser(string id);
         Task<ApplicationUserDto> GetUser(string id);
+        Task LogIn(ApplicationUserDto user);
     }
 }
