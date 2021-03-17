@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System;
-using System.ComponentModel.DataAnnotations;
-
-namespace TheEnglishQuestDatabase.Entities
+﻿namespace TheEnglishQuest
 {
     public class ApplicationUserViewModel
     {

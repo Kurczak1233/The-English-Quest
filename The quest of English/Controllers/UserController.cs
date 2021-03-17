@@ -1,12 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Identity.UI.V4.Pages.Account.Internal;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using TheEnglishQuest;
 using TheEnglishQuestCore.Managers;
 
 namespace The_quest_of_English.Controllers
@@ -35,8 +32,11 @@ namespace The_quest_of_English.Controllers
             _logger = logger;
             _roleManager = roleManager;
         }
+        [BindProperty]
+        public ApplicationUserViewModel ApplicaitonUserInput { get; set; }
+
         public IActionResult Register()
-        {
+        { 
             return View();
         }
         [ValidateAntiForgeryToken]
@@ -44,7 +44,13 @@ namespace The_quest_of_English.Controllers
         [ActionName("Register")]
         public async Task<IActionResult> RegisterFunction()
         {
-            return View();
+            ApplicationUserViewModel user = new ApplicationUserViewModel()
+            {
+                Login = ApplicaitonUserInput.Login,
+                EmailAdress = ApplicaitonUserInput.EmailAdress,
+                Password = ApplicaitonUserInput.Password
+            };
+           // _applicationUserViewModelMapper.Map(user);
         }
 
         public IActionResult Login()
