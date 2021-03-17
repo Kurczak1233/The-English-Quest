@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
 using TheEnglishQuestDatabase.Entities;
 using TheQuestOfEnglishDatabase;
 
@@ -8,5 +9,7 @@ namespace TheEnglishQuestDatabase
     {
         Task<ApplicationUser> GetUser(string id);
         Task<bool> DeleteUser(string id);
+        Task<IdentityResult> AddUser(ApplicationUser user, string inputPassword);
+        Task LogIn(ApplicationUser user);
     }
 }

@@ -11,7 +11,7 @@ namespace TheEnglishQuestDatabase.Entities
         [Required]
         public int LastName { get; set; }
         [Required]
-        public string Login{ get; set; }
+        public override string UserName{ get; set; }
         [Required]
         public string Password{ get; set; }
         [Required]

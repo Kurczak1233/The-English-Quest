@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,11 +11,26 @@ namespace TheEnglishQuestDatabase
     public class ApplicationUserRepository : BaseRepository<ApplicationUser>, IApplicationUserRepository
     {
         protected override DbSet<ApplicationUser> DbSet => _db.ApplicationUser;
-        public ApplicationUserRepository(ApplicationDbContext db) : base(db)
-        {
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
 
+        public ApplicationUserRepository(ApplicationDbContext db,
+            UserManager<IdentityUser> userManager,
+            SignInManager<IdentityUser> signInManager) : base(db)
+        {
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
+        public async Task<IdentityResult> AddUser(ApplicationUser user, string inputPassword)
+        {
+            return await _userManager.CreateAsync(user, inputPassword);
+        }
+
+        public async Task LogIn(ApplicationUser user)
+        {
+            await _signInManager.SignInAsync(user, isPersistent: false);
+        }
         public async Task<ApplicationUser> GetUser(string id)
         {
             return await DbSet.Where(x => x.Id == id).FirstOrDefaultAsync();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,10 +17,10 @@ namespace TheEnglishQuestCore.Managers
             _ApplicationUserRepository = _enc;
         }
 
-        public async Task<bool> AddNewUser(ApplicationUserDto user)
+        public async Task<IdentityResult> AddUser(ApplicationUserDto user, string indexPassword)
         {
             var entity = _DTOMapper.Map(user);
-            return await _ApplicationUserRepository.AddNew(entity);
+            return await _ApplicationUserRepository.AddUser(entity, indexPassword);
         }
 
         public async Task<bool> DeleteUser(string userid)
@@ -32,6 +33,12 @@ namespace TheEnglishQuestCore.Managers
             var entity = await _ApplicationUserRepository.GetUser(userid);
             var user = _DTOMapper.Map(entity);
             return user;
+        }
+
+        public async Task LogIn(ApplicationUserDto user)
+        {
+            var userDto = _DTOMapper.Map(user);
+            await _ApplicationUserRepository.LogIn(userDto);
         }
     }
 }
