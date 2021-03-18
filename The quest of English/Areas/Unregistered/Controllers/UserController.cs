@@ -76,7 +76,7 @@ namespace The_quest_of_English.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _applicationUserManager.LogIn(ApplicaitonUserInput.UserName, ApplicaitonUserInput.Password);
+                var result = await _applicationUserManager.LogIn(ApplicaitonUserInput.UserName, ApplicaitonUserInput.PhoneNumber);
                 if (result.Succeeded)
                 {
                     return RedirectToAction("MainView", "Platform", new { area = "Admin" });
