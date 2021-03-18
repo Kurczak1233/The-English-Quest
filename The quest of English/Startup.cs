@@ -59,11 +59,11 @@ namespace The_quest_of_English
             services.AddIdentity<IdentityUser, IdentityRole>(options => 
             {
                 options.SignIn.RequireConfirmedAccount = false;
-                options.Password.RequiredLength = 6;
+                options.Password.RequiredLength = 5;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireDigit = false;
+                options.Password.RequireDigit = true;
 
                 options.User.RequireUniqueEmail = false;
             })

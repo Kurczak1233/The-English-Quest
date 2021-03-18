@@ -1,10 +1,11 @@
-﻿namespace TheEnglishQuest
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace TheEnglishQuest
 {
-    public class ApplicationUserViewModel
+    public class ApplicationUserViewModel : IdentityUser
     {
         public int FirstName { get; set; }
         public int LastName { get; set; }
-        public string Login { get; set; }
         public string Password{ get; set; }
         public string EmailAdress { get; set; }
         public int GrammarPercentagePoints { get; set; } = 0;
