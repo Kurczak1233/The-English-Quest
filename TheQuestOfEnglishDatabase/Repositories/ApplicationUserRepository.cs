@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -31,8 +32,9 @@ namespace TheEnglishQuestDatabase
 
         public async Task<SignInResult> LogIn(string username, string password)
         {
-            return await _signInManager.PasswordSignInAsync(username,
-            password, false, lockoutOnFailure: true);
+            var result = await _signInManager.PasswordSignInAsync(username,
+            password, false, lockoutOnFailure: false);
+            return result;
         }
         public async Task<ApplicationUser> GetUser(string username)
         {
@@ -47,11 +49,11 @@ namespace TheEnglishQuestDatabase
             //    DbSet.Remove(item);
             //}
             //await SaveChanges();
-            var foundentity = await dbset.firstordefaultasync(x => x.id == id);
-            if (foundentity != null)
+            var foundEntity = await DbSet.FirstOrDefaultAsync(x => x.Id == id);
+            if (foundEntity != null)
             {
-                dbset.remove(foundentity);
-                return await savechanges();
+                DbSet.Remove(foundEntity);
+                return await SaveChanges();
             }
             return false;
         }

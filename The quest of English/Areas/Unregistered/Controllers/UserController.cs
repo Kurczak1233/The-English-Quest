@@ -43,7 +43,7 @@ namespace The_quest_of_English.Controllers
         [ActionName("Register")]
         public async Task<IActionResult> RegisterFunction()
         {
-            await _applicationUserManager.DeleteUser("222");
+
             ApplicationUserViewModel user = new ApplicationUserViewModel()
             {
                 UserName = ApplicaitonUserInput.UserName,
@@ -74,16 +74,21 @@ namespace The_quest_of_English.Controllers
         [ActionName("Login")]
         public async Task<IActionResult> LoginFunction()
         {
-            var username = ApplicaitonUserInput.UserName;
-            var password = ApplicaitonUserInput.Password;
-            var result = await _applicationUserManager.LogIn(username, password);
-            if (result.Succeeded)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("MainView", "Platform", new { area = "Admin" });
+                var result = await _applicationUserManager.LogIn(ApplicaitonUserInput.UserName, ApplicaitonUserInput.Password);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("MainView", "Platform", new { area = "Admin" });
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    return View();
+                }
             }
             else
             {
-                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                 return View();
             }
         }
