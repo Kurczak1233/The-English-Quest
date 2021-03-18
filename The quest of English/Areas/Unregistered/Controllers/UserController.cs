@@ -52,6 +52,7 @@ namespace The_quest_of_English.Controllers
             var userDto = _applicationUserViewModelMapper.Map(user);
             await _applicationUserManager.AddUser(userDto, ApplicaitonUserInput.Password);
             //await _applicationUserManager.LogIn(userDto);
+            await _applicationUserManager.DeleteUser("");
             return RedirectToAction("MainView","Platform", new { area = "Admin" });
 
         }
