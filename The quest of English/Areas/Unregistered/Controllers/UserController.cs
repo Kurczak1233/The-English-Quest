@@ -35,7 +35,7 @@ namespace The_quest_of_English.Controllers
         public ApplicationUserViewModel ApplicaitonUserInput { get; set; }
 
         public IActionResult Register()
-        { 
+        {
             return View();
         }
         [ValidateAntiForgeryToken]
@@ -51,9 +51,8 @@ namespace The_quest_of_English.Controllers
             };
             var userDto = _applicationUserViewModelMapper.Map(user);
             await _applicationUserManager.AddUser(userDto, ApplicaitonUserInput.Password);
-            //await _applicationUserManager.LogIn(userDto);
-            await _applicationUserManager.DeleteUser("");
-            return RedirectToAction("MainView","Platform", new { area = "Admin" });
+            await _applicationUserManager.LogIn(userDto);
+            return RedirectToAction("MainView", "Platform", new { area = "Admin" });
 
         }
 
@@ -61,5 +60,16 @@ namespace The_quest_of_English.Controllers
         {
             return View();
         }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        [ActionName("Login")]
+        public async Task<IActionResult> LoginFunction()
+        {
+            var username = ApplicaitonUserInput.UserName;
+            var password = ApplicaitonUserInput.Password;
+
+        }
+
     }
 }

@@ -23,18 +23,18 @@ namespace TheEnglishQuestDatabase
             _signInManager = signInManager;
         }
 
-        public async Task<IdentityResult> AddUser(ApplicationUser user, string inputPassword)
+        public async Task<IdentityResult> AddUser(ApplicationUser user)
         {
-            return await _userManager.CreateAsync(user, inputPassword);
+            return await _userManager.CreateAsync(user);
         }
 
         public async Task LogIn(ApplicationUser user)
         {
             await _signInManager.SignInAsync(user, isPersistent: false);
         }
-        public async Task<ApplicationUser> GetUser(string id)
+        public async Task<ApplicationUser> GetUser(string username)
         {
-            return await DbSet.Where(x => x.Id == id).FirstOrDefaultAsync();
+            return await DbSet.Where(x => x.UserName == username).FirstOrDefaultAsync();
         }
         public async Task<bool> DeleteUser(string id)
         {
