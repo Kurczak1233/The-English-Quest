@@ -50,10 +50,25 @@ namespace The_quest_of_English.Controllers
                 Password = ApplicaitonUserInput.Password
             };
             var userDto = _applicationUserViewModelMapper.Map(user);
-            await _applicationUserManager.AddUser(userDto, ApplicaitonUserInput.Password);
-            await _applicationUserManager.LogIn(userDto);
-            return RedirectToAction("MainView", "Platform", new { area = "Admin" });
-
+            var resultAdd = await _applicationUserManager.AddUser(userDto);
+            if (resultAdd.Succeeded)
+            {
+                var result = await _applicationUserManager.LogIn(ApplicaitonUserInput.UserName, ApplicaitonUserInput.Password);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("MainView", "Platform", new { area = "Admin" });
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    return View();
+                }
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Invalid register attempt.");
+                return View();
+            }
         }
 
         public IActionResult Login()
@@ -68,7 +83,16 @@ namespace The_quest_of_English.Controllers
         {
             var username = ApplicaitonUserInput.UserName;
             var password = ApplicaitonUserInput.Password;
-
+            var result = await _applicationUserManager.LogIn(username, password);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("MainView", "Platform", new { area = "Admin" });
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                return View();
+            }
         }
 
     }

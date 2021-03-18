@@ -28,9 +28,10 @@ namespace TheEnglishQuestDatabase
             return await _userManager.CreateAsync(user);
         }
 
-        public async Task LogIn(ApplicationUser user)
+        public async Task<SignInResult> LogIn(string username, string password)
         {
-            await _signInManager.SignInAsync(user, isPersistent: false);
+            return await _signInManager.PasswordSignInAsync(username,
+            password, false, lockoutOnFailure: true);
         }
         public async Task<ApplicationUser> GetUser(string username)
         {

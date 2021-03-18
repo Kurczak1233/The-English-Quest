@@ -17,10 +17,10 @@ namespace TheEnglishQuestCore.Managers
             _ApplicationUserRepository = _enc;
         }
 
-        public async Task<IdentityResult> AddUser(ApplicationUserDto user, string indexPassword)
+        public async Task<IdentityResult> AddUser(ApplicationUserDto user)
         {
             var entity = _DTOMapper.Map(user);
-            return await _ApplicationUserRepository.AddUser(entity, indexPassword);
+            return await _ApplicationUserRepository.AddUser(entity);
         }
 
         public async Task<bool> DeleteUser(string userid)
@@ -28,17 +28,16 @@ namespace TheEnglishQuestCore.Managers
             return await _ApplicationUserRepository.DeleteUser(userid);
         }
 
-        public async Task<ApplicationUserDto> GetUser(string userid)
+        public async Task<ApplicationUserDto> GetUser(string username)
         {
-            var entity = await _ApplicationUserRepository.GetUser(userid);
+            var entity = await _ApplicationUserRepository.GetUser(username);
             var user = _DTOMapper.Map(entity);
             return user;
         }
 
-        public async Task LogIn(ApplicationUserDto user)
+        public async Task<SignInResult> LogIn(string username, string password)
         {
-            var userDto = _DTOMapper.Map(user);
-            await _ApplicationUserRepository.LogIn(userDto);
+            return await _ApplicationUserRepository.LogIn(username, password);
         }
     }
 }
