@@ -1,12 +1,7 @@
-﻿
+﻿@model TheEnglishQuest.ApplicationUserViewModel
 @{
     Layout = null;
 }
-
-@{
-    Layout = null;
-}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,13 +32,13 @@
                         <hr />
                     </div>
                 </div>
-                <form>
+                <form method="post" enctype="multipart/form-data">
                     <div class="row mb-3 mt-3">
                         <div class="offset-1 pt-1 col-3 d-inline">
                             <label for="login" class="form-label">Login:</label>
                         </div>
                         <div class="col-7 d-inline">
-                            <input type="text" required class="form-control" id="login" aria-describedby="login">
+                            <input asp-for="@Model.Login" type="text" required class="form-control" id="login" aria-describedby="login">
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -51,12 +46,12 @@
                             <label for="password" class="form-label">Password:</label>
                         </div>
                         <div class="col-7 d-inline">
-                            <input type="password" required class="form-control" id="password" aria-describedby="password">
+                            <input asp-for="@Model.Password" type="password" required class="form-control" id="password" aria-describedby="password">
                         </div>
                     </div>
                     <div class="row mb-5 mt-5 ">
                         <div class="col-12 d-flex justify-content-center">
-                            <button type="button" class="btn btn-warning">Log in</button>
+                            <button type="submit" class="btn btn-warning">Log in</button>
                         </div>
                     </div>
                 </form>
