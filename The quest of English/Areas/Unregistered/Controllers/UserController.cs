@@ -8,6 +8,8 @@ using TheEnglishQuestCore.Managers;
 
 namespace The_quest_of_English.Controllers
 {
+    [Area("Unregistered")]
+
     public class UserController : Controller
     {
         private readonly ApplicationUserViewModelMapper _applicationUserViewModelMapper;
@@ -50,7 +52,7 @@ namespace The_quest_of_English.Controllers
             var userDto = _applicationUserViewModelMapper.Map(user);
             await _applicationUserManager.AddUser(userDto, ApplicaitonUserInput.Password);
             //await _applicationUserManager.LogIn(userDto);
-            return RedirectToAction("Home", "Index");
+            return RedirectToAction("MainView","Platform", new { area = "Admin" });
 
         }
 

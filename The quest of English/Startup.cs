@@ -93,7 +93,11 @@ namespace The_quest_of_English
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{area=Unregistered}/{controller=Home}/{action=Index}");
+
+                //endpoints.MapControllerRoute(
+                //name: "Admin",
+                //pattern: "Admin/{controller=Home}/{action=Index}");
             });
 
             serviceProvider.GetService<ApplicationDbContext>().Database.Migrate();

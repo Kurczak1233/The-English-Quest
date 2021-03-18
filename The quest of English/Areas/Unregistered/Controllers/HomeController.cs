@@ -6,6 +6,7 @@ using TheEnglishQuestCore.Managers;
 
 namespace The_quest_of_English.Controllers
 {
+    [Area("Unregistered")]
     public class HomeController : Controller
     {
         private readonly EncouragementPoisitonViewModelMapper _EPositionsMapper;
