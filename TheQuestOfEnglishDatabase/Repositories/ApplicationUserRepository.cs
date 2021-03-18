@@ -42,16 +42,16 @@ namespace TheEnglishQuestDatabase
         {
 
             //var allEntities = DbSet.Select(x => x);
-            //foreach(var item in allEntities)
+            //foreach (var item in allEntities)
             //{
             //    DbSet.Remove(item);
             //}
             //await SaveChanges();
-            var foundEntity = await DbSet.FirstOrDefaultAsync(x => x.Id == id);
-            if (foundEntity != null)
+            var foundentity = await dbset.firstordefaultasync(x => x.id == id);
+            if (foundentity != null)
             {
-                DbSet.Remove(foundEntity);
-                return await SaveChanges();
+                dbset.remove(foundentity);
+                return await savechanges();
             }
             return false;
         }
