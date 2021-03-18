@@ -6,7 +6,6 @@ namespace TheEnglishQuest
     {
         public int FirstName { get; set; }
         public int LastName { get; set; }
-        public string Password{ get; set; }
         public string EmailAdress { get; set; }
         public int GrammarPercentagePoints { get; set; } = 0;
         public int ReadingPercentagePoints { get; set; } = 0;

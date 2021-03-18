@@ -11,8 +11,6 @@ namespace TheEnglishQuestDatabase.Entities
         [Required]
         public int LastName { get; set; }
         [Required]
-        public string Password{ get; set; }
-        [Required]
         public string EmailAdress { get; set; }
         [Range(0, 100)]
         public int GrammarPercentagePoints { get; set; } = 0;

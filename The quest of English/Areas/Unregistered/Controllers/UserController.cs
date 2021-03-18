@@ -48,7 +48,7 @@ namespace The_quest_of_English.Controllers
             {
                 UserName = ApplicaitonUserInput.UserName,
                 EmailAdress = ApplicaitonUserInput.EmailAdress,
-                Password = ApplicaitonUserInput.Password
+                //Password = ApplicaitonUserInput.Password
             };
             var userDto = _applicationUserViewModelMapper.Map(user);
             var resultAdd = await _applicationUserManager.AddUser(userDto);
