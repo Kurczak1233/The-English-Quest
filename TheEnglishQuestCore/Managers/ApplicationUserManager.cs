@@ -27,17 +27,6 @@ namespace TheEnglishQuestCore.Managers
         {
             return await _ApplicationUserRepository.DeleteUser(userid);
         }
-        public async Task<IdentityResult> AddAdminRoleToUser(ApplicationUserDto user)
-        {
-            var userDb = _DTOMapper.Map(user);
-            return await _ApplicationUserRepository.AddAdminToUser(userDb);
-        }
-
-        public async Task<IdentityResult> AddOrdinaryUserRoleToUser (ApplicationUserDto user)
-        {
-            var userDb = _DTOMapper.Map(user);
-            return await _ApplicationUserRepository.AddOrdinaryRoleToUser(userDb);
-        }
         public async Task<ApplicationUserDto> GetUser(string username)
         {
             var entity = await _ApplicationUserRepository.GetUser(username);

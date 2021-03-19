@@ -1,5 +1,8 @@
-﻿namespace The_quest_of_English
+﻿using System;
+
+namespace The_quest_of_English
 {
+
     public class SD
     {
         public const string AdminUser = "AdminUser";
