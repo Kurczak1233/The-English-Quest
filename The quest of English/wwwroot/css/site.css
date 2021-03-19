@@ -143,6 +143,9 @@ body {
     color: rgb(115, 115, 115);
 }
 
+.error-text-color{
+    color:mediumvioletred;
+}
 .hoverButton:hover {
     opacity: 0.8;
 }

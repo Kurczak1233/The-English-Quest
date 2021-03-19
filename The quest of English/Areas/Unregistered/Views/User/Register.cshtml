@@ -77,7 +77,10 @@
                         <div class="col-12 d-flex justify-content-center">
                             <button type="submit" class="btn btn-warning">Submit</button>
                         </div>
-                        <span  id="submit"></span>
+                        <span id="submit"></span><!--Frontend error message!-->
+                        <div class="text-center col-12 mt-3 error-text-color">
+                            @Html.ValidationMessageFor(m => m.Email)
+                        </div>
                     </div>
                 </form>
             </div>

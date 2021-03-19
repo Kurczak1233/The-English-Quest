@@ -57,13 +57,13 @@ namespace The_quest_of_English.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid register attempt.");
+                    ModelState.AddModelError("Email", "Invalid register attempt.");
                     return View();
                 }
             }
             else
             {
-                ModelState.AddModelError(string.Empty, "Invalid register attempt.");
+                ModelState.AddModelError("Email", "Model is not valid!");
                 return View();
             }
         }
@@ -87,12 +87,13 @@ namespace The_quest_of_English.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError("Login", "Password or login is incorrect!");
                     return View();
                 }
             }
             else
             {
+                ModelState.AddModelError("Login", "Password or login is incorrect!");
                 return View();
             }
         }
