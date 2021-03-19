@@ -17,7 +17,7 @@
 <body class="background-whitish">
     <section class="container margin-top-custom">
         <div class="row">
-            <div class="offset-xl-3 col-6 shadow-lg rounded-edges light-blue-color">
+            <div class="offset-xl-3 offset-md-1 col-md-10 col-xl-6 shadow-lg rounded-edges light-blue-color">
                 <div class="row">
                     <div class="col-12 mt-3 d-flex justify-content-center">
                         <img src="~/images/Logofull.png" style="height: 150px;" />
@@ -33,19 +33,19 @@
                     </div>
                 </div>
                 <form method="post" enctype="multipart/form-data">
-                    <div class="row mb-3 mt-3">
-                        <div class="offset-1 pt-1 col-3 d-inline">
+                    <div class="row mb-3 mt-3  form-group">
+                        <div class="pt-1 col-sm-3 d-inline text-center text-sm-left offset-1 mr-5 mr-sm-0">
                             <label for="login" class="form-label">Login:</label>
                         </div>
-                        <div class="col-7 d-inline">
+                        <div class="col-sm-7 mr-5 ml-5 mr-sm-0 ml-sm-0 d-inline">
                             <input asp-for="@Model.Login" type="text" required class="form-control" id="login" aria-describedby="login">
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <div class="offset-1 pt-1 col-3 d-inline">
+                    <div class="row mb-3  form-group">
+                        <div class="pt-1 col-sm-3 d-inline text-center text-sm-left offset-1 mr-5 mr-sm-0">
                             <label for="password" class="form-label">Password:</label>
                         </div>
-                        <div class="col-7 d-inline">
+                        <div class="col-sm-7 mr-5 ml-5 mr-sm-0 ml-sm-0 d-inline">
                             <input asp-for="@Model.Password" type="password" required class="form-control" id="password" aria-describedby="password">
                         </div>
                     </div>
