@@ -15,16 +15,13 @@ namespace The_quest_of_English.Controllers
     {
         private readonly ApplicationUserViewModelMapper _applicationUserViewModelMapper;
         private readonly ApplicationUserManager _applicationUserManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
-        //private readonly IEmailSender _emailSender;
+
         public UserController(ApplicationUserManager applicationUserManager,
-            ApplicationUserViewModelMapper applicationUserViewModelMapper,
-            SignInManager<IdentityUser> signInManager
+            ApplicationUserViewModelMapper applicationUserViewModelMapper
             )
         {
             _applicationUserManager = applicationUserManager;
             _applicationUserViewModelMapper = applicationUserViewModelMapper;
-            _signInManager = signInManager;
         }
         
         public RegisterInputModel Input { get; set; }
@@ -49,7 +46,7 @@ namespace The_quest_of_English.Controllers
                     Email = model.Email,
                 };
                 var userDto = _applicationUserViewModelMapper.Map(user);
-                var resultAdd = await _applicationUserManager.AddUser(userDto, model.Password, SD.OrdinaryUser);
+                var resultAdd = await _applicationUserManager.AddUser(userDto, model.Password, SD.AdminUser);
                 if (resultAdd.Succeeded)
                 {
                     
