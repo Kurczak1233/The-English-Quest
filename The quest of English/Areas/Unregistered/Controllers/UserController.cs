@@ -43,7 +43,6 @@ namespace The_quest_of_English.Controllers
         [ActionName("Register")]
         public async Task<IActionResult> RegisterFunction()
         {
-
             ApplicationUserViewModel user = new ApplicationUserViewModel()
             {
                 UserName = ApplicaitonUserInput.UserName,
