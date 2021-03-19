@@ -52,7 +52,7 @@ namespace The_quest_of_English.Controllers
                 var resultAdd = await _applicationUserManager.AddUser(userDto, model.Password);
                 if (resultAdd.Succeeded)
                 {
-                    await _applicationUserManager.AddAdminRoleToUser(userDto);
+                    //await _applicationUserManager.AddAdminRoleToUser(userDto);
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("MainView", "Platform", new { area = "Admin" });
                 }
