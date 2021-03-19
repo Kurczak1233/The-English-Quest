@@ -9,7 +9,7 @@ namespace TheEnglishQuestCore.Interfaces
 {
     public interface IApplicationUserDto
     {
-        Task<IdentityResult> AddUser(ApplicationUserDto user, string password);
+        Task<IdentityResult> AddUser(ApplicationUserDto user, string password, string typeofUser);
         Task<bool> DeleteUser(string id);
         Task<ApplicationUserDto> GetUser(string username);
         Task<SignInResult> LogIn(string username, string password);

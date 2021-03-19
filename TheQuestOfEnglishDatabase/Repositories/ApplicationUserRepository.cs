@@ -27,12 +27,23 @@ namespace TheEnglishQuestDatabase
             _roleManager = roleManager;
         }
 
-        public async Task<IdentityResult> AddUser(ApplicationUser user, string password)
+        public async Task<IdentityResult> AddUser(ApplicationUser user, string password, string typeofUser)
         {
-
-            var result =  await _userManager.CreateAsync(user, password);
-            await _userManager.AddToRoleAsync(user, SD.AdminUser);
-            return result;
+            var result = await _userManager.CreateAsync(user, password);
+            if (!await _roleManager.RoleExistsAsync(typeofUser))
+            {
+                await _roleManager.CreateAsync(new IdentityRole(typeofUser));
+            }
+            if (result.Succeeded)
+            {
+                var result2 = await _userManager.AddToRoleAsync(user, typeofUser);
+                await _signInManager.SignInAsync(user, isPersistent: false);
+                return result2;
+            }
+            else
+            {
+                return result;
+            }
         }
 
         public async Task<SignInResult> LogIn(string username, string password)

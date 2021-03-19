@@ -49,11 +49,10 @@ namespace The_quest_of_English.Controllers
                     Email = model.Email,
                 };
                 var userDto = _applicationUserViewModelMapper.Map(user);
-                var resultAdd = await _applicationUserManager.AddUser(userDto, model.Password);
+                var resultAdd = await _applicationUserManager.AddUser(userDto, model.Password, SD.AdminUser);
                 if (resultAdd.Succeeded)
                 {
-                    //await _applicationUserManager.AddAdminRoleToUser(userDto);
-                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    
                     return RedirectToAction("MainView", "Platform", new { area = "Admin" });
                 }
                 else

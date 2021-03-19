@@ -17,10 +17,10 @@ namespace TheEnglishQuestCore.Managers
             _ApplicationUserRepository = _enc;
         }
 
-        public async Task<IdentityResult> AddUser(ApplicationUserDto user, string password)
+        public async Task<IdentityResult> AddUser(ApplicationUserDto user, string password, string typeofUser)
         {
             var entity = _DTOMapper.Map(user);
-            return await _ApplicationUserRepository.AddUser(entity, password);
+            return await _ApplicationUserRepository.AddUser(entity, password, typeofUser);
         }
 
         public async Task<bool> DeleteUser(string userid)
