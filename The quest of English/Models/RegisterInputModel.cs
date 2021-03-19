@@ -25,7 +25,7 @@ namespace The_quest_of_English.Models
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
+        [Display(Name = "ConfirmPassword")]
         [Compare("Password")]
         public string ConfirmPassword { get; set; }
     }

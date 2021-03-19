@@ -29,7 +29,6 @@ namespace TheEnglishQuestDatabase
 
         public async Task<IdentityResult> AddUser(ApplicationUser user, string password)
         {
-
             return await _userManager.CreateAsync(user, password);
         }
 
@@ -47,7 +46,6 @@ namespace TheEnglishQuestDatabase
                 await _roleManager.CreateAsync(new IdentityRole(SD.AdminUser));
             }
             return await _userManager.AddToRoleAsync(user, SD.AdminUser);
-
         }
 
         public async Task<IdentityResult> AddOrdinaryRoleToUser(ApplicationUser user)

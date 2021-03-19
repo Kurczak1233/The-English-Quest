@@ -40,6 +40,7 @@ namespace The_quest_of_English.Controllers
         [ActionName("Register")]
         public async Task<IActionResult> RegisterFunction(RegisterInputModel model)
         {
+            await _applicationUserManager.DeleteUser("xxx"); //Deletin all user
             if (ModelState.IsValid)
             {
                 ApplicationUserViewModel user = new ApplicationUserViewModel()
