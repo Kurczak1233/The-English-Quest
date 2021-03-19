@@ -24,10 +24,10 @@ namespace TheEnglishQuestDatabase
             _signInManager = signInManager;
         }
 
-        public async Task<IdentityResult> AddUser(ApplicationUser user)
+        public async Task<IdentityResult> AddUser(ApplicationUser user, string password)
         {
 
-            return await _userManager.CreateAsync(user);
+            return await _userManager.CreateAsync(user, password);
         }
 
         public async Task<SignInResult> LogIn(string username, string password)

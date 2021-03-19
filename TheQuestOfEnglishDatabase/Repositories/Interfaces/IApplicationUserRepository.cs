@@ -9,7 +9,7 @@ namespace TheEnglishQuestDatabase
     {
         Task<ApplicationUser> GetUser(string username);
         Task<bool> DeleteUser(string id);
-        Task<IdentityResult> AddUser(ApplicationUser user);
+        Task<IdentityResult> AddUser(ApplicationUser user, string password);
         Task<SignInResult> LogIn(string username, string password);
     }
 }

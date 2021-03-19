@@ -2,14 +2,15 @@
 using Microsoft.AspNetCore.Identity.UI.V4.Pages.Account.Internal;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using The_quest_of_English.Models;
 using TheEnglishQuest;
 using TheEnglishQuestCore.Managers;
 
 namespace The_quest_of_English.Controllers
 {
     [Area("Unregistered")]
-
     public class UserController : Controller
     {
         private readonly ApplicationUserViewModelMapper _applicationUserViewModelMapper;
@@ -32,7 +33,7 @@ namespace The_quest_of_English.Controllers
             _logger = logger;
         }
         [BindProperty]
-        public ApplicationUserViewModel ApplicaitonUserInput { get; set; }
+        public RegisterInputModel Input { get; set; }
 
         public IActionResult Register()
         {
@@ -45,12 +46,11 @@ namespace The_quest_of_English.Controllers
         {
             ApplicationUserViewModel user = new ApplicationUserViewModel()
             {
-                UserName = ApplicaitonUserInput.UserName,
-                EmailAdress = ApplicaitonUserInput.EmailAdress,
-                //Password = ApplicaitonUserInput.Password
+                UserName = Input.Login,
+                Email = Input.Email,
             };
             var userDto = _applicationUserViewModelMapper.Map(user);
-            var resultAdd = await _applicationUserManager.AddUser(userDto);
+            var resultAdd = await _applicationUserManager.AddUser(userDto, Input.Password);
             if (resultAdd.Succeeded)
             {
                 await _signInManager.SignInAsync(user, isPersistent: false);
@@ -75,7 +75,7 @@ namespace The_quest_of_English.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _applicationUserManager.LogIn(ApplicaitonUserInput.UserName, ApplicaitonUserInput.PhoneNumber);
+                var result = await _applicationUserManager.LogIn(Input.Login, Input.Password);
                 if (result.Succeeded)
                 {
                     return RedirectToAction("MainView", "Platform", new { area = "Admin" });

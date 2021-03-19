@@ -1,4 +1,4 @@
-﻿@model TheEnglishQuest.ApplicationUserViewModel
+﻿@model LoginModelInput
 @{
     Layout = null;
 }
@@ -38,7 +38,7 @@
                             <label for="login" class="form-label">Login:</label>
                         </div>
                         <div class="col-7 d-inline">
-                            <input asp-for="@Model.UserName" type="text" required class="form-control" id="login" aria-describedby="login">
+                            <input asp-for="@Model.Login" type="text" required class="form-control" id="login" aria-describedby="login">
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -46,7 +46,7 @@
                             <label for="password" class="form-label">Password:</label>
                         </div>
                         <div class="col-7 d-inline">
-                            <input asp-for="@Model." type="password" required class="form-control" id="password" aria-describedby="password">
+                            <input asp-for="@Model.Password" type="password" required class="form-control" id="password" aria-describedby="password">
                         </div>
                     </div>
                     <div class="row mb-5 mt-5 ">
