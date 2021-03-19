@@ -1,12 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
-
 @{
-    ViewData["Title"] = "MainView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,18 +16,22 @@
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 
 </head>
-<body>
+<body class="mb-0">
 
-    @if (SignInManager.IsSignedIn(User))
-    {
-        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
-        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "Unregistered" })">
-            <button type="submit" class="nav-link btn btn-link">Logout</button>
-        </form>
-    }
-    <partial name="PlatfromNavigationBar" />
-    <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js" asp-append-version="true"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+        <partial name="NavigationBar" />
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "Unregistered" })">
+        <button type="submit" class="nav-link btn btn-link">Logout</button>
+    </form>
+}
+    test
+
+<script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js" asp-append-version="true"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
 </body>
 </html>
