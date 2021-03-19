@@ -32,25 +32,27 @@ namespace The_quest_of_English.Controllers
             _signInManager = signInManager;
             _logger = logger;
         }
-        [BindProperty]
+        
         public RegisterInputModel Input { get; set; }
+        public LoginModelInput Input2 { get; set; }
+
 
         public IActionResult Register()
         {
-            return View();
+            return View(Input);
         }
         [ValidateAntiForgeryToken]
         [HttpPost]
         [ActionName("Register")]
-        public async Task<IActionResult> RegisterFunction()
+        public async Task<IActionResult> RegisterFunction(RegisterInputModel model)
         {
             ApplicationUserViewModel user = new ApplicationUserViewModel()
             {
-                UserName = Input.Login,
-                Email = Input.Email,
+                UserName = model.Login,
+                Email = model.Email,
             };
             var userDto = _applicationUserViewModelMapper.Map(user);
-            var resultAdd = await _applicationUserManager.AddUser(userDto, Input.Password);
+            var resultAdd = await _applicationUserManager.AddUser(userDto, model.Password);
             if (resultAdd.Succeeded)
             {
                 await _signInManager.SignInAsync(user, isPersistent: false);
@@ -65,17 +67,17 @@ namespace The_quest_of_English.Controllers
 
         public IActionResult Login()
         {
-            return View();
+            return View(Input2);
         }
 
         [ValidateAntiForgeryToken]
         [HttpPost]
         [ActionName("Login")]
-        public async Task<IActionResult> LoginFunction()
+        public async Task<IActionResult> LoginFunction(LoginModelInput model)
         {
             if (ModelState.IsValid)
             {
-                var result = await _applicationUserManager.LogIn(Input.Login, Input.Password);
+                var result = await _applicationUserManager.LogIn(model.Login, model.Password);
                 if (result.Succeeded)
                 {
                     return RedirectToAction("MainView", "Platform", new { area = "Admin" });

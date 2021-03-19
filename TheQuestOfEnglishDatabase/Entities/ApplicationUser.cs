@@ -6,11 +6,8 @@ namespace TheEnglishQuestDatabase.Entities
 {
     public class ApplicationUser : IdentityUser
     {
-        [Required]
         public int FirstName { get; set; }
-        [Required]
         public int LastName { get; set; }
-        [Required]
         public string EmailAdress { get; set; }
         [Range(0, 100)]
         public int GrammarPercentagePoints { get; set; } = 0;
