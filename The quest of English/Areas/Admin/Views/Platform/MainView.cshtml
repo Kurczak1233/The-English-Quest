@@ -17,10 +17,7 @@
 
 </head>
 <body class="mb-0">
-
-        <partial name="NavigationBar" />
-
-
+    <partial name="_FooterBar" />
 @if (SignInManager.IsSignedIn(User))
 {
     <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
@@ -28,7 +25,6 @@
         <button type="submit" class="nav-link btn btn-link">Logout</button>
     </form>
 }
-    test
 
 <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js" asp-append-version="true"></script>
