@@ -49,6 +49,16 @@ namespace TheEnglishQuestDatabase
             return await _userManager.AddToRoleAsync(user, SD.AdminUser);
 
         }
+
+        public async Task<IdentityResult> AddOrdinaryRoleToUser(ApplicationUser user)
+        {
+            if (!await _roleManager.RoleExistsAsync(SD.OrdinaryUser))
+            {
+                await _roleManager.CreateAsync(new IdentityRole(SD.OrdinaryUser));
+            }
+            return await _userManager.AddToRoleAsync(user, SD.OrdinaryUser);
+
+        }
         public async Task<ApplicationUser> GetUser(string username)
         {
             return await DbSet.Where(x => x.UserName == username).FirstOrDefaultAsync();

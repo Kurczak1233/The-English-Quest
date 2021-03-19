@@ -51,19 +51,7 @@ namespace The_quest_of_English.Controllers
                 var resultAdd = await _applicationUserManager.AddUser(userDto, model.Password);
                 if (resultAdd.Succeeded)
                 {
-                    //if (!await _roleManager.RoleExistsAsync(SD.OrdinaryUser))
-                    //{
-                    //    //Jeśli nie istnieje:
-                    //    await _roleManager.CreateAsync(new IdentityRole(SD.OrdinaryUser));
-                    //}
-                    //if (role == SD.KitchenUser)
-                    //{
-                    //    await _userManager.AddToRoleAsync(user, SD.KitchenUser);
-                    //}
-                    //else if (role == SD.FrontDeskUser)
-                    //{
-                    //    await _userManager.AddToRoleAsync(user, SD.FrontDeskUser);
-                    //}
+                    await _applicationUserManager.AddAdminRoleToUser(userDto);
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("MainView", "Platform", new { area = "Admin" });
                 }

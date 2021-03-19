@@ -13,6 +13,7 @@ namespace TheEnglishQuestCore.Interfaces
         Task<bool> DeleteUser(string id);
         Task<ApplicationUserDto> GetUser(string username);
         Task<SignInResult> LogIn(string username, string password);
-        Task<IdentityResult> AddAdminRoleToUser(ApplicationUser user);
+        Task<IdentityResult> AddAdminRoleToUser(ApplicationUserDto user);
+        Task<IdentityResult> AddOrdinaryUserRoleToUser(ApplicationUserDto user);
     }
 }
