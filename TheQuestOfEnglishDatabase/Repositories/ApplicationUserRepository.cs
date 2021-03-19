@@ -15,13 +15,16 @@ namespace TheEnglishQuestDatabase
         protected override DbSet<ApplicationUser> DbSet => _db.ApplicationUser;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
         public ApplicationUserRepository(ApplicationDbContext db,
             UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager) : base(db)
+            SignInManager<IdentityUser> signInManager,
+            RoleManager<IdentityRole> roleManager) : base(db)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
         }
 
         public async Task<IdentityResult> AddUser(ApplicationUser user, string password)
@@ -35,6 +38,16 @@ namespace TheEnglishQuestDatabase
             var result = await _signInManager.PasswordSignInAsync(username,
             password, true, lockoutOnFailure: false);
             return result;
+        }
+
+        public async Task<IdentityResult> AddAdminToUser(ApplicationUser user)
+        {
+            if (!await _roleManager.RoleExistsAsync(SD.AdminUser))
+            {
+                await _roleManager.CreateAsync(new IdentityRole(SD.AdminUser));
+            }
+            return await _userManager.AddToRoleAsync(user, SD.AdminUser);
+
         }
         public async Task<ApplicationUser> GetUser(string username)
         {

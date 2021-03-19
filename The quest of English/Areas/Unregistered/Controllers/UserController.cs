@@ -16,21 +16,15 @@ namespace The_quest_of_English.Controllers
         private readonly ApplicationUserViewModelMapper _applicationUserViewModelMapper;
         private readonly ApplicationUserManager _applicationUserManager;
         private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly ILogger<RegisterModel> _logger;
         //private readonly IEmailSender _emailSender;
         public UserController(ApplicationUserManager applicationUserManager,
             ApplicationUserViewModelMapper applicationUserViewModelMapper,
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
-            ILogger<RegisterModel> logger
+            SignInManager<IdentityUser> signInManager
             )
         {
             _applicationUserManager = applicationUserManager;
             _applicationUserViewModelMapper = applicationUserViewModelMapper;
-            _userManager = userManager;
             _signInManager = signInManager;
-            _logger = logger;
         }
         
         public RegisterInputModel Input { get; set; }
@@ -46,17 +40,38 @@ namespace The_quest_of_English.Controllers
         [ActionName("Register")]
         public async Task<IActionResult> RegisterFunction(RegisterInputModel model)
         {
-            ApplicationUserViewModel user = new ApplicationUserViewModel()
+            if (ModelState.IsValid)
             {
-                UserName = model.Login,
-                Email = model.Email,
-            };
-            var userDto = _applicationUserViewModelMapper.Map(user);
-            var resultAdd = await _applicationUserManager.AddUser(userDto, model.Password);
-            if (resultAdd.Succeeded)
-            {
-                await _signInManager.SignInAsync(user, isPersistent: false);
-                return RedirectToAction("MainView", "Platform", new { area = "Admin" });
+                ApplicationUserViewModel user = new ApplicationUserViewModel()
+                {
+                    UserName = model.Login,
+                    Email = model.Email,
+                };
+                var userDto = _applicationUserViewModelMapper.Map(user);
+                var resultAdd = await _applicationUserManager.AddUser(userDto, model.Password);
+                if (resultAdd.Succeeded)
+                {
+                    //if (!await _roleManager.RoleExistsAsync(SD.OrdinaryUser))
+                    //{
+                    //    //Jeśli nie istnieje:
+                    //    await _roleManager.CreateAsync(new IdentityRole(SD.OrdinaryUser));
+                    //}
+                    //if (role == SD.KitchenUser)
+                    //{
+                    //    await _userManager.AddToRoleAsync(user, SD.KitchenUser);
+                    //}
+                    //else if (role == SD.FrontDeskUser)
+                    //{
+                    //    await _userManager.AddToRoleAsync(user, SD.FrontDeskUser);
+                    //}
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    return RedirectToAction("MainView", "Platform", new { area = "Admin" });
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid register attempt.");
+                    return View();
+                }
             }
             else
             {

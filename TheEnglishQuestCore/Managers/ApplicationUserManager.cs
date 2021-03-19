@@ -27,7 +27,10 @@ namespace TheEnglishQuestCore.Managers
         {
             return await _ApplicationUserRepository.DeleteUser(userid);
         }
-
+        public async Task<IdentityResult> AddAdminRoleToUser(ApplicationUser user)
+        {
+            return await _ApplicationUserRepository.AddAdminToUser(user);
+        }
         public async Task<ApplicationUserDto> GetUser(string username)
         {
             var entity = await _ApplicationUserRepository.GetUser(username);

@@ -11,5 +11,6 @@ namespace TheEnglishQuestDatabase
         Task<bool> DeleteUser(string id);
         Task<IdentityResult> AddUser(ApplicationUser user, string password);
         Task<SignInResult> LogIn(string username, string password);
+        Task<IdentityResult> AddAdminToUser(ApplicationUser user);
     }
 }
