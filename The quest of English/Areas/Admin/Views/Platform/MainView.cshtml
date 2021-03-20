@@ -6,5 +6,12 @@
 }
 
 <section>
+    @if (User.IsInRole(SD.AdminUser))
+    {
+        <div>Hello @User.Identity.Name!</div>
+        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "Unregistered" })">
+            <button type="submit" class="nav-link btn btn-link">Logout</button>
+        </form>
+    }
     I AM RENDERED IN MAIN VIEW!
 </section>

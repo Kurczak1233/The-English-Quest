@@ -1,34 +1,29 @@
 ﻿<nav id="navbar" class="navbar navbar-expand-xl navbar-toggleable-xl navbar-light box-shadow shadow-lg light-blue-color">
     <div class="container">
-            <a class="navbar-brand" asp-area="Admin" asp-controller="Platform" asp-action="MainView"><span class="hoverButton dark-blue-text-color font-weight-bold">The English Quest &nbsp;</span><img src="/images/Logo.png" style="height:50px;" /></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        <div class="navbar-collapse collapse d-xl-inline-flex offset-xl-2">
-            <div class="navbar-nav flex-grow-0 btn-group btn-group-lg d-flex align-items-end" role="group" aria-label="Basic example">
+        <div class="col-xl-3 d-flex justify-content-between">
+                <a class="navbar-brand" asp-area="Admin" asp-controller="Platform" asp-action="MainView"><span class="hoverButton dark-blue-text-color font-weight-bold">The English Quest &nbsp;</span><img src="/images/Logo.png" style="height:50px;" /></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+        </div>
+        <div class="navbar-collapse col-8 offset-1 collapse d-xl-inline-flex">
+            <div class="navbar-nav flex-grow-0 btn-group d-flex btn-group-lg col-10" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-outline-light text-white button-width-120px dark-blue-color">Grammar</button>
                 <button type="button" class="btn btn-outline-light text-white button-width-120px dark-blue-color">Reading</button>
                 <button type="button" class="btn btn-outline-light text-white button-width-120px dark-blue-color">Writing</button>
                 <button type="button" class="btn btn-outline-light text-white button-width-120px dark-blue-color">Listnening</button>
                 <button type="button" class="btn btn-outline-light text-white button-width-120px dark-blue-color">Speaking</button>
-
-                @*<a class="nav-link text-dark btn warm-orange-color hoverButton" style="width:150px;" asp-area="" asp-controller="User" asp-action="Login">Login&nbsp;<i class="bi bi-person-check-fill"></i></a>*@
-                @*<div class="offset-4 col-3">
-                        <button type="button" class="btn btn-lg btn-danger" aria-label="Logout button">Log out</button>
-                    </div>*@
-
             </div>
-            <div class="navbar-nav flex-grow-0 btn-group btn-group-lg d-flex justify-content-end ml-xl-5" role="group">
-                <button type="button" class="btn btn-lg btn-danger button-width-120px">Logout<i class="bi bi-door-open"></i></button>
+            <div class="col-3 navbar-nav flex-grow-0 btn-group d-flex justify-content-end flex-column" role="group">
+                    @if (User.IsInRole(SD.AdminUser))
+                    {
+                        <div class="text-center">Hello @User.Identity.Name!</div>
+                    }
+                <div class="text-center">
+                    <button type="button" class="btn btn-danger button-width-120px">Logout<i class="bi bi-door-open"></i></button>
+                </div>
             </div>
         </div>
     </div>
 </nav>
-@if (User.IsInRole(SD.AdminUser))
-{
-    <div>Hello @User.Identity.Name!</div>
-    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "Unregistered" })">
-        <button type="submit" class="nav-link btn btn-link">Logout</button>
-    </form>
-}
