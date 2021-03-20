@@ -2889,9 +2889,9 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-light:hover {
-  color: #212529;
-  background-color: #f8f9fa;
-  border-color: #f8f9fa;
+    color: #212529;
+    background-color: rgb(51, 119, 255);
+    border-color: #f8f9fa;
 }
 
 .btn-outline-light:focus, .btn-outline-light.focus {
