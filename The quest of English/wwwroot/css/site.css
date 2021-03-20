@@ -274,3 +274,6 @@ input[type="radio"] {
 .rounded-edges{
     border-radius: 25px;
 }
+.button-width-120px{
+    width:120px;
+}

@@ -5,19 +5,18 @@
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="navbar-collapse collapse d-xl-inline-flex flex-xl-row-reverse">
-            <ul class="navbar-nav flex-grow-0">
-                <li class="nav-item mr-3 p-1">
-                    <a class="nav-link text-white btn dark-blue-color hoverButton " style="width:150px;" asp-area="" asp-controller="User" asp-action="Register">Register&nbsp;<i class="bi bi-person-plus-fill"></i></a>
-                </li>
-                <li class="nav-item mr-3 p-1">
-                    <a class="nav-link text-dark btn warm-orange-color hoverButton" style="width:150px;" asp-area="" asp-controller="User" asp-action="Login">Login&nbsp;<i class="bi bi-person-check-fill"></i></a>
-                </li>
-            </ul>
+        <div class="navbar-collapse collapse d-xl-inline-flex offset-2">
+            <div class="navbar-nav flex-grow-0 btn-group btn-group-lg" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-danger button-width-120px">Grammar</button>
+                <button type="button" class="btn btn-warning button-width-120px" >Reading</button>
+                <button type="button" class="btn btn-success button-width-120px" >Writing</button>
+                <button type="button" class="btn btn-info button-width-120px" >Listnening</button>
+                <button type="button" class="btn btn-danger button-width-120px">Speaking</button>
+                @*<a class="nav-link text-dark btn warm-orange-color hoverButton" style="width:150px;" asp-area="" asp-controller="User" asp-action="Login">Login&nbsp;<i class="bi bi-person-check-fill"></i></a>*@
+            </div>
         </div>
     </div>
 </nav>
-
 @if (User.IsInRole(SD.AdminUser))
 {
     <div>Hello @User.Identity.Name!</div>
