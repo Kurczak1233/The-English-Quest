@@ -1,12 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using The_quest_of_English.Utilities;
 using TheEnglishQuestDatabase.Entities;
 using TheQuestOfEnglishDatabase;
+
 
 namespace TheEnglishQuestDatabase
 {
@@ -56,6 +54,11 @@ namespace TheEnglishQuestDatabase
         public async Task<ApplicationUser> GetUser(string username)
         {
             return await DbSet.Where(x => x.UserName == username).FirstOrDefaultAsync();
+        }
+        public async Task<ApplicationUser> GetLoggedUser(string userId)
+        {
+            var user = await DbSet.Where(x => x.Id == userId).SingleOrDefaultAsync();
+            return user;
         }
         public async Task<bool> DeleteUser(string id)
         {

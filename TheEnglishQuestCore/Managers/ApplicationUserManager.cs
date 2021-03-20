@@ -33,6 +33,12 @@ namespace TheEnglishQuestCore.Managers
             var user = _DTOMapper.Map(entity);
             return user;
         }
+        public async Task<ApplicationUserDto> GetLoggedUser(string userId)
+        {
+            var user = await _ApplicationUserRepository.GetLoggedUser(userId);
+            var userDto = _DTOMapper.Map(user);
+            return userDto;
+        }
 
         public async Task<SignInResult> LogIn(string username, string password)
         {
