@@ -1,0 +1,27 @@
+﻿<nav id="navbar" class="navbar navbar-expand-xl navbar-toggleable-xl navbar-light box-shadow light-blue-color">
+    <div class="container">
+        <a class="navbar-brand" asp-area="Admin" asp-controller="Platform" asp-action="MainView"><span class="hoverButton dark-blue-text-color font-weight-bold">The English Quest &nbsp;</span><img src="/images/Logo.png" style="height:50px;" /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse d-xl-inline-flex flex-xl-row-reverse">
+            <ul class="navbar-nav flex-grow-0">
+                <li class="nav-item mr-3 p-1">
+                    <a class="nav-link text-white btn dark-blue-color hoverButton " style="width:150px;" asp-area="" asp-controller="User" asp-action="Register">Register&nbsp;<i class="bi bi-person-plus-fill"></i></a>
+                </li>
+                <li class="nav-item mr-3 p-1">
+                    <a class="nav-link text-dark btn warm-orange-color hoverButton" style="width:150px;" asp-area="" asp-controller="User" asp-action="Login">Login&nbsp;<i class="bi bi-person-check-fill"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+@if (User.IsInRole(SD.AdminUser))
+{
+    <div>Hello @User.Identity.Name!</div>
+    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "Unregistered" })">
+        <button type="submit" class="nav-link btn btn-link">Logout</button>
+    </form>
+}

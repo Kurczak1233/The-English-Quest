@@ -13,14 +13,7 @@
 
 </head>
 <body class="mb-0">
-
-    @if (User.IsInRole(SD.AdminUser))
-    {
-        <div>Hello @User.Identity.Name!</div>
-        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "Unregistered" })">
-            <button type="submit" class="nav-link btn btn-link">Logout</button>
-        </form>
-    }
+    <partial name="_PlatformNavigationBar" />
     @RenderBody()
     <partial name="_FooterBar">
         <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
