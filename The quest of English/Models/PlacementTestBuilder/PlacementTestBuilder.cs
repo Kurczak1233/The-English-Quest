@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace The_quest_of_English.Models.PlacementTestBuilder
+﻿namespace The_quest_of_English.Models
 {
     public class PlacementTestBuilder
     {
@@ -40,5 +35,12 @@ namespace The_quest_of_English.Models.PlacementTestBuilder
         {
             _question.CorrectAnswear = answear;
         }
+        public PlacementTestQuestion BuildQuestion()
+        {
+            var Task = _question;
+            ClearQuestion();
+            return Task;
+        }
+        public PlacementTestQuestion ClearQuestion() => _question = new PlacementTestQuestion();
     }
 }

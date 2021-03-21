@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using TheEnglishQuestCore.Managers;
 using Microsoft.AspNet.Identity;
 using TheEnglishQuest;
+using The_quest_of_English.Models;
 
 namespace The_quest_of_English.Areas.Controllers
 {
@@ -28,5 +29,19 @@ namespace The_quest_of_English.Areas.Controllers
             var userViewModel = _applicationUserViewModelMapper.Map(user);
             return View(userViewModel);
         }
+
+        public IActionResult CreateQuestion()
+        {
+            return View();
+        }
+
+        //[ValidateAntiForgeryToken]
+        //[HttpPost]
+        //[ActionName("CreateQuestion")]
+        //public async Task<IActionResult> CreateQuestion()
+        //{
+        //    PlacementTestBuilder builder = new PlacementTestBuilder();
+        //    builder.
+        //}
     }
 }
