@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
+using The_quest_of_English.Models;
 using The_quest_of_English.Models.ViewModels;
 using TheEnglishQuestCore.Managers;
 
@@ -33,6 +34,26 @@ namespace The_quest_of_English.Controllers
 
         public async Task<IActionResult> SampleEnglishTest()
         {
+            //Add
+            SampleTestQAViewModel vm = new SampleTestQAViewModel()
+            {
+                Question = "The Yorkie shares its ancient ... with all dog breeds.",
+                Question2 = "",
+                QuestionDecorationPart = "",
+                FirstQuestionRadioName = "GrammarAnswear5",
+                FirstQuestionId = "GrammarAnswear13",
+                FirstQuestionAnswear = "legacy",
+                SecondQuestionRadioName = "GrammarAnswear5",
+                SecondQuestionId = "GrammarAnswear14",
+                SecondQuestionAnswear = "ancestry",
+                ThirdQuestionRadioName = "GrammarAnswear5",
+                ThirdQuestionId = "GrammarAnswear15",
+                ThirdQuestionAnswear = "heritage",
+                Answear = "ancestry"
+            };
+            var entity = _SampleTestQAViewModelMapper.Map(vm);
+            await _SampleTestQAManager.AddNew(entity);
+            ///
             var AllListDto = await _SampleTestQAManager.GetAllValues();
             var AnswearList = AllListDto.Select(x => x.Answear).ToList();
             var dtos = await _SampleTestQAManager.GetAllValues();
