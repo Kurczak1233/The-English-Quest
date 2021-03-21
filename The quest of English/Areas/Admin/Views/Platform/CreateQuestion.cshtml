@@ -1,24 +1,117 @@
-﻿@{
+﻿@model The_quest_of_English.PlacementTestQuestion
+@{
     Layout = "_AdminAddObjectModel";
 }
 
 <main class="container">
     <div class="row">
-        <div class="light-blue-color col-xl-6 rounded col-sm-8 offset-sm-2 offset-xl-3" style="margin-top: 200px;">
+        <div class="light-blue-color col-xl-8 rounded col-sm-10 offset-sm-1 offset-xl-2" style="margin-top: 100px;">
             <form method="post">
                 <div class="p-2 text-center mt-4 font-size-medium col-12">
                     Add question
                 </div>
                 <hr>
                 <div class="row">
-                    <div class="col-3 offset-1 d-flex align-items-center mt-1">
-                        <label for="QuestionPart1">QuestionFirstPart:</label>
+                    <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
+                        <label for="QuestionPart1">Question first part:</label>
                     </div>
                     <div class="col-7">
-                        <input type="text" id="QuestionPart1" class="form-control" /> 
+                        <input type="text" id="QuestionPart1" class="form-control" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
+                        <label for="QuestionPart2">Question second part:</label>
+                    </div>
+                    <div class="col-7">
+                        <input type="text" id="QuestionPart2" class="form-control" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
+                        <label for="QuestionPart3">Question decorated part:</label>
+                    </div>
+                    <div class="col-7">
+                        <input type="text" id="QuestionPart3" class="form-control" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
+                        <label for="QuestionPart4">Answear 1:</label>
+                    </div>
+                    <div class="col-7">
+                        <input type="text" id="QuestionPart4" class="form-control" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
+                        <label for="QuestionPart5">Answear 2:</label>
+                    </div>
+                    <div class="col-7">
+                        <input type="text" id="QuestionPart5" class="form-control" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
+                        <label for="QuestionPart1">Answear 3:</label>
+                    </div>
+                    <div class="col-7">
+                        <input type="text" id="QuestionPart6" class="form-control" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
+                        <label for="QuestionPart6">Answear 4:</label>
+                    </div>
+                    <div class="col-7">
+                        <input type="text" id="QuestionPart1" class="form-control" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
+                        <label for="QuestionPart7">Correct answear:</label>
+                    </div>
+                    <div class="col-7">
+                        <input type="text" id="QuestionPart7" class="form-control" />
                     </div>
                 </div>
             </form>
+            <hr />
+            <div class="row">
+                <div class="col-12 text-center font-size-rather-small">
+                    Preview
+                </div>
+            </div>
+            <section id="questionAndAnswears" style="margin-left:35%">
+                <div class="row mt-3">
+                    <div class="question-circle text-center ml-4">
+                        <strong class="font-size-medium question">1.</strong>
+                    </div>
+                    <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small mt-1">
+                        <p>Pytanie</p>
+                    </div>
+                </div>
+                <div class="form-check" id="checkAnswears">
+                    <div class="mt-1 form-check ml-5 answearRadio">
+                        <input class="form-check-input" type="radio" name="1" id="Answear1">
+                        <label class="form-check-label" for="Answear1">
+                            Odpowiedź1
+                        </label>
+                    </div>
+                    <div class="mt-1 form-check ml-5 answearRadio">
+                        <input class="form-check-input" type="radio" name="1" id="Answear2">
+                        <label class="form-check-label" for="Answear2">
+                            Odpowiedź2
+                        </label>
+                    </div>
+                    <div class="mt-1 form-check ml-5 answearRadio">
+                        <input class="form-check-input" type="radio" name="1" id="Answear3">
+                        <label class="form-check-label" for="Answear3">
+                            Odpowiedź3
+                        </label>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 </main>

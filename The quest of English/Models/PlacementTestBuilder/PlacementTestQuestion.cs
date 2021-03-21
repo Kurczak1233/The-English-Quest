@@ -2,7 +2,6 @@
 {
     public class PlacementTestQuestion
     {
-        public int Points { get; set; }
         public int QuestionNumber { get; set; }
         public string QuestionFirstPart { get; set; }
         public string QuestionDecoratedPart { get; set; }
