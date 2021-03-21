@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using The_quest_of_English.Models;
 using TheEnglishQuest;
@@ -76,7 +77,10 @@ namespace The_quest_of_English.Controllers
                 var result = await _applicationUserManager.LogIn(model.Login, model.Password);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("MainView", "Platform", new { area = "Admin" });
+                    var userId = User.Identity.GetUserId();
+                    var user = await _applicationUserManager.GetLoggedUser(userId);
+                    var userViewModel = _applicationUserViewModelMapper.Map(user);
+                    return RedirectToAction("MainView", "Platform", new { area = "Admin", user=userViewModel });
                 }
                 else
                 {

@@ -41,7 +41,7 @@
                                     Grammar
                                 </div>
                             </div>
-                            @await Html.PartialAsync("QuestionAndAnswearPartial", new AnswearsAndQuestionsList { Answears = Model.Answears.Take(5) , SampleTestQAViewModels = @Model.SampleTestQAViewModels.Take(5)});
+                            @await Html.PartialAsync("QuestionAndAnswearPartial", new AnswearsAndQuestionsList { Answears = Model.Answears.Take(5) , SampleTestQAViewModels = @Model.SampleTestQAViewModels.Take(5)})
                         <div class="text-center mt-5 mb-5">
                             <button id="checkAnswearsGrammar" type="submit" class="btn warm-orange-color">Check answears</button>
                         </div>
@@ -54,7 +54,7 @@
                                     Reading
                                 </div>
                             </div>
-                            @await Html.PartialAsync("QuestionAndAnswearPartial", new AnswearsAndQuestionsList { Answears = Model.Answears.Skip(5).Take(5), SampleTestQAViewModels = @Model.SampleTestQAViewModels.Skip(5).Take(5) });
+                            @await Html.PartialAsync("QuestionAndAnswearPartial", new AnswearsAndQuestionsList { Answears = Model.Answears.Skip(5).Take(5), SampleTestQAViewModels = @Model.SampleTestQAViewModels.Skip(5).Take(5) })
                         <div class="text-center mt-5 mb-5">
                             <button id="checkAnswearsReading" type="submit" class="btn warm-orange-color">Check answears</button>
                         </div>
@@ -67,7 +67,7 @@
                                     Writing
                                 </div>
                             </div>
-                            @await Html.PartialAsync("QuestionAndAnswearPartial", new AnswearsAndQuestionsList { Answears = Model.Answears.Skip(10).Take(5), SampleTestQAViewModels = @Model.SampleTestQAViewModels.Skip(10).Take(5) });
+                            @await Html.PartialAsync("QuestionAndAnswearPartial", new AnswearsAndQuestionsList { Answears = Model.Answears.Skip(10).Take(5), SampleTestQAViewModels = @Model.SampleTestQAViewModels.Skip(10).Take(5) })
                         <div class="text-center mt-5 mb-5">
                             <button id="checkAnswearsWriting" onclick="CheckAnswears" type="submit" class="btn warm-orange-color">Check answears</button>
                         </div>
