@@ -37,22 +37,26 @@ namespace The_quest_of_English.Controllers
             //Add
             SampleTestQAViewModel vm = new SampleTestQAViewModel()
             {
-                Question = "The Yorkie shares its ancient ... with all dog breeds.",
+                Question = "The prevailing notion that wind power is too costly results largely from early research which focused on turbines with huge blades that stood hundreds of metres tall. These machines were not designed for ease of production or maintenance, and they were enormously expensive.",
                 Question2 = "",
                 QuestionDecorationPart = "",
-                FirstQuestionRadioName = "GrammarAnswear5",
-                FirstQuestionId = "GrammarAnswear13",
-                FirstQuestionAnswear = "legacy",
-                SecondQuestionRadioName = "GrammarAnswear5",
-                SecondQuestionId = "GrammarAnswear14",
-                SecondQuestionAnswear = "ancestry",
-                ThirdQuestionRadioName = "GrammarAnswear5",
-                ThirdQuestionId = "GrammarAnswear15",
-                ThirdQuestionAnswear = "heritage",
-                Answear = "ancestry"
+                FirstQuestionRadioName = "ReadingAnswear5",
+                FirstQuestionId = "ReadingAnswear13",
+                FirstQuestionAnswear = "Wind power generates not enough money to be profitable.",
+                SecondQuestionRadioName = "ReadingAnswear5",
+                SecondQuestionId = "ReadingAnswear14",
+                SecondQuestionAnswear = "The structure of machines is far too complicated.",
+                ThirdQuestionRadioName = "ReadingAnswear5",
+                ThirdQuestionId = "ReadingAnswear15",
+                ThirdQuestionAnswear = "It is widely known that wind power is the best source of cheap energy.",
+                Answear = "The structure of machines is far too complicated."
             };
             var entity = _SampleTestQAViewModelMapper.Map(vm);
             await _SampleTestQAManager.AddNew(entity);
+
+            //var allEntities = await _SampleTestQAManager.GetAllValues();
+            //var deletedObj = allEntities.Where(x => x.Id == 9).SingleOrDefault();
+            //await _SampleTestQAManager.Delete(deletedObj);
             ///
             var AllListDto = await _SampleTestQAManager.GetAllValues();
             var AnswearList = AllListDto.Select(x => x.Answear).ToList();
