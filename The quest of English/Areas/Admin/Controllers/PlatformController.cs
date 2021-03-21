@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-using TheEnglishQuestCore.Managers;
-using Microsoft.AspNet.Identity;
-using TheEnglishQuest;
-using The_quest_of_English.Models;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
+using The_quest_of_English.Models.InputModels;
+using TheEnglishQuest;
+using TheEnglishQuestCore.Managers;
 
-namespace The_quest_of_English.Areas.Controllers
+namespace The_quest_of_English
 {
     [Area("Admin")]
     public class PlatformController : Controller
@@ -19,33 +19,8 @@ namespace The_quest_of_English.Areas.Controllers
             _applicationUserManager = applicationUserManager;
         }
         
-        public InputModel InputModelCreateQuestion { get; set; }
-        public class InputModel
-        {
-            [Required]
-            [StringLength(400, ErrorMessage = "The question can contain only 400 signs!")]
-            public string QuestionFirstPart { get; set; }
-            [StringLength(100, ErrorMessage = "The decoration part can contain only 100 signs!")]
-            public string QuestionDecoratedPart { get; set; }
-            [StringLength(400, ErrorMessage = "The question can contain only 400 signs!")]
-            public string QuestionSecondPart { get; set; }
-
-            [Required]
-            [StringLength(200, ErrorMessage = "The answear can contain only 200 signs!")]
-            public string FirstAnswear { get; set; }
-            [Required]
-            [StringLength(200, ErrorMessage = "The answear can contain only 200 signs!")]
-            public string SecondAnswear { get; set; }
-            [Required]
-            [StringLength(200, ErrorMessage = "The answear can contain only 200 signs!")]
-            public string ThirdAnswear { get; set; }
-            [StringLength(200, ErrorMessage = "The answear can contain only 200 signs!")]
-            public string FourthAnswear { get; set; }
-
-            [Required]
-            [StringLength(200, ErrorMessage = "The answear can contain only 200 signs!")]
-            public string CorrectAnswear { get; set; }
-        }
+        public QuestionModelInput QuestionModelInput { get; set; }
+        public AnswearsModelInput AnswearsModelInput { get; set; }
 
         public IActionResult MainView(ApplicationUserViewModel user)
         {
@@ -61,8 +36,19 @@ namespace The_quest_of_English.Areas.Controllers
 
         public IActionResult CreateQuestion()
         {
-            PlacementTestQuestion question = new PlacementTestQuestion();
+            QuestionModelInput question = new QuestionModelInput();
             return View(question);
+        }
+
+        public IActionResult CreateAnswears()
+        {
+            AnswearsModelInput answears = new AnswearsModelInput();
+            return View(answears);
+        }
+
+        public IActionResult BuildTask()
+        {
+            return View();
         }
 
         //[ValidateAntiForgeryToken]
