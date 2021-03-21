@@ -16,7 +16,9 @@
 <body class="mb-0">
     <partial name="_PlatformNavigationBar" model="Model"/>
     @RenderBody()
-    <partial name="_FooterBar">
+    <div class="fixed-bottom">
+        <partial name="_FooterBar">
+        </div>
         <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js" asp-append-version="true"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>

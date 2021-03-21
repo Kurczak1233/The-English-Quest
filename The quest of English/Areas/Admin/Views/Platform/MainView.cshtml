@@ -8,17 +8,20 @@
 
 <main class="container mt-5">
     <div class="row">
-        <article class="col-9">
+        <article class="col-9 p-4">
             @{if (Model.Level == null)
                 {
                     <p class="text-center mt-5 font-size-big">Welcome to the platform!</p>
-                    <p class="text-center font-size-medium">You have to complete a placement test before you gain access to the plaftorm.</p>
-                    <p class="text-center">Placement test involves answearing multiple questions related to general English knowledge. Accordingly to your test results you will gain access to multiple sections where you can continue further learning process.</p>
-                    
+                    <p class="text-center font-size-medium">You have to complete the placement test before you gain access to the plaftorm.</p>
+                    <p class="text-center mt-3">Placement test involves answearing multiple questions related to general English knowledge. Accordingly to your test results you will gain access to multiple sections where you can continue further learning process.
+                    It is mandatory to solve the test. You should be able to understand the questions in order to continue the learning process, because the platform is made for intermediate and advanced English users! Despite the result you achieve, you will have access to all of the resources. Solving the test will tell us on what level are you currently being on and how to improve the platform.</p>
+                    <div class="text-center mt-5">
+                        <button class="btn warm-orange-color" type="button" aria-label="PlacementTestButton">Take the placement test</button>
+                    </div>
                 }
                 else
                 {
-                    <p>You have some level!</p>
+                     <p class="text-center mt-5 font-size-big">Welcome to the platform!</p>
                 }
             }
 
