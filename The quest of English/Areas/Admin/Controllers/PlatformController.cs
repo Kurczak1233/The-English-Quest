@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using TheEnglishQuestCore.Managers;
 using Microsoft.AspNet.Identity;
+using TheEnglishQuest;
 
 namespace The_quest_of_English.Areas.Controllers
 {
@@ -16,7 +17,11 @@ namespace The_quest_of_English.Areas.Controllers
             _applicationUserManager = applicationUserManager;
         }
 
-        public async Task<IActionResult> MainView()
+        public IActionResult MainView(ApplicationUserViewModel user)
+        {
+            return View(user);
+        }
+        public async Task<IActionResult> PlacementTest()
         {
             var userId = User.Identity.GetUserId();
             var user = await _applicationUserManager.GetLoggedUser(userId);
