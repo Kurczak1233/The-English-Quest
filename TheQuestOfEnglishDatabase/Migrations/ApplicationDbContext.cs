@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using TheEnglishQuestDatabase;
 using TheEnglishQuestDatabase.Entities;
 
 namespace TheQuestOfEnglishDatabase
@@ -13,6 +14,7 @@ namespace TheQuestOfEnglishDatabase
         public DbSet<EncouragementPosition> EncouragementPositions{ get; set; }
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
         public DbSet<SampleTestQA> SampleTestQA { get; set; }
+        public DbSet<PlacementTestTask> PlacementTestTasks{ get; set; }
 
     }
 }

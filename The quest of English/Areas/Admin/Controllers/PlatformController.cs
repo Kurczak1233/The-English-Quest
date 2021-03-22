@@ -43,8 +43,16 @@ namespace The_quest_of_English
         public IActionResult CreateAnswears(QuestionModelInput questions)
         {
             AnswearAndQuestionsViewModel viewModel = new AnswearAndQuestionsViewModel();
-            viewModel.Question = questions;
+            //viewModel.Question = questions;
             return View(viewModel);
+        }
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        [ActionName("CreateAnswears")]
+        public IActionResult CreateAnswearsFunction(AnswearAndQuestionsViewModel questionsAndAnswears)
+        {
+            
+            return RedirectToAction("PlacementTest");
         }
 
         public IActionResult BuildTask()
