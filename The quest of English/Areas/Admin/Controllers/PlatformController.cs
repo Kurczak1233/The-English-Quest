@@ -33,10 +33,13 @@ namespace The_quest_of_English
         }
         public async Task<IActionResult> PlacementTest()
         {
-            var userId = User.Identity.GetUserId();
-            var user = await _applicationUserManager.GetLoggedUser(userId);
-            var userViewModel = _applicationUserViewModelMapper.Map(user);
-            return View(userViewModel);
+            //var userId = User.Identity.GetUserId();
+            //var user = await _applicationUserManager.GetLoggedUser(userId);
+            //var userViewModel = _applicationUserViewModelMapper.Map(user);
+            //Usermodel to view
+            var TasksListDto = await _placementTestTaskManager.GetAllPositions();
+            var TaskList = _placementTestTaskViewModelMapper.Map(TasksListDto);
+            return View(TaskList);
         }
 
         public IActionResult CreateQuestion()
@@ -70,14 +73,5 @@ namespace The_quest_of_English
         {
             return View();
         }
-
-        //[ValidateAntiForgeryToken]
-        //[HttpPost]
-        //[ActionName("CreateQuestion")]
-        //public async Task<IActionResult> CreateQuestion()
-        //{
-        //    PlacementTestBuilder builder = new PlacementTestBuilder();
-        //    builder.
-        //}
     }
 }
