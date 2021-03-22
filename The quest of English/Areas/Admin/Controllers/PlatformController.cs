@@ -25,8 +25,6 @@ namespace The_quest_of_English
             _placementTestTaskViewModelMapper = placementTestTaskViewModelMapper;
             _placementTestTaskManager = placementTestTaskManager;
         }
-
-        public AnswearAndQuestionsViewModel Mode { get; set; }
         public IActionResult MainView(ApplicationUserViewModel user)
         {
             return View(user);
