@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using The_quest_of_English.Controllers;
 using The_quest_of_English.Models;
+using The_quest_of_English.ViewModelMapper;
 using TheEnglishQuestCore;
 using TheEnglishQuestCore.Managers;
 using TheEnglishQuestDatabase;
@@ -55,7 +56,7 @@ namespace The_quest_of_English
             services.AddTransient<EncouragementPoisitonViewModelMapper>();
             services.AddTransient<ApplicationUserViewModelMapper>();
             services.AddTransient<SampleTestQAViewModelMapper>();
-            services.AddTransient<PlacementTestTaskViewModel>();
+            services.AddTransient<PlacementTestTaskViewModelMapper>();
             
             // Identity
             //services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)

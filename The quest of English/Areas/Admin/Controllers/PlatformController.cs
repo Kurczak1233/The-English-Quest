@@ -17,10 +17,13 @@ namespace The_quest_of_English
         private readonly ApplicationUserManager _applicationUserManager;
         private readonly PlacementTestTaskViewModelMapper _placementTestTaskViewModelMapper;
         private readonly PlacementTestTaskManager _placementTestTaskManager;
-        public PlatformController(ApplicationUserViewModelMapper applicationUserViewModelMapper, ApplicationUserManager applicationUserManager)
+
+        public PlatformController(ApplicationUserViewModelMapper applicationUserViewModelMapper, ApplicationUserManager applicationUserManager, PlacementTestTaskViewModelMapper placementTestTaskViewModelMapper, PlacementTestTaskManager placementTestTaskManager)
         {
             _applicationUserViewModelMapper = applicationUserViewModelMapper;
             _applicationUserManager = applicationUserManager;
+            _placementTestTaskViewModelMapper = placementTestTaskViewModelMapper;
+            _placementTestTaskManager = placementTestTaskManager;
         }
 
         public AnswearAndQuestionsViewModel Mode { get; set; }
@@ -56,7 +59,8 @@ namespace The_quest_of_English
         {
             PlacementTestBuilder builder = new PlacementTestBuilder();
             PlacementTestBuilderDirector director = new PlacementTestBuilderDirector(builder, questionsAndAnswears);
-            PlacementTestTaskViewModel model = director.BuildTask();
+            PlacementTestTaskViewModel model = new PlacementTestTaskViewModel(); 
+            model = director.BuildTask();
             var modelDto = _placementTestTaskViewModelMapper.Map(model);
             await _placementTestTaskManager.AddNewPosition(modelDto);
             return RedirectToAction("PlacementTest");

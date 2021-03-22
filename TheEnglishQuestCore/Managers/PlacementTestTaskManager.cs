@@ -7,9 +7,9 @@ namespace TheEnglishQuestCore
     public class PlacementTestTaskManager : DTOManager<PlacementTestTask, PlacementTestTaskDTO>, IPlacementTestTaskDto
     {
         private readonly IPlacementTestTaskRepository _placementTestTaskRepository;
-        public PlacementTestTaskManager(DTOMapper<PlacementTestTask, PlacementTestTaskDTO> mapper) : base(mapper)
+        public PlacementTestTaskManager(DTOMapper<PlacementTestTask, PlacementTestTaskDTO> mapper, IPlacementTestTaskRepository repo) : base(mapper)
         {
-
+            _placementTestTaskRepository = repo;
         }
         public async Task<bool> AddNewPosition(PlacementTestTaskDTO encPosition)
         {
