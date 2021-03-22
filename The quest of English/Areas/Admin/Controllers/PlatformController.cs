@@ -18,6 +18,7 @@ namespace The_quest_of_English
         private readonly PlacementTestTaskViewModelMapper _placementTestTaskViewModelMapper;
         private readonly PlacementTestTaskManager _placementTestTaskManager;
 
+        public int MyProperty { get; set; }
         public PlatformController(ApplicationUserViewModelMapper applicationUserViewModelMapper, ApplicationUserManager applicationUserManager, PlacementTestTaskViewModelMapper placementTestTaskViewModelMapper, PlacementTestTaskManager placementTestTaskManager)
         {
             _applicationUserViewModelMapper = applicationUserViewModelMapper;
@@ -25,16 +26,15 @@ namespace The_quest_of_English
             _placementTestTaskViewModelMapper = placementTestTaskViewModelMapper;
             _placementTestTaskManager = placementTestTaskManager;
         }
-        public IActionResult MainView(ApplicationUserViewModel user)
+        public async Task<IActionResult> MainView()
         {
-            return View(user);
+            var userId = User.Identity.GetUserId();
+            var user = await _applicationUserManager.GetLoggedUser(userId);
+            var userViewModel = _applicationUserViewModelMapper.Map(user);
+            return View(userViewModel);
         }
         public async Task<IActionResult> PlacementTest()
         {
-            //var userId = User.Identity.GetUserId();
-            //var user = await _applicationUserManager.GetLoggedUser(userId);
-            //var userViewModel = _applicationUserViewModelMapper.Map(user);
-            //Usermodel to view
             var TasksListDto = await _placementTestTaskManager.GetAllPositions();
             var TaskList = _placementTestTaskViewModelMapper.Map(TasksListDto);
             return View(TaskList);

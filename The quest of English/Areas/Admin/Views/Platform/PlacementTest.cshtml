@@ -4,42 +4,52 @@
 }
 <main class="container mt-5">
     <div class="row">
-        <div class="col-12 text-center">
+        <div class="col-8 text-center">
             <a asp-controller="Platform" asp-action="CreateQuestion" class="btn warm-orange-color">Create question</a>
         </div>
 
         <div class="col-8">
-            @*Pętla*@
+            @{int counter = 1;} 
+            @foreach (var item in Model)
+            {
             <section id="questionAndAnswears">
                 <div class="row mt-3">
                     <div class="question-circle text-center ml-4">
-                        <strong class="font-size-medium question">1.</strong> @*Numer zadania i punkty*@
+                        <strong class="font-size-medium question">@counter</strong> @*Numer zadania i punkty*@
                     </div>
                     <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small mt-1">
-                        <p>Pytanie</p>
+                        <p><span id="FirstQuestionPart">@item.QuestionFirstPart</span>&nbsp;<span id="DecorationPart" class="dark-blue-text-color font-weight-bold font-italic">@item.QuestionDecoratedPart</span>&nbsp;<span id="SecondQuestionPart">@item.QuestionSecondPart</span></p>
                     </div>
                 </div>
                 <div class="form-check" id="checkAnswears">
                     <div class="mt-1 form-check ml-5 answearRadio">
-                        <input class="form-check-input" type="radio" name="1" id="Answear1">
-                        <label class="form-check-label" for="Answear1">
-                            Odpowiedź1
+                        <input class="form-check-input" type="radio" name="@counter" id="@counter">
+                        <label class="form-check-label" for="@counter">
+                            @item.FirstAnswear
                         </label>
                     </div>
                     <div class="mt-1 form-check ml-5 answearRadio">
-                        <input class="form-check-input" type="radio" name="1" id="Answear2">
-                        <label class="form-check-label" for="Answear2">
-                            Odpowiedź2
+                        <input class="form-check-input" type="radio" name="@counter" id="@counter">
+                        <label class="form-check-label" for="@counter">
+                            @item.SecondAnswear
                         </label>
                     </div>
                     <div class="mt-1 form-check ml-5 answearRadio">
-                        <input class="form-check-input" type="radio" name="1" id="Answear3">
-                        <label class="form-check-label" for="Answear3">
-                            Odpowiedź3
+                        <input class="form-check-input" type="radio" name="@counter" id="@counter">
+                        <label class="form-check-label" for="@counter">
+                            @item.ThirdAnswear
+                        </label>
+                    </div>
+                    <div class="mt-1 form-check ml-5 answearRadio">
+                        <input class="form-check-input" type="radio" name="@counter" id="@counter">
+                        <label class="form-check-label" for="@counter">
+                            @item.FourthAnswear
                         </label>
                     </div>
                 </div>
             </section>
+                counter++;
+            }
         </div>
         <div class="col-4 border-left">
             Test

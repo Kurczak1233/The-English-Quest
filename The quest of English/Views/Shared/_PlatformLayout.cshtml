@@ -1,5 +1,4 @@
-﻿@model TheEnglishQuest.ApplicationUserViewModel
-@using Microsoft.AspNetCore.Identity
+﻿@using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 <!DOCTYPE html>
@@ -14,7 +13,7 @@
 
 </head>
 <body class="mb-0">
-    <partial name="_PlatformNavigationBar" model="Model"/>
+    <partial name="_PlatformNavigationBar"/>
     @RenderBody()
     <div class="fixed-bottom">
         <partial name="_FooterBar">

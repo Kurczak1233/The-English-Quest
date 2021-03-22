@@ -1,5 +1,4 @@
-﻿@model TheEnglishQuest.ApplicationUserViewModel
-<nav id="navbar" class="navbar navbar-expand-xl navbar-light box-shadow shadow-lg light-blue-color">
+﻿<nav id="navbar" class="navbar navbar-expand-xl navbar-light box-shadow shadow-lg light-blue-color">
     <div class="container">
         <div class="col-xl-3 d-flex justify-content-between">
             <a class="navbar-brand" asp-area="Admin" asp-controller="Platform" asp-action="MainView"><span class="hoverButton dark-blue-text-color font-weight-bold">The English Quest &nbsp;</span><img src="/images/Logo.png" style="height:50px;" /></a>
@@ -8,25 +7,25 @@
             </button>
 
             <ul style="margin-left:50%;" class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton1">
-                @{if (Model.Level != null)
-                    { <li><button type="button" class="btn btn-outline-light text-white button-width-120px dark-blue-color">Grammar</button></li>
+
+                     <li><button type="button" class="btn btn-outline-light text-white button-width-120px dark-blue-color">Grammar</button></li>
                         <li><button type="button" class="mt-2 btn btn-outline-light text-white button-width-120px dark-blue-color">Reading</button></li>
                         <li><button type="button" class="mt-2 btn btn-outline-light text-white button-width-120px dark-blue-color">Writing</button></li>
                         <li><button type="button" class="mt-2 btn btn-outline-light text-white button-width-120px dark-blue-color">Listnening</button></li>
                         <li><button type="button" class="mt-2 btn btn-outline-light text-white button-width-120px dark-blue-color">Speaking</button></li>
-                        } }<li><button type="button" class="mt-2 btn btn-danger button-width-120px">Logout<i class="bi bi-door-open"></i></button></li>
+                        <li><button type="button" class="mt-2 btn btn-danger button-width-120px">Logout<i class="bi bi-door-open"></i></button></li>
                     </ul>
                 
                 </div>
                 <div class="navbar-collapse col-8 offset-1 collapse d-xl-inline-flex">
                     <div class="navbar-nav flex-grow-0 btn-group d-flex btn-group-lg col-10" role="group" aria-label="Basic example">
-                        @{if (Model.Level != null)
-                            {<button type="button" class="btn btn-outline-light text-white button-width-120px dark-blue-color">Grammar</button>
+
+                            <button type="button" class="btn btn-outline-light text-white button-width-120px dark-blue-color">Grammar</button>
                                 <button type="button" class="btn btn-outline-light text-white button-width-120px dark-blue-color">Reading</button>
                                 <button type="button" class="btn btn-outline-light text-white button-width-120px dark-blue-color">Writing</button>
                                 <button type="button" class="btn btn-outline-light text-white button-width-120px dark-blue-color">Listnening</button>
                                 <button type="button" class="btn btn-outline-light text-white button-width-120px dark-blue-color">Speaking</button>
-                                } }</div>
+                               </div>
                     <div class="col-3 navbar-nav flex-grow-0 btn-group d-flex justify-content-end flex-column" role="group">
                         @if (User.IsInRole(SD.AdminUser))
                         {
