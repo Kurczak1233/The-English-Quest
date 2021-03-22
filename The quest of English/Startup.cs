@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using The_quest_of_English.Controllers;
+using The_quest_of_English.Models;
 using TheEnglishQuestCore;
 using TheEnglishQuestCore.Managers;
 using TheEnglishQuestDatabase;
@@ -40,17 +41,22 @@ namespace The_quest_of_English
             services.AddTransient<IEncouragementPositionRepository, EncouragementPositionRepository>();
             services.AddTransient<IApplicationUserRepository, ApplicationUserRepository>();
             services.AddTransient<ISampleTestQARepostitory, SampleTestQARepository>();
+            services.AddTransient<IPlacementTestTaskRepository, PlacementTestTaskRepository>();
             //Mapper
             services.AddTransient<DTOMapper<ApplicationUser, ApplicationUserDto>>();
             services.AddTransient<DTOMapper<EncouragementPosition, EncouragementPositionDto>>();
             services.AddTransient<DTOMapper<SampleTestQA, SampleTestQADto>>();
+            services.AddTransient<DTOMapper<PlacementTestTask, PlacementTestTaskDTO>>();
             services.AddTransient<ApplicationUserManager>();
             services.AddTransient<EncouragementPostitionManager>();
             services.AddTransient<SampleTestQAManager>();
+            services.AddTransient<PlacementTestTaskManager>();
             //Main ViewModel
             services.AddTransient<EncouragementPoisitonViewModelMapper>();
             services.AddTransient<ApplicationUserViewModelMapper>();
             services.AddTransient<SampleTestQAViewModelMapper>();
+            services.AddTransient<PlacementTestTaskViewModel>();
+            
             // Identity
             //services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
             //.AddDefaultTokenProviders() //Tokeny gdy ktoœ zapomni has³a
