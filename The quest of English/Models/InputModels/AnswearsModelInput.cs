@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace The_quest_of_English.Models.InputModels
+namespace The_quest_of_English.Models
 {
     public class AnswearsModelInput
     {

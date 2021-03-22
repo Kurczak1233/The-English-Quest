@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
-using The_quest_of_English.Models.InputModels;
+using The_quest_of_English.Models;
 using TheEnglishQuest;
 using TheEnglishQuestCore.Managers;
 
