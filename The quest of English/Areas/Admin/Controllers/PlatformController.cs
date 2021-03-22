@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using The_quest_of_English.Models;
 using The_quest_of_English.Models.ViewModels;
+using The_quest_of_English.ViewModelMapper;
 using TheEnglishQuest;
+using TheEnglishQuestCore;
 using TheEnglishQuestCore.Managers;
 
 namespace The_quest_of_English
@@ -13,15 +15,15 @@ namespace The_quest_of_English
     {
         private readonly ApplicationUserViewModelMapper _applicationUserViewModelMapper;
         private readonly ApplicationUserManager _applicationUserManager;
+        private readonly PlacementTestTaskViewModelMapper _placementTestTaskViewModelMapper;
+        private readonly PlacementTestTaskManager _placementTestTaskManager;
         public PlatformController(ApplicationUserViewModelMapper applicationUserViewModelMapper, ApplicationUserManager applicationUserManager)
         {
             _applicationUserViewModelMapper = applicationUserViewModelMapper;
             _applicationUserManager = applicationUserManager;
         }
-        
-        public QuestionModelInput QuestionModelInput1 { get; set; }
-        public AnswearsModelInput AnswearsModelInput1 { get; set; }
 
+        public AnswearAndQuestionsViewModel Mode { get; set; }
         public IActionResult MainView(ApplicationUserViewModel user)
         {
             return View(user);
@@ -39,19 +41,24 @@ namespace The_quest_of_English
             QuestionModelInput question = new QuestionModelInput();
             return View(question);
         }
-
-        public IActionResult CreateAnswears(QuestionModelInput questions)
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        [ActionName("CreateQuestion")]
+        public IActionResult CreateQuestions(QuestionModelInput questions)
         {
             AnswearAndQuestionsViewModel viewModel = new AnswearAndQuestionsViewModel();
-            //viewModel.Question = questions;
-            return View(viewModel);
+            viewModel.Question = questions;
+            return View("CreateAnswears", viewModel);
         }
         [ValidateAntiForgeryToken]
         [HttpPost]
-        [ActionName("CreateAnswears")]
-        public IActionResult CreateAnswearsFunction(AnswearAndQuestionsViewModel questionsAndAnswears)
+        public async Task<IActionResult> CreateAnswearsFunction(AnswearAndQuestionsViewModel questionsAndAnswears)
         {
-            
+            PlacementTestBuilder builder = new PlacementTestBuilder();
+            PlacementTestBuilderDirector director = new PlacementTestBuilderDirector(builder, questionsAndAnswears);
+            PlacementTestTaskViewModel model = director.BuildTask();
+            var modelDto = _placementTestTaskViewModelMapper.Map(model);
+            await _placementTestTaskManager.AddNewPosition(modelDto);
             return RedirectToAction("PlacementTest");
         }
 

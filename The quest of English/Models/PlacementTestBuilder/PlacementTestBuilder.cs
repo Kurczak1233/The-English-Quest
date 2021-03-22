@@ -2,7 +2,7 @@
 {
     public class PlacementTestBuilder
     {
-        private PlacementTestQuestion _question = new PlacementTestQuestion();
+        private PlacementTestTaskViewModel _question = new PlacementTestTaskViewModel();
         public void AddFirstPartOfQuestion(string firstPart)
         {
             _question.QuestionFirstPart = firstPart;
@@ -35,12 +35,12 @@
         {
             _question.CorrectAnswear = answear;
         }
-        public PlacementTestQuestion BuildQuestion()
+        public PlacementTestTaskViewModel BuildQuestion()
         {
             var Task = _question;
             ClearQuestion();
             return Task;
         }
-        public PlacementTestQuestion ClearQuestion() => _question = new PlacementTestQuestion();
+        public PlacementTestTaskViewModel ClearQuestion() => _question = new PlacementTestTaskViewModel();
     }
 }

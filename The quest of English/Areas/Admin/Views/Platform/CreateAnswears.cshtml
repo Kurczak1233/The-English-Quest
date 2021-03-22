@@ -89,11 +89,14 @@
                                 <span id="fourthAnswear"></span>
                             </label>
                         </div>
+                        @Html.HiddenFor(m => m.Question.QuestionFirstPart, Model.Question.QuestionFirstPart)
+                        @Html.HiddenFor(m => m.Question.QuestionSecondPart, Model.Question.QuestionSecondPart)
+                        @Html.HiddenFor(m => m.Question.QuestionDecoratedPart, Model.Question.QuestionDecoratedPart)
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 text-center">
-                        <button type="submit" class="btn warm-orange-color mb-3">Submit</button>
+                        <button asp-controller="Platform" asp-action="CreateAnswearsFunction" type="submit" class="btn warm-orange-color mb-3">Submit</button>
                     </div>
                 </div>
             </form>
