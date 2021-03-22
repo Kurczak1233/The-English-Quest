@@ -24,7 +24,7 @@
                         <label for="QuestionPart2">Question second part:</label>
                     </div>
                     <div class="col-7">
-                        <input  id="inputSecondQuestionPart" asp-for="@Model.QuestionSecondPart" type="text" id="QuestionPart2" class="form-control" />
+                        <input id="inputSecondQuestionPart" asp-for="@Model.QuestionSecondPart" type="text" id="QuestionPart2" class="form-control" />
                     </div>
                 </div>
                 <div class="row">
@@ -35,61 +35,26 @@
                         <input id="inputDecorationPart" asp-for="@Model.QuestionDecoratedPart" type="text" id="QuestionPart3" class="form-control" />
                     </div>
                 </div>
-                @*<div class="row">
-                <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
-                    <label for="QuestionPart4">Answear 1:</label>
+                <hr />
+                <div class="row mt-5 mb-5">
+                    <div class="col-12 text-center font-size-medium">
+                        Preview
+                    </div>
                 </div>
-                <div class="col-7">
-                    <input type="text" id="QuestionPart4" class="form-control" />
+                <div class="row mt-3 d-flex justify-content-center">
+                    <div class="question-circle text-center ml-4">
+                        <strong class="font-size-medium question">1.</strong>
+                    </div>
+                    <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small mt-1 mb-3">
+                        <p><span id="FirstQuestionPart"></span>&nbsp;<span id="DecorationPart" class="dark-blue-text-color font-weight-bold font-italic"></span>&nbsp;<span id="SecondQuestionPart"></span></p>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
-                    <label for="QuestionPart5">Answear 2:</label>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <button asp-controller="Platform" asp-action="CreateAnswears" type="submit" class="btn warm-orange-color mb-3">Submit</button>
+                    </div>
                 </div>
-                <div class="col-7">
-                    <input type="text" id="QuestionPart5" class="form-control" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
-                    <label for="QuestionPart1">Answear 3:</label>
-                </div>
-                <div class="col-7">
-                    <input type="text" id="QuestionPart6" class="form-control" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
-                    <label for="QuestionPart6">Answear 4:</label>
-                </div>
-                <div class="col-7">
-                    <input type="text" id="QuestionPart1" class="form-control" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
-                    <label for="QuestionPart7">Correct answear:</label>
-                </div>
-                <div class="col-7">
-                    <input type="text" id="QuestionPart7" class="form-control" />
-                </div>
-            </div>*@
             </form>
-            <hr />
-            <div class="row mt-5 mb-5">
-                <div class="col-12 text-center font-size-rather-small">
-                    Preview
-                </div>
-            </div>
-            <div class="row mt-3 d-flex justify-content-center">
-                <div class="question-circle text-center ml-4">
-                    <strong class="font-size-medium question">1.</strong>
-                </div>
-                <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small mt-1">
-                    <span id="FirstQuestionPart"></span>&nbsp;<span id="DecorationPart" class="dark-blue-text-color font-weight-bold font-italic"></span>&nbsp;<span id="SecondQuestionPart"></span>
-                </div>
-            </div>
             @*<section id="questionAndAnswears" style="margin-left:35%">
             <div class="row mt-3">
                 <div class="question-circle text-center ml-4">

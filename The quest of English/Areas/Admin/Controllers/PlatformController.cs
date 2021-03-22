@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using The_quest_of_English.Models;
+using The_quest_of_English.Models.ViewModels;
 using TheEnglishQuest;
 using TheEnglishQuestCore.Managers;
 
@@ -18,8 +19,8 @@ namespace The_quest_of_English
             _applicationUserManager = applicationUserManager;
         }
         
-        public QuestionModelInput QuestionModelInput { get; set; }
-        public AnswearsModelInput AnswearsModelInput { get; set; }
+        public QuestionModelInput QuestionModelInput1 { get; set; }
+        public AnswearsModelInput AnswearsModelInput1 { get; set; }
 
         public IActionResult MainView(ApplicationUserViewModel user)
         {
@@ -39,10 +40,11 @@ namespace The_quest_of_English
             return View(question);
         }
 
-        public IActionResult CreateAnswears()
+        public IActionResult CreateAnswears(QuestionModelInput questions)
         {
-            AnswearsModelInput answears = new AnswearsModelInput();
-            return View(answears);
+            AnswearAndQuestionsViewModel viewModel = new AnswearAndQuestionsViewModel();
+            viewModel.Question = questions;
+            return View(viewModel);
         }
 
         public IActionResult BuildTask()
