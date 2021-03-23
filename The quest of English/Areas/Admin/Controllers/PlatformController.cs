@@ -60,16 +60,23 @@ namespace The_quest_of_English
         {
             PlacementTestBuilder builder = new PlacementTestBuilder();
             PlacementTestBuilderDirector director = new PlacementTestBuilderDirector(builder, questionsAndAnswears);
-            PlacementTestTaskViewModel model = new PlacementTestTaskViewModel(); 
+            PlacementTestTaskViewModel model = new PlacementTestTaskViewModel();
             model = director.BuildTask();
             var modelDto = _placementTestTaskViewModelMapper.Map(model);
             await _placementTestTaskManager.AddNewPosition(modelDto);
             return RedirectToAction("PlacementTest");
         }
 
-        public IActionResult BuildTask()
+        public async Task<IActionResult> DeleteQuestion()
         {
-            return View();
+            var ListDto = await _placementTestTaskManager.GetAllPositions(); //Wyświetlić listę
+            var List = _placementTestTaskViewModelMapper.Map(ListDto);
+            return View(List);
         }
+
+        //public IActionResult BuildTask()
+        //{
+        //    return View();
+        //}
     }
 }
