@@ -50,24 +50,40 @@ namespace The_quest_of_English
         [ActionName("CreateQuestion")]
         public IActionResult CreateQuestions(QuestionModelInput questions)
         {
-            AnswearAndQuestionsViewModel viewModel = new AnswearAndQuestionsViewModel();
-            viewModel.Question = questions;
-            return View("CreateAnswears", viewModel);
+            if (ModelState.IsValid)
+            {
+                AnswearAndQuestionsViewModel viewModel = new AnswearAndQuestionsViewModel();
+                viewModel.Question = questions;
+                return View("CreateAnswears", viewModel);
+            }
+            else
+            {
+                ModelState.AddModelError("Model", "Model is not valid!");
+                return View();
+            }
         }
         [ValidateAntiForgeryToken]
         [HttpPost]
+        [ActionName("CreateAnswearsFunction")]
         public async Task<IActionResult> CreateAnswearsFunction(AnswearAndQuestionsViewModel questionsAndAnswears)
         {
-            PlacementTestBuilder builder = new PlacementTestBuilder();
-            PlacementTestBuilderDirector director = new PlacementTestBuilderDirector(builder, questionsAndAnswears);
-            PlacementTestTaskViewModel model = new PlacementTestTaskViewModel();
-            model = director.BuildTask();
-            var modelDto = _placementTestTaskViewModelMapper.Map(model);
-            await _placementTestTaskManager.AddNewPosition(modelDto);
-            return RedirectToAction("PlacementTest");
+            if (ModelState.IsValid)
+            {
+                PlacementTestBuilder builder = new PlacementTestBuilder();
+                PlacementTestBuilderDirector director = new PlacementTestBuilderDirector(builder, questionsAndAnswears);
+                PlacementTestTaskViewModel model = new PlacementTestTaskViewModel();
+                model = director.BuildTask();
+                var modelDto = _placementTestTaskViewModelMapper.Map(model);
+                await _placementTestTaskManager.AddNewPosition(modelDto);
+                return RedirectToAction("PlacementTest");
+            }
+            else
+            {
+                return RedirectToAction("MainView");
+            }
         }
 
-        public async Task<IActionResult> DeleteOrModifyQuestion()
+        public async Task<IActionResult> DeleteQuestion()
         {
             var ListDto = await _placementTestTaskManager.GetAllPositions(); //Get List
             var List = _placementTestTaskViewModelMapper.Map(ListDto);
@@ -75,13 +91,14 @@ namespace The_quest_of_English
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ActionName("DeleteQuestion")]
         public async Task<IActionResult> DeleteQuestion(int id)
         {
             var Task = await _placementTestTaskManager.GetEntityById(id);
             await _placementTestTaskManager.DeletePosition(Task); //Deleting obj
             var ListDto = await _placementTestTaskManager.GetAllPositions(); //Get new list
             var List = _placementTestTaskViewModelMapper.Map(ListDto);
-            return RedirectToAction("DeleteOrModifyQuestion", List);
+            return View(List);
         }
 
         //public IActionResult BuildTask()
