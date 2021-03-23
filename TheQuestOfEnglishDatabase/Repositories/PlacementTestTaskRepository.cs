@@ -20,6 +20,12 @@ namespace TheEnglishQuestDatabase.Repositories
         {
             return await DbSet.Select(x => x).ToListAsync();
         }
+
+        public async Task<PlacementTestTask> GetEntityById(int id)
+        {
+            return await DbSet.Where(x => x.Id == id).SingleOrDefaultAsync();
+        }
+
         public async Task<bool> Delete(PlacementTestTask entity)
         {
             var foundEntity = await DbSet.FirstOrDefaultAsync(x => x.Id == entity.Id);

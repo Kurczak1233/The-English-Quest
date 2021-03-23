@@ -10,12 +10,38 @@
                 Delete question:
             </div>
             <hr />
-            <div class="col-12 mb-5">
-                @foreach(var item in Model)
-                {
+            @foreach (var item in Model)
+            {
+                <div class="col-12 mb-2 pl-5 pr-5">
+                    <div class="row">
+                        <div class="col-10">
+                            <p>
+                                <span>Id: &nbsp;</span>
+                                <span>@item.Id</span>
+                                &nbsp;&nbsp;&nbsp;
+                                <span>Question:</span>
+                                &nbsp;
+                                <span>@item.QuestionFirstPart</span>
+                                &nbsp;
+                                <span class="dark-blue-text-color font-weight-bold font-italic">@item.QuestionDecoratedPart</span>
+                                &nbsp;
+                                <span>@item.QuestionSecondPart</span>
+                            </p>
+                        </div>
+                        <div class="col-2">
+                            <form method="post">
+                                <button type="submit" asp-route-id="@item.Id" class="btn btn-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                                <button class="btn btn-info" asp-route-id="@item.Id">
+                                    <i class="bi bi-gear"></i>
+                                </button>
+                            </form>
+                        </div>
 
-                }
-            </div>
+                    </div>
+                </div>
+            }
         </div>
     </div>
 </main>

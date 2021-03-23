@@ -17,7 +17,11 @@ namespace TheEnglishQuestCore
             var entity = _DTOMapper.Map(encPosition);
             return await _placementTestTaskRepository.AddNew(entity);
         }
-
+        public async Task<PlacementTestTaskDTO> GetEntityById(int id)
+        {
+            var encPositions = await _placementTestTaskRepository.GetEntityById(id);
+            return _DTOMapper.Map(encPositions);
+        }
         public async Task<bool> DeletePosition(PlacementTestTaskDTO encPosition)
         {
             var entity = _DTOMapper.Map(encPosition);

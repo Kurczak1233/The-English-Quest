@@ -69,7 +69,17 @@ namespace The_quest_of_English
 
         public async Task<IActionResult> DeleteQuestion()
         {
-            var ListDto = await _placementTestTaskManager.GetAllPositions(); //Wyświetlić listę
+            var ListDto = await _placementTestTaskManager.GetAllPositions(); //Get List
+            var List = _placementTestTaskViewModelMapper.Map(ListDto);
+            return View(List);
+        }
+        [HttpPost, ActionName("DeleteQuestion")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteQuestion(int id)
+        {
+            var Task = await _placementTestTaskManager.GetEntityById(id);
+            await _placementTestTaskManager.DeletePosition(Task); //Deleting obj
+            var ListDto = await _placementTestTaskManager.GetAllPositions(); //Get new list
             var List = _placementTestTaskViewModelMapper.Map(ListDto);
             return View(List);
         }

@@ -11,5 +11,6 @@ namespace TheEnglishQuestDatabase
         Task<bool> Delete(PlacementTestTask entity);
         Task<bool> AddNew(PlacementTestTask entity);
         Task<IEnumerable<PlacementTestTask>> GetAllValues();
+        Task<PlacementTestTask> GetEntityById(int id);
     }
 }
