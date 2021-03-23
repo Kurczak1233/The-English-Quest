@@ -112,16 +112,19 @@
     })
 
     $("form").on('submit', function (e) {
-        if ($("#inputFirstAnswear") == $("#inputCorrectAnswear") ||
-            $("#inputSecondAnswear") == $("#inputCorrectAnswear") ||
-            $("#inputThirdAnswear") == $("#inputCorrectAnswear") ||
-            $("#inputFourthAnswear") == $("#inputCorrectAnswear")) {
+
+        if ($("#inputFirstAnswear").val() == $("#inputCorrectAnswear").val() ||
+            $("#inputSecondAnswear").val() == $("#inputCorrectAnswear").val() ||
+            $("#inputThirdAnswear").val() == $("#inputCorrectAnswear").val() ||
+            $("#inputFourthAnswear").val() == $("#inputCorrectAnswear").val()) {
 
         }
         else {
-            var answearDoNotMatch = "Passwords do not match!";
-            AppendError(answearDoNotMatch, "#submit", "reapeatError")
-            e.preventDefault();
+            if (!($("#reapeatError"))) {
+                var answearDoNotMatch = "Correct answear do not match any of those!";
+                AppendError(answearDoNotMatch, "#submit", "reapeatError")
+                e.preventDefault();
+            }
         }
     });
 
