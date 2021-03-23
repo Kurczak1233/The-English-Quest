@@ -3,11 +3,18 @@
     ViewData["Title"] = "PlacementTest";
 }
 <main class="container mt-5">
-    <div class="row">
-        <div class="col-8 text-center">
-            <a asp-controller="Platform" asp-action="CreateQuestion" class="btn warm-orange-color">Create question</a>
-        </div>
 
+
+    @if (User.IsInRole(SD.AdminUser))
+    {
+        <section class="row mt-3 mb-3">
+            <div class="col-8 text-center">
+                <span class="mb-3 d-flex justify-content-center font-size-biggish">Admin section</span>
+                <a asp-controller="Platform" asp-action="CreateQuestion" class="btn btn-success">Create question</a> <a asp-controller="Platform" asp-action="DeleteQuestion" class="btn-danger btn">Delete question</a>
+            </div>
+        </section>
+    }
+    <div class="row">
         <div class="col-8">
             @{ int IdCounter = 0;
                 int counter = 1;}
@@ -55,9 +62,9 @@
                 </section>
                 counter++;
                 IdCounter++;
-                }
-            <div class="row">
-                <div class="d-flex justify-content-center">
+            }
+            <div class="row ">
+                <div class="col-12 d-flex justify-content-center mt-5">
                     <button class="btn warm-orange-color" type="button" onclick="CheckAnswears()">Submit</button>
                 </div>
             </div>
