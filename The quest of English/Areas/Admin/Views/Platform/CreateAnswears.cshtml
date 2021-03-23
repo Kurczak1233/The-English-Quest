@@ -104,6 +104,7 @@
     </div>
 </main>
 <script>
+    console.log($("#inputFirstAnswear").val());
     $("#form").on("change", function () {
         $("#firstAnswear").text($("#inputFirstAnswear").val());
         $("#secondAnswear").text($("#inputSecondAnswear").val());
@@ -120,11 +121,12 @@
 
         }
         else {
-            if (!($("#reapeatError"))) {
+            if (($("#reapeatError").length==0)) {
                 var answearDoNotMatch = "Correct answear do not match any of those!";
                 AppendError(answearDoNotMatch, "#submit", "reapeatError")
                 e.preventDefault();
             }
+            e.preventDefault();
         }
     });
 
