@@ -67,13 +67,13 @@ namespace The_quest_of_English
             return RedirectToAction("PlacementTest");
         }
 
-        public async Task<IActionResult> DeleteQuestion()
+        public async Task<IActionResult> DeleteOrModifyQuestion()
         {
             var ListDto = await _placementTestTaskManager.GetAllPositions(); //Get List
             var List = _placementTestTaskViewModelMapper.Map(ListDto);
             return View(List);
         }
-        [HttpPost, ActionName("DeleteQuestion")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteQuestion(int id)
         {
@@ -81,7 +81,7 @@ namespace The_quest_of_English
             await _placementTestTaskManager.DeletePosition(Task); //Deleting obj
             var ListDto = await _placementTestTaskManager.GetAllPositions(); //Get new list
             var List = _placementTestTaskViewModelMapper.Map(ListDto);
-            return View(List);
+            return RedirectToAction("DeleteOrModifyQuestion", List);
         }
 
         //public IActionResult BuildTask()
