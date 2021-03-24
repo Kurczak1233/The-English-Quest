@@ -39,7 +39,10 @@ namespace The_quest_of_English
             var TaskList = _placementTestTaskViewModelMapper.Map(TasksListDto);
             return View(TaskList);
         }
-
+        public async Task<IActionResult> SubmitResults(int id)
+        {
+            return View();
+        }
         public IActionResult CreateQuestion()
         {
             QuestionModelInput question = new QuestionModelInput();

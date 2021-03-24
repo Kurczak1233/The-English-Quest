@@ -60,12 +60,12 @@
                         </div>
                     </div>
                 </section>
-                counter++;
-                IdCounter++;
-            }
+                                counter++;
+                                IdCounter++;
+                            }
             <div class="row ">
                 <div class="col-12 d-flex justify-content-center mt-5">
-                    <button class="btn warm-orange-color" type="button" onclick="CheckAnswears()">Submit</button>
+                    <a asp-action="SubmitResults" asp-controller="Platform" asp-route-points="CheckAnswears()" class="btn warm-orange-color" type="button" onclick="CheckAnswears()">Submit</a>
                 </div>
             </div>
         </div>
@@ -76,7 +76,7 @@
 </main>
 <script>
     @{ List<string> answears = new List<string>();
-        foreach(var item in Model)
+        foreach (var item in Model)
         {
             answears.Add(item.CorrectAnswear);
         }
@@ -99,7 +99,7 @@
             else {
                 $("label[for='" + elId + "']").css("background-color", "rgba(255, 77, 71, 0.2)");
             }
-            counter++;
         })
+        return pointsCounter;
     }
 </script>
