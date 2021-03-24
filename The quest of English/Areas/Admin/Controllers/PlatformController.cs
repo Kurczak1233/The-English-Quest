@@ -36,15 +36,21 @@ namespace The_quest_of_English
         }
         public async Task<IActionResult> PlacementTest()
         {
+            PlacementTestPointsAndPlacementTestTasksViewModel model = new PlacementTestPointsAndPlacementTestTasksViewModel();
             var TasksListDto = await _placementTestTaskManager.GetAllPositions();
             var TaskList = _placementTestTaskViewModelMapper.Map(TasksListDto);
-            return View(TaskList);
+            model.Tasks = TaskList;
+            return View(model);
         }
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        public IActionResult SubmitResults()
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        [ActionName("PlacementTest")]
+        public async Task<IActionResult> SubmitPoints(string points)
         {
-            return View();
+            var userId = User.Identity.GetUserId();
+            var user = await _applicationUserManager.GetLoggedUser(userId);
+            //await Przypisanie punktów do levela na podstawie procentowej :)?
+            return RedirectToAction();
         }
         public IActionResult CreateQuestion()
         {
