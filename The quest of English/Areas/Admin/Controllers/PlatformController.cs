@@ -111,7 +111,7 @@ namespace The_quest_of_English
         [ActionName("ModifyQuestion")]
         public IActionResult ModifyQuestionWithId(int id)
         {
-            return RedirectToAction("ModifySpecifiedTask", id);
+            return RedirectToAction("ModifySpecifiedTask", new { id = id });
         }
 
         public async Task<IActionResult> ModifySpecifiedTask(int id)
