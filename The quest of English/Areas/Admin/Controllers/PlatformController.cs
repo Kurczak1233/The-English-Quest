@@ -120,6 +120,36 @@ namespace The_quest_of_English
             var TaskViewModel = _placementTestTaskViewModelMapper.Map(TaskDto);
             return View(TaskViewModel);
         }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        [ActionName("ModifySpecifiedTask")]
+        public async Task<IActionResult> ModifySpecifiedTaskPost(PlacementTestTaskViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                PlacementTestTaskViewModel newModel = new PlacementTestTaskViewModel();
+                newModel.QuestionFirstPart = model.QuestionFirstPart;
+                newModel.QuestionSecondPart = model.QuestionSecondPart;
+                newModel.QuestionDecoratedPart = model.QuestionDecoratedPart;
+                newModel.FirstAnswear = model.FirstAnswear;
+                newModel.SecondAnswear = model.SecondAnswear;
+                newModel.ThirdAnswear = model.ThirdAnswear;
+                newModel.FourthAnswear = model.FourthAnswear;
+                newModel.CorrectAnswear = model.CorrectAnswear;
+                var oldModelDto = await _placementTestTaskManager.GetEntityById(model.Id);
+                await _placementTestTaskManager.DeletePosition(oldModelDto);
+                var newModelDto = _placementTestTaskViewModelMapper.Map(newModel);
+                await _placementTestTaskManager.AddNewPosition(newModelDto);
+
+
+                return RedirectToAction("PlacementTest");
+            }
+            else
+            {
+                return RedirectToAction("PlacementTest");
+            }
+        }
         // Delete
         public async Task<IActionResult> DeleteQuestion()
         {
