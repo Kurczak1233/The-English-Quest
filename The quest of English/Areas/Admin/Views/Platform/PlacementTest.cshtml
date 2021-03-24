@@ -14,64 +14,64 @@
             </div>
         </section>
     }
-    <div class="row">
-        <div class="col-8">
-            @{ int IdCounter = 0;
-                int counter = 1;}
+        <div class="row">
+            <div class="col-8">
+                @{ int IdCounter = 0;
+                    int counter = 1;}
 
-            @foreach (var item in Model)
-            {
-                <section id="questionAndAnswears">
-                    <div class="row mt-3">
-                        <div class="question-circle text-center ml-4">
-                            <strong class="font-size-medium question">@counter</strong> @*Numer zadania i punkty*@
+                @foreach (var item in Model)
+                {
+                    <section id="questionAndAnswears">
+                        <div class="row mt-3">
+                            <div class="question-circle text-center ml-4">
+                                <strong class="font-size-medium question">@counter</strong> @*Numer zadania i punkty*@
+                            </div>
+                            <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small mt-1">
+                                <p><span id="FirstQuestionPart">@item.QuestionFirstPart</span>&nbsp;<span id="DecorationPart" class="dark-blue-text-color font-weight-bold font-italic">@item.QuestionDecoratedPart</span>&nbsp;<span id="SecondQuestionPart">@item.QuestionSecondPart</span></p>
+                            </div>
                         </div>
-                        <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small mt-1">
-                            <p><span id="FirstQuestionPart">@item.QuestionFirstPart</span>&nbsp;<span id="DecorationPart" class="dark-blue-text-color font-weight-bold font-italic">@item.QuestionDecoratedPart</span>&nbsp;<span id="SecondQuestionPart">@item.QuestionSecondPart</span></p>
+                        <div class="form-check" id="checkAnswears">
+                            <div class="mt-1 form-check ml-5 answearRadio">
+                                <input class="form-check-input" type="radio" name="@counter" id="@IdCounter">
+                                <label class="form-check-label" for="@IdCounter">
+                                    @item.FirstAnswear
+                                </label>
+                            </div>
+                            @{IdCounter++;}
+                            <div class="mt-1 form-check ml-5 answearRadio">
+                                <input class="form-check-input" type="radio" name="@counter" id="@IdCounter">
+                                <label class="form-check-label" for="@IdCounter">
+                                    @item.SecondAnswear
+                                </label>
+                            </div>
+                            @{IdCounter++;}
+                            <div class="mt-1 form-check ml-5 answearRadio">
+                                <input class="form-check-input" type="radio" name="@counter" id="@IdCounter">
+                                <label class="form-check-label" for="@IdCounter">
+                                    @item.ThirdAnswear
+                                </label>
+                            </div>
+                            @{IdCounter++;}
+                            <div class="mt-1 form-check ml-5 answearRadio">
+                                <input class="form-check-input" type="radio" name="@counter" id="@IdCounter">
+                                <label class="form-check-label" for="@IdCounter">
+                                    @item.FourthAnswear
+                                </label>
+                            </div>
                         </div>
+                    </section>
+                    counter++;
+                    IdCounter++;
+                }
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center mt-5">
+                            <a asp-action="SubmitResults" asp-controller="Platform" class="btn warm-orange-color" type="button" onclick="CheckAnswears()">Submit</a>
                     </div>
-                    <div class="form-check" id="checkAnswears">
-                        <div class="mt-1 form-check ml-5 answearRadio">
-                            <input class="form-check-input" type="radio" name="@counter" id="@IdCounter">
-                            <label class="form-check-label" for="@IdCounter">
-                                @item.FirstAnswear
-                            </label>
-                        </div>
-                        @{IdCounter++;}
-                        <div class="mt-1 form-check ml-5 answearRadio">
-                            <input class="form-check-input" type="radio" name="@counter" id="@IdCounter">
-                            <label class="form-check-label" for="@IdCounter">
-                                @item.SecondAnswear
-                            </label>
-                        </div>
-                        @{IdCounter++;}
-                        <div class="mt-1 form-check ml-5 answearRadio">
-                            <input class="form-check-input" type="radio" name="@counter" id="@IdCounter">
-                            <label class="form-check-label" for="@IdCounter">
-                                @item.ThirdAnswear
-                            </label>
-                        </div>
-                        @{IdCounter++;}
-                        <div class="mt-1 form-check ml-5 answearRadio">
-                            <input class="form-check-input" type="radio" name="@counter" id="@IdCounter">
-                            <label class="form-check-label" for="@IdCounter">
-                                @item.FourthAnswear
-                            </label>
-                        </div>
-                    </div>
-                </section>
-                counter++;
-                IdCounter++;
-            }
-            <div class="row ">
-                <div class="col-12 d-flex justify-content-center mt-5">
-                    <button class="btn warm-orange-color" type="submit" onclick="CheckAnswears()">Submit</button>
                 </div>
             </div>
-        </div>
-        <div class="col-4 border-left">
-            Test
-        </div>
+    <div class="col-4 border-left">
+        Test
+    </div>
     </div>
 </main>
 <script>
@@ -83,6 +83,7 @@
         }
         var ar = @Html.Raw(Json.Serialize(answears));
     var counter = 0;
+    var test = 5;
     var pointsCounter = 0;
     function CheckAnswears() {
         $("[id = questionAndAnswears]").each(function () {
@@ -101,21 +102,5 @@
             }
             counter++;
         })
-        var MyAppUrlSettings = {
-             UrlToRedirect : '@Url.Action("SubmitResults", "Platform")'
-        }
-        console.log(JSON.stringify(pointsCounter));
-        $.ajax({
-            type: 'POST',
-            url: MyAppUrlSettings.UrlToRedirect,
-            dataType: "json",
-            contentType: "application/json",
-            data: JSON.stringify(pointsCounter),
-            success: function (result) {
-                console.log('Data received: ');
-                console.log(result);
-            }
-        });
-
     }
 </script>

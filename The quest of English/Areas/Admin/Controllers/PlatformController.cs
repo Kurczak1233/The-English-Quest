@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using The_quest_of_English.Models;
 using The_quest_of_English.Models.ViewModels;
@@ -39,11 +40,11 @@ namespace The_quest_of_English
             var TaskList = _placementTestTaskViewModelMapper.Map(TasksListDto);
             return View(TaskList);
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult SubmitResults(string points)
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        public IActionResult SubmitResults()
         {
-            return View(points);
+            return View();
         }
         public IActionResult CreateQuestion()
         {
