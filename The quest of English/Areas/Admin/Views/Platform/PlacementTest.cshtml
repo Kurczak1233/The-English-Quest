@@ -60,12 +60,12 @@
                         </div>
                     </div>
                 </section>
-                                counter++;
-                                IdCounter++;
-                            }
+                counter++;
+                IdCounter++;
+            }
             <div class="row ">
                 <div class="col-12 d-flex justify-content-center mt-5">
-                    <a asp-action="SubmitResults" asp-controller="Platform" asp-route-points="CheckAnswears()" class="btn warm-orange-color" type="button" onclick="CheckAnswears()">Submit</a>
+                    <button class="btn warm-orange-color" type="submit" onclick="CheckAnswears()">Submit</button>
                 </div>
             </div>
         </div>
@@ -84,14 +84,14 @@
         var ar = @Html.Raw(Json.Serialize(answears));
     var counter = 0;
     var pointsCounter = 0;
-    function CheckAnswears(string) {
+    function CheckAnswears() {
         $("[id = questionAndAnswears]").each(function () {
             var elId = $(this).find("input[type=radio]:checked").attr('id');
             var radioLabelValue = $("label[for='" + elId + "']").text();
             var trimStr = $.trim(ar[counter]);
             var trimStr2 = $.trim(radioLabelValue);
             console.log(trimStr);
-            console.log(radioLabelValue);
+            console.log(trimStr2);
             if (trimStr2 === trimStr) {
                 $("label[for='" + elId + "']").css("background-color", "rgba(0,255,127, 0.2)");
                 pointsCounter++;
@@ -99,7 +99,23 @@
             else {
                 $("label[for='" + elId + "']").css("background-color", "rgba(255, 77, 71, 0.2)");
             }
+            counter++;
         })
-        return pointsCounter;
+        var MyAppUrlSettings = {
+             UrlToRedirect : '@Url.Action("SubmitResults", "Platform")'
+        }
+        console.log(JSON.stringify(pointsCounter));
+        $.ajax({
+            type: 'POST',
+            url: MyAppUrlSettings.UrlToRedirect,
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(pointsCounter),
+            success: function (result) {
+                console.log('Data received: ');
+                console.log(result);
+            }
+        });
+
     }
 </script>

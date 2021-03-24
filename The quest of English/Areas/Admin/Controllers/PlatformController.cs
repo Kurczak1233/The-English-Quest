@@ -39,9 +39,11 @@ namespace The_quest_of_English
             var TaskList = _placementTestTaskViewModelMapper.Map(TasksListDto);
             return View(TaskList);
         }
-        public async Task<IActionResult> SubmitResults(int id)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult SubmitResults(string points)
         {
-            return View();
+            return View(points);
         }
         public IActionResult CreateQuestion()
         {
