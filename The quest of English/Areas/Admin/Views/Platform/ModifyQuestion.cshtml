@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<PlacementTestTaskViewModel>
 @{
-    ViewData["Title"] = "DeleteQuestion";
+    ViewData["Title"] = "ModifyQuestion";
 }
 
 <main class="container">
@@ -12,7 +12,7 @@
             <hr />
             @foreach (var item in Model)
             {
-                <div class="col-12 mb-2 pl-5 pr-5">
+                <div class="col-12 mb-5 pl-5 pr-5">
                     <div class="row">
                         <div class="col-10">
                             <p>
@@ -27,11 +27,25 @@
                                 &nbsp;
                                 <span>@item.QuestionSecondPart</span>
                             </p>
+                            <section class="form-check" id="checkAnswears">
+                                <div class="mt-1 form-check offset-1 answearRadio">
+                                    <span>@item.FirstAnswear</span>
+                                </div>
+                                <div class="mt-1 form-check offset-1 answearRadio">
+                                    <span>@item.SecondAnswear</span>
+                                </div>
+                                <div class="mt-1 form-check offset-1 answearRadio">
+                                    <span>@item.ThirdAnswear</span>
+                                </div>
+                                <div class="mt-1 form-check offset-1 answearRadio">
+                                    <span>@item.FourthAnswear</span>
+                                </div>
+                            </section>
                         </div>
-                        <div class="col-2">
+                        <div class="col-2 d-flex align-items-center">
                             <form method="post">
-                                <button type="submit" asp-controller="Platform" asp-action="DeleteQuestion" asp-route-id="@item.Id" class="btn btn-danger">
-                                    <i class="bi bi-trash"></i>
+                                <button type="submit" asp-route-id="@item.Id" class="btn btn-info">
+                                    <i class="bi bi-gear"></i>
                                 </button>
                             </form>
                         </div>

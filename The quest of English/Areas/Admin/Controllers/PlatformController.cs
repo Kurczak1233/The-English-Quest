@@ -53,11 +53,15 @@ namespace The_quest_of_English
             await _applicationUserManager.AssignLevel(PointsPercentage, userId);
             return RedirectToAction("MainView");
         }
+
+        //Create
         public IActionResult CreateQuestion()
         {
             QuestionModelInput question = new QuestionModelInput();
             return View(question);
         }
+
+
         [ValidateAntiForgeryToken]
         [HttpPost]
         [ActionName("CreateQuestion")]
@@ -95,7 +99,28 @@ namespace The_quest_of_English
                 return RedirectToAction("MainView");
             }
         }
+        // Modify
+        public async Task<IActionResult> ModifyQuestion()
+        {
+            var TasksDto = await _placementTestTaskManager.GetAllPositions();
+            var TaskViewModel = _placementTestTaskViewModelMapper.Map(TasksDto);
+            return View(TaskViewModel);
+        }
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        [ActionName("ModifyQuestion")]
+        public IActionResult ModifyQuestionWithId(int id)
+        {
+            return RedirectToAction("ModifySpecifiedTask", id);
+        }
 
+        public async Task<IActionResult> ModifySpecifiedTask(int id)
+        {
+            var TaskDto = await _placementTestTaskManager.GetEntityById(id);
+            var TaskViewModel = _placementTestTaskViewModelMapper.Map(TaskDto);
+            return View(TaskViewModel);
+        }
+        // Delete
         public async Task<IActionResult> DeleteQuestion()
         {
             var ListDto = await _placementTestTaskManager.GetAllPositions(); //Get List
