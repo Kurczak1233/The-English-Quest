@@ -48,11 +48,10 @@ namespace The_quest_of_English
         public async Task<IActionResult> SubmitPoints(int points)
         {
             var userId = User.Identity.GetUserId();
-            var user = await _applicationUserManager.GetLoggedUser(userId);
             var TasksCount = _placementTestTaskManager.GetCount();
             double PointsPercentage = points / TasksCount;
-
-            return RedirectToAction();
+            await _applicationUserManager.AssignLevel(PointsPercentage, userId);
+            return RedirectToAction("MainView");
         }
         public IActionResult CreateQuestion()
         {

@@ -14,5 +14,6 @@ namespace TheEnglishQuestCore.Interfaces
         Task<ApplicationUserDto> GetUser(string username);
         Task<SignInResult> LogIn(string username, string password);
         Task<ApplicationUserDto> GetLoggedUser(string userId);
+        Task AssignLevel(double points, string userId);
     }
 }

@@ -61,9 +61,22 @@ namespace TheEnglishQuestDatabase
             return user;
         }
 
-        public async Task AssignLevel(double points)
+        public async Task AssignLevel(double points, string userId)
         {
-
+            var user = await DbSet.Where(x => x.Id == userId).SingleOrDefaultAsync();
+            if (points < 0.4)
+            {
+                user.Level = "B1";
+            }
+            if (points > 0.4 && points < 0.8)
+            {
+                user.Level = "B2";
+            }
+            if (points > 0.8)
+            {
+                user.Level = "C1";
+            }
+            await SaveChanges();
         }
         public async Task<bool> DeleteUser(string id)
         {

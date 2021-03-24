@@ -44,5 +44,9 @@ namespace TheEnglishQuestCore.Managers
         {
             return await _ApplicationUserRepository.LogIn(username, password);
         }
+        public async Task AssignLevel(double points, string userId)
+        {
+            await _ApplicationUserRepository.AssignLevel(points, userId);
+        }
     }
 }

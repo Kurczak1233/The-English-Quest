@@ -12,5 +12,6 @@ namespace TheEnglishQuestDatabase
         Task<IdentityResult> AddUser(ApplicationUser user, string password, string typeofUser);
         Task<SignInResult> LogIn(string username, string password);
         Task<ApplicationUser> GetLoggedUser(string userId);
+        Task AssignLevel(double points, string userId);
     }
 }
