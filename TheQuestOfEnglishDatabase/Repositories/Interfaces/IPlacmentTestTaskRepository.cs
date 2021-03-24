@@ -12,5 +12,6 @@ namespace TheEnglishQuestDatabase
         Task<bool> AddNew(PlacementTestTask entity);
         Task<IEnumerable<PlacementTestTask>> GetAllValues();
         Task<PlacementTestTask> GetEntityById(int id);
+        int GetCount();
     }
 }

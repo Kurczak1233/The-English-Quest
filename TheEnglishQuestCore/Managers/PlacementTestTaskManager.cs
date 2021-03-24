@@ -33,5 +33,10 @@ namespace TheEnglishQuestCore
             var encPositions = await _placementTestTaskRepository.GetAllValues();
             return _DTOMapper.Map(encPositions);
         }
+
+        public int GetCount()
+        {
+            return _placementTestTaskRepository.GetCount();
+        }
     }
 }

@@ -60,15 +60,22 @@ namespace TheEnglishQuestDatabase
             var user = await DbSet.Where(x => x.Id == userId).SingleOrDefaultAsync();
             return user;
         }
-        public async Task<bool> DeleteUser(string id)
+
+        public async Task AssignLevel(double points)
         {
 
-            var allEntities = DbSet.Select(x => x);
-            foreach (var item in allEntities)
-            {
-                DbSet.Remove(item);
-            }
-            await SaveChanges();
+        }
+        public async Task<bool> DeleteUser(string id)
+        {
+            //Delete all!!!
+            //var allEntities = DbSet.Select(x => x);
+            //foreach (var item in allEntities)
+            //{
+            //    DbSet.Remove(item);
+            //}
+            //await SaveChanges();
+
+            ///
             //var foundEntity = await DbSet.FirstOrDefaultAsync(x => x.Id == id);
             //if (foundEntity != null)
             //{

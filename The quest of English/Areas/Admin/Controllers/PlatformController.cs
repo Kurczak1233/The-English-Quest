@@ -45,11 +45,13 @@ namespace The_quest_of_English
         [ValidateAntiForgeryToken]
         [HttpPost]
         [ActionName("PlacementTest")]
-        public async Task<IActionResult> SubmitPoints(string points)
+        public async Task<IActionResult> SubmitPoints(int points)
         {
             var userId = User.Identity.GetUserId();
             var user = await _applicationUserManager.GetLoggedUser(userId);
-            //await Przypisanie punktów do levela na podstawie procentowej :)?
+            var TasksCount = _placementTestTaskManager.GetCount();
+            double PointsPercentage = points / TasksCount;
+
             return RedirectToAction();
         }
         public IActionResult CreateQuestion()

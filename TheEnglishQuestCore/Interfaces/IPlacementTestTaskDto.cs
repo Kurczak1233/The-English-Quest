@@ -9,6 +9,6 @@ namespace TheEnglishQuestCore
         Task<bool> AddNewPosition(PlacementTestTaskDTO encPosition);
         Task<PlacementTestTaskDTO> GetEntityById(int id);
         Task<IEnumerable<PlacementTestTaskDTO>> GetAllPositions();
-       
+        int GetCount();
     }
 }

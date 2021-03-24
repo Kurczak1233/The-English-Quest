@@ -37,6 +37,10 @@ namespace TheEnglishQuestDatabase.Repositories
             return false;
         }
 
+        public int GetCount()
+        {
+            return DbSet.Select(x => x).ToList().Count;
+        }
         public async Task<bool> AddNew(PlacementTestTask entity)
         {
             await DbSet.AddAsync(entity);
