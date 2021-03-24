@@ -100,10 +100,5 @@ namespace The_quest_of_English
             var List = _placementTestTaskViewModelMapper.Map(ListDto);
             return View(List);
         }
-
-        //public IActionResult BuildTask()
-        //{
-        //    return View();
-        //}
     }
 }

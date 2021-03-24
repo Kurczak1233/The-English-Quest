@@ -83,6 +83,7 @@
         }
         var ar = @Html.Raw(Json.Serialize(answears));
     var counter = 0;
+    var pointsCounter = 0;
     function CheckAnswears(string) {
         $("[id = questionAndAnswears]").each(function () {
             var elId = $(this).find("input[type=radio]:checked").attr('id');
@@ -93,6 +94,7 @@
             console.log(radioLabelValue);
             if (trimStr2 === trimStr) {
                 $("label[for='" + elId + "']").css("background-color", "rgba(0,255,127, 0.2)");
+                pointsCounter++;
             }
             else {
                 $("label[for='" + elId + "']").css("background-color", "rgba(255, 77, 71, 0.2)");

@@ -95,10 +95,12 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 text-center">
-                        <button asp-controller="Platform" asp-action="CreateAnswearsFunction" type="submit" class="btn warm-orange-color mb-3" id="submit">Submit</button>
+                    <div class="col-12 text-center mt-3">
+                        <button asp-controller="Platform" asp-action="CreateAnswearsFunction" type="submit" class="btn warm-orange-color mb-3" >Submit</button>
+                        <a asp-controller="Platform" asp-action="PlacementTest" class="btn btn-danger ml-5 mb-3" aria-label="button" type="button" id="submit" >Abort</a>
                     </div>
                 </div>
+
             </form>
         </div>
     </div>
