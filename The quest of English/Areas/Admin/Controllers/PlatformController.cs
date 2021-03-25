@@ -143,8 +143,6 @@ namespace The_quest_of_English
                 await _placementTestTaskManager.DeletePosition(oldModelDto);
                 var newModelDto = _placementTestTaskViewModelMapper.Map(newModel);
                 await _placementTestTaskManager.AddNewPosition(newModelDto);
-
-
                 return RedirectToAction("PlacementTest");
             }
             else
@@ -176,7 +174,7 @@ namespace The_quest_of_English
         public async Task<IActionResult> Logout()
         {
            await _applicationUserManager.LogOut();
-            return RedirectToAction("Index", "Home", new { area = "Unregistered"});
+           return RedirectToAction("Index", "Home", new { area = "Unregistered"});
         }
     }
 }
