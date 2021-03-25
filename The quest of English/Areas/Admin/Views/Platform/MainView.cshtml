@@ -24,40 +24,66 @@
                 else
                 {
                     <p class="text-center mt-3 font-size-big">Welcome to the platform!</p>
-                    <p class="text-center mt-2 mb-3 font-size-rather-small">This platform is created by users for users, so feel free to </p>
+                    <p class="text-center mt-2 mb-3 font-size-rather-small">This platform is created by users for users, so feel free to comment, or contribute to the platform!</p>
                     <p class="text-center mt-2 mb-3 font-size-rather-small">Navigate to the section that interest you the most:</p>
-                    <div class="row justify-content-center">
+                    <hr />
+                    <div class="row  mt-5  justify-content-center">
                         <div class="indent-blue"></div>
                         <div class="col-12">
                             <p class="text-center dark-blue-text-color font-size-medium">Grammar</p>
-                            <p class="text-center">Grammar is considered the hardest part of English Language. Here you will find three different sections covering grammar tasks: FCE, CAE, CPE.</p>
+                            <p class="text-center">Grammar is considered the hardest part of English Language. Here you will find three different sections covering grammar tasks.</p>
+                            <div class="font-size-medium d-flex justify-content-around btn-group-lg" role="group" aria-label="Basic example">
+                                <a class="btn warm-orange-color platform-buttons-width" type="button" asp-controller="" asp-action="">FCE</a>
+                                <a class="btn warm-orange-color platform-buttons-width" type="button" asp-controller="" asp-action="">CAE</a>
+                                <a class="btn warm-orange-color platform-buttons-width" type="button" asp-controller="" asp-action="">CPE</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="row justify-content-center">
+                    <hr />
+                    <div class="row mt-3 justify-content-center">
                         <div class="indent-blue"></div>
                         <div class="col-12 ">
                             <p class="text-center dark-blue-text-color font-size-medium">Reading</p>
                             <p class="text-center">You improve your English while you read a lot. For this reason you will find a lot of text devided in three sections depending on your desirable level.</p>
+                            <div class="font-size-medium d-flex justify-content-around btn-group-lg" role="group" aria-label="Basic example">
+                                <a class="btn warm-orange-color platform-buttons-width" type="button" asp-controller="" asp-action="">FCE</a>
+                                <a class="btn warm-orange-color platform-buttons-width" type="button" asp-controller="" asp-action="">CAE</a>
+                                <a class="btn warm-orange-color platform-buttons-width" type="button" asp-controller="" asp-action="">CPE</a>
+                            </div>
                         </div>
                     </div>
+                    <hr />
                     <div class="row justify-content-center">
                         <div class="indent-blue"></div>
                         <div class="col-12 ">
                             <p class="text-center dark-blue-text-color font-size-medium">Writing</p>
                             <p class="text-center">Emails, complains, reviews, eseys, you will find all of those examples there. It is not divided by level segments.</p>
+                            <p class="font-size-medium d-flex justify-content-around">
+                                <a class="btn warm-orange-color btn-lg platform-buttons-width-large" type="button" asp-controller="" asp-action="">All Levels</a>
+                            </p>
                         </div>
                     </div>
+                    <hr />
                     <div class="row justify-content-center">
                         <div class="indent-blue"></div>
                         <div class="col-12 ">
                             <p class="text-center dark-blue-text-color font-size-medium">Speaking</p>
                             <p class="text-center">Here you will find some mixed speaking tasks which may help you to speak more fluently and eloquently.</p>
+                            <p class="font-size-medium d-flex justify-content-around">
+                                <a class="btn warm-orange-color btn-lg platform-buttons-width-large" type="button" asp-controller="" asp-action="">All Levels</a>
+                            </p>
                         </div>
+                        <hr />
                     </div> <div class="row justify-content-center">
                         <div class="indent-blue"></div>
                         <div class="col-12 ">
                             <p class="text-center dark-blue-text-color font-size-medium">Listening</p>
                             <p class="text-center">Listening shows how well you have worked on previous sections. There are FCE, CAE, CPE tasks.</p>
+                            <div class="font-size-medium d-flex justify-content-around btn-group-lg" role="group" aria-label="Basic example">
+                                <a class="btn warm-orange-color platform-buttons-width" type="button" asp-controller="" asp-action="">FCE</a>
+                                <a class="btn warm-orange-color platform-buttons-width" type="button" asp-controller="" asp-action="">CAE</a>
+                                <a class="btn warm-orange-color platform-buttons-width" type="button" asp-controller="" asp-action="">CPE</a>
+                            </div>
                         </div>
                     </div>
                 }
@@ -68,12 +94,12 @@
                 <div class="col-12 text-center">
                     @if (Model.Picture.Length == 0)
                     {
-                        <img src="~/images/Uśmiech.jpg" class="img-fluid" alt="Profile picture as a standard cat" style="border-radius: 50%;"/>
+                        <img src="~/images/Uśmiech.jpg" class="img-fluid" alt="Profile picture as a standard cat" style="border-radius: 50%;" />
 
                     }
                     else
                     {
-                        <img src="" class="img-fluid" style="border-radius:50%;" alt="Custom user profile picture"/>
+                        <img src="" class="img-fluid" style="border-radius:50%;" alt="Custom user profile picture" />
                     }
                 </div>
                 <div class="col-12 text-center mt-2">

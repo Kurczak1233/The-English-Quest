@@ -294,3 +294,6 @@ input[type="radio"] {
     right: 0;
     margin-left: -100px; /* More to the left */
 }
+.platform-buttons-width{
+    width:100px;
+}
