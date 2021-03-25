@@ -6,6 +6,7 @@ namespace TheEnglishQuestDatabase.Entities
 {
     public class ApplicationUser : IdentityUser
     {
+        public int Description { get; set; }
         public int FirstName { get; set; }
         public int LastName { get; set; }
         public string EmailAdress { get; set; }
