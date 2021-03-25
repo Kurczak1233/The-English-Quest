@@ -4,7 +4,7 @@ namespace TheEnglishQuest
 {
     public class ApplicationUserViewModel : IdentityUser
     {
-        public int Description { get; set; }
+        public string Description { get; set; }
         public int FirstName { get; set; }
         public int LastName { get; set; }
         public string EmailAdress { get; set; }
