@@ -36,7 +36,20 @@ namespace The_quest_of_English
             var userViewModel = _applicationUserViewModelMapper.Map(user);
             return View(userViewModel);
         }
-        public async Task<IActionResult> PlacementTest()
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        [ActionName("MainView")]
+        public async Task<IActionResult> MainViewForm(ApplicationUserViewModel model)
+        {
+            var userId = User.Identity.GetUserId();
+            model.Id = userId;
+            var userDto = _applicationUserViewModelMapper.Map(model);
+            var userDtoUpdated = await _applicationUserManager.UpdateUser(userDto);
+            var userViewModel = _applicationUserViewModelMapper.Map(userDtoUpdated);
+            return RedirectToAction("MainView");
+        }
+        public async Task<IActionResult> PlacementTest() //Creating new and deleting old one instead of updating.
         {
             PlacementTestPointsAndPlacementTestTasksViewModel model = new PlacementTestPointsAndPlacementTestTasksViewModel();
             var TasksListDto = await _placementTestTaskManager.GetAllPositions();

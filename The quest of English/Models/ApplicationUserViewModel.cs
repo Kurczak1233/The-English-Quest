@@ -5,8 +5,8 @@ namespace TheEnglishQuest
     public class ApplicationUserViewModel : IdentityUser
     {
         public string Description { get; set; }
-        public int FirstName { get; set; }
-        public int LastName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string EmailAdress { get; set; }
         public int GrammarPercentagePoints { get; set; } = 0;
         public int ReadingPercentagePoints { get; set; } = 0;

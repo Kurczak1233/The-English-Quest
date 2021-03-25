@@ -24,7 +24,7 @@
                 else
                 {
                     <p class="text-center mt-3 font-size-big">Welcome to the platform!</p>
-                    <p class="text-center mt-2 mb-3 font-size-rather-small">This platform is created by users for users, so feel free to comment, or contribute to the platform!</p>
+                    <p class="text-center mt-2 mb-3 font-size-rather-small">This platform is created by users for users, so feel free to comment or contribute to the platform!</p>
                     <p class="text-center mt-2 mb-3 font-size-rather-small">Navigate to the section that interest you the most:</p>
                     <hr />
                     <div class="row mt-5 mb-5 justify-content-center">
@@ -114,15 +114,15 @@
                         <label for="firstName">
                             <i class="bi bi-person-circle"> First name:</i>
                         </label>
-                        <input asp-for="@Model.FirstName" id="firstName" type="text" class="form-control" value="" />
+                        <input asp-for="@Model.FirstName" id="firstName" type="text" class="form-control" />
                         <label for="lastName">
                             <i class="bi bi-person-circle"> Last name:</i>
                         </label>
-                        <input asp-for="@Model.LastName" id="lastName" type="text" class="form-control"  value=""/>
+                        <input asp-for="@Model.LastName" id="lastName" type="text" class="form-control" />
                         <label for="email">
                             <i class="bi bi-envelope"> Email: </i>
                         </label>
-                        <input asp-for="@Model.Email" id="email" type="email" class="form-control" value=""/>
+                        <input asp-for="@Model.Email" id="email" type="email" class="form-control" />
                         <div class="row mt-3">
                             <div class="col-6">
                                 <button type="submit" class="btn btn-success form-control">Save</button>
@@ -135,11 +135,11 @@
                 </div>
                 <div class="col-12 mt-2" id="credentials">
                     <p class="font-size-rather-small">Estimated level: @Model.Level</p>
-                    @if (Model.FirstName != 0 && Model.LastName != 0)
+                    @if (Model.FirstName != null || Model.LastName != null)
                     {
                         <p class="font-size-rather-small mb-0">
                             <i class="bi bi-person-circle"></i>
-                            Full name: @Model.FirstName @Model.LastName
+                            Name: @Model.FirstName @Model.LastName
                         </p>
                     }
                     @if (Model.Email != null)
@@ -147,6 +147,13 @@
                         <p class="font-size-rather-small mb-0">
                             <i class="bi bi-envelope"></i>
                             Email: @Model.Email
+                        </p>
+                    }
+                    @if (Model.Description != null)
+                    {
+                        <p class="font-size-rather-small mb-0">
+                            <i class="bi bi-file-earmark-person"></i>
+                            Description: @Model.Description
                         </p>
                     }
                 </div>

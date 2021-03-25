@@ -27,6 +27,13 @@ namespace TheEnglishQuestCore.Managers
         {
             return await _ApplicationUserRepository.DeleteUser(userid);
         }
+
+        public async Task<ApplicationUserDto> UpdateUser(ApplicationUserDto user)
+        {
+            var entity = _DTOMapper.Map(user);
+            var updatedUser = await _ApplicationUserRepository.UpdateUser(entity);
+            return _DTOMapper.Map(updatedUser);
+        }
         public async Task<ApplicationUserDto> GetUser(string username)
         {
             var entity = await _ApplicationUserRepository.GetUser(username);

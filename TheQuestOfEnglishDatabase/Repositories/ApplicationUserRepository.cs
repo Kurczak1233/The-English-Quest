@@ -44,6 +44,16 @@ namespace TheEnglishQuestDatabase
             }
         }
 
+        public async Task<ApplicationUser> UpdateUser(ApplicationUser user)
+        {
+            ApplicationUser userFromDb = await DbSet.Where(x => x.Id == user.Id).SingleOrDefaultAsync();
+            userFromDb.FirstName = user.FirstName;
+            userFromDb.LastName = user.LastName;
+            userFromDb.Description = user.Description;
+            userFromDb.Email = user.Email;
+            await SaveChanges();
+            return user;
+        }
         public async Task<SignInResult> LogIn(string username, string password)
         {
             var result = await _signInManager.PasswordSignInAsync(username,
