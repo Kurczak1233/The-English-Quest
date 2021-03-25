@@ -24,6 +24,7 @@
                 else
                 {
                     <p class="text-center mt-3 font-size-big">Welcome to the platform!</p>
+                    <p class="text-center mt-2 mb-3 font-size-rather-small">This platform is created by users for users, so feel free to </p>
                     <p class="text-center mt-2 mb-3 font-size-rather-small">Navigate to the section that interest you the most:</p>
                     <div class="row justify-content-center">
                         <div class="indent-blue"></div>
@@ -59,15 +60,30 @@
                             <p class="text-center">Listening shows how well you have worked on previous sections. There are FCE, CAE, CPE tasks.</p>
                         </div>
                     </div>
-
                 }
-
             }
         </article>
         <aside class="mt-5 pt-4 col-3 border-left">
             <div class="row">
                 <div class="col-12 text-center">
-                    Tekst
+                    @if (Model.Picture.Length == 0)
+                    {
+                        <img src="~/images/Uśmiech.jpg" class="img-fluid" alt="Profile picture as a standard cat" style="border-radius: 50%;"/>
+
+                    }
+                    else
+                    {
+                        <img src="" class="img-fluid" style="border-radius:50%;" alt="Custom user profile picture"/>
+                    }
+                </div>
+                <div class="col-12 text-center mt-2">
+                    <p class="font-size-medium">@Model.UserName</p>
+                </div>
+                <div class="col-12">
+                    <button class="btn form-control warm-orange-color">Edit profile</button>
+                </div>
+                <div class="col-12 mt-2">
+                    <p class="font-size-rather-small">Estimated level: @Model.Level</p>
                 </div>
             </div>
         </aside>
