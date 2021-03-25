@@ -13,7 +13,7 @@
                 <li><button type="button" class="mt-2 btn btn-outline-light text-white button-width-120px dark-blue-color">Writing</button></li>
                 <li><button type="button" class="mt-2 btn btn-outline-light text-white button-width-120px dark-blue-color">Listnening</button></li>
                 <li><button type="button" class="mt-2 btn btn-outline-light text-white button-width-120px dark-blue-color">Speaking</button></li>
-                <li><button type="button" class="mt-2 btn btn-danger button-width-120px">Logout<i class="bi bi-door-open"></i></button></li>
+                <li><a asp-action="Logout" asp-controller="Platform" type="button" class="mt-2 btn btn-danger button-width-120px">Logout<i class="bi bi-door-open"></i></a></li>
             </ul>
 
         </div>
@@ -31,7 +31,7 @@
                     <div class="text-center">Hello @User.Identity.Name!</div>
                 }
                 <div class="text-center">
-                    <button type="button" class="btn btn-danger button-width-120px">Logout<i class="bi bi-door-open"></i></button>
+                    <a asp-action="Logout" asp-controller="Platform" type="button" class="btn btn-danger button-width-120px">Logout<i class="bi bi-door-open"></i></a>
                 </div>
             </div>
         </div>

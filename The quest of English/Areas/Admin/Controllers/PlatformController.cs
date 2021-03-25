@@ -18,6 +18,8 @@ namespace The_quest_of_English
         private readonly ApplicationUserManager _applicationUserManager;
         private readonly PlacementTestTaskViewModelMapper _placementTestTaskViewModelMapper;
         private readonly PlacementTestTaskManager _placementTestTaskManager;
+        
+        
 
         public int MyProperty { get; set; }
         public PlatformController(ApplicationUserViewModelMapper applicationUserViewModelMapper, ApplicationUserManager applicationUserManager, PlacementTestTaskViewModelMapper placementTestTaskViewModelMapper, PlacementTestTaskManager placementTestTaskManager)
@@ -167,6 +169,14 @@ namespace The_quest_of_English
             var ListDto = await _placementTestTaskManager.GetAllPositions(); //Get new list
             var List = _placementTestTaskViewModelMapper.Map(ListDto);
             return View(List);
+        }
+
+        //Logout
+
+        public async Task<IActionResult> Logout()
+        {
+           await _applicationUserManager.LogOut();
+            return RedirectToAction("Index", "Home", new { area = "Unregistered"});
         }
     }
 }

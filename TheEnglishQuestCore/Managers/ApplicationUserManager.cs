@@ -48,5 +48,11 @@ namespace TheEnglishQuestCore.Managers
         {
             await _ApplicationUserRepository.AssignLevel(points, userId);
         }
+
+        public async Task LogOut()
+        {
+            await _ApplicationUserRepository.LogOut();
+        }
+
     }
 }
