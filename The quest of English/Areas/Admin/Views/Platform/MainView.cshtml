@@ -27,7 +27,7 @@
                     <p class="text-center mt-2 mb-3 font-size-rather-small">This platform is created by users for users, so feel free to comment, or contribute to the platform!</p>
                     <p class="text-center mt-2 mb-3 font-size-rather-small">Navigate to the section that interest you the most:</p>
                     <hr />
-                    <div class="row  mt-5  justify-content-center">
+                    <div class="row mt-5 mb-5 justify-content-center">
                         <div class="indent-blue"></div>
                         <div class="col-12">
                             <p class="text-center dark-blue-text-color font-size-medium">Grammar</p>
@@ -40,7 +40,7 @@
                         </div>
                     </div>
                     <hr />
-                    <div class="row mt-3 justify-content-center">
+                    <div class="row mt-5 mb-5 justify-content-center">
                         <div class="indent-blue"></div>
                         <div class="col-12 ">
                             <p class="text-center dark-blue-text-color font-size-medium">Reading</p>
@@ -53,7 +53,7 @@
                         </div>
                     </div>
                     <hr />
-                    <div class="row justify-content-center">
+                    <div class="row mt-5 mb-5 justify-content-center">
                         <div class="indent-blue"></div>
                         <div class="col-12 ">
                             <p class="text-center dark-blue-text-color font-size-medium">Writing</p>
@@ -64,7 +64,7 @@
                         </div>
                     </div>
                     <hr />
-                    <div class="row justify-content-center">
+                    <div class="row mt-5 mb-5 justify-content-center">
                         <div class="indent-blue"></div>
                         <div class="col-12 ">
                             <p class="text-center dark-blue-text-color font-size-medium">Speaking</p>
@@ -73,8 +73,9 @@
                                 <a class="btn warm-orange-color btn-lg platform-buttons-width-large" type="button" asp-controller="" asp-action="">All Levels</a>
                             </p>
                         </div>
-                        <hr />
-                    </div> <div class="row justify-content-center">
+                    </div>
+                    <hr />
+                    <div class="row mt-5 mb-5 justify-content-center">
                         <div class="indent-blue"></div>
                         <div class="col-12 ">
                             <p class="text-center dark-blue-text-color font-size-medium">Listening</p>
@@ -106,10 +107,40 @@
                     <p class="font-size-medium">@Model.UserName</p>
                 </div>
                 <div class="col-12">
-                    <button class="btn form-control warm-orange-color">Edit profile</button>
+                    <button class="btn form-control warm-orange-color" type="button">Edit profile</button>
+                    @*Imie/Nazwisko/Email/Picture*@
+                <form method="post" class="mt-2">
+                    <textarea class="form-control mb-2" placeholder="About you"></textarea>
+                    <label for="firstName">
+                        <i class="bi bi-person-circle"> First name:</i>
+                    </label>
+                    <input id="firstName" type="text" class="form-control" />
+                    <label for="lastName">
+                        <i class="bi bi-person-circle"> Last name:</i>
+                    </label>
+                    <input id="lastName" type="text" class="form-control" />
+                    <label for="email">
+                        <i class="bi bi-envelope"> Email: </i>
+                    </label>
+                    <input id="email" type="email" class="form-control" />
+                </form>
                 </div>
-                <div class="col-12 mt-2">
+                <div class="col-12 mt-2" id="credentials">
                     <p class="font-size-rather-small">Estimated level: @Model.Level</p>
+                    @if (Model.FirstName != 0 && Model.LastName != 0)
+                    {
+                        <p class="font-size-rather-small mb-0">
+                            <i class="bi bi-person-circle"></i>
+                            Full name: @Model.FirstName @Model.LastName
+                        </p>
+                    }
+                    @if (Model.Email != null)
+                    {
+                        <p class="font-size-rather-small mb-0">
+                            <i class="bi bi-envelope"></i>
+                            Email: @Model.Email
+                        </p>
+                    }
                 </div>
             </div>
         </aside>
