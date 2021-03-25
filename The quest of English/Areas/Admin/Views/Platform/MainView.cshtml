@@ -6,7 +6,7 @@
     Layout = "_PlatformLayout";
 }
 
-<main class="container mt-5">
+<main class="container">
     <div class="row">
         <article class="col-9 p-4">
             @{if (Model.Level == null)
@@ -23,65 +23,53 @@
                 }
                 else
                 {
-                    <p class="text-center mt-5 font-size-big">Welcome to the platform!</p>
-                    <p class="text-center mt-2 font-size-rather-small">Your current progress:</p>
-                    <div class="row mt-3 mb-3">
-                        <div class="col-12 text-center">
-                            <p>
-                                <span class="font-size-rather-small">Grammar</span>
-                                <span class="text-left">X%</span>
-                            </p>
-                            <div class="progress">
-                                <div class="progress-bar dark-blue-color" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
+                    <p class="text-center mt-3 font-size-big">Welcome to the platform!</p>
+                    <p class="text-center mt-2 mb-3 font-size-rather-small">Navigate to the section that interest you the most:</p>
+                    <div class="row justify-content-center">
+                        <div class="indent-blue"></div>
+                        <div class="col-12">
+                            <p class="text-center dark-blue-text-color font-size-medium">Grammar</p>
+                            <p class="text-center">Grammar is considered the hardest part of English Language. Here you will find three different sections covering grammar tasks: FCE, CAE, CPE.</p>
                         </div>
                     </div>
-                    <div class="row mt-3 mb-3">
-                        <div class="col-12 text-center">
-                            <p>
-                                <span class="font-size-rather-small">Reading</span>
-                                <span class="text-left">X%</span>
-                            </p>
-                            <div class="progress">
-                                <div class="progress-bar dark-blue-color" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div> <div class="row mt-3 mb-3">
-                        <div class="col-12 text-center">
-                            <p>
-                                <span class="font-size-rather-small">Writing</span>
-                                <span class="text-left">X%</span>
-                            </p>
-                            <div class="progress">
-                                <div class="progress-bar dark-blue-color" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div> <div class="row mt-3 mb-3">
-                        <div class="col-12 text-center">
-                            <p>
-                                <span class="font-size-rather-small">Speaking</span>
-                                <span class="text-left">X%</span>
-                            </p>
-                            <div class="progress">
-                                <div class="progress-bar dark-blue-color" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div> <div class="row mt-3 mb-3">
-                        <div class="col-12 text-center">
-                            <p>
-                                <span class="font-size-rather-small">Listening</span>
-                                <span class="text-left">X%</span>
-                            </p>
-                            <div class="progress">
-                                <div class="progress-bar dark-blue-color" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
+                    <div class="row justify-content-center">
+                        <div class="indent-blue"></div>
+                        <div class="col-12 ">
+                            <p class="text-center dark-blue-text-color font-size-medium">Reading</p>
+                            <p class="text-center">You improve your English while you read a lot. For this reason you will find a lot of text devided in three sections depending on your desirable level.</p>
                         </div>
                     </div>
+                    <div class="row justify-content-center">
+                        <div class="indent-blue"></div>
+                        <div class="col-12 ">
+                            <p class="text-center dark-blue-text-color font-size-medium">Writing</p>
+                            <p class="text-center">Emails, complains, reviews, eseys, you will find all of those examples there. It is not divided by level segments.</p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="indent-blue"></div>
+                        <div class="col-12 ">
+                            <p class="text-center dark-blue-text-color font-size-medium">Speaking</p>
+                            <p class="text-center">Here you will find some mixed speaking tasks which may help you to speak more fluently and eloquently.</p>
+                        </div>
+                    </div> <div class="row justify-content-center">
+                        <div class="indent-blue"></div>
+                        <div class="col-12 ">
+                            <p class="text-center dark-blue-text-color font-size-medium">Listening</p>
+                            <p class="text-center">Listening shows how well you have worked on previous sections. There are FCE, CAE, CPE tasks.</p>
+                        </div>
+                    </div>
+
                 }
 
             }
         </article>
-        <aside class="col-3 border-left">
+        <aside class="mt-5 pt-4 col-3 border-left">
+            <div class="row">
+                <div class="col-12 text-center">
+                    Tekst
+                </div>
+            </div>
         </aside>
     </div>
 </main>
