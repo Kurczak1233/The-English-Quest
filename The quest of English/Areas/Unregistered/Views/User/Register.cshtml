@@ -29,8 +29,13 @@
                     <div class="col-12">
                         <p class="font-size-biggish dark-blue-text-color text-center">CREATE ACCOUNT</p>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 text-center">
                         <hr />
+                        <p class="dark-blue-text-color font-size-rather-small">
+                            <span>This site is not a bank system.</span>
+                            <br />
+                            <span>Save your time, you do not have to create overcomplicated password.</span>
+                        </p>
                     </div>
                 </div>
                 <form method="post" id="form" enctype="multipart/form-data" class="needs-validation" novalidate>
@@ -157,7 +162,7 @@
     //Passwords validation
     $("#password").on('change', checkPasswords("#password", "passwordError"));
     $("#passwordrepeat").on('change', checkPasswords("#passwordrepeat", "reapeatError"));
-    //Functions 
+    //Functions
     function hasNumber(myString) {
         return /\d/.test(myString);
     }
