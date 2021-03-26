@@ -142,6 +142,24 @@
                             </div>
                         </div>
                     </form>
+                    @*MODAL*@
+                    <div class="modal fade" id="ModalContent" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content" style="width: 700px;">
+                                <div class="modal-header row">
+                                    <div class="col-12 text-center">
+                                        <h5 class="modal-title dark-blue-text-color text-center" id="staticBackdropLabel">Crop your image</h5>
+                                        <br />
+                                        <img id="chosenImage" src="" alt="Chosen image" style="width:auto; max-width:650px; max-height:500px;" />
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Understood</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-12 mt-2" id="credentials">
                     <p class="font-size-rather-small">Estimated level: @Model.Level</p>
@@ -185,5 +203,23 @@
     $("#pic").on("change", function () {
         var picUrl = $("#pic").val();
         $("#url").text(picUrl);
-    })
+        $('#ModalContent').modal('show');
+        $("#chosenImage").attr("src",)
+    });
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#chosenImage').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
+
+    $("#pic").change(function () {
+        readURL(this);
+    });
 </script>
