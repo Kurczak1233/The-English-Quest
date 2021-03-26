@@ -151,6 +151,7 @@
                                         <h5 class="modal-title dark-blue-text-color text-center" id="staticBackdropLabel">Crop your image</h5>
                                         <br />
                                         <div id="picback">
+                                            <div id="cropPicture" style="background: rgba(0, 0, 0, 0.5);"></div>
                                            @* <img id="chosenImage" src="" alt="Chosen image" style="width:auto; max-width:650px; max-height:500px;" />*@
                                         </div>
                                     </div>
@@ -206,7 +207,7 @@
         var picUrl = $("#pic").val();
         $("#url").text(picUrl);
         $('#ModalContent').modal('show');
-        readURL(this); 
+        readURL(this);
     });
 
     //Converting picture to base64 format.
@@ -222,6 +223,24 @@
                     $('#picback').css("width", this.width);
                     $('#picback').css("max-width", "650px");
                     $('#picback').css("max-height", "650px");
+
+                    if (this.height > this.width && this.width <= 650) {
+                        $("#cropPicture").css("height", this.width);
+                        $("#cropPicture").css("width", this.width);
+                    }
+                    else if (this.height <= this.width && this.height <= 650) {
+                        $("#cropPicture").css("height", this.height);
+                        $("#cropPicture").css("width", this.height);
+                    }
+                    else {
+                        $("#cropPicture").css("height", "650px");
+                        $("#cropPicture").css("width", "650px");
+                    }
+                    //Setting picture.
+                    $("#cropPicture").on("click", function () {
+
+
+                    })
                 }
                 img.src = e.target.result;
                 //$('#chosenImage').attr('src', e.target.result);
@@ -230,7 +249,6 @@
                 $('#picback').css("background-repeat", "no-repeat");
                 $('#picback').css("background-position", "center");
             }
-
             reader.readAsDataURL(input.files[0]); // convert to base64 string
         }
     }
