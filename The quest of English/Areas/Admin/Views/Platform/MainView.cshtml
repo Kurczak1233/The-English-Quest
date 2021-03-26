@@ -142,6 +142,8 @@
                             </div>
                         </div>
                     </form>
+                    <img id="CropieImage" src="/images/Uśmiech.jpg" alt="Chosen image" style="width:auto; max-width:650px; max-height:500px;" />
+
                     @*MODAL*@
                     <div class="modal fade" id="ModalContent" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog d-flex justify-content-center">
@@ -151,8 +153,8 @@
                                         <h5 class="modal-title dark-blue-text-color text-center" id="staticBackdropLabel">Crop your image</h5>
                                         <br />
                                         <div id="picback">
-                                            <div id="cropPicture" style="background: rgba(0, 0, 0, 0.5);"></div>
-                                           @* <img id="chosenImage" src="" alt="Chosen image" style="width:auto; max-width:650px; max-height:500px;" />*@
+                                            @*<div id="cropPicture" style="background: rgba(0, 0, 0, 0.5);"></div>*@
+                                            @*<img id="CropieImage" src="/images/Uśmiech.jpg" alt="Chosen image" style="width:auto; max-width:650px; max-height:500px;" />*@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -163,7 +165,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-12 mt-2" id="credentials">
                         <p class="font-size-rather-small">Estimated level: @Model.Level</p>
                         @if (Model.FirstName != null || Model.LastName != null)
@@ -192,7 +194,8 @@
         </aside>
     </div>
 </main>
-<script src="croppie.js">
+<script src="~/lib/Croppie/croppie.js" asp-append-version="true"></script>
+@*<script>
     function ActivateForm() {
         $("#form").removeAttr("hidden");
         $("#credentials").attr("hidden", true);
@@ -236,25 +239,10 @@
                         $("#cropPicture").css("height", "650px");
                         $("#cropPicture").css("width", "650px");
                     }
-                    //Setting picture.
-                        var basic = $('#demo-basic').croppie({
-                            viewport: {
-                                width: 150,
-                                height: 200
-                            }
-                        });
-                        basic.croppie('bind', {
-                            url: 'demo/cat.jpg',
-                            points: [77, 469, 280, 739]
-                        });
-                        //on button click
-                        basic.croppie('result', 'html').then(function (html) {
-                            // html is div (overflow hidden)
-                            // with img positioned inside.
-                        });
-                    })
                 }
                 img.src = e.target.result;
+
+               
                 //$('#chosenImage').attr('src', e.target.result);
                 $('#picback').css("background-image", "url(" + e.target.result + ")");
                 $('#picback').css("background-size", "cover");
@@ -264,6 +252,30 @@
             reader.readAsDataURL(input.files[0]); // convert to base64 string
         }
     }
+</script>*@
 
-
+<script>
+    //var c = new Croppie(document.getElementById('CropieImage'), opts);
+    //// call a method
+    //c.method(args);
+    var basic = $('#CropieImage').croppie({
+        viewport: {
+            width: 150,
+            height: 200
+        }
+    });
+    basic.croppie('bind', {
+        url: '/images/Uśmiech.jpg',
+        points: [77, 469, 280, 739]
+    });
+    //console.log("DUPA");
+    //basic.croppie('bind', {
+    //    url: 'demo/cat.jpg',
+    //    points: [77, 469, 280, 739]
+    //});
+    ////on button click
+    //basic.croppie('result', 'html').then(function (html) {
+    //    // html is div (overflow hidden)
+    //    // with img positioned inside.
+    //});
 </script>
