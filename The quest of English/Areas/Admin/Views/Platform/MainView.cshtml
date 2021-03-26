@@ -100,7 +100,11 @@
                     }
                     else
                     {
-                        <img src="" class="img-fluid" style="border-radius:50%;" alt="Custom user profile picture" />
+                        var base64 = Convert.ToBase64String(Model.Picture);
+                        var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                        <div>
+                            <img src="@imgsrc" style="border-radius:50%;" class="img-fluid" alt="Custom user profile picture" />
+                        </div>
                     }
                 </div>
                 <div class="col-12 text-center mt-2">
@@ -109,9 +113,9 @@
                 <div class="col-12">
                     <button class="btn form-control warm-orange-color" type="button" onclick="ActivateForm()">Edit profile</button>
                     @*Imie/Nazwisko/Email/Picture*@
-                    <form method="post" id="form" hidden class="mt-2"  enctype="multipart/form-data" >
+                    <form method="post" id="form" hidden class="mt-2" enctype="multipart/form-data">
                         <textarea asp-for="@Model.Description" class="form-control mb-2" placeholder="About you"></textarea>
-                        <label for="firstName"class="mt-2">
+                        <label for="firstName" class="mt-2">
                             <i class="bi bi-person-circle"> First name:</i>
                         </label>
                         <input asp-for="@Model.FirstName" id="firstName" type="text" class="form-control" />
@@ -127,7 +131,7 @@
                         <label for="pic" class="form-control btn warm-orange-color custom-file-upload">
                             Upload file
                         </label>
-                        <input asp-for="@Model.Picture" type="file" accept="image/png, image/jpeg" id="pic" class="custom-file-upload btn warm-orange-color"/>
+                        <input asp-for="@Model.Picture" type="file" accept="image/png, image/jpeg" id="pic" class="custom-file-upload btn warm-orange-color" />
                         <p id="url"></p>
                         <div class="row mt-3">
                             <div class="col-6">

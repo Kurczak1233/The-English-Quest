@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using The_quest_of_English.Models;
 using The_quest_of_English.Models.ViewModels;
@@ -42,12 +43,30 @@ namespace The_quest_of_English
         [ActionName("MainView")]
         public async Task<IActionResult> MainViewForm(ApplicationUserViewModel model) //Corrects user profile.
         {
-            var userId = User.Identity.GetUserId();
-            model.Id = userId;
-            var userDto = _applicationUserViewModelMapper.Map(model);
-            var userDtoUpdated = await _applicationUserManager.UpdateUser(userDto);
-            var userViewModel = _applicationUserViewModelMapper.Map(userDtoUpdated);
-            return RedirectToAction("MainView");
+            if (ModelState.IsValid)
+            {
+                var file = HttpContext.Request.Form.Files; //Getting file from context
+                byte[] p1 = null;
+                using (var filestream1 = file[0].OpenReadStream())
+                {
+                    using (var ms1 = new MemoryStream())
+                    {
+                        filestream1.CopyTo(ms1);
+                        p1 = ms1.ToArray();
+                    }
+                }
+                model.Picture = p1;
+                var userId = User.Identity.GetUserId();
+                model.Id = userId;
+                var userDto = _applicationUserViewModelMapper.Map(model);
+                var userDtoUpdated = await _applicationUserManager.UpdateUser(userDto);
+                var userViewModel = _applicationUserViewModelMapper.Map(userDtoUpdated);
+                return RedirectToAction("MainView");
+            }
+            else
+            {
+                return RedirectToAction("MainView");
+            }
         }
         public async Task<IActionResult> PlacementTest() //Creating new and deleting old one instead of updating.
         {

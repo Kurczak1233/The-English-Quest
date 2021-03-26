@@ -51,6 +51,7 @@ namespace TheEnglishQuestDatabase
             userFromDb.LastName = user.LastName;
             userFromDb.Description = user.Description;
             userFromDb.Email = user.Email;
+            userFromDb.Picture = user.Picture;
             await SaveChanges();
             return user;
         }
