@@ -109,7 +109,7 @@
                 <div class="col-12">
                     <button class="btn form-control warm-orange-color" type="button" onclick="ActivateForm()">Edit profile</button>
                     @*Imie/Nazwisko/Email/Picture*@
-                    <form method="post" id="form" hidden class="mt-2">
+                    <form method="post" id="form" hidden class="mt-2"  enctype="multipart/form-data" >
                         <textarea asp-for="@Model.Description" class="form-control mb-2" placeholder="About you"></textarea>
                         <label for="firstName"class="mt-2">
                             <i class="bi bi-person-circle"> First name:</i>
@@ -127,7 +127,8 @@
                         <label for="pic" class="form-control btn warm-orange-color custom-file-upload">
                             Upload file
                         </label>
-                        <input asp-for="@Model.Picture" type="file" id="pic" class="custom-file-upload btn warm-orange-color"/>
+                        <input asp-for="@Model.Picture" type="file" accept="image/png, image/jpeg" id="pic" class="custom-file-upload btn warm-orange-color"/>
+                        <p id="url"></p>
                         <div class="row mt-3">
                             <div class="col-6">
                                 <button type="submit" class="btn btn-success form-control">Save</button>
@@ -176,4 +177,9 @@
         $("#form").attr("hidden", true);
         $("#credentials").removeAttr("hidden");
     }
+
+    $("#pic").on("change", function () {
+        var picUrl = $("#pic").val();
+        $("#url").text(picUrl);
+    })
 </script>

@@ -40,7 +40,7 @@ namespace The_quest_of_English
         [ValidateAntiForgeryToken]
         [HttpPost]
         [ActionName("MainView")]
-        public async Task<IActionResult> MainViewForm(ApplicationUserViewModel model)
+        public async Task<IActionResult> MainViewForm(ApplicationUserViewModel model) //Corrects user profile.
         {
             var userId = User.Identity.GetUserId();
             model.Id = userId;
