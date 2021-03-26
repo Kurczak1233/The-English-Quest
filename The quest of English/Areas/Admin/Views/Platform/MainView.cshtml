@@ -144,48 +144,49 @@
                     </form>
                     @*MODAL*@
                     <div class="modal fade" id="ModalContent" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
+                        <div class="modal-dialog d-flex justify-content-center">
                             <div class="modal-content" style="width: 700px;">
                                 <div class="modal-header row">
                                     <div class="col-12 text-center">
                                         <h5 class="modal-title dark-blue-text-color text-center" id="staticBackdropLabel">Crop your image</h5>
                                         <br />
-                                        <img id="chosenImage" src="" alt="Chosen image" style="width:auto; max-width:650px; max-height:500px;" />
+                                        <div id="picback" style="width:auto; height:300px; max-width:650px; max-height:500px;">
+                                           @* <img id="chosenImage" src="" alt="Chosen image" style="width:auto; max-width:650px; max-height:500px;" />*@
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Understood</button>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Understood</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-12 mt-2" id="credentials">
+                        <p class="font-size-rather-small">Estimated level: @Model.Level</p>
+                        @if (Model.FirstName != null || Model.LastName != null)
+                        {
+                            <p class="font-size-rather-small mb-0">
+                                <i class="bi bi-person-circle"></i>
+                                Name: @Model.FirstName @Model.LastName
+                            </p>
+                        }
+                        @if (Model.Email != null)
+                        {
+                            <p class="font-size-rather-small mb-0">
+                                <i class="bi bi-envelope"></i>
+                                Email: @Model.Email
+                            </p>
+                        }
+                        @if (Model.Description != null)
+                        {
+                            <p class="font-size-rather-small mb-0">
+                                <i class="bi bi-file-earmark-person"></i>
+                                Description: @Model.Description
+                            </p>
+                        }
+                    </div>
                 </div>
-                <div class="col-12 mt-2" id="credentials">
-                    <p class="font-size-rather-small">Estimated level: @Model.Level</p>
-                    @if (Model.FirstName != null || Model.LastName != null)
-                    {
-                        <p class="font-size-rather-small mb-0">
-                            <i class="bi bi-person-circle"></i>
-                            Name: @Model.FirstName @Model.LastName
-                        </p>
-                    }
-                    @if (Model.Email != null)
-                    {
-                        <p class="font-size-rather-small mb-0">
-                            <i class="bi bi-envelope"></i>
-                            Email: @Model.Email
-                        </p>
-                    }
-                    @if (Model.Description != null)
-                    {
-                        <p class="font-size-rather-small mb-0">
-                            <i class="bi bi-file-earmark-person"></i>
-                            Description: @Model.Description
-                        </p>
-                    }
-                </div>
-            </div>
         </aside>
     </div>
 </main>
@@ -204,22 +205,24 @@
         var picUrl = $("#pic").val();
         $("#url").text(picUrl);
         $('#ModalContent').modal('show');
-        $("#chosenImage").attr("src",)
+        readURL(this);
+        //$("#drop-contaiener").css("background-color", "black");
+        //$("#drop-contaiener").css("height", "500px");
     });
 
+    //Converting picture to base64 format.
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
 
             reader.onload = function (e) {
-                $('#chosenImage').attr('src', e.target.result);
+                //$('#chosenImage').attr('src', e.target.result);
+                $('#picback').css("background-image", "url("+ e.target.result + ")");
             }
 
             reader.readAsDataURL(input.files[0]); // convert to base64 string
         }
     }
 
-    $("#pic").change(function () {
-        readURL(this);
-    });
+
 </script>
