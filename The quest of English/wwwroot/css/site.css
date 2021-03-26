@@ -297,3 +297,14 @@ input[type="radio"] {
 .platform-buttons-width{
     width:100px;
 }
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+input[type="file"] {
+    display: none;
+}
