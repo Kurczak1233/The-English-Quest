@@ -162,6 +162,7 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="col-12 mt-2" id="credentials">
                         <p class="font-size-rather-small">Estimated level: @Model.Level</p>
                         @if (Model.FirstName != null || Model.LastName != null)
@@ -205,9 +206,7 @@
         var picUrl = $("#pic").val();
         $("#url").text(picUrl);
         $('#ModalContent').modal('show');
-        readURL(this);
-        //$("#drop-contaiener").css("background-color", "black");
-        //$("#drop-contaiener").css("height", "500px");
+        readURL(this); 
     });
 
     //Converting picture to base64 format.
