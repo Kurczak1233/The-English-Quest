@@ -128,7 +128,7 @@
                         </label>
                         <input asp-for="@Model.Email" id="email" type="email" class="form-control mb-2" />
                         <p class="mb-1"><i class="bi bi-image"> Profile picture:</i></p>
-                        <label for="pic" class="form-control btn warm-orange-color custom-file-upload">
+                        <label for="pic" id="UploadPic" class="form-control btn warm-orange-color custom-file-upload">
                             Upload file
                         </label>
                         <input asp-for="@Model.Picture" type="file" accept="image/png, image/jpeg" id="pic" class="custom-file-upload btn warm-orange-color" />
@@ -142,7 +142,7 @@
                             </div>
                         </div>
                     </form>
-                    <img id="CropieImage" src="/images/Uśmiech.jpg" alt="Chosen image" style="width:auto; max-width:650px; max-height:500px;" />
+                    @*<img id="TestCropie" src="/images/Uśmiech.jpg" alt="Chosen image" style="width:auto; max-width:650px; max-height:500px;" />*@
 
                     @*MODAL*@
                     <div class="modal fade" id="ModalContent" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -154,7 +154,7 @@
                                         <br />
                                         <div id="picback">
                                             @*<div id="cropPicture" style="background: rgba(0, 0, 0, 0.5);"></div>*@
-                                            @*<img id="CropieImage" src="/images/Uśmiech.jpg" alt="Chosen image" style="width:auto; max-width:650px; max-height:500px;" />*@
+                                            <img id="CropieImage" class="my-image" src="#" alt="Chosen image" style="width:auto; max-width:650px; max-height:500px;" />
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -194,8 +194,27 @@
         </aside>
     </div>
 </main>
-<script src="~/lib/Croppie/croppie.js" asp-append-version="true"></script>
-@*<script>
+@*<script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
+    <script src="~/lib/Croppie/croppie.js" asp-append-version="true"></script>*@
+<script>
+
+    //Croppie
+    //var basic = $('#CropieImage').croppie({
+    //    viewport: {
+    //        width: 150,
+    //        height: 200
+    //    }
+    //});
+    //basic.croppie('bind', {
+    //    url: '/images/Uśmiech.jpg',
+    //    points: [77, 469, 280, 739]
+    //});
+    //basic.croppie('result', 'html').then(function (html) {
+    //    // html is div (overflow hidden)
+    //    // with img positioned inside.
+    //});
+    //$('#TestCropie').croppie();
+    //Normal Jquery
     function ActivateForm() {
         $("#form").removeAttr("hidden");
         $("#credentials").attr("hidden", true);
@@ -209,73 +228,92 @@
     $("#pic").on("change", function () {
         var picUrl = $("#pic").val();
         $("#url").text(picUrl);
-        $('#ModalContent').modal('show');
         readURL(this);
+        //var basic = $('#CropieImage').croppie({
+        //    viewport: {
+        //        width: 150,
+        //        height: 200
+        //    }
+        //});
+        $('#ModalContent').modal('show');
+        $('#ModalContent').on('shown.bs.modal', function () {
+            var myCroppie = $('#CropieImage').croppie({
+                    enableExif: true,
+                    viewport: {
+                        width: 200,
+                        height: 200,
+                        type: 'circle'
+                    },
+                    boundary: {
+                        width: 300,
+                        height: 300
+                    }
+            });
+            myCroppie.croppie('bind');
+        });
+
     });
 
-    //Converting picture to base64 format.
+    //$("#ModalContent").on("change",function () {
+    //    $('#CropieImage').croppie();
+    //    console.log("DUPA");
+    //})
+
+
+
+    //$("#pic").ready(function () {
+    //    $('#CropieImage').croppie()
+    //})
+
+
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
-                const img = new Image();
-                img.onload = function () {
-                    this.width;
-                    this.height;
-                    $('#picback').css("height", this.height);
-                    $('#picback').css("width", this.width);
-                    $('#picback').css("max-width", "650px");
-                    $('#picback').css("max-height", "650px");
+                $('#CropieImage').attr("src", e.target.result);
 
-                    if (this.height > this.width && this.width <= 650) {
-                        $("#cropPicture").css("height", this.width);
-                        $("#cropPicture").css("width", this.width);
-                    }
-                    else if (this.height <= this.width && this.height <= 650) {
-                        $("#cropPicture").css("height", this.height);
-                        $("#cropPicture").css("width", this.height);
-                    }
-                    else {
-                        $("#cropPicture").css("height", "650px");
-                        $("#cropPicture").css("width", "650px");
-                    }
-                }
-                img.src = e.target.result;
-
-               
-                //$('#chosenImage').attr('src', e.target.result);
-                $('#picback').css("background-image", "url(" + e.target.result + ")");
-                $('#picback').css("background-size", "cover");
-                $('#picback').css("background-repeat", "no-repeat");
-                $('#picback').css("background-position", "center");
             }
             reader.readAsDataURL(input.files[0]); // convert to base64 string
         }
     }
-</script>*@
 
-<script>
-    //var c = new Croppie(document.getElementById('CropieImage'), opts);
-    //// call a method
-    //c.method(args);
-    var basic = $('#CropieImage').croppie({
-        viewport: {
-            width: 150,
-            height: 200
-        }
-    });
-    basic.croppie('bind', {
-        url: '/images/Uśmiech.jpg',
-        points: [77, 469, 280, 739]
-    });
-    //console.log("DUPA");
-    //basic.croppie('bind', {
-    //    url: 'demo/cat.jpg',
-    //    points: [77, 469, 280, 739]
-    //});
-    ////on button click
-    //basic.croppie('result', 'html').then(function (html) {
-    //    // html is div (overflow hidden)
-    //    // with img positioned inside.
-    //});
+    ////Converting picture to base64 format.
+    //function readURL(input) {
+    //    if (input.files && input.files[0]) {
+    //        var reader = new FileReader();
+    //        reader.onload = function (e) {
+    //            const img = new Image();
+    //        //    img.onload = function () {
+    //        //        this.width;
+    //        //        this.height;
+    //        //        $('#picback').css("height", this.height);
+    //        //        $('#picback').css("width", this.width);
+    //        //        $('#picback').css("max-width", "650px");
+    //        //        $('#picback').css("max-height", "650px");
+
+    //        //        if (this.height > this.width && this.width <= 650) {
+    //        //            $("#cropPicture").css("height", this.width);
+    //        //            $("#cropPicture").css("width", this.width);
+    //        //        }
+    //        //        else if (this.height <= this.width && this.height <= 650) {
+    //        //            $("#cropPicture").css("height", this.height);
+    //        //            $("#cropPicture").css("width", this.height);
+    //        //        }
+    //        //        else {
+    //        //            $("#cropPicture").css("height", "650px");
+    //        //            $("#cropPicture").css("width", "650px");
+    //        //        }
+    //        //    }
+    //            img.src = e.target.result;
+
+
+    //            $('#chosenImage').attr('src', e.target.result);
+    //            //$('#picback').css("background-image", "url(" + e.target.result + ")");
+    //            //$('#picback').css("background-size", "cover");
+    //            //$('#picback').css("background-repeat", "no-repeat");
+    //            //$('#picback').css("background-position", "center");
+    //        }
+    //        reader.readAsDataURL(input.files[0]); // convert to base64 string
+    //    }
+    //}
 </script>
