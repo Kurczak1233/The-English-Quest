@@ -143,7 +143,6 @@
                         </div>
                     </div>
                 </form>
-                    @*<img id="TestCropie" src="/images/Uśmiech.jpg" alt="Chosen image" style="width:auto; max-width:650px; max-height:500px;" />*@
 
                     @*MODAL*@
                     <div class="modal fade" id="ModalContent" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -154,13 +153,12 @@
                                         <h5 class="modal-title dark-blue-text-color text-center" id="staticBackdropLabel">Crop your image</h5>
                                         <br />
                                         <div id="picback">
-                                            @*<div id="cropPicture" style="background: rgba(0, 0, 0, 0.5);"></div>*@
                                             <img id="CropieImage" class="my-image" src="#" alt="Chosen image" style="width:auto; max-width:650px; max-height:500px;" />
                                         </div>
                                     </div>
                                     <div class="col-12 modal-footer d-flex justify-content-center">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-success" id="confirmPicture" @*onclick="ConfirmCrop()*@>Confirm</button>
+                                        <button type="button" class="btn btn-success" id="confirmPicture">Confirm</button>
                                     </div>
                                 </div>
                             </div>
@@ -221,11 +219,7 @@
             });
             $("#confirmPicture").on("click", function () {
                 myCroppie.croppie('result', 'base64').then(function (html) {
-                    //console.log(html);
-                    ////Picture = html?
                     $("#myHiddenField").val(html);
-                    console.log(html);
-                    //$("#pic").val(html);
                     $('#ModalContent').modal('hide');
                 });
             });
@@ -242,23 +236,6 @@
         $("#form").attr("hidden", true);
         $("#credentials").removeAttr("hidden");
     }
-
-    //function ConfirmCrop() {
-    //    $("#CropieImage").result('base64', 'viewport', 'png', 1, 'circle').then(function (blob) {
-    //        // do something with cropped blob
-    //    });
-    //}
-    //function ConfirmCrop() {
-    //    $("#CropieImage").result('base64', 'viewport', 'png', 1, 'circle').then(function (blob) {
-    //        // do something with cropped blob
-    //    });
-    //}
-    //Getting result from cropping
-    //myCroppie.croppie('result', 'html').then(function (html) {
-    //    // html is div (overflow hidden)
-    //    // with img positioned inside.
-    //});
-
 
     function readURL(input) {
         if (input.files && input.files[0]) {

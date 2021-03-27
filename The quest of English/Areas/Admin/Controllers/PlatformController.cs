@@ -62,17 +62,12 @@ namespace The_quest_of_English
                     }
                     model.Picture = p1;
                 }
-                else //Recieved blob from form
+                else //Recieved string with extra beggining info from form
                 {
                     var base64 = model.CroppedPicture.Substring(22); //Clearing the beggining (because it is not clear base64)
                     byte[] bytes = Encoding.ASCII.GetBytes(base64);
                     byte[] data = Convert.FromBase64String(Encoding.ASCII.GetString(bytes));
                     model.Picture = data;
-                    //Blob blob = model.CroppedPicture;
-                    //var bytes = blob.GetBytes();
-                    //var result = bytes.ToArray();
-
-                    //await new Response(blob).arrayBuffer();
                 }
                 var userId = User.Identity.GetUserId();
                 model.Id = userId;
