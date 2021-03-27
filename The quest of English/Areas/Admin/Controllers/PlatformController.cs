@@ -64,7 +64,7 @@ namespace The_quest_of_English
                 }
                 else //Recieved string with extra beggining info from form
                 {
-                    var base64 = model.CroppedPicture.Substring(22); //Clearing the beggining (because it is not clear base64)
+                    var base64 = model.CroppedPicture.Substring(22); //Clearing the beggining (because it is not a clear base64)
                     byte[] bytes = Encoding.ASCII.GetBytes(base64);
                     byte[] data = Convert.FromBase64String(Encoding.ASCII.GetString(bytes));
                     model.Picture = data;

@@ -113,36 +113,36 @@
                 <div class="col-12">
                     <button class="btn form-control warm-orange-color" type="button" onclick="ActivateForm()">Edit profile</button>
                     @*Imie/Nazwisko/Email/Picture*@
-                <form method="post" id="form" hidden class="mt-2" enctype="multipart/form-data">
-                    <textarea asp-for="@Model.Description" class="form-control mb-2" placeholder="About you"></textarea>
-                    <label for="firstName" class="mt-2">
-                        <i class="bi bi-person-circle"> First name:</i>
-                    </label>
-                    <input asp-for="@Model.FirstName" id="firstName" type="text" class="form-control" />
-                    <label for="lastName" class="mt-2">
-                        <i class="bi bi-person-circle"> Last name:</i>
-                    </label>
-                    <input asp-for="@Model.LastName" id="lastName" type="text" class="form-control" />
-                    <label for="email" class="mt-2">
-                        <i class="bi bi-envelope"> Email: </i>
-                    </label>
-                    <input asp-for="@Model.Email" id="email" type="email" class="form-control mb-2" />
-                    <p class="mb-1"><i class="bi bi-image"> Profile picture:</i></p>
-                    <label for="pic" id="UploadPic" class="form-control btn warm-orange-color custom-file-upload">
-                        Upload file
-                    </label>
-                    <input asp-for="@Model.Picture" type="file" accept="image/png, image/jpeg" id="pic" class="custom-file-upload btn warm-orange-color" />
-                    <p id="url"></p>
-                    <input asp-for="@Model.CroppedPicture" type="hidden" id="myHiddenField">
-                    <div class="row mt-3">
-                        <div class="col-6">
-                            <button type="submit" class="btn btn-success form-control">Save</button>
+                    <form method="post" id="form" hidden class="mt-2" enctype="multipart/form-data">
+                        <textarea asp-for="@Model.Description" class="form-control mb-2" placeholder="About you"></textarea>
+                        <label for="firstName" class="mt-2">
+                            <i class="bi bi-person-circle"> First name:</i>
+                        </label>
+                        <input asp-for="@Model.FirstName" id="firstName" type="text" class="form-control" />
+                        <label for="lastName" class="mt-2">
+                            <i class="bi bi-person-circle"> Last name:</i>
+                        </label>
+                        <input asp-for="@Model.LastName" id="lastName" type="text" class="form-control" />
+                        <label for="email" class="mt-2">
+                            <i class="bi bi-envelope"> Email: </i>
+                        </label>
+                        <input asp-for="@Model.Email" id="email" type="email" class="form-control mb-2" />
+                        <p class="mb-1"><i class="bi bi-image"> Profile picture:</i></p>
+                        <label for="pic" id="UploadPic" class="form-control btn warm-orange-color custom-file-upload">
+                            Upload file
+                        </label>
+                        <input asp-for="@Model.Picture" type="file" accept="image/png, image/jpeg" id="pic" class="custom-file-upload btn warm-orange-color" />
+                        <p id="url"></p>
+                        <input asp-for="@Model.CroppedPicture" type="hidden" id="myHiddenField">
+                        <div class="row mt-3">
+                            <div class="col-6">
+                                <button type="submit" class="btn btn-success form-control">Save</button>
+                            </div>
+                            <div class="col-6">
+                                <button type="button" class="btn btn-danger form-control" onclick="CancelForm()">Cancel</button>
+                            </div>
                         </div>
-                        <div class="col-6">
-                            <button type="button" class="btn btn-danger form-control" onclick="CancelForm()">Cancel</button>
-                        </div>
-                    </div>
-                </form>
+                    </form>
 
                     @*MODAL*@
                     <div class="modal fade" id="ModalContent" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -157,7 +157,7 @@
                                         </div>
                                     </div>
                                     <div class="col-12 modal-footer d-flex justify-content-center">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                         <button type="button" class="btn btn-success" id="confirmPicture">Confirm</button>
                                     </div>
                                 </div>
@@ -194,7 +194,11 @@
     </div>
 </main>
 <script>
-
+    $("#pic").on("click", function () {
+        $("#pic").val("");
+        $("#CropieImage").attr("src", "#");
+        $("#url").text("");
+    });
     //Binding croppie + converting img type.
     $("#pic").on("change", function () {
         var picUrl = $("#pic").val();
@@ -202,21 +206,25 @@
         readURL(this);
         $('#ModalContent').modal('show');
         $('#ModalContent').on('shown.bs.modal', function () {
-            var myCroppie = $('#CropieImage').croppie({
-                enableExif: true,
-                viewport: {
-                    width: 200,
-                    height: 200,
-                    type: 'circle'
-                },
-                boundary: {
-                    width: 650,
-                    height: 500
-                }
-            });
-            myCroppie.croppie('bind', {
-                url: $("#CropieImage").attr("src")
-            });
+            console.log($(".croppie-container").length);
+            if ($(".croppie-container").length == 0)
+             {
+                var myCroppie = $('#CropieImage').croppie({
+                    enableExif: true,
+                    viewport: {
+                        width: 300,
+                        height: 300,
+                        type: 'circle'
+                    },
+                    boundary: {
+                        width: 650,
+                        height: 500
+                    }
+                });
+                myCroppie.croppie('bind', {
+                    url: $("#CropieImage").attr("src")
+                });
+            }
             $("#confirmPicture").on("click", function () {
                 myCroppie.croppie('result', 'base64').then(function (html) {
                     $("#myHiddenField").val(html);
@@ -241,7 +249,7 @@
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
-                
+
                 $('#CropieImage').attr("src", e.target.result);
             }
             reader.readAsDataURL(input.files[0]); // convert to base64 string
