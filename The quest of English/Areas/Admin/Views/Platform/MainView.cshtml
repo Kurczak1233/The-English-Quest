@@ -157,9 +157,9 @@
                                             <img id="CropieImage" class="my-image" src="#" alt="Chosen image" style="width:auto; max-width:650px; max-height:500px;" />
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
+                                    <div class="col-12 modal-footer d-flex justify-content-center">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Understood</button>
+                                        <button type="button" class="btn btn-success" id="confirmPicture" @*onclick="ConfirmCrop()*@">Confirm</button>
                                     </div>
                                 </div>
                             </div>
@@ -194,27 +194,7 @@
         </aside>
     </div>
 </main>
-@*<script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
-    <script src="~/lib/Croppie/croppie.js" asp-append-version="true"></script>*@
 <script>
-
-    //Croppie
-    //var basic = $('#CropieImage').croppie({
-    //    viewport: {
-    //        width: 150,
-    //        height: 200
-    //    }
-    //});
-    //basic.croppie('bind', {
-    //    url: '/images/Uśmiech.jpg',
-    //    points: [77, 469, 280, 739]
-    //});
-    //basic.croppie('result', 'html').then(function (html) {
-    //    // html is div (overflow hidden)
-    //    // with img positioned inside.
-    //});
-    //$('#TestCropie').croppie();
-    //Normal Jquery
     function ActivateForm() {
         $("#form").removeAttr("hidden");
         $("#credentials").attr("hidden", true);
@@ -225,19 +205,14 @@
         $("#credentials").removeAttr("hidden");
     }
 
-    $("#pic").on("change", function () {
-        var picUrl = $("#pic").val();
-        $("#url").text(picUrl);
-        readURL(this);
-        //var basic = $('#CropieImage').croppie({
-        //    viewport: {
-        //        width: 150,
-        //        height: 200
-        //    }
-        //});
-        $('#ModalContent').modal('show');
-        $('#ModalContent').on('shown.bs.modal', function () {
-            var myCroppie = $('#CropieImage').croppie({
+        //Binding croppie + converting img type.
+        $("#pic").on("change", function () {
+            var picUrl = $("#pic").val();
+            $("#url").text(picUrl);
+            readURL(this);
+            $('#ModalContent').modal('show');
+            $('#ModalContent').on('shown.bs.modal', function () {
+                var myCroppie = $('#CropieImage').croppie({
                     enableExif: true,
                     viewport: {
                         width: 200,
@@ -245,75 +220,50 @@
                         type: 'circle'
                     },
                     boundary: {
-                        width: 300,
-                        height: 300
+                        width: 650,
+                        height: 500
                     }
+                });
+                myCroppie.croppie('bind', {
+                    url: $("#CropieImage").attr("src")
+                });
+                $("#confirmPicture").on("click", function () {
+                    myCroppie.croppie('result', 'html').then(function (html) {
+                        // html is div (overflow hidden)
+                        // with img positioned inside.
+                        console.log("DUPA");
+                    });
+                });
             });
-            myCroppie.croppie('bind');
+            
         });
 
-    });
-
-    //$("#ModalContent").on("change",function () {
-    //    $('#CropieImage').croppie();
-    //    console.log("DUPA");
-    //})
 
 
+        //function ConfirmCrop() {
+        //    $("#CropieImage").result('base64', 'viewport', 'png', 1, 'circle').then(function (blob) {
+        //        // do something with cropped blob
+        //    });
+        //}
+        //function ConfirmCrop() {
+        //    $("#CropieImage").result('base64', 'viewport', 'png', 1, 'circle').then(function (blob) {
+        //        // do something with cropped blob
+        //    });
+        //}
+        //Getting result from cropping
+        //myCroppie.croppie('result', 'html').then(function (html) {
+        //    // html is div (overflow hidden)
+        //    // with img positioned inside.
+        //});
 
-    //$("#pic").ready(function () {
-    //    $('#CropieImage').croppie()
-    //})
 
-
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $('#CropieImage').attr("src", e.target.result);
-
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#CropieImage').attr("src", e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
             }
-            reader.readAsDataURL(input.files[0]); // convert to base64 string
         }
-    }
-
-    ////Converting picture to base64 format.
-    //function readURL(input) {
-    //    if (input.files && input.files[0]) {
-    //        var reader = new FileReader();
-    //        reader.onload = function (e) {
-    //            const img = new Image();
-    //        //    img.onload = function () {
-    //        //        this.width;
-    //        //        this.height;
-    //        //        $('#picback').css("height", this.height);
-    //        //        $('#picback').css("width", this.width);
-    //        //        $('#picback').css("max-width", "650px");
-    //        //        $('#picback').css("max-height", "650px");
-
-    //        //        if (this.height > this.width && this.width <= 650) {
-    //        //            $("#cropPicture").css("height", this.width);
-    //        //            $("#cropPicture").css("width", this.width);
-    //        //        }
-    //        //        else if (this.height <= this.width && this.height <= 650) {
-    //        //            $("#cropPicture").css("height", this.height);
-    //        //            $("#cropPicture").css("width", this.height);
-    //        //        }
-    //        //        else {
-    //        //            $("#cropPicture").css("height", "650px");
-    //        //            $("#cropPicture").css("width", "650px");
-    //        //        }
-    //        //    }
-    //            img.src = e.target.result;
-
-
-    //            $('#chosenImage').attr('src', e.target.result);
-    //            //$('#picback').css("background-image", "url(" + e.target.result + ")");
-    //            //$('#picback').css("background-size", "cover");
-    //            //$('#picback').css("background-repeat", "no-repeat");
-    //            //$('#picback').css("background-position", "center");
-    //        }
-    //        reader.readAsDataURL(input.files[0]); // convert to base64 string
-    //    }
-    //}
 </script>
