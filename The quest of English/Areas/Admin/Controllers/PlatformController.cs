@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection.Metadata;
+using System.Text;
 using System.Threading.Tasks;
 using The_quest_of_English.Models;
 using The_quest_of_English.Models.ViewModels;
@@ -63,8 +64,9 @@ namespace The_quest_of_English
                 }
                 else //Recieved blob from form
                 {
-                    var base64 = model.CroppedPicture.Substring(22);
-                    byte[] data = Convert.FromBase64String(model.CroppedPicture);
+                    var base64 = model.CroppedPicture.Substring(22); //Clearing the beggining (because it is not clear base64)
+                    byte[] bytes = Encoding.ASCII.GetBytes(base64);
+                    byte[] data = Convert.FromBase64String(Encoding.ASCII.GetString(bytes));
                     model.Picture = data;
                     //Blob blob = model.CroppedPicture;
                     //var bytes = blob.GetBytes();
