@@ -252,6 +252,9 @@
         $("#pic").val("");
         $("#CropieImage").attr("src", "#");
         $("#url").text("");
+        if (myCroppie != null) {
+            myCroppie.croppie('destroy');
+        }
     }
 
     function readURL(input) {
