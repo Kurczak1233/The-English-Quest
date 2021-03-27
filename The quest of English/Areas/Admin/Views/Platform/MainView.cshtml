@@ -7,8 +7,8 @@
 }
 
 <main class="container">
-    <div class="row">
-        <article class="col-9 p-4">
+    <div class="row flex-column-reverse flex-xl-row">
+        <article class="col-xl-9 p-4 border-bottom">
             @{if (Model.Level == null)
                 {
                     <p class="text-center mt-5 font-size-big">Welcome to the platform!</p>
@@ -90,7 +90,7 @@
                 }
             }
         </article>
-        <aside class="mt-5 pt-4 col-3 border-left">
+        <aside class="mt-5 pt-4 col-xl-3 mb-5 mb-xl-0">
             <div class="row">
                 <div class="col-12 text-center">
                     @if (Model.Picture.Length == 0)
@@ -165,31 +165,32 @@
                         </div>
                     </div>
 
-                    <div class="col-12 mt-2" id="credentials">
+                    <div class="col-12 mt-2 text-center text-xl-left" id="credentials">
                         <p class="font-size-rather-small">Estimated level: @Model.Level</p>
                         @if (Model.FirstName != null || Model.LastName != null)
                         {
-                            <p class="font-size-rather-small mb-0">
+                            <p class=" mb-0">
                                 <i class="bi bi-person-circle"></i>
                                 Name: @Model.FirstName @Model.LastName
                             </p>
                         }
                         @if (Model.Email != null)
                         {
-                            <p class="font-size-rather-small mb-0">
+                            <p class=" mb-0">
                                 <i class="bi bi-envelope"></i>
                                 Email: @Model.Email
                             </p>
                         }
                         @if (Model.Description != null)
                         {
-                            <p class="font-size-rather-small mb-0">
+                            <p class=" mb-0">
                                 <i class="bi bi-file-earmark-person"></i>
                                 Description: @Model.Description
                             </p>
                         }
                     </div>
                 </div>
+            </div>
         </aside>
     </div>
 </main>
@@ -225,12 +226,10 @@
                     }
                 });
 
-           }
-                myCroppie.croppie('bind', {
-                    url: $("#CropieImage").attr("src")
-                });
-            
-            console.log($("#CropieImage").attr("src"));
+            }
+            myCroppie.croppie('bind', {
+                url: $("#CropieImage").attr("src")
+            });
             $("#confirmPicture").on("click", function () {
                 myCroppie.croppie('result', 'base64').then(function (html) {
                     $("#myHiddenField").val(html);
