@@ -194,11 +194,16 @@
     </div>
 </main>
 <script>
+    var myCroppie;
     $("#pic").on("click", function () {
         $("#pic").val("");
         $("#CropieImage").attr("src", "#");
         $("#url").text("");
+        if (myCroppie != null) {
+            myCroppie.croppie('destroy');
+        }
     });
+
     //Binding croppie + converting img type.
     $("#pic").on("change", function () {
         var picUrl = $("#pic").val();
@@ -206,10 +211,8 @@
         readURL(this);
         $('#ModalContent').modal('show');
         $('#ModalContent').on('shown.bs.modal', function () {
-            console.log($(".croppie-container").length);
-            if ($(".croppie-container").length == 0)
-             {
-                var myCroppie = $('#CropieImage').croppie({
+            if ($(".croppie-container").length == 0) {
+                myCroppie = $('#CropieImage').croppie({
                     enableExif: true,
                     viewport: {
                         width: 300,
@@ -221,10 +224,13 @@
                         height: 500
                     }
                 });
+
+           }
                 myCroppie.croppie('bind', {
                     url: $("#CropieImage").attr("src")
                 });
-            }
+            
+            console.log($("#CropieImage").attr("src"));
             $("#confirmPicture").on("click", function () {
                 myCroppie.croppie('result', 'base64').then(function (html) {
                     $("#myHiddenField").val(html);
@@ -243,6 +249,9 @@
     function CancelForm() {
         $("#form").attr("hidden", true);
         $("#credentials").removeAttr("hidden");
+        $("#pic").val("");
+        $("#CropieImage").attr("src", "#");
+        $("#url").text("");
     }
 
     function readURL(input) {
