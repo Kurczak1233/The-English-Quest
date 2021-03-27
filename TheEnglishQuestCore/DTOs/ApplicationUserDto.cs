@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Reflection.Metadata;
 
 namespace TheEnglishQuestDatabase.Entities
 {
     public class ApplicationUserDto : IdentityUser
     {
+        public string CroppedPicture { get; set; }
         public string Description { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

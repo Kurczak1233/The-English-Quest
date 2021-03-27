@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.Reflection.Metadata;
 
 namespace TheEnglishQuest
 {
     public class ApplicationUserViewModel : IdentityUser
     {
+        public string CroppedPicture { get; set; }
         public string Description { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

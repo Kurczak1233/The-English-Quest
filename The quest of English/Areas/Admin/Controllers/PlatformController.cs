@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using The_quest_of_English.Models;
 using The_quest_of_English.Models.ViewModels;
@@ -45,22 +47,36 @@ namespace The_quest_of_English
         {
             if (ModelState.IsValid)
             {
-                var file = HttpContext.Request.Form.Files; //Getting file from context
-                byte[] p1 = null;
-                using (var filestream1 = file[0].OpenReadStream())
+                if (model.CroppedPicture.Length == 0)
                 {
-                    using (var ms1 = new MemoryStream())
+                    var file = HttpContext.Request.Form.Files; //Getting file from context
+                    byte[] p1 = null;
+                    using (var filestream1 = file[0].OpenReadStream())
                     {
-                        filestream1.CopyTo(ms1);
-                        p1 = ms1.ToArray();
+                        using (var ms1 = new MemoryStream())
+                        {
+                            filestream1.CopyTo(ms1);
+                            p1 = ms1.ToArray();
+                        }
                     }
+                    model.Picture = p1;
                 }
-                model.Picture = p1;
+                else //Recieved blob from form
+                {
+                    var base64 = model.CroppedPicture.Substring(22);
+                    byte[] data = Convert.FromBase64String(model.CroppedPicture);
+                    model.Picture = data;
+                    //Blob blob = model.CroppedPicture;
+                    //var bytes = blob.GetBytes();
+                    //var result = bytes.ToArray();
+
+                    //await new Response(blob).arrayBuffer();
+                }
                 var userId = User.Identity.GetUserId();
                 model.Id = userId;
                 var userDto = _applicationUserViewModelMapper.Map(model);
                 var userDtoUpdated = await _applicationUserManager.UpdateUser(userDto);
-                var userViewModel = _applicationUserViewModelMapper.Map(userDtoUpdated);
+                _applicationUserViewModelMapper.Map(userDtoUpdated);
                 return RedirectToAction("MainView");
             }
             else

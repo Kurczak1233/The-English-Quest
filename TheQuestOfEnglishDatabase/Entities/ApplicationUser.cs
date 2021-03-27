@@ -1,11 +1,15 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Reflection.Metadata;
 
 namespace TheEnglishQuestDatabase.Entities
 {
     public class ApplicationUser : IdentityUser
     {
+        [NotMapped]
+        public string CroppedPicture { get; set; }
         public string Description { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
