@@ -33,6 +33,14 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         {
             return View();
         }
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        [ActionName("CreateLesson")]
+        public async Task<IActionResult> CreateLessonPost()
+        {
+
+            return View();
+        }
         public IActionResult ModifyLesson()
         {
             return View();
