@@ -18,7 +18,7 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         }
         public IActionResult FCE()
         {
-            return View();
+            return View("CAE", SectionName);
         }
         public IActionResult CAE()
         {
@@ -26,7 +26,7 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         }
         public IActionResult CPE()
         {
-            return View();
+            return View("CAE", SectionName);
         }
 
         public IActionResult CreateLesson()
