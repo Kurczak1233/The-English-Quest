@@ -308,3 +308,9 @@ input[type="radio"] {
 input[type="file"] {
     display: none;
 }
+.orange-hover:hover {
+    background-color: rgb(252, 186, 3);
+}
+.width-150{
+    width:150px;
+}

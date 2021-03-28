@@ -8,22 +8,58 @@
 
             <ul style="margin-left:50%;" class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton1">
 
-                <li><button type="button" class="btn btn-outline-light text-white button-width-120px dark-blue-color">Grammar</button></li>
-                <li><button type="button" class="mt-2 btn btn-outline-light text-white button-width-120px dark-blue-color">Reading</button></li>
-                <li><button type="button" class="mt-2 btn btn-outline-light text-white button-width-120px dark-blue-color">Writing</button></li>
-                <li><button type="button" class="mt-2 btn btn-outline-light text-white button-width-120px dark-blue-color">Listnening</button></li>
-                <li><button type="button" class="mt-2 btn btn-outline-light text-white button-width-120px dark-blue-color">Speaking</button></li>
-                <li><a asp-action="Logout" asp-controller="Platform" type="button" class="mt-2 btn btn-danger button-width-120px">Logout<i class="bi bi-door-open"></i></a></li>
+                <li>
+                    <button type="button" class="btn btn-outline-light text-white button-width-120px dark-blue-color" id="dropdownGrammar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Grammar</button>
+                </li>
+                <li>
+                    <button type="button" class="mt-2 btn btn-outline-light text-white button-width-120px dark-blue-color">Reading</button>
+                </li>
+                <li>
+                    <button type="button" class="mt-2 btn btn-outline-light text-white button-width-120px dark-blue-color">Writing</button>
+                </li>
+                <li>
+                    <button type="button" class="mt-2 btn btn-outline-light text-white button-width-120px dark-blue-color">Listnening</button>
+                </li>
+                <li>
+                    <button type="button" class="mt-2 btn btn-outline-light text-white button-width-120px dark-blue-color">Speaking</button>
+                </li>
+                <li>
+                    <a asp-action="Logout" asp-controller="Platform" type="button" class="mt-2 btn btn-danger button-width-120px">
+                        Logout
+                        <i class="bi bi-door-open"></i>
+                    </a>
+                </li>
             </ul>
 
         </div>
         <div class="navbar-collapse col-8 offset-1 collapse d-xl-inline-flex">
-            <div class="navbar-nav flex-grow-0 btn-group d-flex btn-group-lg col-9" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-outline-light text-white button-width-120px dark-blue-color">Grammar</button>
-                <button type="button" class="btn btn-outline-light text-white button-width-120px dark-blue-color">Reading</button>
-                <button type="button" class="btn btn-outline-light text-white button-width-120px dark-blue-color">Writing</button>
-                <button type="button" class="btn btn-outline-light text-white button-width-120px dark-blue-color">Listnening</button>
-                <button type="button" class="btn btn-outline-light text-white button-width-120px dark-blue-color">Speaking</button>
+            <div class="navbar-nav flex-grow-0 btn-group d-flex col-9" role="group" aria-label="Basic example">
+                <div class="dropdown width-150">
+                    <button type="button" class="form-control btn btn-outline-light text-white dark-blue-color" id="dropdownGrammar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Grammar</button>
+                    <div class="dropdown-menu text-center light-blue-color" aria-labelledby="dropdownGrammar">
+                        <a class="dropdown-item  orange-hover" href="#">FCE</a>
+                        <a class="dropdown-item  orange-hover" href="#">CAE</a>
+                        <a class="dropdown-item  orange-hover" href="#">CPE</a>
+                    </div>
+                </div>
+                <div class="dropdown width-150">
+                    <button type="button" class="form-control btn-outline-light text-white dark-blue-color" id="dropdownReading" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Reading</button>
+                    <div class="dropdown-menu text-center light-blue-color" aria-labelledby="dropdownReading">
+                        <a class="dropdown-item  orange-hover" href="#">FCE</a>
+                        <a class="dropdown-item  orange-hover" href="#">CAE</a>
+                        <a class="dropdown-item  orange-hover" href="#">CPE</a>
+                    </div>
+                </div>
+                <a href="#" class="btn width-150 btn-outline-light text-white  dark-blue-color">Writing</a>
+                <a href="#" class="btn width-150 btn-outline-light text-white dark-blue-color">Speaking</a>
+                <div class="dropdown width-150">
+                    <button type="button" class="form-control btn btn-outline-light text-white dark-blue-color" id="dropdownReading" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Listening</button>
+                    <div class="dropdown-menu text-center light-blue-color" aria-labelledby="dropdownReading">
+                        <a class="dropdown-item  orange-hover" href="#">FCE</a>
+                        <a class="dropdown-item  orange-hover" href="#">CAE</a>
+                        <a class="dropdown-item  orange-hover" href="#">CPE</a>
+                    </div>
+                </div>
             </div>
             <div class="col-3 ml-3 navbar-nav flex-grow-0 btn-group d-flex justify-content-end flex-column" role="group">
                 @if (User.IsInRole(SD.AdminUser))
