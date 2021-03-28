@@ -1,7 +1,31 @@
-﻿
+﻿@model string
 @{
     ViewData["Title"] = "CAE";
 }
 
-<h1>CAE</h1>
+ 
+<main class="container">
+    <div class="row">
+        <div class="col-12 ">
+            <p class="font-size-biggish text-center mt-5 mb-5">@Model CAE</p>
+            @if (User.IsInRole(SD.AdminUser))
+            {
+                <partial name="AdminPaneIButtonsInEnglishSections" model="@Model" />
+            }
+            <div class="row text-center">
+                <div class="col-8">
+                    <p class="font-size-medium">Lessons available:</p>
+                </div>
+                <div class="col-4 border-left">
+                    <p class="font-size-medium">Quizes available:</p>
+                    <p><a href="#">Present Perfect Simple Adanced</a></p>
+                    <p> <a href="#">Present Perfect Continous Adanced</a></p>
+                    <p><a href="#">Present Perfect ... Adanced</a></p>
+                    <p><a href="#">Present Perfect ... Adanced</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
 

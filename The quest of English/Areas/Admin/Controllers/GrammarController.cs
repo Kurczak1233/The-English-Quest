@@ -9,6 +9,9 @@ namespace The_quest_of_English.Areas.Admin.Controllers
     [Area("Admin")]
     public class GrammarController : Controller
     {
+        [BindProperty]
+        public string SectionName { get; set; } = "Grammar";
+
         public IActionResult Index()
         {
             return View();
@@ -19,11 +22,38 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         }
         public IActionResult CAE()
         {
-            return View();
+            return View("CAE", SectionName);
         }
         public IActionResult CPE()
         {
             return View();
         }
+
+        public IActionResult CreateLesson()
+        {
+            return View();
+        }
+        public IActionResult ModifyLesson()
+        {
+            return View();
+        }
+        public IActionResult DeleteLesson()
+        {
+            return View();
+        }
+
+        public IActionResult CreateQuiz()
+        {
+            return View();
+        }
+        public IActionResult ModifyQuiz()
+        {
+            return View();
+        }
+        public IActionResult DeleteQuiz()
+        {
+            return View();
+        }
+
     }
 }

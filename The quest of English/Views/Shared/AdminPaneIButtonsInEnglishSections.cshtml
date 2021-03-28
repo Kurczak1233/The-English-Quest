@@ -1,0 +1,13 @@
+﻿@model string 
+<div class="row mb-3">
+    <div class="col-8 d-flex justify-content-center mb-3" id="adminPanel">
+        <a asp-controller="@Model" asp-action="CreateLesson" class="btn btn-success">Create lesson</a>
+        <a asp-controller="@Model" asp-action="ModifyLesson" class="btn btn-info ml-5 mr-5">Modify lesson</a>
+        <a asp-controller="@Model" asp-action="DeleteLesson" class="btn btn-danger">Delete lesson</a>
+    </div>
+    <div class="col-4 d-flex justify-content-center mb-3" id="adminPanel2">
+        <a asp-controller="@Model" asp-action="CreateQuiz" class="btn btn-success">Create quiz</a>
+        <a asp-controller="@Model" asp-action="ModifyQuiz" class="btn btn-info ml-5 mr-5">Modify quiz</a>
+        <a asp-controller="@Model" asp-action="DeleteQuiz" class="btn btn-danger">Delete quiz</a>
+    </div>
+</div>
