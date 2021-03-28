@@ -3,5 +3,21 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Grammar</h1>
 
+<main class="container mt-5">
+    <div class="row">
+        <div class="col-12 text-center mb-3">
+            <p class="font-size-biggish">Pick up the area you are interest in</p>
+            <p class="mt-3 mb-3 font-size-medium">Grammar:</p>
+        </div>
+        <div class="col-12 text-center mb-5">
+            <a asp-action="FCE" asp-controller="Grammar" style="width:50%" class="btn-lg mt-3 rounded-pill btn warm-orange-color">FCE</a>
+        </div>
+        <div class="col-12 text-center mb-5">
+            <a asp-action="CAE" asp-controller="Grammar" style="width:50%" class="btn-lg mt-3 rounded-pill btn warm-orange-color">CAE</a>
+        </div>
+        <div class="col-12 text-center mb-5">
+            <a asp-action="CPE" asp-controller="Grammar" style="width:50%" class="btn-lg mt-3 rounded-pill btn warm-orange-color">CPE</a>
+        </div>
+    </div>
+</main>

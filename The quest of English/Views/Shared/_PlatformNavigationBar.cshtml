@@ -8,19 +8,19 @@
 
             <ul style="margin-left:50%;" class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton1">
                 <li>
-                    <button type="button" class="btn btn-outline-light text-white button-width-120px dark-blue-color" id="dropdownGrammar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Grammar</button>
+                    <a asp-controller="Grammar" asp-action="Index" class="btn btn-outline-light text-white button-width-120px dark-blue-color">Grammar</a>
                 </li>
                 <li>
-                    <button type="button" class="mt-2 btn btn-outline-light text-white button-width-120px dark-blue-color">Reading</button>
+                    <a asp-controller="Reading" asp-action="Index" class="mt-2 btn btn-outline-light text-white button-width-120px dark-blue-color">Reading</a>
                 </li>
                 <li>
-                    <button type="button" class="mt-2 btn btn-outline-light text-white button-width-120px dark-blue-color">Writing</button>
+                    <a asp-controller="Writing" asp-action="Index" class="mt-2 btn btn-outline-light text-white button-width-120px dark-blue-color">Writing</a>
                 </li>
                 <li>
-                    <button type="button" class="mt-2 btn btn-outline-light text-white button-width-120px dark-blue-color">Listnening</button>
+                    <a asp-controller="Speaking" asp-action="Index" class="mt-2 btn btn-outline-light text-white button-width-120px dark-blue-color">Speaking</a>
                 </li>
                 <li>
-                    <button type="button" class="mt-2 btn btn-outline-light text-white button-width-120px dark-blue-color">Speaking</button>
+                    <a asp-controller="Listening" asp-action="Index" class="mt-2 btn btn-outline-light text-white button-width-120px dark-blue-color">Listening</a>
                 </li>
                 <li>
                     <a asp-action="Logout" asp-controller="Platform" type="button" class="mt-2 btn btn-danger button-width-120px">
