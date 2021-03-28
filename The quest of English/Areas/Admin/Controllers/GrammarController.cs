@@ -38,7 +38,6 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         [ActionName("CreateLesson")]
         public async Task<IActionResult> CreateLessonPost()
         {
-
             return View();
         }
         public IActionResult ModifyLesson()
