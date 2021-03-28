@@ -36,27 +36,27 @@
                 <div class="dropdown width-150">
                     <button type="button" class="form-control btn btn-outline-light text-white dark-blue-color" id="dropdownGrammar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Grammar</button>
                     <div class="dropdown-menu text-center light-blue-color" aria-labelledby="dropdownGrammar">
-                        <a class="dropdown-item  orange-hover" href="#" asp-controller="Grammar" asp-action="">FCE</a>
-                        <a class="dropdown-item  orange-hover" href="#">CAE</a>
-                        <a class="dropdown-item  orange-hover" href="#">CPE</a>
+                        <a class="dropdown-item orange-hover" asp-controller="Grammar" asp-action="FCE">FCE</a>
+                        <a class="dropdown-item  orange-hover" asp-controller="Grammar" asp-action="CAE">CAE</a>
+                        <a class="dropdown-item  orange-hover" asp-controller="Grammar" asp-action="CPE">CPE</a>
                     </div>
                 </div>
                 <div class="dropdown width-150">
                     <button type="button" class="form-control btn-outline-light text-white dark-blue-color" id="dropdownReading" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Reading</button>
                     <div class="dropdown-menu text-center light-blue-color" aria-labelledby="dropdownReading">
-                        <a class="dropdown-item  orange-hover" href="#">FCE</a>
-                        <a class="dropdown-item  orange-hover" href="#">CAE</a>
-                        <a class="dropdown-item  orange-hover" href="#">CPE</a>
+                        <a class="dropdown-item  orange-hover" asp-controller="Reading" asp-action="FCE">FCE</a>
+                        <a class="dropdown-item  orange-hover" asp-controller="Reading" asp-action="CAE">CAE</a>
+                        <a class="dropdown-item  orange-hover" asp-controller="Reading" asp-action="CPE">CPE</a>
                     </div>
                 </div>
-                <a href="#" class="btn width-150 btn-outline-light text-white  dark-blue-color">Writing</a>
-                <a href="#" class="btn width-150 btn-outline-light text-white dark-blue-color">Speaking</a>
+                <a asp-controller="Writing" asp-action="Index" class="btn width-150 btn-outline-light text-white  dark-blue-color">Writing</a>
+                <a asp-controller="Speaking" asp-action="Index" class="btn width-150 btn-outline-light text-white dark-blue-color">Speaking</a>
                 <div class="dropdown width-150">
-                    <button type="button" class="form-control btn btn-outline-light text-white dark-blue-color" id="dropdownReading" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Listening</button>
-                    <div class="dropdown-menu text-center light-blue-color" aria-labelledby="dropdownReading">
-                        <a class="dropdown-item  orange-hover" href="#">FCE</a>
-                        <a class="dropdown-item  orange-hover" href="#">CAE</a>
-                        <a class="dropdown-item  orange-hover" href="#">CPE</a>
+                    <button type="button" class="form-control btn btn-outline-light text-white dark-blue-color" id="dropdownListening" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Listening</button>
+                    <div class="dropdown-menu text-center light-blue-color" aria-labelledby="dropdownListening">
+                        <a class="dropdown-item  orange-hover" asp-controller="Listening" asp-action="FCE">FCE</a>
+                        <a class="dropdown-item  orange-hover" asp-controller="Listening" asp-action="CAE">CAE</a>
+                        <a class="dropdown-item  orange-hover" asp-controller="Listening" asp-action="CPE">CPE</a>
                     </div>
                 </div>
             </div>

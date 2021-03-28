@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace The_quest_of_English.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class ListeningController : Controller
     {
         public IActionResult Index()
