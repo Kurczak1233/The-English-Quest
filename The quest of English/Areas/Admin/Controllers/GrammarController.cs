@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using The_quest_of_English.Models;
 
 namespace The_quest_of_English.Areas.Admin.Controllers
 {
@@ -29,17 +30,21 @@ namespace The_quest_of_English.Areas.Admin.Controllers
             return View("CAE", SectionName);
         }
 
-
-
         public IActionResult GrammarCreateQuiz()
         {
-            GrammarTasksViewModel lesson = new GrammarTasksViewModel();
-            return View(lesson);
+            GrammarQuizViewModel quiz = new GrammarQuizViewModel();
+            return View(quiz);
+        }
+
+        public IActionResult GrammarCreateTask()
+        {
+            GrammarTasksViewModel task = new GrammarTasksViewModel();
+            return View(task);
         }
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        [ActionName("GrammarCreateQuiz")]
-        public async Task<IActionResult> GrammarCreateQuizPost(GrammarTasksViewModel lesson)
+        [ActionName("GrammarCreateTask")]
+        public async Task<IActionResult> GrammarCreateTaskPost(GrammarTasksViewModel task)
         {
                 return View();
         }
