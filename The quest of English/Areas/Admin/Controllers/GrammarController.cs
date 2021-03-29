@@ -31,13 +31,13 @@ namespace The_quest_of_English.Areas.Admin.Controllers
 
         public IActionResult GrammarCreateQuiz()
         {
-            GrammarLesson lesson = new GrammarLesson();
+            GrammarTasksViewModel lesson = new GrammarTasksViewModel();
             return View(lesson);
         }
         [HttpPost]
         [AutoValidateAntiforgeryToken]
         [ActionName("CreateLesson")]
-        public async Task<IActionResult> GrammarCreateQuiz(GrammarLesson lesson)
+        public async Task<IActionResult> GrammarCreateQuiz(GrammarTasksViewModel lesson)
         {
             return View();
         }

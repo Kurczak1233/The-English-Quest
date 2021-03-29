@@ -1,7 +1,62 @@
-﻿
+﻿@model GrammarTasksViewModel 
 @{
     ViewData["Title"] = "GrammarCreateQuiz";
 }
 
-<h1>GrammarCreateQuiz</h1>
+<main class="container">
+    <div class="row">
+        <div class="col-12">
+            <form id="form" method="post">
+                <div class="p-2 text-center mt-4 font-size-medium col-12">
+                    Add question
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
+                        <label for="QuestionPart1">Question first part:</label>
+                    </div>
+                    <div class="col-7">
+                        <input id="inputFirstQuestionPart" asp-for="@Model.QuestionFirstPart" type="text" id="QuestionPart1" class="form-control" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
+                        <label for="QuestionPart2">Question second part:</label>
+                    </div>
+                    <div class="col-7">
+                        <input id="inputSecondQuestionPart" asp-for="@Model.QuestionSecondPart" type="text" id="QuestionPart2" class="form-control" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
+                        <label for="QuestionPart3">Question decorated part:</label>
+                    </div>
+                    <div class="col-7">
+                        <input id="inputDecorationPart" asp-for="@Model.QuestionDecoratedPart" type="text" id="QuestionPart3" class="form-control" />
+                    </div>
+                </div>
+                <hr />
+                <div class="row mt-5 mb-5">
+                    <div class="col-12 text-center font-size-medium">
+                        Preview
+                    </div>
+                </div>
+                <div class="row mt-3 d-flex justify-content-center">
+                    <div class="question-circle text-center ml-4">
+                        <strong class="font-size-medium question">1.</strong>
+                    </div>
+                    <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small mt-1 mb-3">
+                        <p><span id="FirstQuestionPart"></span>&nbsp;<span id="DecorationPart" class="dark-blue-text-color font-weight-bold font-italic"></span>&nbsp;<span id="SecondQuestionPart"></span></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn warm-orange-color mb-3">Submit</button>
+                        <a asp-controller="Platform" asp-action="PlacementTest" class="btn btn-danger mb-3 ml-5" aria-label="button" type="button">Abort</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
 

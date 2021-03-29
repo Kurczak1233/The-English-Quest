@@ -15,17 +15,6 @@ namespace TheQuestOfEnglishDatabase
             _db = db;
         }
 
-        //public virtual List<Entity> GetAll()
-        //{
-        //    var list = new List<Entity>();
-        //    var entities = DbSet;
-        //    foreach (var entity in entities)
-        //    {
-        //        list.Add(entity);
-        //    }
-        //    return list;
-        //}
-
         public async Task<bool> SaveChanges()
         {
             return await _db.SaveChangesAsync() > 0;
