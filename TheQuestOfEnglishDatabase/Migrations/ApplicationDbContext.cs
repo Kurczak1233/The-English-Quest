@@ -16,6 +16,8 @@ namespace TheQuestOfEnglishDatabase
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
         public DbSet<SampleTestQA> SampleTestQA { get; set; }
         public DbSet<PlacementTestTask> PlacementTestTasks{ get; set; }
+        public DbSet<GrammarQuiz> Quizzes{ get; set; }
+
 
     }
 }
