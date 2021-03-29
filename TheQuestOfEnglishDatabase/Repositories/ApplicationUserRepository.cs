@@ -72,7 +72,7 @@ namespace TheEnglishQuestDatabase
             return user;
         }
 
-        public async Task AssignLevel(double points, string userId)
+        public async System.Threading.Tasks.Task AssignLevel(double points, string userId)
         {
             var user = await DbSet.Where(x => x.Id == userId).SingleOrDefaultAsync();
             if (points < 0.4)
@@ -90,7 +90,7 @@ namespace TheEnglishQuestDatabase
             await SaveChanges();
         }
 
-        public async Task LogOut()
+        public async System.Threading.Tasks.Task LogOut()
         {
             await _signInManager.SignOutAsync();
         }
