@@ -8,10 +8,10 @@ using TheQuestOfEnglishDatabase;
 
 namespace TheEnglishQuestDatabase
 {
-    class GrammarTestRepository : BaseRepository<GrammarTask>, IGrammarTaskRepository
+    class GrammarTaskRepository : BaseRepository<GrammarTask>, IGrammarTaskRepository
     {
         protected override DbSet<GrammarTask> DbSet => _db.GrammarTasks;
-        public GrammarTestRepository(ApplicationDbContext db) : base(db)
+        public GrammarTaskRepository(ApplicationDbContext db) : base(db)
         {
         }
 

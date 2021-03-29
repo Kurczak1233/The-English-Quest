@@ -5,8 +5,8 @@ namespace TheEnglishQuestDatabase
 {
     public class GrammarTask : PlacementTestTask
     {
+        [ForeignKey("GrammarQuiz")]
         public int GrammarQuizId{ get; set; }
-        [ForeignKey("GrammarQuizId")]
         public virtual GrammarQuiz GrammarQuiz { get; set; }
     }
 }
