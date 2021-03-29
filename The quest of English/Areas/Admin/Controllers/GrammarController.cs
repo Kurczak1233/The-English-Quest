@@ -29,7 +29,7 @@ namespace The_quest_of_English.Areas.Admin.Controllers
             return View("CAE", SectionName);
         }
 
-        public IActionResult CreateLesson()
+        public IActionResult GrammarCreateQuiz()
         {
             GrammarLesson lesson = new GrammarLesson();
             return View(lesson);
@@ -37,28 +37,15 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         [HttpPost]
         [AutoValidateAntiforgeryToken]
         [ActionName("CreateLesson")]
-        public async Task<IActionResult> CreateLessonPost(GrammarLesson lesson)
+        public async Task<IActionResult> GrammarCreateQuiz(GrammarLesson lesson)
         {
             return View();
         }
-        public IActionResult ModifyLesson()
+        public IActionResult GrammarModifyQuiz()
         {
             return View();
         }
-        public IActionResult DeleteLesson()
-        {
-            return View();
-        }
-
-        public IActionResult CreateQuiz()
-        {
-            return View();
-        }
-        public IActionResult ModifyQuiz()
-        {
-            return View();
-        }
-        public IActionResult DeleteQuiz()
+        public IActionResult GrammarDeleteQuiz()
         {
             return View();
         }

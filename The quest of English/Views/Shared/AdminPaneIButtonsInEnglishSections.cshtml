@@ -1,7 +1,11 @@
 ﻿@model string 
 
-    <div class="d-flex justify-content-center mb-3" id="adminPanel">
-        <a asp-controller="@Model" asp-action="CreateLesson" class="btn btn-success">Create lesson</a>
-        <a asp-controller="@Model" asp-action="ModifyLesson" class="btn btn-info ml-5 mr-5">Modify lesson</a>
-        <a asp-controller="@Model" asp-action="DeleteLesson" class="btn btn-danger">Delete lesson</a>
-    </div>
+<div class="d-flex justify-content-center mb-3" id="adminPanel">
+    @{string CreateQuiz = $"{Model} + CreateQuiz"; }
+    @{string MofidyQuiz = $"{Model} + ModifyQuiz"; }
+    @{string DeleteQuiz = $"{Model} + DeleteQuiz"; }
+    <a asp-controller="@Model" asp-action="@CreateQuiz" class="btn btn-success">Create quiz</a>
+    <a asp-controller="@Model" asp-action="@MofidyQuiz" class="btn btn-info ml-5 mr-5">Modify quiz</a>
+    <a asp-controller="@Model" asp-action="@DeleteQuiz" class="btn btn-danger">Delete quiz</a>
+</div>
+ 

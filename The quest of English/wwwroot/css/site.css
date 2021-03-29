@@ -243,6 +243,9 @@ EncouragementSectionInMain*/
 .border-left-style {
     border-left: 5px solid rgb(30, 32, 166);
 }
+.border-left-warm-style {
+    border-left: 5px solid rgb(252, 186, 3);
+}
 
 .question-circle {
     background-color: rgb(252, 186, 3);

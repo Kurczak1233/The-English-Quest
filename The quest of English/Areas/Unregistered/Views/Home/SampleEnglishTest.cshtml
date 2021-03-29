@@ -17,7 +17,6 @@
 </head>
 <body class="mb-0">
     <partial name="_NavigationBar" />
-
     <main id="main">
         <section class="container">
             <div class="row">
@@ -154,7 +153,7 @@
         $(ObjId).css("border-left", "5px solid rgb(252, 186, 3)");
         $(ObjId).css("transition", "all 0.3s");
     }
-
+    //Sections open and close
     var start = $('#startScrolling').offset().top - 50;
     $(document).scroll(function () {
         var windowTopOffset = $(window).scrollTop();
