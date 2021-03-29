@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using TheEnglishQuestCore;
 using TheEnglishQuestDatabase.Entities;
 
 namespace TheEnglishQuestDatabase.Repositories.Interfaces
 {
-    public interface ISampleTestQADto
+    public interface ISampleTestQADto : IBaseTaskDto<SampleTestQADto>
     {
-        Task<bool> Delete(SampleTestQADto entity);
-        Task<bool> AddNew(SampleTestQADto entity);
-        Task<IEnumerable<SampleTestQADto>> GetAllValues();
     }
 }

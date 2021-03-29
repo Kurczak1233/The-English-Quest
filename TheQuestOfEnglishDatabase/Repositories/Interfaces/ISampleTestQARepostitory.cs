@@ -6,10 +6,8 @@ using TheEnglishQuestDatabase.Entities;
 
 namespace TheEnglishQuestDatabase.Repositories.Interfaces
 {
-    public interface ISampleTestQARepostitory
+    public interface ISampleTestQARepostitory : IBaseTaskRepository<SampleTestQA>
     {
-        Task<bool> Delete(SampleTestQA entity);
-        Task<bool> AddNew(SampleTestQA entity);
-        Task<IEnumerable<SampleTestQA>> GetAllValues();
+
     }
 }

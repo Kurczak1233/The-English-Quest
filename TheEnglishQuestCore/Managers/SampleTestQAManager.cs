@@ -23,6 +23,7 @@ namespace TheEnglishQuestCore.Managers
         }
 
 
+
         public async Task<bool> Delete(SampleTestQADto obj)
         {
             var entity = _DTOMapper.Map(obj);

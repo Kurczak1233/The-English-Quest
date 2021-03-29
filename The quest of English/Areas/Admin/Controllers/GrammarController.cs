@@ -39,7 +39,7 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         [ActionName("GrammarCreateQuiz")]
         public async Task<IActionResult> GrammarCreateQuizPost(GrammarTasksViewModel lesson)
         {
-            return View();
+                return View();
         }
         public IActionResult GrammarModifyQuiz()
         {
