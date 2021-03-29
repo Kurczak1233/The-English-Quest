@@ -2,7 +2,7 @@
 
 namespace The_quest_of_English
 {
-    public class GrammarTaskViewModel : PlacementTestTaskViewModel
+    public class GrammarTasksViewModel : PlacementTestTaskViewModel
     {
 
     }
