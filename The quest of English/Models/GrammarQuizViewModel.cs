@@ -11,7 +11,6 @@ namespace The_quest_of_English.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
         public IEnumerable<GrammarTask> GrammarTasks { get; set; }
     }
