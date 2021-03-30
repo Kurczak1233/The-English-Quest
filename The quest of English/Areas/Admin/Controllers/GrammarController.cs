@@ -47,9 +47,13 @@ namespace The_quest_of_English.Areas.Admin.Controllers
             return View("CAE", SectionName);
         }
 
-        public IActionResult GrammarCreateQuiz()
+        public async Task<IActionResult> GrammarCreateQuiz()
         {
             GrammarQuizViewModel quiz = new GrammarQuizViewModel();
+            var userId = User.Identity.GetUserId();
+            var user = await _applicationUserManager.GetLoggedUser(userId);
+            var userViewModel = _applicationUserViewModelMapper.Map(user);
+            quiz.User = userViewModel;
             return View(quiz);
         }
         [HttpPost]
@@ -59,12 +63,8 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var userId = User.Identity.GetUserId();
-                var user = await _applicationUserManager.GetLoggedUser(userId);
-                //var userViewModel = _applicationUserViewModelMapper.Map(user);
-                //quiz.User = userViewModel;
                 var quizDto =  _grammarQuizViewModelMapper.Map(quiz);
-                await _grammarQuizManager.AddNewQuiz(quizDto, user);
+                await _grammarQuizManager.AddNewQuiz(quizDto);
                 return RedirectToAction("");
             }
             else

@@ -5,7 +5,7 @@ namespace TheEnglishQuestCore
 {
     public interface IGrammarQuiz
     {
-        Task<bool> AddNewQuiz(GrammarQuizDto quiz, ApplicationUserDto user);
+        Task<bool> AddNewQuiz(GrammarQuizDto quiz);
         Task<bool> RemoveQuiz(GrammarQuizDto quiz);
         Task<bool> FindQuiz(int id);
     }

@@ -4,16 +4,19 @@ using TheEnglishQuestDatabase.Entities;
 
 namespace TheEnglishQuestCore
 {
-    public class GrammarQuizManager : DTOManager<GrammarQuiz, GrammarQuizDto>, IGrammarQuiz
+    public class GrammarQuizManager : GrammarQuizMapper, IGrammarQuiz
     {
         protected readonly IGrammarQuizRepository _GrammarQuizRepository;
-        public GrammarQuizManager(DTOMapper<GrammarQuiz, GrammarQuizDto> mapper) : base(mapper)
+        protected readonly GrammarQuizMapper _grammarQuizMapper;
+        public GrammarQuizManager(GrammarQuizMapper mapper, IGrammarQuizRepository grammarQuizRepository)
         {
+            _grammarQuizMapper = mapper;
+            _GrammarQuizRepository = grammarQuizRepository;
         }
 
         public async Task<bool> AddNewQuiz(GrammarQuizDto quiz)
         {
-            var entity = _DTOMapper.Map(quiz);
+            var entity = _grammarQuizMapper.Map(quiz);
             return await _GrammarQuizRepository.AddNewQuiz(entity);
         }
 
@@ -24,7 +27,7 @@ namespace TheEnglishQuestCore
 
         public async Task<bool> RemoveQuiz(GrammarQuizDto quiz)
         {
-            var entity = _DTOMapper.Map(quiz);
+            var entity = _grammarQuizMapper.Map(quiz);
             return await _GrammarQuizRepository.RemoveQuiz(entity);
         }
     }

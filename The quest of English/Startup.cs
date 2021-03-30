@@ -50,7 +50,7 @@ namespace The_quest_of_English
             services.AddTransient<DTOMapper<EncouragementPosition, EncouragementPositionDto>>();
             services.AddTransient<DTOMapper<SampleTestQA, SampleTestQADto>>();
             services.AddTransient<DTOMapper<PlacementTestTask, PlacementTestTaskDTO>>();
-            services.AddTransient<DTOMapper<GrammarQuiz, GrammarQuizDto>>();
+            services.AddTransient<GrammarQuizMapper>();
             services.AddTransient<DTOMapper<GrammarTask, GrammarTaskDto>>();
             services.AddTransient<ApplicationUserManager>();
             services.AddTransient<EncouragementPostitionManager>();
@@ -58,6 +58,7 @@ namespace The_quest_of_English
             services.AddTransient<PlacementTestTaskManager>();
             services.AddTransient<GrammarTaskManager>();
             services.AddTransient<GrammarQuizManager>();
+
             //Main ViewModel
             services.AddTransient<EncouragementPoisitonViewModelMapper>();
             services.AddTransient<ApplicationUserViewModelMapper>();
