@@ -43,6 +43,8 @@ namespace The_quest_of_English
             services.AddTransient<IApplicationUserRepository, ApplicationUserRepository>();
             services.AddTransient<ISampleTestQARepostitory, SampleTestQARepository>();
             services.AddTransient<IPlacementTestTaskRepository, PlacementTestTaskRepository>();
+            services.AddTransient<IGrammarQuizRepository, GrammarQuizRepository>();
+            services.AddTransient<IGrammarTaskRepository, GrammarTaskRepository>();
             //Mapper
             services.AddTransient<DTOMapper<ApplicationUser, ApplicationUserDto>>();
             services.AddTransient<DTOMapper<EncouragementPosition, EncouragementPositionDto>>();
@@ -52,11 +54,15 @@ namespace The_quest_of_English
             services.AddTransient<EncouragementPostitionManager>();
             services.AddTransient<SampleTestQAManager>();
             services.AddTransient<PlacementTestTaskManager>();
+            services.AddTransient<GrammarTaskManager>();
+            services.AddTransient<GrammarQuizManager>();
             //Main ViewModel
             services.AddTransient<EncouragementPoisitonViewModelMapper>();
             services.AddTransient<ApplicationUserViewModelMapper>();
             services.AddTransient<SampleTestQAViewModelMapper>();
             services.AddTransient<PlacementTestTaskViewModelMapper>();
+            services.AddTransient<GrammarTaskViewModelMapper>();
+            services.AddTransient<GrammarQuizViewModelMapper>();
             
             // Identity
             //services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)

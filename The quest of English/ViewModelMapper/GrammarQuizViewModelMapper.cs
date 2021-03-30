@@ -2,7 +2,7 @@
 
 namespace The_quest_of_English
 {
-    public class GrammarQuizViewModelMapper : ViewModelMapper<GrammarQuizDto, GrammaQuizViewModel> 
+    public class GrammarQuizViewModelMapper : ViewModelMapper<GrammarQuizDto, GrammarQuizViewModel> 
     {
     }
 }

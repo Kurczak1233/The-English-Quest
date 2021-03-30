@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TheEnglishQuestDatabase.Entities;
-using TheEnglishQuestDatabase.Repositories.Interfaces;
 using TheQuestOfEnglishDatabase;
 
 namespace TheEnglishQuestDatabase
 {
-    class GrammarTaskRepository : BaseRepository<GrammarTask>, IGrammarTaskRepository
+    public class GrammarTaskRepository : BaseRepository<GrammarTask>, IGrammarTaskRepository
     {
         protected override DbSet<GrammarTask> DbSet => _db.GrammarTasks;
         public GrammarTaskRepository(ApplicationDbContext db) : base(db)

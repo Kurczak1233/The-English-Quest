@@ -1,4 +1,4 @@
-﻿
+﻿@model GrammarQuizViewModel 
 @{
     ViewData["Title"] = "GrammarCreateQuiz";
 }
@@ -11,7 +11,7 @@
                     Insert your quiz name:
                 </div>
                 <div class="col-6 offset-3 mt-3">
-                    <input type="text" class="form-control" />
+                    <input type="text" asp-for="@Model.Name" class="form-control" />
                 </div>
                 <div class="col-12 text-center mt-3 mb-5">
                     <button type="submit" class="btn warm-orange-color">Submit</button>

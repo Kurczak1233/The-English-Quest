@@ -1,14 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using TheQuestOfEnglishDatabase;
 
-namespace TheEnglishQuestDatabase.Repositories
+namespace TheEnglishQuestDatabase
 {
-    class GrammarQuizRepository : BaseRepository<GrammarQuiz>, IGrammarQuizRepository
+    public class GrammarQuizRepository : BaseRepository<GrammarQuiz>, IGrammarQuizRepository
     {
         protected override DbSet<GrammarQuiz> DbSet => _db.Quizzes;
         public GrammarQuizRepository(ApplicationDbContext db) : base(db)

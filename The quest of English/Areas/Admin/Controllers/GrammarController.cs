@@ -1,15 +1,32 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using The_quest_of_English.Models;
+using TheEnglishQuestCore;
+using TheEnglishQuestCore.Managers;
 
 namespace The_quest_of_English.Areas.Admin.Controllers
 {
     [Area("Admin")]
+
     public class GrammarController : Controller
     {
+        private readonly GrammarQuizViewModelMapper _grammarQuizViewModelMapper;
+        private readonly GrammarQuizManager _grammarQuizManager;
+        private readonly ApplicationUserViewModelMapper _applicationUserViewModelMapper;
+        private readonly ApplicationUserManager _applicationUserManager;
+
+        public GrammarController(GrammarQuizViewModelMapper gvmm, GrammarQuizManager gq, ApplicationUserViewModelMapper uservmm, ApplicationUserManager usermanager)
+        {
+            _applicationUserViewModelMapper = uservmm;
+            _applicationUserManager = usermanager;
+            _grammarQuizManager = gq;
+            _grammarQuizViewModelMapper = gvmm;
+        }
+
         [BindProperty]
         public string SectionName { get; set; } = "Grammar";
 
@@ -34,6 +51,26 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         {
             GrammarQuizViewModel quiz = new GrammarQuizViewModel();
             return View(quiz);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ActionName("GrammarCreateQuiz")]
+        public async Task<IActionResult> GrammarCreateQuizPost(GrammarQuizViewModel quiz)
+        {
+            if (ModelState.IsValid)
+            {
+                var userId = User.Identity.GetUserId();
+                var user = await _applicationUserManager.GetLoggedUser(userId);
+                var userViewModel = _applicationUserViewModelMapper.Map(user);
+                quiz.User = userViewModel;
+                var quizDto =  _grammarQuizViewModelMapper.Map(quiz);
+                await _grammarQuizManager.AddNewQuiz(quizDto);
+                return RedirectToAction("");
+            }
+            else
+            {
+                return RedirectToAction("CAE");
+            }
         }
 
         public IActionResult GrammarCreateTask()

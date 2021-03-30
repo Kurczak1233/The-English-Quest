@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using TheEnglishQuestDatabase;
 
-namespace TheEnglishQuestCore.Managers
+namespace TheEnglishQuestCore
 {
-    class GrammarQuizManager : DTOManager<GrammarQuiz, GrammarQuizDto>, IGrammarQuiz
+    public class GrammarQuizManager : DTOManager<GrammarQuiz, GrammarQuizDto>, IGrammarQuiz
     {
         protected readonly IGrammarQuizRepository _GrammarQuizRepository;
         public GrammarQuizManager(DTOMapper<GrammarQuiz, GrammarQuizDto> mapper) : base(mapper)
