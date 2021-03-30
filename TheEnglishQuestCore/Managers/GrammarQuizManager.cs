@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using TheEnglishQuestDatabase;
+using TheEnglishQuestDatabase.Entities;
 
 namespace TheEnglishQuestCore
 {

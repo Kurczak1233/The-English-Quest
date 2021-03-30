@@ -61,10 +61,10 @@ namespace The_quest_of_English.Areas.Admin.Controllers
             {
                 var userId = User.Identity.GetUserId();
                 var user = await _applicationUserManager.GetLoggedUser(userId);
-                var userViewModel = _applicationUserViewModelMapper.Map(user);
-                quiz.User = userViewModel;
+                //var userViewModel = _applicationUserViewModelMapper.Map(user);
+                //quiz.User = userViewModel;
                 var quizDto =  _grammarQuizViewModelMapper.Map(quiz);
-                await _grammarQuizManager.AddNewQuiz(quizDto);
+                await _grammarQuizManager.AddNewQuiz(quizDto, user);
                 return RedirectToAction("");
             }
             else
