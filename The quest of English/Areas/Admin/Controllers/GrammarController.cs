@@ -63,15 +63,23 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Nazwy nie mogą się powtarzać?
                 var userId = User.Identity.GetUserId();
                 var quizDto =  _grammarQuizViewModelMapper.Map(quiz);
                 await _grammarQuizManager.AddNewQuiz(quizDto, userId);
-                return RedirectToAction("", new { userId }); //Do tego quizu.
+                var quizVM = await _grammarQuizManager.FindQuizByName(quiz.Name);
+                return RedirectToAction("ShowQuiz", new { userId }); //Do tego quizu.
             }
             else
             {
                 return RedirectToAction("CAE");
             }
+        }
+        [HttpGet]
+        public IActionResult ShowQuiz(string userId, int quizId)
+        {
+            var Test = _grammarQuizManager.FindQuiz(quizId);
+            return View();
         }
 
         public IActionResult GrammarCreateTask()

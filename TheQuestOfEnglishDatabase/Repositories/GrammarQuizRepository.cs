@@ -31,9 +31,13 @@ namespace TheEnglishQuestDatabase
             return false;
         }
 
-        public async Task<bool> FindQuiz(int id)
+        public async Task<GrammarQuiz> FindQuiz(int id)
         {
-            return await DbSet.Select(x => x.Id == id).SingleOrDefaultAsync();
+            return await DbSet.Where(x => x.Id == id).SingleOrDefaultAsync();
+        }
+        public async Task<GrammarQuiz> FindQuizByName(string name)
+        {
+            return await DbSet.Where(x => x.Name == name).SingleOrDefaultAsync();
         }
     }
 }

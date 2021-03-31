@@ -6,7 +6,9 @@ namespace TheEnglishQuestDatabase
     {
         Task<bool> AddNewQuiz(GrammarQuiz quiz, string userId);
         Task<bool> RemoveQuiz(GrammarQuiz quiz);
-        Task<bool> FindQuiz(int id);
-        
+        Task<GrammarQuiz> FindQuiz(int id);
+        Task<GrammarQuiz> FindQuizByName(string name);
+
+
     }
 }
