@@ -88,11 +88,11 @@ namespace The_quest_of_English.Areas.Admin.Controllers
                 return RedirectToAction("CAE");
             }
         }
-        [HttpGet]
-        public IActionResult ShowQuiz(int quizId)
+        public async Task<IActionResult> ShowQuiz(int quizId)
         {
-            var Test = _grammarQuizManager.FindQuiz(quizId);
-            return View(Test);
+            var QuizDto = await _grammarQuizManager.FindQuiz(quizId);
+            var QuizVM = _grammarQuizViewModelMapper.Map(QuizDto);
+            return View(QuizVM);
         }
 
         public IActionResult GrammarCreateTask()

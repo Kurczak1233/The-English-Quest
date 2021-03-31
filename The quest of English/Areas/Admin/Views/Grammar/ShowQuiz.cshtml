@@ -1,0 +1,74 @@
+﻿@model GrammarQuizViewModel
+@{
+    ViewData["Title"] = "ShowQuiz";
+}
+<main class="container">
+    <div class="row">
+        <div class="col-12">
+            @if (Model.GrammarTasks.ToList().Count == 0)
+            {
+                <div class="text-center mt-3">
+                    <p class="font-size-rather-small">There are no tasks yet!</p>
+                </div>
+            }
+            else
+            {
+                int IdCounter = 0;
+                int counter = 1;
+
+                @foreach (var item in Model.GrammarTasks)
+                {
+
+                    <section id="questionAndAnswears">
+                        <div class="row mt-3">
+                            <div class="question-circle text-center ml-4">
+                                <strong class="font-size-medium question">@counter</strong> @*Numer zadania i punkty*@
+                            </div>
+                            <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small mt-1">
+                                <p><span id="FirstQuestionPart">@item.QuestionFirstPart</span>&nbsp;<span id="DecorationPart" class="dark-blue-text-color font-weight-bold font-italic">@item.QuestionDecoratedPart</span>&nbsp;<span id="SecondQuestionPart">@item.QuestionSecondPart</span></p>
+                            </div>
+                        </div>
+                        <div class="form-check" id="checkAnswears">
+                            <div class="mt-1 form-check ml-5 answearRadio">
+                                <input class="form-check-input" type="radio" name="@counter" id="@IdCounter">
+                                <label class="form-check-label" for="@IdCounter">
+                                    @item.FirstAnswear
+                                </label>
+                            </div>
+                            @{IdCounter++;}
+                            <div class="mt-1 form-check ml-5 answearRadio">
+                                <input class="form-check-input" type="radio" name="@counter" id="@IdCounter">
+                                <label class="form-check-label" for="@IdCounter">
+                                    @item.SecondAnswear
+                                </label>
+                            </div>
+                            @{IdCounter++;}
+                            <div class="mt-1 form-check ml-5 answearRadio">
+                                <input class="form-check-input" type="radio" name="@counter" id="@IdCounter">
+                                <label class="form-check-label" for="@IdCounter">
+                                    @item.ThirdAnswear
+                                </label>
+                            </div>
+                            @{IdCounter++;}
+                            <div class="mt-1 form-check ml-5 answearRadio">
+                                <input class="form-check-input" type="radio" name="@counter" id="@IdCounter">
+                                <label class="form-check-label" for="@IdCounter">
+                                    @item.FourthAnswear
+                                </label>
+                            </div>
+                        </div>
+                    </section>
+                    counter++;
+                    IdCounter++;
+                }
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center mt-5">
+                        <form method="post">
+                            <button class="btn warm-orange-color" type="submit" onclick="CheckAnswears()">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</main>
