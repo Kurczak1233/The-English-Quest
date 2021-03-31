@@ -81,7 +81,7 @@ namespace The_quest_of_English.Areas.Admin.Controllers
                 //Getting Quiz from DB with assigned Id
                 var quizVM = await _grammarQuizManager.FindQuizByName(quiz.Name);
                 var quizEntity = _grammarQuizViewModelMapper.Map(quizVM);
-                return RedirectToAction("ShowQuiz", new { quizEntity.Id }); //Do tego quizu.
+                return RedirectToAction("ShowQuiz", new { quizId = quizEntity.Id }); //Name of variable must be here!
             }
             else
             {
@@ -92,7 +92,7 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         public IActionResult ShowQuiz(int quizId)
         {
             var Test = _grammarQuizManager.FindQuiz(quizId);
-            return View();
+            return View(Test);
         }
 
         public IActionResult GrammarCreateTask()
