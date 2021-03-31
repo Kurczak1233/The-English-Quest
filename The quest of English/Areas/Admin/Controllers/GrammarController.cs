@@ -76,7 +76,10 @@ namespace The_quest_of_English.Areas.Admin.Controllers
                 }
                 //
                 var userId = User.Identity.GetUserId();
+                var user = await _applicationUserManager.GetLoggedUser(userId);
+                var userVm = _applicationUserViewModelMapper.Map(user);
                 var quizDto =  _grammarQuizViewModelMapper.Map(quiz);
+                quizDto.User = user;
                 await _grammarQuizManager.AddNewQuiz(quizDto, userId);
                 //Getting Quiz from DB with assigned Id
                 var quizVM = await _grammarQuizManager.FindQuizByName(quiz.Name);
@@ -90,9 +93,19 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         }
         public async Task<IActionResult> ShowQuiz(int quizId)
         {
-            var QuizDto = await _grammarQuizManager.FindQuiz(quizId);
-            var QuizVM = _grammarQuizViewModelMapper.Map(QuizDto);
-            return View(QuizVM);
+            //Get Task
+            var quizDto = await _grammarQuizManager.FindQuiz(quizId);
+            var quizVM = _grammarQuizViewModelMapper.Map(quizDto);
+            //Get User
+            var userId = User.Identity.GetUserId();
+            var user = await _applicationUserManager.GetLoggedUser(userId);
+            var userVm = _applicationUserViewModelMapper.Map(user);
+            QuizModelAndUserViewModel model = new QuizModelAndUserViewModel()
+            {
+                Quiz = quizVM,
+                ApplicationUser = userVm,
+            };
+            return View(model); 
         }
 
         public IActionResult GrammarCreateTask()

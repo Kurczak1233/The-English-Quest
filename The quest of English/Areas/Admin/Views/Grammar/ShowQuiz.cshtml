@@ -1,11 +1,23 @@
-﻿@model GrammarQuizViewModel
+﻿@model QuizModelAndUserViewModel
 @{
     ViewData["Title"] = "ShowQuiz";
 }
 <main class="container">
+
+    @if (User.IsInRole(SD.AdminUser) || Model.ApplicationUser.Id == Model.Quiz.User.Id)
+    {
+        <section class="row mt-3 mb-3">
+            <div class="col-8 text-center">
+                <span class="mb-3 d-flex justify-content-center font-size-biggish">Admin section</span>
+                <a asp-controller="Platform" asp-action="CreateQuestion" class="btn btn-success">Create question</a>
+                <a asp-controller="Platform" asp-action="ModifyQuestion" class="btn-info btn">Modify question</a>
+                <a asp-controller="Platform" asp-action="DeleteQuestion" class="btn-danger btn">Delete question</a>
+            </div>
+        </section>
+    }
     <div class="row">
         <div class="col-12">
-            @if (Model.GrammarTasks.ToList().Count == 0)
+            @if (Model.Quiz.GrammarTasks.ToList().Count == 0)
             {
                 <div class="text-center mt-3">
                     <p class="font-size-rather-small">There are no tasks yet!</p>
@@ -16,7 +28,7 @@
                 int IdCounter = 0;
                 int counter = 1;
 
-                @foreach (var item in Model.GrammarTasks)
+                @foreach (var item in Model.Quiz.GrammarTasks)
                 {
 
                     <section id="questionAndAnswears">

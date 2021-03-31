@@ -7,7 +7,7 @@ namespace The_quest_of_English
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public virtual ApplicationUserViewModel User { get; set; }
+        public ApplicationUserViewModel User { get; set; }
         public IEnumerable<GrammarTasksViewModel> GrammarTasks { get; set; }
     }
 }

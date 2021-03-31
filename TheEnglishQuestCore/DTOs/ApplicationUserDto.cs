@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection.Metadata;
+using TheEnglishQuestCore;
 
 namespace TheEnglishQuestDatabase.Entities
 {
@@ -19,6 +21,6 @@ namespace TheEnglishQuestDatabase.Entities
         public int WritingPercentagePoints { get; set; } = 0;
         public string Level { get; set; }
         public byte[] Picture { get; set; }
-
+        public IEnumerable<GrammarQuizDto> GrammarQuizzes { get; set; }
     }
 }

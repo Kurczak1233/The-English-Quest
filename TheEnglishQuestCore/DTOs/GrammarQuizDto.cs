@@ -7,7 +7,7 @@ namespace TheEnglishQuestCore
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public virtual ApplicationUserDto User { get; set; }
+        public ApplicationUserDto User { get; set; }
         public IEnumerable<GrammarTaskDto> GrammarTasks { get; set; }
     }
 

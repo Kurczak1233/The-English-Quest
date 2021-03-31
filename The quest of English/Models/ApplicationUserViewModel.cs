@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
 using System.Reflection.Metadata;
+using The_quest_of_English;
 
 namespace TheEnglishQuest
 {
@@ -17,6 +19,7 @@ namespace TheEnglishQuest
         public int WritingPercentagePoints { get; set; } = 0;
         public string Level { get; set; }
         public byte[] Picture { get; set; }
+        public IEnumerable<GrammarQuizViewModel> GrammarQuizzes{ get; set; }
 
     }
 }
