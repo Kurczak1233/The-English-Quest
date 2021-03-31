@@ -17,7 +17,7 @@ namespace TheEnglishQuestCore
 
         public async Task<bool> AddNewQuiz(GrammarQuizDto quiz, string userId)
         {
-            
+            //Dodać doktora tutaj i przerzucić go od razu do bazy?
             var entity = _grammarQuizMapper.Map(quiz);
             entity.UserId = userId;
             return await _GrammarQuizRepository.AddNewQuiz(entity, userId);

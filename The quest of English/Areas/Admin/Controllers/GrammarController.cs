@@ -75,11 +75,11 @@ namespace The_quest_of_English.Areas.Admin.Controllers
                     //Else there is no name like that -- continue.
                 }
                 //
-                var userId = User.Identity.GetUserId();
-                var user = await _applicationUserManager.GetLoggedUser(userId);
-                var userVm = _applicationUserViewModelMapper.Map(user);
+                //var userId = User.Identity.GetUserId();
+                //var user = await _applicationUserManager.GetLoggedUser(userId);
+                //var userVm = _applicationUserViewModelMapper.Map(user);
                 var quizDto =  _grammarQuizViewModelMapper.Map(quiz);
-                quizDto.User = user;
+                //quizDto.User = user;
                 await _grammarQuizManager.AddNewQuiz(quizDto, userId);
                 //Getting Quiz from DB with assigned Id
                 var quizVM = await _grammarQuizManager.FindQuizByName(quiz.Name);
