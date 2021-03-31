@@ -14,10 +14,12 @@ namespace TheEnglishQuestCore
             _GrammarQuizRepository = grammarQuizRepository;
         }
 
-        public async Task<bool> AddNewQuiz(GrammarQuizDto quiz)
+        public async Task<bool> AddNewQuiz(GrammarQuizDto quiz, string userId)
         {
+            
             var entity = _grammarQuizMapper.Map(quiz);
-            return await _GrammarQuizRepository.AddNewQuiz(entity);
+            entity.UserId = userId;
+            return await _GrammarQuizRepository.AddNewQuiz(entity, userId);
         }
 
         public async Task<bool> FindQuiz(int id)

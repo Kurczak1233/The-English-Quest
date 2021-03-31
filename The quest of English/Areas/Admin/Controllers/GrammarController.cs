@@ -63,9 +63,10 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                var userId = User.Identity.GetUserId();
                 var quizDto =  _grammarQuizViewModelMapper.Map(quiz);
-                await _grammarQuizManager.AddNewQuiz(quizDto);
-                return RedirectToAction("");
+                await _grammarQuizManager.AddNewQuiz(quizDto, userId);
+                return RedirectToAction("", new { userId }); //Do tego quizu.
             }
             else
             {
