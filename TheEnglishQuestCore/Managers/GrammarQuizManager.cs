@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using TheEnglishQuestDatabase;
 using TheEnglishQuestDatabase.Entities;
 
@@ -38,6 +39,13 @@ namespace TheEnglishQuestCore
         {
             var entity = _grammarQuizMapper.Map(quiz);
             return await _GrammarQuizRepository.RemoveQuiz(entity);
+        }
+
+        public async Task<IEnumerable<GrammarQuizDto>> GetAllQuizzes()
+        {
+            var entities = await _GrammarQuizRepository.GetAllQuizzes();
+            return  _grammarQuizMapper.Map(entities);
+            
         }
     }
 }

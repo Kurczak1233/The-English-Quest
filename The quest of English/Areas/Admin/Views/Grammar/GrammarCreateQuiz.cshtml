@@ -13,8 +13,11 @@
                 <div class="col-6 offset-3 mt-3">
                     <input type="text" asp-for="@Model.Name" class="form-control" />
                 </div>
-                <div class="col-12 text-center mt-3 mb-5">
+                <div class="col-12 text-center mt-3 mb-3">
                     <button type="submit" class="btn warm-orange-color">Submit</button>
+                </div>
+                <div class="text-center col-12 mb-5 error-text-color">
+                    @Html.ValidationMessageFor(m => m.Name)
                 </div>
             </form>
         </div>

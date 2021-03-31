@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace TheEnglishQuestDatabase
 {
@@ -8,7 +9,7 @@ namespace TheEnglishQuestDatabase
         Task<bool> RemoveQuiz(GrammarQuiz quiz);
         Task<GrammarQuiz> FindQuiz(int id);
         Task<GrammarQuiz> FindQuizByName(string name);
-
+        Task<IEnumerable<GrammarQuiz>> GetAllQuizzes();
 
     }
 }

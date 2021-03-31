@@ -63,12 +63,25 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                //Nazwy nie mogą się powtarzać?
+                var quizes = await _grammarQuizManager.GetAllQuizzes();
+                var quizesVM = _grammarQuizViewModelMapper.Map(quizes);
+                foreach(var item in quizesVM)
+                {
+                    if(item.Name == quiz.Name)
+                    {
+                        ModelState.AddModelError("Name", "There already is a quiz named like that!");
+                        return View("GrammarCreateQuiz");
+                    }
+                    //Else there is no name like that -- continue.
+                }
+                //
                 var userId = User.Identity.GetUserId();
                 var quizDto =  _grammarQuizViewModelMapper.Map(quiz);
                 await _grammarQuizManager.AddNewQuiz(quizDto, userId);
+                //Getting Quiz from DB with assigned Id
                 var quizVM = await _grammarQuizManager.FindQuizByName(quiz.Name);
-                return RedirectToAction("ShowQuiz", new { userId }); //Do tego quizu.
+                var quizEntity = _grammarQuizViewModelMapper.Map(quizVM);
+                return RedirectToAction("ShowQuiz", new { quizEntity.Id }); //Do tego quizu.
             }
             else
             {
@@ -76,7 +89,7 @@ namespace The_quest_of_English.Areas.Admin.Controllers
             }
         }
         [HttpGet]
-        public IActionResult ShowQuiz(string userId, int quizId)
+        public IActionResult ShowQuiz(int quizId)
         {
             var Test = _grammarQuizManager.FindQuiz(quizId);
             return View();

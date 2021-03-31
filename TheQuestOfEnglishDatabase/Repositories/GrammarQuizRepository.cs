@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TheQuestOfEnglishDatabase;
@@ -38,6 +39,10 @@ namespace TheEnglishQuestDatabase
         public async Task<GrammarQuiz> FindQuizByName(string name)
         {
             return await DbSet.Where(x => x.Name == name).SingleOrDefaultAsync();
+        }
+        public async Task<IEnumerable<GrammarQuiz>> GetAllQuizzes()
+        {
+            return await DbSet.Select(x => x).ToListAsync();
         }
     }
 }
