@@ -16,7 +16,6 @@ namespace TheEnglishQuestDatabase
 
         public async Task<bool> AddNewQuiz(GrammarQuiz quiz, string userId)
         {
-            quiz.UserId = userId;
             await DbSet.AddAsync(quiz);
             return await SaveChanges();
         }

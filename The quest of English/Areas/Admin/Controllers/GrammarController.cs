@@ -75,7 +75,7 @@ namespace The_quest_of_English.Areas.Admin.Controllers
                     //Else there is no name like that -- continue.
                 }
                 //
-                //var userId = User.Identity.GetUserId();
+                var userId = User.Identity.GetUserId();
                 //var user = await _applicationUserManager.GetLoggedUser(userId);
                 //var userVm = _applicationUserViewModelMapper.Map(user);
                 var quizDto =  _grammarQuizViewModelMapper.Map(quiz);
@@ -83,8 +83,8 @@ namespace The_quest_of_English.Areas.Admin.Controllers
                 await _grammarQuizManager.AddNewQuiz(quizDto, userId);
                 //Getting Quiz from DB with assigned Id
                 var quizVM = await _grammarQuizManager.FindQuizByName(quiz.Name);
-                var quizEntity = _grammarQuizViewModelMapper.Map(quizVM);
-                return RedirectToAction("ShowQuiz", new { quizId = quizEntity.Id }); //Name of variable must be here!
+              //  var quizEntity = _grammarQuizViewModelMapper.Map(quizVM);
+                return RedirectToAction("ShowQuiz", new { quizId = quizVM.Id }); //Name of variable must be here!
             }
             else
             {
@@ -93,10 +93,9 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         }
         public async Task<IActionResult> ShowQuiz(int quizId)
         {
-            //Get Task
-            var quizDto = await _grammarQuizManager.FindQuiz(quizId);
-            var quizVM = _grammarQuizViewModelMapper.Map(quizDto);
             //Get User
+            var quiz = await _grammarQuizManager.FindQuiz(quizId);
+            var quizVM = _grammarQuizViewModelMapper.Map(quiz);
             var userId = User.Identity.GetUserId();
             var user = await _applicationUserManager.GetLoggedUser(userId);
             var userVm = _applicationUserViewModelMapper.Map(user);
