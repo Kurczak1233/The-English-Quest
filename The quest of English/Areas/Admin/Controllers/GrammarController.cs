@@ -115,17 +115,25 @@ namespace The_quest_of_English.Areas.Admin.Controllers
             return View(model); 
         }
 
-        public IActionResult GrammarCreateTask()
-        {
+        public IActionResult CreateTask(int quizId)
+        {            
             GrammarTasksViewModel task = new GrammarTasksViewModel();
+            task.GrammarQuizId = quizId;
             return View(task);
         }
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        [ActionName("GrammarCreateTask")]
-        public async Task<IActionResult> GrammarCreateTaskPost(GrammarTasksViewModel task)
+        [ActionName("CreateTask")]
+        public  IActionResult CreateTaskPost(GrammarTasksViewModel task)
         {
-            return View();
+            return RedirectToAction("BuildTaskQuestionAndAnswear" , new { ChosenType = task.TaskType, QuizId = task.GrammarQuizId });
+        }
+
+        public IActionResult BuildTaskQuestionAndAnswear(string ChosenType, int quizId)
+        {
+            GrammarTasksViewModel task = new GrammarTasksViewModel();
+            task.GrammarQuizId = quizId;
+            return View(task);
         }
         public IActionResult GrammarModifyQuiz()
         {

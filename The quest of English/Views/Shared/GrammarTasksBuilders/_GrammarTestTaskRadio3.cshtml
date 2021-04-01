@@ -35,46 +35,48 @@
                     Add answears
                 </div>
                 <hr>
-                <div class="row">
-                    <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
-                        <label for="QuestionPart1">First answear</label>
+                <section id="AnswearsRadio4">
+                    <div class="row">
+                        <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
+                            <label for="QuestionPart1">First answear</label>
+                        </div>
+                        <div class="col-7">
+                            <input id="inputFirstAnswear" asp-for="@Model.FirstAnswear" type="text" class="form-control" />
+                        </div>
                     </div>
-                    <div class="col-7">
-                        <input id="inputFirstAnswear" asp-for="@Model.FirstAnswear" type="text" id="QuestionPart1" class="form-control" />
+                    <div class="row">
+                        <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
+                            <label for="QuestionPart2">Second answear</label>
+                        </div>
+                        <div class="col-7">
+                            <input id="inputSecondAnswear" asp-for="@Model.SecondAnswear" type="text" class="form-control" />
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
-                        <label for="QuestionPart2">Second answear</label>
+                    <div class="row">
+                        <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
+                            <label for="QuestionPart3">Third answear</label>
+                        </div>
+                        <div class="col-7">
+                            <input id="inputThirdAnswear" asp-for="@Model.ThirdAnswear" type="text" class="form-control" />
+                        </div>
                     </div>
-                    <div class="col-7">
-                        <input id="inputSecondAnswear" asp-for="@Model.SecondAnswear" type="text" id="QuestionPart2" class="form-control" />
+                    <div class="row">
+                        <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
+                            <label for="QuestionPart3">Fourth answear</label>
+                        </div>
+                        <div class="col-7">
+                            <input id="inputFourthAnswear" asp-for="@Model.FourthAnswear" type="text" class="form-control" />
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
-                        <label for="QuestionPart3">Third answear</label>
+                    <div class="row">
+                        <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
+                            <label for="QuestionPart3">Correct answear</label>
+                        </div>
+                        <div class="col-7">
+                            <input id="inputCorrectAnswear" asp-for="@Model.CorrectAnswear" type="text" class="form-control" />
+                        </div>
                     </div>
-                    <div class="col-7">
-                        <input id="inputThirdAnswear" asp-for="@Model.ThirdAnswear" type="text" id="QuestionPart3" class="form-control" />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
-                        <label for="QuestionPart3">Fourth answear</label>
-                    </div>
-                    <div class="col-7">
-                        <input id="inputFourthAnswear" asp-for="@Model.FourthAnswear" type="text" id="QuestionPart3" class="form-control" />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
-                        <label for="QuestionPart3">Correct answear</label>
-                    </div>
-                    <div class="col-7">
-                        <input id="inputCorrectAnswear" asp-for="@Model.CorrectAnswear" type="text" id="QuestionPart3" class="form-control" />
-                    </div>
-                </div>
+                </section>
                 <div class="row mt-5 mb-5">
                     <div class="col-12 text-center font-size-rather-small">
                         Preview
@@ -115,7 +117,7 @@
                         <div class="row">
                             <div class="col-12 mt-3 text-center">
                                 <button type="submit" class="btn warm-orange-color mb-3">Submit</button>
-                                <a id="submit" class="btn btn-danger mb-3 ml-5" aria-label="button" type="button">Abort</a>
+                                <a id="submit" class="btn btn-danger mb-3 ml-5" aria-label="button">Abort</a>
                             </div>
                         </div>
                     </div>

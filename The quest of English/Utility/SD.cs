@@ -12,5 +12,8 @@ namespace The_quest_of_English
         public const string CAE = "CAE";
         public const string CPE = "CPE";
 
+        public const string Radio4 = "Radio4";
+        public const string Radio3 = "Radio3";
+        public const string Form = "Form";
     }
 }

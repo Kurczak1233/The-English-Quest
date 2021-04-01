@@ -8,5 +8,6 @@ namespace TheEnglishQuestDatabase
         [ForeignKey("GrammarQuiz")]
         public int GrammarQuizId{ get; set; }
         public virtual GrammarQuiz GrammarQuiz { get; set; }
+        public string TaskType { get; set; }
     }
 }
