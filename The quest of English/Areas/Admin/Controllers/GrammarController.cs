@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using The_quest_of_English.Models;
+using The_quest_of_English.ViewModelMapper;
 using TheEnglishQuestCore;
 using TheEnglishQuestCore.Managers;
 
@@ -18,13 +19,20 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         private readonly GrammarQuizManager _grammarQuizManager;
         private readonly ApplicationUserViewModelMapper _applicationUserViewModelMapper;
         private readonly ApplicationUserManager _applicationUserManager;
+        private readonly GrammarTaskManager _grammarTaskManager;
+        private readonly GrammarTaskViewModelMapper _grammarTaskViewModelMapper;
 
-        public GrammarController(GrammarQuizViewModelMapper gvmm, GrammarQuizManager gq, ApplicationUserViewModelMapper uservmm, ApplicationUserManager usermanager)
+
+        public GrammarController(GrammarQuizViewModelMapper gvmm, GrammarQuizManager gq,
+            ApplicationUserViewModelMapper uservmm, ApplicationUserManager usermanager,
+            GrammarTaskManager grammarTaskManager, GrammarTaskViewModelMapper grammarTaskViewModelMapper)
         {
             _applicationUserViewModelMapper = uservmm;
             _applicationUserManager = usermanager;
             _grammarQuizManager = gq;
             _grammarQuizViewModelMapper = gvmm;
+            _grammarTaskManager = grammarTaskManager;
+            _grammarTaskViewModelMapper = grammarTaskViewModelMapper;
         }
 
         [BindProperty]
@@ -70,7 +78,7 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var quizes = await _grammarQuizManager.GetAllQuizzes();
+                var quizes = _grammarQuizManager.GetAllQuizzes();
                 var quizesVM = _grammarQuizViewModelMapper.Map(quizes);
                 foreach(var item in quizesVM)
                 {
@@ -131,18 +139,21 @@ namespace The_quest_of_English.Areas.Admin.Controllers
 
         public IActionResult BuildTaskQuestionAndAnswear(string ChosenType, int quizId)
         {
-            GrammarTasksViewModel task = new GrammarTasksViewModel();
-            task.GrammarQuizId = quizId;
-            task.TaskType = ChosenType;
+            GrammarTasksViewModel task = new GrammarTasksViewModel
+            {
+                GrammarQuizId = quizId,
+                TaskType = ChosenType
+            };
             return View(task);
         }
-
-        public async Task<IActionResult> BuildTaskQuestionAndAnswear(GrammarTasksViewModel task)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ActionName("BuildTaskQuestionAndAnswear")]
+        public async Task<IActionResult> BuildTaskQuestionAndAnswearPost(GrammarTasksViewModel task)
         {
-            GrammarTasksViewModel task = new GrammarTasksViewModel();
-            task.GrammarQuizId = quizId;
-            task.TaskType = ChosenType;
-            return View(task);
+            var taskDto = _grammarTaskViewModelMapper.Map(task);
+            await _grammarTaskManager.AddNew(taskDto);
+            return RedirectToAction("ShowQuiz", new { quizId = task.GrammarQuizId });
         }
         public IActionResult GrammarModifyQuiz()
         {

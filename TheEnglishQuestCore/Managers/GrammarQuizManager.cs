@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using TheEnglishQuestDatabase;
 using TheEnglishQuestDatabase.Entities;
@@ -8,13 +9,15 @@ namespace TheEnglishQuestCore
     public class GrammarQuizManager : GrammarQuizMapper, IGrammarQuiz
     {
         protected readonly IGrammarQuizRepository _GrammarQuizRepository;
+        protected readonly IGrammarTaskRepository _GrammarTaskRepository;
         protected readonly IApplicationUserRepository _ApplicationUserRepository;
         protected readonly GrammarQuizMapper _grammarQuizMapper;
-        public GrammarQuizManager(GrammarQuizMapper mapper, IGrammarQuizRepository grammarQuizRepository, IApplicationUserRepository appuser)
+        public GrammarQuizManager(IGrammarTaskRepository repo, GrammarQuizMapper mapper, IGrammarQuizRepository grammarQuizRepository, IApplicationUserRepository appuser)
         {
             _grammarQuizMapper = mapper;
             _GrammarQuizRepository = grammarQuizRepository;
             _ApplicationUserRepository = appuser;
+            _GrammarTaskRepository = repo;
         }
 
         public async Task<bool> AddNewQuiz(GrammarQuizDto quiz, string userId)
@@ -31,6 +34,8 @@ namespace TheEnglishQuestCore
         {
             var entity = await _GrammarQuizRepository.FindQuiz(id);
             var user = await _ApplicationUserRepository.GetLoggedUser(entity.UserId);
+            var result = await _GrammarTaskRepository.GetAllValues();
+            entity.GrammarTasks = result.Where(x => x.GrammarQuizId == entity.Id).ToList();
             entity.User = user;
             return _grammarQuizMapper.Map(entity);
         }
@@ -53,9 +58,9 @@ namespace TheEnglishQuestCore
             return  _grammarQuizMapper.Map(entities);
         }
 
-        public async Task<IEnumerable<GrammarQuizDto>> GetAllQuizzes()
+        public IEnumerable<GrammarQuizDto> GetAllQuizzes()
         {
-            var entities = await _GrammarQuizRepository.GetAllQuizzes();
+            var entities = _GrammarQuizRepository.GetAllQuizzes();
             return _grammarQuizMapper.Map(entities);
         }
     }

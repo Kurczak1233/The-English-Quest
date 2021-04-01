@@ -17,6 +17,8 @@ namespace TheEnglishQuestCore
                 .ReverseMap();
                 config.CreateMap<ApplicationUser, ApplicationUserDto>()
                 .ReverseMap();
+                config.CreateMap<GrammarTask, GrammarTaskDto>()
+                .ReverseMap();
             }).CreateMapper();
         }
         public GrammarQuizDto Map(GrammarQuiz position) => _Mapper.Map<GrammarQuizDto>(position);
@@ -28,5 +30,10 @@ namespace TheEnglishQuestCore
         public IEnumerable<ApplicationUserDto> Map(IEnumerable<ApplicationUser> positions) => _Mapper.Map<IEnumerable<ApplicationUserDto>>(positions);
         public ApplicationUser Map(ApplicationUserDto position) => _Mapper.Map<ApplicationUser>(position);
         public IEnumerable<ApplicationUser> Map(IEnumerable<ApplicationUserDto> positions) => _Mapper.Map<IEnumerable<ApplicationUser>>(positions);
+
+        public GrammarTaskDto Map(GrammarTask position) => _Mapper.Map<GrammarTaskDto>(position);
+        public IEnumerable<GrammarTaskDto> Map(IEnumerable<GrammarTask> positions) => _Mapper.Map<IEnumerable<GrammarTaskDto>>(positions);
+        public GrammarTask Map(GrammarTaskDto position) => _Mapper.Map<GrammarTask>(position);
+        public IEnumerable<GrammarTask> Map(IEnumerable<GrammarTaskDto> positions) => _Mapper.Map<IEnumerable<GrammarTask>>(positions);
     }
 }

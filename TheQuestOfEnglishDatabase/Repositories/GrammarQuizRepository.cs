@@ -52,9 +52,9 @@ namespace TheEnglishQuestDatabase
         {
             return await DbSet.Where(x => x.Level == level).ToListAsync();
         }
-        public async Task<IEnumerable<GrammarQuiz>> GetAllQuizzes()
+        public IEnumerable<GrammarQuiz> GetAllQuizzes()
         {
-            return await DbSet.Select(x => x).ToListAsync();
+            return DbSet.Select(x => x);
         }
     }
 }
