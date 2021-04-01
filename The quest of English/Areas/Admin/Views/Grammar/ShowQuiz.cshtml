@@ -9,9 +9,9 @@
         <section class="row mt-3 mb-3">
             <div class="col-12 text-center">
                 <span class="mb-3 d-flex justify-content-center font-size-biggish">Admin section</span>
-                <a asp-controller="Platform" asp-action="CreateQuestion" class="btn btn-success">Create question</a>
-                <a asp-controller="Platform" asp-action="ModifyQuestion" class="btn-info btn">Modify question</a>
-                <a asp-controller="Platform" asp-action="DeleteQuestion" class="btn-danger btn">Delete question</a>
+                <a asp-controller="Grammar" asp-action="CreateTask" asp-route-QuizId="@Model.Quiz.Id" class="btn btn-success">Create question</a>
+                <a asp-controller="Grammar" asp-action="ModifyTask" asp-route-QuizId="@Model.Quiz.Id" class="btn-info btn">Modify question</a>
+                <a asp-controller="Grammar" asp-action="DeleteTask" asp-route-QuizId="@Model.Quiz.Id" class="btn-danger btn">Delete question</a>
             </div>
         </section>
     }

@@ -36,15 +36,21 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         }
         public IActionResult FCE()
         {
-            return View("CAE", SectionName);
+            var QuizesList = await _grammarQuizManager.GetAllQuizzes(string Level);
+            var QuizzesViewModel = _grammarQuizViewModelMapper.Map(QuizesList);
+            return View(QuizzesViewModel);
         }
         public IActionResult CAE()
         {
-            return View("CAE", SectionName);
+            var QuizesList = await _grammarQuizManager.GetAllQuizzes(string Level);
+            var QuizzesViewModel = _grammarQuizViewModelMapper.Map(QuizesList);
+            return View(QuizzesViewModel);
         }
-        public IActionResult CPE()
+        public async Task<IActionResult> CPE()
         {
-            return View("CAE", SectionName);
+            var QuizesList = await _grammarQuizManager.GetAllQuizzes(string Level);
+            var QuizzesViewModel = _grammarQuizViewModelMapper.Map(QuizesList);
+            return View(QuizzesViewModel);
         }
 
         public async Task<IActionResult> GrammarCreateQuiz()
@@ -81,6 +87,7 @@ namespace The_quest_of_English.Areas.Admin.Controllers
                 var quizDto =  _grammarQuizViewModelMapper.Map(quiz);
                 //quizDto.User = user;
                 await _grammarQuizManager.AddNewQuiz(quizDto, userId);
+                await _grammarQuizManager.RemoveQuiz(quizDto);
                 //Getting Quiz from DB with assigned Id
                 var quizVM = await _grammarQuizManager.FindQuizByName(quiz.Name);
               //  var quizEntity = _grammarQuizViewModelMapper.Map(quizVM);
@@ -117,7 +124,7 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         [ActionName("GrammarCreateTask")]
         public async Task<IActionResult> GrammarCreateTaskPost(GrammarTasksViewModel task)
         {
-                return View();
+            return View();
         }
         public IActionResult GrammarModifyQuiz()
         {

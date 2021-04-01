@@ -22,6 +22,14 @@ namespace TheEnglishQuestDatabase
 
         public async Task<bool> RemoveQuiz(GrammarQuiz quiz)
         {
+            //Delete all
+            //var allEntities = DbSet.Select(x => x);
+            //foreach (var item in allEntities)
+            //{
+            //    DbSet.Remove(item);
+            //}
+            //await SaveChanges();
+            //return true;
             var foundEntity = await DbSet.FirstOrDefaultAsync(x => x.Id == quiz.Id);
             if (foundEntity != null)
             {

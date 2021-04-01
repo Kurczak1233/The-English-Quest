@@ -3,12 +3,11 @@ using TheEnglishQuestDatabase.Entities;
 
 namespace TheEnglishQuestCore
 {
-    public class GrammarQuizDto
+    public class GrammarQuizDto : QuizDto
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public ApplicationUserDto User { get; set; }
         public IEnumerable<GrammarTaskDto> GrammarTasks { get; set; }
+        public string Level { get; set; }
+        public string Section { get; set; } = "Grammar";
     }
 
 }
