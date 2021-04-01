@@ -47,9 +47,9 @@ namespace TheEnglishQuestCore
             return await _GrammarQuizRepository.RemoveQuiz(entity);
         }
 
-        public async Task<IEnumerable<GrammarQuizDto>> GetAllQuizzes()
+        public async Task<IEnumerable<GrammarQuizDto>> GetAllQuizzes(string level)
         {
-            var entities = await _GrammarQuizRepository.GetAllQuizzes();
+            var entities = await _GrammarQuizRepository.GetAllQuizzes(level);
             return  _grammarQuizMapper.Map(entities);
             
         }

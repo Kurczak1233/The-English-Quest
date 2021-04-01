@@ -7,5 +7,10 @@ namespace The_quest_of_English
     {
         public const string AdminUser = "AdminUser";
         public const string OrdinaryUser = "OrdinaryUser";
+
+        public const string FCE = "FCE";
+        public const string CAE = "CAE";
+        public const string CPE = "CPE";
+
     }
 }

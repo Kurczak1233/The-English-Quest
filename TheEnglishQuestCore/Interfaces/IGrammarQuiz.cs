@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TheEnglishQuestDatabase.Entities;
 
 namespace TheEnglishQuestCore
 {
@@ -10,6 +9,6 @@ namespace TheEnglishQuestCore
         Task<bool> RemoveQuiz(GrammarQuizDto quiz);
         Task<GrammarQuizDto> FindQuiz(int id);
         Task<GrammarQuizDto> FindQuizByName(string name);
-        Task<IEnumerable<GrammarQuizDto>> GetAllQuizzes();
+        Task<IEnumerable<GrammarQuizDto>> GetAllQuizzes(string level);
     }
 }

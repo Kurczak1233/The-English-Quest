@@ -34,21 +34,22 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         {
             return View();
         }
-        public IActionResult FCE()
+        public async Task<IActionResult> FCE()
         {
-            var QuizesList = await _grammarQuizManager.GetAllQuizzes(string Level);
+            var QuizesList = await _grammarQuizManager.GetAllQuizzes(SD.FCE);
             var QuizzesViewModel = _grammarQuizViewModelMapper.Map(QuizesList);
             return View(QuizzesViewModel);
         }
-        public IActionResult CAE()
+        public async Task<IActionResult> CAE()
         {
-            var QuizesList = await _grammarQuizManager.GetAllQuizzes(string Level);
+
+            var QuizesList = await _grammarQuizManager.GetAllQuizzes(SD.CAE);
             var QuizzesViewModel = _grammarQuizViewModelMapper.Map(QuizesList);
             return View(QuizzesViewModel);
         }
         public async Task<IActionResult> CPE()
         {
-            var QuizesList = await _grammarQuizManager.GetAllQuizzes(string Level);
+            var QuizesList = await _grammarQuizManager.GetAllQuizzes(SD.CPE);
             var QuizzesViewModel = _grammarQuizViewModelMapper.Map(QuizesList);
             return View(QuizzesViewModel);
         }
