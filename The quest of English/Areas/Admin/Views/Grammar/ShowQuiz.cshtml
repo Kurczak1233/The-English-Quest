@@ -4,7 +4,7 @@
 }
 <main class="container">
 
-    @if (User.IsInRole(SD.AdminUser) || Model.ApplicationUser.Id == Model.Quiz.User.Id)
+    @if (User.IsInRole(SD.AdminUser) || Model.ApplicationUser.Id == Model.Quiz.UserId)
     {
         <section class="row mt-3 mb-3">
             <div class="col-12 text-center">

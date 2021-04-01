@@ -21,8 +21,8 @@
                     <section class="font-size-medium">
                         @foreach (var item in @Model)
                         {
-                            <div class="col-12 font-size-biggish">
-                                @item.Name
+                            <div class="col-12 font-size-medium mt-3">
+                                <a asp-action="ShowQuiz" asp-controller="Grammar" asp-route-QuizId="@item.Id">@item.Name</a>
                             </div>
                         }
                     </section>
