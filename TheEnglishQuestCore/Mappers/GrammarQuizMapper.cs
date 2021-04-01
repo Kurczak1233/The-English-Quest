@@ -5,7 +5,7 @@ using TheEnglishQuestDatabase.Entities;
 
 namespace TheEnglishQuestCore
 {
-    public class GrammarQuizMapper : DTOMapper<GrammarQuiz, GrammarQuizDto>
+    public class GrammarQuizMapper /* :DTOMapper<GrammarQuiz, GrammarQuizDto>,*/
     {
         private readonly IMapper _Mapper;
 
