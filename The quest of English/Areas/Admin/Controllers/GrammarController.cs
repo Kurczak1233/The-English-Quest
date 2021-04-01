@@ -136,6 +136,14 @@ namespace The_quest_of_English.Areas.Admin.Controllers
             task.TaskType = ChosenType;
             return View(task);
         }
+
+        public async Task<IActionResult> BuildTaskQuestionAndAnswear(GrammarTasksViewModel task)
+        {
+            GrammarTasksViewModel task = new GrammarTasksViewModel();
+            task.GrammarQuizId = quizId;
+            task.TaskType = ChosenType;
+            return View(task);
+        }
         public IActionResult GrammarModifyQuiz()
         {
             return View();

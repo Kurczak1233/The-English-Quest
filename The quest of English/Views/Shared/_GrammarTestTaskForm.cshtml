@@ -38,46 +38,12 @@
                 <section id="AnswearsRadio4">
                     <div class="row">
                         <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
-                            <label for="QuestionPart1">First answear</label>
-                        </div>
-                        <div class="col-7">
-                            <input id="inputFirstAnswear" asp-for="@Model.FirstAnswear" type="text" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
-                            <label for="QuestionPart2">Second answear</label>
-                        </div>
-                        <div class="col-7">
-                            <input id="inputSecondAnswear" asp-for="@Model.SecondAnswear" type="text" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
-                            <label for="QuestionPart3">Third answear</label>
-                        </div>
-                        <div class="col-7">
-                            <input id="inputThirdAnswear" asp-for="@Model.ThirdAnswear" type="text" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
-                            <label for="QuestionPart4">Fourth answear</label>
-                        </div>
-                        <div class="col-7">
-                            <input id="inputFourthAnswear" asp-for="@Model.FourthAnswear" type="text" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
                             <label for="QuestionPart3">Correct answear</label>
                         </div>
                         <div class="col-7">
                             <input id="inputCorrectAnswear" asp-for="@Model.CorrectAnswear" type="text" class="form-control" />
                         </div>
                     </div>
-                    @Html.HiddenFor(x => x.GrammarQuizId, Model.GrammarQuizId);
-                    @Html.HiddenFor(x => x.TaskType, Model.TaskType);
                 </section>
                 <div class="row mt-5 mb-5">
                     <div class="col-12 text-center font-size-rather-small">
@@ -93,27 +59,9 @@
                     </div>
                     <div class="form-check col-10 mr-3" id="checkAnswears">
                         <div class="mt-1 form-check offset-1 answearRadio">
-                            <input class="form-check-input" type="radio" name="test" id="1">
+                            <input class="form-control" type="text" name="test" id="1">
                             <label class="form-check-label" for="1">
                                 <span id="firstAnswear"></span>
-                            </label>
-                        </div>
-                        <div class="mt-1 form-check offset-1 answearRadio">
-                            <input class="form-check-input" type="radio" name="test" id="2">
-                            <label class="form-check-label" for="2">
-                                <span id="secondAnswear"></span>
-                            </label>
-                        </div>
-                        <div class="mt-1 form-check offset-1 answearRadio">
-                            <input class="form-check-input" type="radio" name="test" id="3">
-                            <label class="form-check-label" for="3">
-                                <span id="thirdAnswear"></span>
-                            </label>
-                        </div>
-                        <div class="mt-1 form-check offset-1 answearRadio">
-                            <input class="form-check-input" type="radio" name="test" id="4">
-                            <label class="form-check-label" for="3">
-                                <span id="fourthAnswear"></span>
                             </label>
                         </div>
                         <div class="row">
@@ -170,5 +118,3 @@
         return true;
     }
 </script>
-
-
