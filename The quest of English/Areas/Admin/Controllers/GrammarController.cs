@@ -133,6 +133,7 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         {
             GrammarTasksViewModel task = new GrammarTasksViewModel();
             task.GrammarQuizId = quizId;
+            task.TaskType = ChosenType;
             return View(task);
         }
         public IActionResult GrammarModifyQuiz()

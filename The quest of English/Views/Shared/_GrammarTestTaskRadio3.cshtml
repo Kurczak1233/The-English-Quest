@@ -103,7 +103,7 @@
                         <div class="row">
                             <div class="col-12 mt-3 text-center">
                                 <button type="submit" class="btn warm-orange-color mb-3">Submit</button>
-                                <a id="submit" class="btn btn-danger mb-3 ml-5" aria-label="button">Abort</a>
+                                <a asp-controller="Grammar" asp-action="ShowQuiz" asp-route-quizId="@Model.GrammarQuizId" id="submit" class="btn btn-danger mb-3 ml-5" aria-label="button">Abort</a>
                             </div>
                         </div>
                     </div>
@@ -154,3 +154,5 @@
         return true;
     }
 </script>
+
+
