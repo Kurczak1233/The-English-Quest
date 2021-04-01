@@ -9,7 +9,8 @@ namespace TheEnglishQuestDatabase
         Task<bool> RemoveQuiz(GrammarQuiz quiz);
         Task<GrammarQuiz> FindQuiz(int id);
         Task<GrammarQuiz> FindQuizByName(string name);
-        Task<IEnumerable<GrammarQuiz>> GetAllQuizzes(string level);
+        Task<IEnumerable<GrammarQuiz>> GetAllQuizzesFiltered(string level);
+        Task<IEnumerable<GrammarQuiz>> GetAllQuizzes();
 
     }
 }

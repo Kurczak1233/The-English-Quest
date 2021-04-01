@@ -48,9 +48,13 @@ namespace TheEnglishQuestDatabase
         {
             return await DbSet.Where(x => x.Name == name).SingleOrDefaultAsync();
         }
-        public async Task<IEnumerable<GrammarQuiz>> GetAllQuizzes(string level)
+        public async Task<IEnumerable<GrammarQuiz>> GetAllQuizzesFiltered(string level)
         {
             return await DbSet.Where(x => x.Level == level).ToListAsync();
+        }
+        public async Task<IEnumerable<GrammarQuiz>> GetAllQuizzes()
+        {
+            return await DbSet.Select(x => x).ToListAsync();
         }
     }
 }

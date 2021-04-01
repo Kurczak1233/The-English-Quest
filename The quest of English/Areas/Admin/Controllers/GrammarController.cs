@@ -36,20 +36,20 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         }
         public async Task<IActionResult> FCE()
         {
-            var QuizesList = await _grammarQuizManager.GetAllQuizzes(SD.FCE);
+            var QuizesList = await _grammarQuizManager.GetAllQuizzesFiltered(SD.FCE);
             var QuizzesViewModel = _grammarQuizViewModelMapper.Map(QuizesList);
             return View(QuizzesViewModel);
         }
         public async Task<IActionResult> CAE()
         {
 
-            var QuizesList = await _grammarQuizManager.GetAllQuizzes(SD.CAE);
+            var QuizesList = await _grammarQuizManager.GetAllQuizzesFiltered(SD.CAE);
             var QuizzesViewModel = _grammarQuizViewModelMapper.Map(QuizesList);
             return View(QuizzesViewModel);
         }
         public async Task<IActionResult> CPE()
         {
-            var QuizesList = await _grammarQuizManager.GetAllQuizzes(SD.CPE);
+            var QuizesList = await _grammarQuizManager.GetAllQuizzesFiltered(SD.CPE);
             var QuizzesViewModel = _grammarQuizViewModelMapper.Map(QuizesList);
             return View(QuizzesViewModel);
         }
