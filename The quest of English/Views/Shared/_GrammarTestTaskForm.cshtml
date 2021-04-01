@@ -84,39 +84,4 @@
         $("#DecorationPart").text($("#inputDecorationPart").val());
         $("#SecondQuestionPart").text($("#inputSecondQuestionPart").val());
     });
-
-    $("#form").on("change", function () {
-        $("#firstAnswear").text($("#inputFirstAnswear").val());
-        $("#secondAnswear").text($("#inputSecondAnswear").val());
-        $("#thirdAnswear").text($("#inputThirdAnswear").val());
-        $("#fourthAnswear").text($("#inputFourthAnswear").val());
-    });
-
-    $("form").on('submit', function (e) {
-
-        if ($("#inputFirstAnswear").val() == $("#inputCorrectAnswear").val() ||
-            $("#inputSecondAnswear").val() == $("#inputCorrectAnswear").val() ||
-            $("#inputThirdAnswear").val() == $("#inputCorrectAnswear").val() ||
-            $("#inputFourthAnswear").val() == $("#inputCorrectAnswear").val()) {
-
-        }
-        else {
-            if (($("#reapeatError").length == 0)) {
-                var answearDoNotMatch = "Correct answear do not match any of those!";
-                AppendError(answearDoNotMatch, "#submit", "reapeatError")
-                e.preventDefault();
-            }
-            e.preventDefault();
-        }
-    });
-
-    function AppendError(message, elementId, errorName) {
-        $(elementId).after($("<div></div>").text(message).addClass("mb-3").css("color", "red").attr('id', errorName));
-        $(elementId).removeClass("is-valid").addClass("is-invalid");
-        return false;
-    }
-    function AppendCorrect(elementId) {
-        $(elementId).removeClass("is-invalid").addClass("is-valid");
-        return true;
-    }
 </script>
