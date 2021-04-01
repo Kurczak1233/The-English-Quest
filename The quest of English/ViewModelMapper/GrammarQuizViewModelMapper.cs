@@ -6,7 +6,7 @@ using TheEnglishQuestDatabase.Entities;
 
 namespace The_quest_of_English
 {
-    public class GrammarQuizViewModelMapper /*: ViewModelMapper<GrammarQuizDto, GrammarQuizViewModel>*/
+    public class GrammarQuizViewModelMapper /*: ViewModelMapper<GrammarQuizDto, GrammarQuizViewModel>,*/ 
     {
         private readonly IMapper _Mapper;
 
