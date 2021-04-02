@@ -79,6 +79,13 @@
     </div>
 </main>
 <script>
+    $(document).ready()
+    {
+        $("#FirstQuestionPart").text($("#inputFirstQuestionPart").val());
+        $("#DecorationPart").text($("#inputDecorationPart").val());
+        $("#SecondQuestionPart").text($("#inputSecondQuestionPart").val());
+    }
+
     $("#form").on("change", function () {
         $("#FirstQuestionPart").text($("#inputFirstQuestionPart").val());
         $("#DecorationPart").text($("#inputDecorationPart").val());

@@ -115,6 +115,18 @@
     </div>
 </main>
 <script>
+
+    $(document).ready()
+    {
+        $("#firstAnswear").text($("#inputFirstAnswear").val());
+        $("#secondAnswear").text($("#inputSecondAnswear").val());
+        $("#thirdAnswear").text($("#inputThirdAnswear").val());
+        $("#fourthAnswear").text($("#inputFourthAnswear").val());
+        $("#FirstQuestionPart").text($("#inputFirstQuestionPart").val());
+        $("#DecorationPart").text($("#inputDecorationPart").val());
+        $("#SecondQuestionPart").text($("#inputSecondQuestionPart").val());
+    }
+
     $("#form").on("change", function () {
         $("#FirstQuestionPart").text($("#inputFirstQuestionPart").val());
         $("#DecorationPart").text($("#inputDecorationPart").val());
