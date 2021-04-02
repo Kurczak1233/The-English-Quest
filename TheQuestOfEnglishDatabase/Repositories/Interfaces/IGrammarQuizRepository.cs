@@ -11,6 +11,7 @@ namespace TheEnglishQuestDatabase
         Task<GrammarQuiz> FindQuizByName(string name);
         Task<IEnumerable<GrammarQuiz>> GetAllQuizzesFiltered(string level);
         IEnumerable<GrammarQuiz> GetAllQuizzes();
+        
 
     }
 }

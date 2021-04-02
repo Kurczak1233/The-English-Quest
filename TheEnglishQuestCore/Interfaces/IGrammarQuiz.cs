@@ -10,6 +10,6 @@ namespace TheEnglishQuestCore
         Task<GrammarQuizDto> FindQuiz(int id);
         Task<GrammarQuizDto> FindQuizByName(string name);
         Task<IEnumerable<GrammarQuizDto>> GetAllQuizzesFiltered(string level);
-        IEnumerable<GrammarQuizDto> GetAllQuizzes();
+        Task<IEnumerable<GrammarQuizDto>> GetAllQuizzes();
     }
 }

@@ -22,7 +22,6 @@ namespace TheEnglishQuestCore
 
         public async Task<bool> AddNewQuiz(GrammarQuizDto quiz, string userId)
         {
-            //Dodać doktora tutaj i przerzucić go od razu do bazy?
             var user = await _ApplicationUserRepository.GetLoggedUser(userId);
             var entity = _grammarQuizMapper.Map(quiz);
             entity.User = user;
@@ -42,7 +41,9 @@ namespace TheEnglishQuestCore
 
         public async Task<GrammarQuizDto> FindQuizByName(string name)
         {
-           var entity = await _GrammarQuizRepository.FindQuizByName(name);
+            var entity = await _GrammarQuizRepository.FindQuizByName(name);
+            var user = await _ApplicationUserRepository.GetLoggedUser(entity.UserId);
+            entity.User = user;
             return _grammarQuizMapper.Map(entity);
         }
 
@@ -55,12 +56,22 @@ namespace TheEnglishQuestCore
         public async Task<IEnumerable<GrammarQuizDto>> GetAllQuizzesFiltered(string level)
         {
             var entities = await _GrammarQuizRepository.GetAllQuizzesFiltered(level);
-            return  _grammarQuizMapper.Map(entities);
+            foreach(var item in entities)
+            {
+                var user = await _ApplicationUserRepository.GetLoggedUser(item.UserId);
+                item.User = user;
+            }
+            return _grammarQuizMapper.Map(entities);
         }
 
-        public IEnumerable<GrammarQuizDto> GetAllQuizzes()
+        public async Task<IEnumerable<GrammarQuizDto>> GetAllQuizzes()
         {
-            var entities = _GrammarQuizRepository.GetAllQuizzes();
+            var entities = _GrammarQuizRepository.GetAllQuizzes().ToList();
+            foreach (var item in entities)
+            {
+                var user = await _ApplicationUserRepository.GetLoggedUser(item.UserId);
+                item.User = user;
+            }
             return _grammarQuizMapper.Map(entities);
         }
     }

@@ -10,8 +10,8 @@
             <p class="font-size-biggish text-center mt-5 mb-5">Grammar CPE</p>
             @if (User.IsInRole(SD.AdminUser))
             {
-                string grammar = "Grammar";
-                <partial name="AdminPaneIButtonsInEnglishSections" model="grammar" />
+                var obj = Model.ToList()[0];
+                <partial name="AdminPaneIButtonsInEnglishSections" model="obj" />
             }
             <div class="row justify-content-center mt-5">
 

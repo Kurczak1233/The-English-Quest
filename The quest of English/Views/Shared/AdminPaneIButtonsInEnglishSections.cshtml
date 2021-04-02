@@ -1,11 +1,11 @@
-﻿@model string 
+﻿@model GrammarQuizViewModel
 
 <div class="d-flex justify-content-center mb-3" id="adminPanel">
-    <a asp-controller="@Model" asp-action="GrammarCreateQuiz" class="btn btn-success">Create quiz</a>
+    <a asp-controller="@Model.Section" asp-action="GrammarCreateQuiz" class="btn btn-success">Create quiz</a>
     @if(User.IsInRole(SD.AdminUser))
     {
-    <a asp-controller="@Model" asp-action="GrammarModifyQuiz" class="btn btn-info ml-5 mr-5">Modify quiz</a>
-    <a asp-controller="@Model" asp-action="GrammarDeleteQuiz" class="btn btn-danger">Delete quiz</a>
+    <a asp-controller="@Model.Section" asp-action="GrammarModifyQuiz" asp-route-level="@Model.Level" class="btn btn-info ml-5 mr-5">Modify quiz</a>
+    <a asp-controller="@Model.Section" asp-action="GrammarDeleteQuiz" asp-route-level="@Model.Level" class="btn btn-danger">Delete quiz</a>
     }
 </div>
  

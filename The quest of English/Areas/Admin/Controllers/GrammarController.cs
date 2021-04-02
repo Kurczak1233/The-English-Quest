@@ -35,9 +35,6 @@ namespace The_quest_of_English.Areas.Admin.Controllers
             _grammarTaskViewModelMapper = grammarTaskViewModelMapper;
         }
 
-        [BindProperty]
-        public string SectionName { get; set; } = "Grammar";
-
         public IActionResult Index()
         {
             return View();
@@ -78,7 +75,7 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var quizes = _grammarQuizManager.GetAllQuizzes();
+                var quizes = await _grammarQuizManager.GetAllQuizzes();
                 var quizesVM = _grammarQuizViewModelMapper.Map(quizes);
                 foreach(var item in quizesVM)
                 {
@@ -96,7 +93,7 @@ namespace The_quest_of_English.Areas.Admin.Controllers
                 await _grammarQuizManager.RemoveQuiz(quizDto);
                 //Getting Quiz from DB with assigned Id
                 var quizVM = await _grammarQuizManager.FindQuizByName(quiz.Name);
-                return RedirectToAction("ShowQuiz", new { quizId = quizVM.Id }); //Name of variable must be here!
+                return RedirectToAction("ShowQuiz", new { quizId = quizVM.Id }); //Name of variable must be inside annonymus obj!
             }
             else
             {
@@ -119,6 +116,20 @@ namespace The_quest_of_English.Areas.Admin.Controllers
             return View(model); 
         }
 
+        public async Task<IActionResult> GrammarModifyQuiz(string level)
+        {
+            var QuizesList = await _grammarQuizManager.GetAllQuizzesFiltered(level);
+            var QuizzesViewModel = _grammarQuizViewModelMapper.Map(QuizesList);
+            return View(QuizzesViewModel);
+        }
+        public async Task<IActionResult> GrammarDeleteQuiz(string level)
+        {
+            var QuizesList = await _grammarQuizManager.GetAllQuizzesFiltered(level);
+            var QuizzesViewModel = _grammarQuizViewModelMapper.Map(QuizesList);
+            return View(QuizzesViewModel);
+        }
+
+        //TASKS SECTION
         public IActionResult CreateTask(int quizId)
         {            
             GrammarTasksViewModel task = new GrammarTasksViewModel();
@@ -132,6 +143,7 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         {
             return RedirectToAction("BuildTaskQuestionAndAnswear" , new { ChosenType = task.TaskType, QuizId = task.GrammarQuizId });
         }
+
 
         public IActionResult BuildTaskQuestionAndAnswear(string ChosenType, int quizId)
         {
@@ -151,14 +163,7 @@ namespace The_quest_of_English.Areas.Admin.Controllers
             await _grammarTaskManager.AddNew(taskDto);
             return RedirectToAction("ShowQuiz", new { quizId = task.GrammarQuizId });
         }
-        public IActionResult GrammarModifyQuiz()
-        {
-            return View();
-        }
-        public IActionResult GrammarDeleteQuiz()
-        {
-            return View();
-        }
+
 
     }
 }
