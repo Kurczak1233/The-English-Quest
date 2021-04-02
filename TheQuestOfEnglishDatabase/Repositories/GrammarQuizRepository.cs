@@ -39,6 +39,12 @@ namespace TheEnglishQuestDatabase
             return false;
         }
 
+        public async Task<bool> ModifyQuiz(GrammarQuiz quiz)
+        {
+            var dbQuiz = await DbSet.Where(x => x.Id == quiz.Id).SingleOrDefaultAsync();
+            dbQuiz.Name = quiz.Name;
+            return await SaveChanges();
+        }
         public async Task<GrammarQuiz> FindQuiz(int id)
         {
             var quiz =  await DbSet.Where(x => x.Id == id).SingleOrDefaultAsync();

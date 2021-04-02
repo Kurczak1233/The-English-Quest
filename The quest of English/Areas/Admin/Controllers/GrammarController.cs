@@ -131,10 +131,13 @@ namespace The_quest_of_English.Areas.Admin.Controllers
             return View(QuizVm);
         }
 
-        public async Task<IActionResult> ModifySpecifiedQuiz()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ModifySpecifiedQuiz(GrammarQuizViewModel quiz)
         {
-            return RedirectToAction();
-
+            var QuizDto = _grammarQuizViewModelMapper.Map(quiz);
+            await _grammarQuizManager.ModifyQuiz(QuizDto);
+            return RedirectToAction(quiz.Level);
         }
 
         public async Task<IActionResult> GrammarDeleteQuiz(string level)

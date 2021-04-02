@@ -29,6 +29,12 @@ namespace TheEnglishQuestCore
             return await _GrammarQuizRepository.AddNewQuiz(entity, userId);
         }
 
+        public async Task<bool> ModifyQuiz(GrammarQuizDto quiz)
+        {
+            var entity = _grammarQuizMapper.Map(quiz);
+            return await _GrammarQuizRepository.ModifyQuiz(entity);
+        }
+
         public async Task<GrammarQuizDto> FindQuiz(int id)
         {
             var entity = await _GrammarQuizRepository.FindQuiz(id);

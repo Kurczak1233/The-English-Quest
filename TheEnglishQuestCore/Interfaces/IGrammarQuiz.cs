@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using TheEnglishQuestDatabase;
 
 namespace TheEnglishQuestCore
 {
@@ -11,5 +12,6 @@ namespace TheEnglishQuestCore
         Task<GrammarQuizDto> FindQuizByName(string name);
         Task<IEnumerable<GrammarQuizDto>> GetAllQuizzesFiltered(string level);
         Task<IEnumerable<GrammarQuizDto>> GetAllQuizzes();
+        Task<bool> ModifyQuiz(GrammarQuizDto quiz);
     }
 }
