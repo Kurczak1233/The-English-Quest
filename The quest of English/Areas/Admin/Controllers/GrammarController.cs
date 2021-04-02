@@ -12,7 +12,6 @@ using TheEnglishQuestCore.Managers;
 namespace The_quest_of_English.Areas.Admin.Controllers
 {
     [Area("Admin")]
-
     public class GrammarController : Controller
     {
         private readonly GrammarQuizViewModelMapper _grammarQuizViewModelMapper;
@@ -145,6 +144,16 @@ namespace The_quest_of_English.Areas.Admin.Controllers
             var QuizesList = await _grammarQuizManager.GetAllQuizzesFiltered(level);
             var QuizzesViewModel = _grammarQuizViewModelMapper.Map(QuizesList);
             return View(QuizzesViewModel);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> GrammarDeleteQuiz(int id)
+        {
+            var Quiz = await _grammarQuizManager.GetAllQuizzes();
+            var ActualQuiz = Quiz.Where(x=>x.Id == id).SingleOrDefault();
+            string level = ActualQuiz.Level;
+            await _grammarQuizManager.RemoveQuiz(ActualQuiz);
+            return RedirectToAction(level);
         }
 
         //TASKS SECTION
