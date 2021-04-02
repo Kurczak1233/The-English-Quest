@@ -23,6 +23,13 @@ namespace TheEnglishQuestCore
             return await _GrammarTaskRepository.AddNew(entity);
         }
 
+        public async Task<GrammarTaskDto> FindTask (int id)
+        {
+            var taskDb = await _GrammarTaskRepository.FindTask(id);
+            taskDb.GrammarQuiz = await _GrammarQuizRepository.FindQuiz(taskDb.GrammarQuizId);
+            var taskDto = _DTOMapper.Map(taskDb);
+            return taskDto;
+        }
         public async Task<bool> Delete(GrammarTaskDto obj)
         {
             var entity = _DTOMapper.Map(obj);

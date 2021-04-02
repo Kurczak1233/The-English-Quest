@@ -30,6 +30,12 @@ namespace TheEnglishQuestCore.Managers
             return await _SampleTestQARepostory.Delete(entity);
         }
 
+        public async Task<SampleTestQADto> FindTask(int id)
+        {
+            var entity = await _SampleTestQARepostory.FindTask(id);
+            return _DTOMapper.Map(entity);
+        }
+
         public async Task<IEnumerable<SampleTestQADto>> GetAllValues()
         {
             var encPositions = await _SampleTestQARepostory.GetAllValues();

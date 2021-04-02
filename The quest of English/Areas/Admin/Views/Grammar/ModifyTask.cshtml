@@ -19,7 +19,7 @@
                     <p><span id="FirstQuestionPart">@item.QuestionFirstPart</span>&nbsp;<span id="DecorationPart" class="dark-blue-text-color font-weight-bold font-italic">@item.QuestionDecoratedPart</span>&nbsp;<span id="SecondQuestionPart">@item.QuestionSecondPart</span></p>
                 </div>
                     <div class="col-1">
-                        <a asp-action="ModifySpecifiedTask" asp-controller="Grammar" asp-route-id="@item.Id" class="btn btn-info" type="button">
+                        <a asp-action="ModifySpecifiedTask" asp-controller="Grammar" asp-route-taskId="@item.Id" class="btn btn-info" type="button">
                             <i class="bi bi-gear"></i>
                         </a>
                     </div>

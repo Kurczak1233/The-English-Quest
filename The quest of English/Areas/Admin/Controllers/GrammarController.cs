@@ -205,6 +205,13 @@ namespace The_quest_of_English.Areas.Admin.Controllers
             return View(TasksVm);
         }
 
+        public async Task<IActionResult> ModifySpecifiedTask(int taskId)
+        {
+            var SelectedTask = await _grammarTaskManager.FindTask(taskId);
+            var TaskVm = _grammarTaskViewModelMapper.Map(SelectedTask);
+            return View(TaskVm);
+        }
+
 
     }
 }

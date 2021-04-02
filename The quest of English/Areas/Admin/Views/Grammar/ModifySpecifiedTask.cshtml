@@ -1,0 +1,17 @@
+﻿@model GrammarTasksViewModel
+@{
+    ViewData["Title"] = "ModifySpecifiedTask";
+}
+
+@if (Model.TaskType == SD.Radio4)
+{
+    <partial name="_GrammarTestTaskRadio4" model="@Model"/>
+}
+@if (Model.TaskType == SD.Radio3)
+{
+    <partial name="_GrammarTestTaskRadio3" model="@Model" />
+}
+@if (Model.TaskType == SD.Form)
+{
+    <partial name="_GrammarTestTaskForm" model="@Model" />
+}

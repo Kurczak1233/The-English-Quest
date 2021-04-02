@@ -6,7 +6,7 @@ using TheQuestOfEnglishDatabase;
 
 namespace TheEnglishQuestDatabase
 {
-    public interface IPlacementTestTaskRepository : IBaseRepository<PlacementTestTask>
+    public interface IPlacementTestTaskRepository /*: IBaseRepository<PlacementTestTask>*/
     {
         Task<bool> Delete(PlacementTestTask entity);
         Task<bool> AddNew(PlacementTestTask entity);

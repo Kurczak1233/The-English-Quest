@@ -1,5 +1,4 @@
-﻿@model GrammarTasksViewModel
-<main class="container p-5">
+﻿@*<main class="container p-5">
     <div class="row">
         <div class="light-blue-color col-xl-8 col-sm-10 offset-sm-1 offset-xl-2" style="margin-top: 50px; border-radius:50px;">
             <form id="form" method="post">
@@ -129,17 +128,6 @@
     </div>
 </main>
 <script>
-    $(document).ready()
-    {
-        $("#firstAnswear").text($("#inputFirstAnswear").val());
-        $("#secondAnswear").text($("#inputSecondAnswear").val());
-        $("#thirdAnswear").text($("#inputThirdAnswear").val());
-        $("#fourthAnswear").text($("#inputFourthAnswear").val());
-        $("#FirstQuestionPart").text($("#inputFirstQuestionPart").val());
-        $("#DecorationPart").text($("#inputDecorationPart").val());
-        $("#SecondQuestionPart").text($("#inputSecondQuestionPart").val());
-    }
-
     $("#form").on("change", function () {
         $("#FirstQuestionPart").text($("#inputFirstQuestionPart").val());
         $("#DecorationPart").text($("#inputDecorationPart").val());
@@ -180,6 +168,4 @@
         $(elementId).removeClass("is-invalid").addClass("is-valid");
         return true;
     }
-</script>
-
-
+</script>*@
