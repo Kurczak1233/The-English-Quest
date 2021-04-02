@@ -11,8 +11,9 @@
                     Insert your quiz name:
                 </div>
                 <div class="col-6 offset-3 mt-3">
-                    <input type="text" asp-for="@Model.Name" class="form-control" />
+                    <input id="input" type="text" asp-for="@Model.Name" class="form-control" />
                 </div>
+                <div class="font-size-rather-small text-center text-danger" hidden id="hiddeninfo">You have to type a name!</div>
                 <label for="select" class="col-6 offset-3 mt-3 text-center font-size-medium">Choose your quiz level.</label>
                 <select asp-for="@Model.Level" id="select" class="col-6 offset-3 mt-3 form-control">
                     <option value="FCE">FCE</option>
@@ -20,7 +21,7 @@
                     <option value="CPE">CPE</option>
                 </select>
                 <div class="col-12 text-center mt-3 mb-3">
-                    <button type="submit" class="btn warm-orange-color">Submit</button>
+                    <button id="submit" type="submit" class="btn warm-orange-color">Submit</button>
                 </div>
                 <div class="text-center col-12 mb-5 error-text-color">
                     @Html.ValidationMessageFor(m => m.Name)
@@ -29,3 +30,14 @@
         </div>
     </div>
 </main>
+<script>
+    $("#submit").on("click", function (e) {
+        if ($("#input").val() == "") {
+            $("#hiddeninfo").attr("hidden", false);
+            e.preventDefault();
+        }
+    });
+    $("#input").on("change", function () {
+        $("#hiddeninfo").attr("hidden", true);
+    });
+</script>
