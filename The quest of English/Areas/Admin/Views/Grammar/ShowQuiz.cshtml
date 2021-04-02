@@ -94,13 +94,19 @@
                     counter++;
                     IdCounter++;
                 }
+                <div class="row mt-5" hidden id="resultRow">
+                    <div class="col-12 text-center font-size-biggish">
+                        <p>You scored: <span id="result"></span>/<span id="resultMax"></span></p>
+                    </div>
+                </div>
                 <div class="row">
-                    <div class="col-12 d-flex justify-content-center mt-5 mb-5">
+                    <div class="col-12 d-flex justify-content-center mt-3 mb-5">
                         <form method="post">
-                            <button class="btn warm-orange-color" type="button" onclick="CheckAnswears()">Submit</button>
+                            <button class="btn warm-orange-color" type="button" id="submitButton">Submit</button>
                         </form>
                     </div>
                 </div>
+
             }
         </div>
     </div>
@@ -114,9 +120,8 @@
         }
         var ar = @Html.Raw(Json.Serialize(answears));
     var counter = 0;
-    var test = 5;
     var pointsCounter = 0;
-    function CheckAnswears() {
+    $("#submitButton").one("click", function () {
         $("[id = checkAnswears]").each(function () {
             if ($(this).find("input[type=radio]").length > 0) {
                 var elId = $(this).find("input[type=radio]:checked").attr('id');
@@ -129,19 +134,19 @@
                 var trimStr2 = $.trim(answear);
             }
             //console.log(elId); //Works
-            
+
             var trimStr = $.trim(ar[counter]);
             console.log(trimStr);
             console.log(trimStr2);
             if ($(this).find("input[type=radio]").length > 0) {
                 if (trimStr2 === trimStr) {
                     $("label[for='" + elId + "']").css("background-color", "rgba(0,255,127, 0.2)");
-                    
+
                     pointsCounter++;
                 }
                 else {
                     $("label[for='" + elId + "']").css("background-color", "rgba(255, 77, 71, 0.2)");
-                    
+
                 }
             }
             else {
@@ -155,6 +160,8 @@
             }
             counter++;
         })
-        $("#input").attr("value", pointsCounter);
-    }
+        $("#result").text(pointsCounter);
+        $("#resultMax").text(counter);
+        $("#resultRow").attr("hidden", false);
+    });
 </script>
