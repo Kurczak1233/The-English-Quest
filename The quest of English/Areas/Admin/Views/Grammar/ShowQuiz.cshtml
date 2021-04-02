@@ -10,7 +10,7 @@
             <div class="col-12 text-center">
                 <span class="mb-3 d-flex justify-content-center font-size-biggish">Admin section</span>
                 <a asp-controller="Grammar" asp-action="CreateTask" asp-route-quizId="@Model.Quiz.Id" class="btn btn-success">Create question</a>
-                <a asp-controller="Grammar" asp-action="ModifyTask" asp-route-quizId="@Model.Quiz.Id" class="btn-info btn">Modify question</a>
+                <a asp-controller="Grammar" asp-action="ModifyTask" asp-route-quizId="@Model.Quiz.Id" class="btn-info btn mr-5 ml-5">Modify question</a>
                 <a asp-controller="Grammar" asp-action="DeleteTask" asp-route-quizId="@Model.Quiz.Id" class="btn-danger btn">Delete question</a>
             </div>
         </section>
@@ -133,7 +133,6 @@
                 var answear = $(this).find("input").val();
                 var trimStr2 = $.trim(answear);
             }
-            //console.log(elId); //Works
 
             var trimStr = $.trim(ar[counter]);
             console.log(trimStr);

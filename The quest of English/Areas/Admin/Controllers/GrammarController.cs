@@ -76,9 +76,9 @@ namespace The_quest_of_English.Areas.Admin.Controllers
             {
                 var quizes = await _grammarQuizManager.GetAllQuizzes();
                 var quizesVM = _grammarQuizViewModelMapper.Map(quizes);
-                foreach(var item in quizesVM)
+                foreach (var item in quizesVM)
                 {
-                    if(item.Name == quiz.Name)
+                    if (item.Name == quiz.Name)
                     {
                         ModelState.AddModelError("Name", "There already is a quiz named like that!");
                         return View("GrammarCreateQuiz");
@@ -87,7 +87,7 @@ namespace The_quest_of_English.Areas.Admin.Controllers
                 }
                 //
                 var userId = User.Identity.GetUserId();
-                var quizDto =  _grammarQuizViewModelMapper.Map(quiz);
+                var quizDto = _grammarQuizViewModelMapper.Map(quiz);
                 await _grammarQuizManager.AddNewQuiz(quizDto, userId);
                 await _grammarQuizManager.RemoveQuiz(quizDto);
                 //Getting Quiz from DB with assigned Id
@@ -135,7 +135,7 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         public async Task<IActionResult> GrammarDeleteQuiz(int id)
         {
             var Quiz = await _grammarQuizManager.GetAllQuizzes();
-            var ActualQuiz = Quiz.Where(x=>x.Id == id).SingleOrDefault();
+            var ActualQuiz = Quiz.Where(x => x.Id == id).SingleOrDefault();
             string level = ActualQuiz.Level;
             await _grammarQuizManager.RemoveQuiz(ActualQuiz);
             return RedirectToAction(level);
@@ -165,7 +165,7 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         //TASKS SECTION
 
         public IActionResult CreateTask(int quizId)
-        {            
+        {
             GrammarTasksViewModel task = new GrammarTasksViewModel();
             task.GrammarQuizId = quizId;
             return View(task);
@@ -173,9 +173,9 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         [HttpPost]
         [AutoValidateAntiforgeryToken]
         [ActionName("CreateTask")]
-        public  IActionResult CreateTaskPost(GrammarTasksViewModel task)
+        public IActionResult CreateTaskPost(GrammarTasksViewModel task)
         {
-            return RedirectToAction("BuildTaskQuestionAndAnswear" , new { ChosenType = task.TaskType, QuizId = task.GrammarQuizId });
+            return RedirectToAction("BuildTaskQuestionAndAnswear", new { ChosenType = task.TaskType, QuizId = task.GrammarQuizId });
         }
 
 
@@ -218,9 +218,26 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         {
             var taskDto = _grammarTaskViewModelMapper.Map(task);
             await _grammarTaskManager.ModifyTask(taskDto);
-            return RedirectToAction("ShowQuiz", new { quizId = task.GrammarQuizId }); 
+            return RedirectToAction("ShowQuiz", new { quizId = task.GrammarQuizId });
         }
 
+        public async Task<IActionResult> DeleteTask(int quizId)
+        {
+            var SelectedQuiz = await _grammarQuizManager.FindQuiz(quizId);
+            var Tasks = SelectedQuiz.GrammarTasks;
+            var TasksVm = _grammarQuizViewModelMapper.Map(Tasks);
+            return View(TasksVm);
+        }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ActionName("DeleteTask")]
+        public async Task<IActionResult> DeleteTaskPost(int taskId)
+        {
+            var Entity = await _grammarTaskManager.FindTask(taskId);
+            int quizId = Entity.GrammarQuizId;
+            await _grammarTaskManager.Delete(Entity);
+            return RedirectToAction("ShowQuiz", new { quizId = quizId });
+        }
     }
 }
