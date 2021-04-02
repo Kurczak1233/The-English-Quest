@@ -122,6 +122,21 @@ namespace The_quest_of_English.Areas.Admin.Controllers
             var QuizzesViewModel = _grammarQuizViewModelMapper.Map(QuizesList);
             return View(QuizzesViewModel);
         }
+
+        public async Task<IActionResult> ModifySpecifiedQuiz(int id)
+        {
+            var Quizes = await _grammarQuizManager.GetAllQuizzes();
+            var Quiz = Quizes.Where(x => x.Id == id).SingleOrDefault();
+            var QuizVm = _grammarQuizViewModelMapper.Map(Quiz);
+            return View(QuizVm);
+        }
+
+        public async Task<IActionResult> ModifySpecifiedQuiz()
+        {
+            return RedirectToAction();
+
+        }
+
         public async Task<IActionResult> GrammarDeleteQuiz(string level)
         {
             var QuizesList = await _grammarQuizManager.GetAllQuizzesFiltered(level);
