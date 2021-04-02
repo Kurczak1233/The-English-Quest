@@ -75,7 +75,7 @@
                     }
                     else
                     {
-                        <section id="questionAndAnswears">
+                        <section id="checkAnswears">
                             <div class="row mt-3">
                                 <div class="question-circle text-center ml-4">
                                     <strong class="font-size-medium question">@counter</strong>
@@ -84,7 +84,7 @@
                                     <p><span id="FirstQuestionPart">@item.QuestionFirstPart</span>&nbsp;<span id="DecorationPart" class="dark-blue-text-color font-weight-bold font-italic">@item.QuestionDecoratedPart</span>&nbsp;<span id="SecondQuestionPart">@item.QuestionSecondPart</span></p>
                                 </div>
                             </div>
-                            <div class="form-check" id="checkAnswears">
+                            <div class="form-check" id="checkAnswearsButton">
                                 <div class="mt-1 form-check ml-5 answearRadio">
                                     <input class="form-control col-6  d-flex flex-row" type="text" name="@counter" id="@IdCounter">
                                 </div>
@@ -97,7 +97,7 @@
                 <div class="row">
                     <div class="col-12 d-flex justify-content-center mt-5 mb-5">
                         <form method="post">
-                            <button class="btn warm-orange-color" type="submit" onclick="CheckAnswears()">Submit</button>
+                            <button class="btn warm-orange-color" type="button" onclick="CheckAnswears()">Submit</button>
                         </form>
                     </div>
                 </div>
@@ -105,3 +105,36 @@
         </div>
     </div>
 </main>
+<script>
+        @{ List<string> answears = new List<string>();
+        foreach (var item in Model.Quiz.GrammarTasks)
+        {
+            answears.Add(item.CorrectAnswear);
+        }
+        }
+        var ar = @Html.Raw(Json.Serialize(answears));
+    var counter = 0;
+    var test = 5;
+    var pointsCounter = 0;
+    function CheckAnswears() {
+        $("[id = checkAnswears]").each(function () {
+            var elIdForm = $(this).find("input").attr('id');
+            var elId = $(this).find("input[type=radio]:checked").attr('id');
+            console.log(elId);
+            var radioLabelValue = $("label[for='" + elId + "']").text();
+            var trimStr = $.trim(ar[counter]);
+            var trimStr2 = $.trim(radioLabelValue);
+            console.log(trimStr);
+            console.log(trimStr2);
+            if (trimStr2 === trimStr) {
+                $("label[for='" + elId + "']").css("background-color", "rgba(0,255,127, 0.2)");
+                pointsCounter++;
+            }
+            else {
+                $("label[for='" + elId + "']").css("background-color", "rgba(255, 77, 71, 0.2)");
+            }
+            counter++;
+        })
+        $("#input").attr("value", pointsCounter);
+    }
+</script>
