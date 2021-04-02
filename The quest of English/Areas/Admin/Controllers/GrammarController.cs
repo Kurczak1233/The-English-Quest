@@ -211,6 +211,15 @@ namespace The_quest_of_English.Areas.Admin.Controllers
             var TaskVm = _grammarTaskViewModelMapper.Map(SelectedTask);
             return View(TaskVm);
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ActionName("ModifySpecifiedTask")]
+        public async Task<IActionResult> ModifySpecifiedTaskPost(GrammarTasksViewModel task)
+        {
+            var taskDto = _grammarTaskViewModelMapper.Map(task);
+            await _grammarTaskManager.ModifyTask(taskDto);
+            return RedirectToAction("ShowQuiz", new { quizId = task.GrammarQuizId }); 
+        }
 
 
     }

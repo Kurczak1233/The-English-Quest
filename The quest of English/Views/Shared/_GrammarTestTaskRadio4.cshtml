@@ -76,8 +76,9 @@
                             <input id="inputCorrectAnswear" asp-for="@Model.CorrectAnswear" type="text" class="form-control" />
                         </div>
                     </div>
-                    @Html.HiddenFor(x => x.GrammarQuizId, Model.GrammarQuizId);
-                    @Html.HiddenFor(x => x.TaskType, Model.TaskType);
+                    @Html.HiddenFor(x => x.GrammarQuizId, Model.GrammarQuizId)
+                    @Html.HiddenFor(x => x.TaskType, Model.TaskType)
+                    @Html.HiddenFor(x => x.Id, Model.Id)
                 </section>
                 <div class="row mt-5 mb-5">
                     <div class="col-12 text-center font-size-rather-small">

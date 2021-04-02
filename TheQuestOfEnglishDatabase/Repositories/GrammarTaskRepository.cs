@@ -42,7 +42,11 @@ namespace TheEnglishQuestDatabase
             return await DbSet.Where(x=>x.Id == id).SingleOrDefaultAsync();
 
         }
-
+        public async Task<bool> ModifyTask(GrammarTask task)
+        {
+            DbSet.Update(task);
+            return await SaveChanges();
+        }
         public async Task<IEnumerable<GrammarTask>> GetAllValues()
         {
             return await DbSet.Select(x => x).ToListAsync();

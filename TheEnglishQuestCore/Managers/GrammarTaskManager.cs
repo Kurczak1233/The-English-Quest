@@ -30,7 +30,13 @@ namespace TheEnglishQuestCore
             var taskDto = _DTOMapper.Map(taskDb);
             return taskDto;
         }
-        public async Task<bool> Delete(GrammarTaskDto obj)
+        public async Task<bool> ModifyTask(GrammarTaskDto obj)
+        {
+            var entity = _DTOMapper.Map(obj);
+            return await _GrammarTaskRepository.ModifyTask(entity);
+        }
+
+            public async Task<bool> Delete(GrammarTaskDto obj)
         {
             var entity = _DTOMapper.Map(obj);
             return await _GrammarTaskRepository.Delete(entity);

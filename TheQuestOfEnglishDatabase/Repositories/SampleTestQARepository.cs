@@ -39,10 +39,5 @@ namespace TheEnglishQuestDatabase.Repositories
             await DbSet.AddAsync(entity);
             return await SaveChanges();
         }
-
-        public async Task<SampleTestQA> FindTask(int id)
-        {
-            return await DbSet.Where(x => x.Id == id).SingleOrDefaultAsync();
-        }
     }
 }
