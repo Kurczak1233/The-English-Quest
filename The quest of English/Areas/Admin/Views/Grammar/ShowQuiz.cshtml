@@ -118,20 +118,40 @@
     var pointsCounter = 0;
     function CheckAnswears() {
         $("[id = checkAnswears]").each(function () {
-            var elIdForm = $(this).find("input").attr('id');
-            var elId = $(this).find("input[type=radio]:checked").attr('id');
-            console.log(elId);
-            var radioLabelValue = $("label[for='" + elId + "']").text();
-            var trimStr = $.trim(ar[counter]);
-            var trimStr2 = $.trim(radioLabelValue);
-            console.log(trimStr);
-            console.log(trimStr2);
-            if (trimStr2 === trimStr) {
-                $("label[for='" + elId + "']").css("background-color", "rgba(0,255,127, 0.2)");
-                pointsCounter++;
+            if ($(this).find("input[type=radio]").length > 0) {
+                var elId = $(this).find("input[type=radio]:checked").attr('id');
+                var radioLabelValue = $("label[for='" + elId + "']").text();
+                var trimStr2 = $.trim(radioLabelValue);
             }
             else {
-                $("label[for='" + elId + "']").css("background-color", "rgba(255, 77, 71, 0.2)");
+                var elId = $(this).find("input").attr('id');
+                var answear = $(this).find("input").val();
+                var trimStr2 = $.trim(answear);
+            }
+            //console.log(elId); //Works
+            
+            var trimStr = $.trim(ar[counter]);
+            console.log(trimStr);
+            console.log(trimStr2);
+            if ($(this).find("input[type=radio]").length > 0) {
+                if (trimStr2 === trimStr) {
+                    $("label[for='" + elId + "']").css("background-color", "rgba(0,255,127, 0.2)");
+                    
+                    pointsCounter++;
+                }
+                else {
+                    $("label[for='" + elId + "']").css("background-color", "rgba(255, 77, 71, 0.2)");
+                    
+                }
+            }
+            else {
+                if (trimStr2 === trimStr) {
+                    $(this).find("input").css("background-color", "rgba(0,255,127, 0.2)");
+                    pointsCounter++;
+                }
+                else {
+                    $(this).find("input").css("background-color", "rgba(255, 77, 71, 0.2)");
+                }
             }
             counter++;
         })
