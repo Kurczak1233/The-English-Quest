@@ -99,21 +99,6 @@ namespace The_quest_of_English.Areas.Admin.Controllers
                 return RedirectToAction("CAE");
             }
         }
-        public async Task<IActionResult> ShowQuiz(int quizId)
-        {
-            //Get User
-            var quiz = await _grammarQuizManager.FindQuiz(quizId);
-            var quizVM = _grammarQuizViewModelMapper.Map(quiz);
-            var userId = User.Identity.GetUserId();
-            var user = await _applicationUserManager.GetLoggedUser(userId);
-            var userVm = _applicationUserViewModelMapper.Map(user);
-            QuizModelAndUserViewModel model = new QuizModelAndUserViewModel()
-            {
-                Quiz = quizVM,
-                ApplicationUser = userVm,
-            };
-            return View(model); 
-        }
 
         public async Task<IActionResult> GrammarModifyQuiz(string level)
         {
@@ -156,7 +141,29 @@ namespace The_quest_of_English.Areas.Admin.Controllers
             return RedirectToAction(level);
         }
 
+
+        /// <summary>
+        /// Those methods above are strictly related to all of quizzes functionalities.
+        /// </summary>
+
+        public async Task<IActionResult> ShowQuiz(int quizId)
+        {
+            //Get User
+            var quiz = await _grammarQuizManager.FindQuiz(quizId);
+            var quizVM = _grammarQuizViewModelMapper.Map(quiz);
+            var userId = User.Identity.GetUserId();
+            var user = await _applicationUserManager.GetLoggedUser(userId);
+            var userVm = _applicationUserViewModelMapper.Map(user);
+            QuizModelAndUserViewModel model = new QuizModelAndUserViewModel()
+            {
+                Quiz = quizVM,
+                ApplicationUser = userVm,
+            };
+            return View(model);
+        }
+
         //TASKS SECTION
+
         public IActionResult CreateTask(int quizId)
         {            
             GrammarTasksViewModel task = new GrammarTasksViewModel();
@@ -189,6 +196,13 @@ namespace The_quest_of_English.Areas.Admin.Controllers
             var taskDto = _grammarTaskViewModelMapper.Map(task);
             await _grammarTaskManager.AddNew(taskDto);
             return RedirectToAction("ShowQuiz", new { quizId = task.GrammarQuizId });
+        }
+        public async Task<IActionResult> ModifyTask(int quizId)
+        {
+            var SelectedQuiz = await _grammarQuizManager.FindQuiz(quizId);
+            var Tasks = SelectedQuiz.GrammarTasks;
+            var TasksVm = _grammarQuizViewModelMapper.Map(Tasks);
+            return View(TasksVm);
         }
 
 
