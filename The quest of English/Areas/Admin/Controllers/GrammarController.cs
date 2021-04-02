@@ -91,15 +91,11 @@ namespace The_quest_of_English.Areas.Admin.Controllers
                 }
                 //
                 var userId = User.Identity.GetUserId();
-                //var user = await _applicationUserManager.GetLoggedUser(userId);
-                //var userVm = _applicationUserViewModelMapper.Map(user);
                 var quizDto =  _grammarQuizViewModelMapper.Map(quiz);
-                //quizDto.User = user;
                 await _grammarQuizManager.AddNewQuiz(quizDto, userId);
                 await _grammarQuizManager.RemoveQuiz(quizDto);
                 //Getting Quiz from DB with assigned Id
                 var quizVM = await _grammarQuizManager.FindQuizByName(quiz.Name);
-              //  var quizEntity = _grammarQuizViewModelMapper.Map(quizVM);
                 return RedirectToAction("ShowQuiz", new { quizId = quizVM.Id }); //Name of variable must be here!
             }
             else
