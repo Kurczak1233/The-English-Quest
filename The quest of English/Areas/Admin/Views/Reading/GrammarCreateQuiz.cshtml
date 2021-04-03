@@ -1,0 +1,43 @@
+﻿@model ReadingQuizViewModel 
+@{
+    ViewData["Title"] = "GrammarCreateQuiz";
+}
+
+<main class="container p-5">
+    <div class="row">
+        <div class="light-blue-color col-xl-8 col-sm-10 offset-sm-1 offset-xl-2" style="margin-top: 50px; border-radius:50px;">
+            <form id="form" method="post">
+                <div class="col-12 mt-5 text-center font-size-medium">
+                    Insert your quiz name:
+                </div>
+                <div class="col-6 offset-3 mt-3">
+                    <input id="input" type="text" asp-for="@Model.Name" class="form-control" />
+                </div>
+                <div class="font-size-rather-small text-center text-danger" hidden id="hiddeninfo">You have to type a name!</div>
+                <label for="select" class="col-6 offset-3 mt-3 text-center font-size-medium">Choose your quiz level.</label>
+                <select asp-for="@Model.Level" id="select" class="col-6 offset-3 mt-3 form-control">
+                    <option value="FCE">FCE</option>
+                    <option value="CAE">CAE</option>
+                    <option value="CPE">CPE</option>
+                </select>
+                <div class="col-12 text-center mt-3 mb-3">
+                    <button id="submit" type="submit" class="btn warm-orange-color">Submit</button>
+                </div>
+                <div class="text-center col-12 mb-5 error-text-color">
+                    @Html.ValidationMessageFor(m => m.Name)
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+<script>
+    $("#submit").on("click", function (e) {
+        if ($("#input").val() == "") {
+            $("#hiddeninfo").attr("hidden", false);
+            e.preventDefault();
+        }
+    });
+    $("#input").on("change", function () {
+        $("#hiddeninfo").attr("hidden", true);
+    });
+</script>

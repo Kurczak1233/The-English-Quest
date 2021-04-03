@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using System.Threading.Tasks;
 using The_quest_of_English.ViewModelMapper;
 using TheEnglishQuestCore;
@@ -53,9 +55,9 @@ namespace The_quest_of_English
             return View(QuizzesViewModel);
         }
 
-        public async Task<IActionResult> GrammarCreateQuiz()
+        public async Task<IActionResult> ReadingCreateQuiz()
         {
-            GrammarQuizViewModel quiz = new GrammarQuizViewModel();
+            ReadingQuizViewModel quiz = new ReadingQuizViewModel();
             var userId = User.Identity.GetUserId();
             var user = await _applicationUserManager.GetLoggedUser(userId);
             var userViewModel = _applicationUserViewModelMapper.Map(user);
@@ -64,8 +66,8 @@ namespace The_quest_of_English
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [ActionName("GrammarCreateQuiz")]
-        public async Task<IActionResult> GrammarCreateQuizPost(GrammarQuizViewModel quiz)
+        [ActionName("ReadingCreateQuiz")]
+        public async Task<IActionResult> ReadingCreateQuizPost(ReadingQuizViewModel quiz)
         {
             if (ModelState.IsValid)
             {
@@ -76,7 +78,7 @@ namespace The_quest_of_English
                     if (item.Name == quiz.Name)
                     {
                         ModelState.AddModelError("Name", "There already is a quiz named like that!");
-                        return View("GrammarCreateQuiz");
+                        return View("ReadingCreateQuiz");
                     }
                     //Else there is no name like that -- continue.
                 }
@@ -95,7 +97,7 @@ namespace The_quest_of_English
             }
         }
 
-        public async Task<IActionResult> GrammarModifyQuiz(string level)
+        public async Task<IActionResult> ReadingModifyQuiz(string level)
         {
             var QuizesList = await _readingQuizManager.GetAllQuizzesFiltered(level);
             var QuizzesViewModel = _readingQuizViewModelMapper.Map(QuizesList);
@@ -112,14 +114,14 @@ namespace The_quest_of_English
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ModifySpecifiedQuiz(GrammarQuizViewModel quiz)
+        public async Task<IActionResult> ModifySpecifiedQuiz(ReadingQuizViewModel quiz)
         {
             var QuizDto = _readingQuizViewModelMapper.Map(quiz);
             await _readingQuizManager.ModifyQuiz(QuizDto);
             return RedirectToAction(quiz.Level);
         }
 
-        public async Task<IActionResult> GrammarDeleteQuiz(string level)
+        public async Task<IActionResult> ReadingDeleteQuiz(string level)
         {
             var QuizesList = await _readingQuizManager.GetAllQuizzesFiltered(level);
             var QuizzesViewModel = _readingQuizViewModelMapper.Map(QuizesList);
@@ -127,7 +129,7 @@ namespace The_quest_of_English
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> GrammarDeleteQuiz(int id)
+        public async Task<IActionResult> ReadingDeleteQuiz(int id)
         {
             var Quiz = await _readingQuizManager.GetAllQuizzes();
             var ActualQuiz = Quiz.Where(x => x.Id == id).SingleOrDefault();
@@ -149,7 +151,7 @@ namespace The_quest_of_English
             var userId = User.Identity.GetUserId();
             var user = await _applicationUserManager.GetLoggedUser(userId);
             var userVm = _applicationUserViewModelMapper.Map(user);
-            QuizModelAndUserViewModel model = new QuizModelAndUserViewModel()
+            QuizModelAndUserViewModelReading model = new QuizModelAndUserViewModelReading()
             {
                 Quiz = quizVM,
                 ApplicationUser = userVm,
@@ -161,24 +163,24 @@ namespace The_quest_of_English
 
         public IActionResult CreateTask(int quizId)
         {
-            GrammarTasksViewModel task = new GrammarTasksViewModel();
-            task.GrammarQuizId = quizId;
+            ReadingTaskViewModel task = new ReadingTaskViewModel();
+            task.ReadingQuizId = quizId;
             return View(task);
         }
         [HttpPost]
         [AutoValidateAntiforgeryToken]
         [ActionName("CreateTask")]
-        public IActionResult CreateTaskPost(GrammarTasksViewModel task)
+        public IActionResult CreateTaskPost(ReadingTaskViewModel task)
         {
-            return RedirectToAction("BuildTaskQuestionAndAnswear", new { ChosenType = task.TaskType, QuizId = task.GrammarQuizId });
+            return RedirectToAction("BuildTaskQuestionAndAnswear", new { ChosenType = task.TaskType, QuizId = task.ReadingQuizId });
         }
 
 
         public IActionResult BuildTaskQuestionAndAnswear(string ChosenType, int quizId)
         {
-            GrammarTasksViewModel task = new GrammarTasksViewModel
+            ReadingTaskViewModel task = new ReadingTaskViewModel
             {
-                GrammarQuizId = quizId,
+                ReadingQuizId = quizId,
                 TaskType = ChosenType
             };
             return View(task);
@@ -186,16 +188,16 @@ namespace The_quest_of_English
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("BuildTaskQuestionAndAnswear")]
-        public async Task<IActionResult> BuildTaskQuestionAndAnswearPost(GrammarTasksViewModel task)
+        public async Task<IActionResult> BuildTaskQuestionAndAnswearPost(ReadingTaskViewModel task)
         {
             var taskDto = _readingTaskViewModelMapper.Map(task);
             await _readingTaskManager.AddNew(taskDto);
-            return RedirectToAction("ShowQuiz", new { quizId = task.GrammarQuizId });
+            return RedirectToAction("ShowQuiz", new { quizId = task.ReadingQuizId });
         }
         public async Task<IActionResult> ModifyTask(int quizId)
         {
             var SelectedQuiz = await _readingQuizManager.FindQuiz(quizId);
-            var Tasks = SelectedQuiz.GrammarTasks;
+            var Tasks = SelectedQuiz.ReadingTasks;
             var TasksVm = _readingQuizViewModelMapper.Map(Tasks);
             return View(TasksVm);
         }
@@ -209,17 +211,17 @@ namespace The_quest_of_English
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("ModifySpecifiedTask")]
-        public async Task<IActionResult> ModifySpecifiedTaskPost(GrammarTasksViewModel task)
+        public async Task<IActionResult> ModifySpecifiedTaskPost(ReadingTaskViewModel task)
         {
             var taskDto = _readingTaskViewModelMapper.Map(task);
             await _readingTaskManager.ModifyTask(taskDto);
-            return RedirectToAction("ShowQuiz", new { quizId = task.GrammarQuizId });
+            return RedirectToAction("ShowQuiz", new { quizId = task.ReadingQuizId });
         }
 
         public async Task<IActionResult> DeleteTask(int quizId)
         {
             var SelectedQuiz = await _readingQuizManager.FindQuiz(quizId);
-            var Tasks = SelectedQuiz.GrammarTasks;
+            var Tasks = SelectedQuiz.ReadingTasks;
             var TasksVm = _readingQuizViewModelMapper.Map(Tasks);
             return View(TasksVm);
         }
@@ -230,7 +232,7 @@ namespace The_quest_of_English
         public async Task<IActionResult> DeleteTaskPost(int taskId)
         {
             var Entity = await _readingTaskManager.FindTask(taskId);
-            int quizId = Entity.GrammarQuizId;
+            int quizId = Entity.ReadingQuizId;
             await _readingTaskManager.Delete(Entity);
             return RedirectToAction("ShowQuiz", new { quizId = quizId });
         }

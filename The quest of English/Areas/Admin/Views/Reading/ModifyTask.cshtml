@@ -1,0 +1,31 @@
+﻿@model IEnumerable<ReadingTaskViewModel>
+@{
+    ViewData["Title"] = "ModifyTask";
+}
+
+<main class="container p-5">
+    <div class="row">
+        <div class="light-blue-color col-xl-8 col-sm-10 offset-sm-1 offset-xl-2" style="margin-top: 50px; border-radius:50px;">
+            <div class="row">
+                <div class="col-12 text-center mt-3 font-size-biggish">
+                    Tasks on this quiz:
+                </div>
+            </div>
+            <div class="row mt-3">
+
+                @foreach (var item in Model)
+                {
+                <div class="col-9 offset-1 mt-3">
+                    <p><span id="FirstQuestionPart">@item.QuestionFirstPart</span>&nbsp;<span id="DecorationPart" class="dark-blue-text-color font-weight-bold font-italic">@item.QuestionDecoratedPart</span>&nbsp;<span id="SecondQuestionPart">@item.QuestionSecondPart</span></p>
+                </div>
+                    <div class="col-1">
+                        <a asp-action="ModifySpecifiedTask" asp-controller="Reading" asp-route-taskId="@item.Id" class="btn btn-info" type="button">
+                            <i class="bi bi-gear"></i>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</main>
+

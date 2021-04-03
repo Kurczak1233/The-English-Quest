@@ -1,7 +1,73 @@
-﻿
+﻿@model IEnumerable<ReadingQuizViewModel>
 @{
     ViewData["Title"] = "CAE";
 }
 
-<h1>CAE</h1>
 
+<main class="container" id="main">
+    <div class="row d-flex justify-content-center">
+        <div class="col-8 ">
+            <p class="font-size-biggish text-center mt-5 mb-5">Grammar CAE</p>
+            @if (User.IsInRole(SD.AdminUser))
+            {
+                if (Model.ToList().Count > 0)
+                {
+                    var obj = Model.ToList()[0];
+                    <partial name="AdminPaneIButtonsInEnglishSectionsReading" model="obj" />
+                }
+                else
+                {
+                    <div class="d-flex justify-content-center mb-3" id="adminPanel">
+                        <a asp-controller="Reading" asp-action="ReadingCreateQuiz" class="btn btn-success">Create quiz</a>
+                    </div>
+                }
+            }
+            <div class="row justify-content-center mt-5">
+
+                <div class="indent-blue"></div>
+                <div class="col-12 text-center">
+                    <p class="font-size-biggish mt-3">Quizes available:</p>
+                    <section class="font-size-medium">
+                        @foreach (var item in @Model)
+                        {
+                            <div class="col-12 font-size-medium mt-3">
+                                <a asp-action="ShowQuiz" asp-controller="Reading" asp-route-QuizId="@item.Id">@item.Name</a>
+                            </div>
+                        }
+                    </section>
+                </div>
+            </div>
+        </div>
+        <aside id="aside" class="col-4 d-none d-xl-block mt-5">
+            <div id="NavigationList" class="list-group">
+                <div class="indent-blue"></div>
+                <span class="font-size-rather-small mb-3 font-weight-bold dark-blue-text-color">Quizes:</span>
+                <div id="SpecialBorderG" class="border-left-warm-style mb-3">
+                    <a id="GrammarNavCollapse" class="list-group-item list-group-item-action border-0 font-size-medium" role="button">
+                        Reading
+                    </a>
+                    <div class="text-right font-size-rather-small" id="grammar">
+                        <div class="col-12 card card-body border-0 text-left">
+                            <p>Reading is considered the hardest part of English language. Whenever you meet an idiom or a phrasal verb you may feel confused!</p>
+                            <p class="font-weight-bold">Tips:</p>
+                            <p>Read the whole sentence several times. Grammar rules tend to be detemined by many words and dependencies. Sometimes the context may be helpful.</p>
+                            <p class="border-0 font-size-medium">CAE</p>
+                            <p>CAE is a quite hard exam. When we talk about its level, it may be placed closer to CPE than FCE</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+</main>
+
+
+<script>
+    var navListOffset = $('#NavigationList').offset().top - $('#main').offset().top - 66;
+    $('#NavigationList').css("margin-top", navListOffset)
+    $(document).scroll(function () {
+        var WindowToTop = $(window).scrollTop();
+        console.log(WindowToTop);
+        $('#NavigationList').css("margin-top", WindowToTop);
+    });
+</script>

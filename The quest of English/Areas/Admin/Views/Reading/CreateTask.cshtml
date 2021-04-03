@@ -1,0 +1,36 @@
+﻿@model ReadingTaskViewModel
+@{
+    ViewData["Title"] = "CreateTask";
+}
+
+<main class="container p-5">
+    <div class="row">
+        <div class="light-blue-color col-xl-8 col-sm-10 offset-sm-1 offset-xl-2" style="margin-top: 50px; border-radius:50px;">
+            <form id="form" method="post">
+                <div class="p-2 text-center mt-4 font-size-medium col-12">
+                    Add question
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-3 offset-1 d-flex align-items-center mt-1 mb-3">
+                        <label for="QuestionPart1">Picka a question type:</label>
+                    </div>
+                    <div class="col-7">
+                        <select asp-for="@Model.TaskType" class="form-control" id="select">
+                            <option selected value="@SD.Radio4">Radio with 4 answears</option>
+                            <option value="@SD.Radio3">Radio with 3 answears</option>
+                            <option value="@SD.Form">One open answear form</option>
+                        </select>
+                    </div>
+                    @Html.HiddenFor(x=>x.ReadingQuizId, Model.ReadingQuizId)
+                </div>
+                <div class="row">
+                    <div class="col-12 mt-3 text-center">
+                        <button type="submit" class="btn warm-orange-color mb-3">Submit</button>
+                        <a asp-controller="Reading" asp-action="ShowQuiz" asp-route-quizId="@Model.ReadingQuizId" id="submit" class="btn btn-danger mb-3 ml-5" aria-label="button">Abort</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

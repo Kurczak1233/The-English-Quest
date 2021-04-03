@@ -1,0 +1,169 @@
+﻿@model QuizModelAndUserViewModelReading
+@{
+    ViewData["Title"] = "ShowQuiz";
+}
+<main class="container">
+
+    @if (User.IsInRole(SD.AdminUser) || Model.ApplicationUser.Id == Model.Quiz.UserId)
+    {
+        <section class="row mt-3 mb-3">
+            <div class="col-12 text-center">
+                <span class="mb-3 d-flex justify-content-center font-size-biggish">Admin section</span>
+                <a asp-controller="Reading" asp-action="CreateTask" asp-route-quizId="@Model.Quiz.Id" class="btn btn-success">Create question</a>
+                @if(Model.Quiz.ReadingTasks.ToList().Count > 0)
+                {
+                <a asp-controller="Reading" asp-action="ModifyTask" asp-route-quizId="@Model.Quiz.Id" class="btn-info btn mr-5 ml-5">Modify question</a>
+                <a asp-controller="Reading" asp-action="DeleteTask" asp-route-quizId="@Model.Quiz.Id" class="btn-danger btn">Delete question</a>
+                }
+            </div>
+        </section>
+    }
+    <div class="row">
+        <div class="col-12">
+            @if (Model.Quiz.ReadingTasks.ToList().Count == 0)
+            {
+                <div class="text-center mt-3">
+                    <p class="font-size-rather-small">There are no tasks yet!</p>
+                </div>
+            }
+            else
+            {
+                int IdCounter = 0;
+                int counter = 1;
+
+                @foreach (var item in Model.Quiz.ReadingTasks)
+                {
+                    if (item.TaskType == SD.Radio4 || item.TaskType == SD.Radio3)
+                    {
+                        <section id="questionAndAnswears" class="mt-3 row">
+                            <div class="question-circle text-center ml-4">
+                                <strong class="font-size-medium question">@counter</strong>
+                            </div>
+                            <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small mt-1">
+                                <p><span id="FirstQuestionPart">@item.QuestionFirstPart</span>&nbsp;<span id="DecorationPart" class="dark-blue-text-color font-weight-bold font-italic">@item.QuestionDecoratedPart</span>&nbsp;<span id="SecondQuestionPart">@item.QuestionSecondPart</span></p>
+                            </div>
+                        </section>
+                        <div class="form-check row ml-3" id="checkAnswears">
+                            <div class="mt-1 form-check ml-5 col-12 answearRadio">
+                                <input class="form-check-input" type="radio" name="@counter" id="@IdCounter">
+                                <label class="form-check-label" for="@IdCounter">
+                                    @item.FirstAnswear
+                                </label>
+                            </div>
+                            @{IdCounter++;}
+                            <div class="mt-1 col-12 form-check ml-5 answearRadio">
+                                <input class="form-check-input" type="radio" name="@counter" id="@IdCounter">
+                                <label class="form-check-label" for="@IdCounter">
+                                    @item.SecondAnswear
+                                </label>
+                            </div>
+                            @{IdCounter++;}
+                            <div class="mt-1 col-12 form-check ml-5 answearRadio">
+                                <input class="form-check-input" type="radio" name="@counter" id="@IdCounter">
+                                <label class="form-check-label" for="@IdCounter">
+                                    @item.ThirdAnswear
+                                </label>
+                            </div>
+                            @if (item.FourthAnswear != null)
+                            {
+                                IdCounter++;
+                                <div class="mt-1 col-12 form-check ml-5 answearRadio">
+                                    <input class="form-check-input" type="radio" name="@counter" id="@IdCounter">
+                                    <label class="form-check-label" for="@IdCounter">
+                                        @item.FourthAnswear
+                                    </label>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <section id="checkAnswears">
+                            <div class="row mt-3">
+                                <div class="question-circle text-center ml-4">
+                                    <strong class="font-size-medium question">@counter</strong>
+                                </div>
+                                <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small mt-1">
+                                    <p><span id="FirstQuestionPart">@item.QuestionFirstPart</span>&nbsp;<span id="DecorationPart" class="dark-blue-text-color font-weight-bold font-italic">@item.QuestionDecoratedPart</span>&nbsp;<span id="SecondQuestionPart">@item.QuestionSecondPart</span></p>
+                                </div>
+                            </div>
+                            <div class="form-check" id="checkAnswearsButton">
+                                <div class="mt-1 form-check ml-5 answearRadio">
+                                    <input class="form-control col-6  d-flex flex-row" type="text" name="@counter" id="@IdCounter">
+                                </div>
+                            </div>
+                        </section>
+                    }
+                    counter++;
+                    IdCounter++;
+                }
+                <div class="row mt-5" hidden id="resultRow">
+                    <div class="col-12 text-center font-size-biggish">
+                        <p>You scored: <span id="result"></span>/<span id="resultMax"></span></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center mt-3 mb-5">
+                        <form method="post">
+                            <button class="btn warm-orange-color" type="button" id="submitButton">Submit</button>
+                        </form>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</main>
+<script>
+        @{ List<string> answears = new List<string>();
+        foreach (var item in Model.Quiz.ReadingTasks)
+        {
+            answears.Add(item.CorrectAnswear);
+        }
+        }
+        var ar = @Html.Raw(Json.Serialize(answears));
+    var counter = 0;
+    var pointsCounter = 0;
+    $("#submitButton").one("click", function () {
+        $("[id = checkAnswears]").each(function () {
+            if ($(this).find("input[type=radio]").length > 0) {
+                var elId = $(this).find("input[type=radio]:checked").attr('id');
+                var radioLabelValue = $("label[for='" + elId + "']").text();
+                var trimStr2 = $.trim(radioLabelValue);
+            }
+            else {
+                var elId = $(this).find("input").attr('id');
+                var answear = $(this).find("input").val();
+                var trimStr2 = $.trim(answear);
+            }
+
+            var trimStr = $.trim(ar[counter]);
+            console.log(trimStr);
+            console.log(trimStr2);
+            if ($(this).find("input[type=radio]").length > 0) {
+                if (trimStr2 === trimStr) {
+                    $("label[for='" + elId + "']").css("background-color", "rgba(0,255,127, 0.2)");
+
+                    pointsCounter++;
+                }
+                else {
+                    $("label[for='" + elId + "']").css("background-color", "rgba(255, 77, 71, 0.2)");
+
+                }
+            }
+            else {
+                if (trimStr2 === trimStr) {
+                    $(this).find("input").css("background-color", "rgba(0,255,127, 0.2)");
+                    pointsCounter++;
+                }
+                else {
+                    $(this).find("input").css("background-color", "rgba(255, 77, 71, 0.2)");
+                }
+            }
+            counter++;
+        })
+        $("#result").text(pointsCounter);
+        $("#resultMax").text(counter);
+        $("#resultRow").attr("hidden", false);
+    });
+</script>
