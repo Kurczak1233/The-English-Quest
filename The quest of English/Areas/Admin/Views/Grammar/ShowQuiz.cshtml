@@ -10,8 +10,11 @@
             <div class="col-12 text-center">
                 <span class="mb-3 d-flex justify-content-center font-size-biggish">Admin section</span>
                 <a asp-controller="Grammar" asp-action="CreateTask" asp-route-quizId="@Model.Quiz.Id" class="btn btn-success">Create question</a>
+                @if(Model.Quiz.GrammarTasks.ToList().Count > 0)
+                {
                 <a asp-controller="Grammar" asp-action="ModifyTask" asp-route-quizId="@Model.Quiz.Id" class="btn-info btn mr-5 ml-5">Modify question</a>
                 <a asp-controller="Grammar" asp-action="DeleteTask" asp-route-quizId="@Model.Quiz.Id" class="btn-danger btn">Delete question</a>
+                }
             </div>
         </section>
     }
