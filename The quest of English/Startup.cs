@@ -45,6 +45,8 @@ namespace The_quest_of_English
             services.AddTransient<IPlacementTestTaskRepository, PlacementTestTaskRepository>();
             services.AddTransient<IGrammarQuizRepository, GrammarQuizRepository>();
             services.AddTransient<IGrammarTaskRepository, GrammarTaskRepository>();
+            services.AddTransient<IReadingQuizRepository, ReadingQuizRepository>();
+            services.AddTransient<IReadingTaskRepository, ReadingTaskRepository>();
             //Mapper
             services.AddTransient<DTOMapper<ApplicationUser, ApplicationUserDto>>();
             services.AddTransient<DTOMapper<EncouragementPosition, EncouragementPositionDto>>();
@@ -58,6 +60,13 @@ namespace The_quest_of_English
             services.AddTransient<PlacementTestTaskManager>();
             services.AddTransient<GrammarTaskManager>();
             services.AddTransient<GrammarQuizManager>();
+            //Reading mappers
+            services.AddTransient<ReadingTaskManager>();
+            services.AddTransient<ReadingQuizManager>();
+            services.AddTransient<ReadingQuizMapper>();
+            services.AddTransient<DTOMapper<ReadingTask, ReadingTaskDto>>();
+
+
 
             //Main ViewModel
             services.AddTransient<EncouragementPoisitonViewModelMapper>();
@@ -66,7 +75,9 @@ namespace The_quest_of_English
             services.AddTransient<PlacementTestTaskViewModelMapper>();
             services.AddTransient<GrammarTaskViewModelMapper>();
             services.AddTransient<GrammarQuizViewModelMapper>();
-            
+            services.AddTransient<ReadingTaskViewModelMapper>();
+            services.AddTransient<ReadingQuizViewModelMapper>();
+
             // Identity
             //services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
             //.AddDefaultTokenProviders() //Tokeny gdy ktoœ zapomni has³a

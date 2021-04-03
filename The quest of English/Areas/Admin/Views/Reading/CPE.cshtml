@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GrammarQuizViewModel>
+﻿@model IEnumerable<ReadingQuizViewModel>
 @{
     ViewData["Title"] = "CPE";
 }
@@ -7,7 +7,7 @@
 <main class="container" id="main">
     <div class="row d-flex justify-content-center">
         <div class="col-8 ">
-            <p class="font-size-biggish text-center mt-5 mb-5">Grammar CPE</p>
+            <p class="font-size-biggish text-center mt-5 mb-5">Reading CPE</p>
             @if (User.IsInRole(SD.AdminUser))
             {
                 if (Model.ToList().Count > 0)
@@ -28,10 +28,10 @@
                 <div class="col-12 text-center">
                     <p class="font-size-biggish mt-3">Quizes available:</p>
                     <section class="font-size-medium">
-                        @foreach (var item in @Model)
+                        @foreach (var item in Model)
                         {
                             <div class="col-12 font-size-medium mt-3">
-                                <a asp-action="ShowQuiz" asp-controller="Grammar" asp-route-QuizId="@item.Id">@item.Name</a>
+                                <a asp-action="ShowQuiz" asp-controller="Reading" asp-route-QuizId="@item.Id">@item.Name</a>
                             </div>
                         }
                     </section>
@@ -48,9 +48,9 @@
                     </a>
                     <div class="text-right font-size-rather-small" id="grammar">
                         <div class="col-12 card card-body border-0 text-left">
-                            <p>Grammar is considered the hardest part of English language. Whenever you meet an idiom or a phrasal verb you may feel confused!</p>
+                            <p>Reading is considered the hardest part of English language. Whenever you meet an idiom or a phrasal verb you may feel confused!</p>
                             <p class="font-weight-bold">Tips:</p>
-                            <p>Read the whole sentence several times. Grammar rules tend to be detemined by many words and dependencies. Sometimes the context may be helpful.</p>
+                            <p>Read the whole sentence several times. Reading rules tend to be detemined by many words and dependencies. Sometimes the context may be helpful.</p>
                             <p class="border-0 font-size-medium">CPE</p>
                             <p>CPE is the hardest one of Cambridge tests. This tests definitely check if you are aware enought to understand all kind of tricks used in English language.</p>
                         </div>
