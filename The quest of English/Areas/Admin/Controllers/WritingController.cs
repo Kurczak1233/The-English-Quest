@@ -20,43 +20,30 @@ namespace The_quest_of_English
 
         public WritingController(WritingQuizViewModelMapper gvmm, WritingQuizManager gq,
             ApplicationUserViewModelMapper uservmm, ApplicationUserManager usermanager,
-            WritingTaskManager grammarTaskManager, WritingTaskViewModelMapper grammarTaskViewModelMapper)
+            WritingTaskManager writingTaskManager, WritingTaskViewModelMapper writingTaskViewModelMapper)
         {
             _applicationUserViewModelMapper = uservmm;
             _applicationUserManager = usermanager;
             _writingQuizManager = gq;
             _writingQuizViewModelMapper = gvmm;
-            _writingTaskManager = grammarTaskManager;
-            _writingTaskViewModelMapper = grammarTaskViewModelMapper;
+            _writingTaskManager = writingTaskManager;
+            _writingTaskViewModelMapper = writingTaskViewModelMapper;
         }
 
         public IActionResult Index()
         {
             return View();
         }
-        public async Task<IActionResult> FCE()
+        public async Task<IActionResult> AllLevels()
         {
-            var QuizesList = await _writingQuizManager.GetAllQuizzesFiltered(SD.FCE);
-            var QuizzesViewModel = _writingQuizViewModelMapper.Map(QuizesList);
-            return View(QuizzesViewModel);
-        }
-        public async Task<IActionResult> CAE()
-        {
-
-            var QuizesList = await _writingQuizManager.GetAllQuizzesFiltered(SD.CAE);
-            var QuizzesViewModel = _writingQuizViewModelMapper.Map(QuizesList);
-            return View(QuizzesViewModel);
-        }
-        public async Task<IActionResult> CPE()
-        {
-            var QuizesList = await _writingQuizManager.GetAllQuizzesFiltered(SD.CPE);
+            var QuizesList = await _writingQuizManager.GetAllQuizzes();
             var QuizzesViewModel = _writingQuizViewModelMapper.Map(QuizesList);
             return View(QuizzesViewModel);
         }
 
         public async Task<IActionResult> WritingCreateQuiz()
         {
-            GrammarQuizViewModel quiz = new GrammarQuizViewModel();
+            WritingQuizViewModel quiz = new WritingQuizViewModel();
             var userId = User.Identity.GetUserId();
             var user = await _applicationUserManager.GetLoggedUser(userId);
             var userViewModel = _applicationUserViewModelMapper.Map(user);
@@ -65,7 +52,7 @@ namespace The_quest_of_English
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [ActionName("GrammarCreateQuiz")]
+        [ActionName("WritingCreateQuiz")]
         public async Task<IActionResult> WritingCreateQuizPost(WritingQuizViewModel quiz)
         {
             if (ModelState.IsValid)
@@ -77,7 +64,7 @@ namespace The_quest_of_English
                     if (item.Name == quiz.Name)
                     {
                         ModelState.AddModelError("Name", "There already is a quiz named like that!");
-                        return View("GrammarCreateQuiz");
+                        return View("WritingCreateQuiz");
                     }
                     //Else there is no name like that -- continue.
                 }
@@ -96,9 +83,9 @@ namespace The_quest_of_English
             }
         }
 
-        public async Task<IActionResult> WritingModifyQuiz(string level)
+        public async Task<IActionResult> WritingModifyQuiz()
         {
-            var QuizesList = await _writingQuizManager.GetAllQuizzesFiltered(level);
+            var QuizesList = await _writingQuizManager.GetAllQuizzes();
             var QuizzesViewModel = _writingQuizViewModelMapper.Map(QuizesList);
             return View(QuizzesViewModel);
         }
@@ -120,9 +107,9 @@ namespace The_quest_of_English
             return RedirectToAction(quiz.Level);
         }
 
-        public async Task<IActionResult> WritingDeleteQuiz(string level)
+        public async Task<IActionResult> WritingDeleteQuiz()
         {
-            var QuizesList = await _writingQuizManager.GetAllQuizzesFiltered(level);
+            var QuizesList = await _writingQuizManager.GetAllQuizzes();
             var QuizzesViewModel = _writingQuizViewModelMapper.Map(QuizesList);
             return View(QuizzesViewModel);
         }

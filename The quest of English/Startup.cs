@@ -49,6 +49,8 @@ namespace The_quest_of_English
             services.AddTransient<IReadingTaskRepository, ReadingTaskRepository>();
             services.AddTransient<IListeningQuizRepository, ListeningQuizRepository>();
             services.AddTransient<IListeningTaskRepository, ListeningTaskRepository>();
+            services.AddTransient<IWritingTaskRepository, WritingTaskRepository>();
+            services.AddTransient<IWritingQuizRepository, WritingQuizRepository>();
             //Mapper
             services.AddTransient<DTOMapper<ApplicationUser, ApplicationUserDto>>();
             services.AddTransient<DTOMapper<EncouragementPosition, EncouragementPositionDto>>();
@@ -72,6 +74,12 @@ namespace The_quest_of_English
             services.AddTransient<ListeningQuizManager>();
             services.AddTransient<ListeningQuizMapper>();
             services.AddTransient<DTOMapper<ListeningTask, ListeningTaskDto>>();
+            //writing mappers
+            services.AddTransient<WritingTaskManager>();
+            services.AddTransient<WritingQuizManager>();
+            services.AddTransient<WritingQuizMapper>();
+            services.AddTransient<DTOMapper<WritingTask, WritingTaskDto>>();
+
 
             //Main ViewModel
             services.AddTransient<EncouragementPoisitonViewModelMapper>();
@@ -84,6 +92,8 @@ namespace The_quest_of_English
             services.AddTransient<ReadingQuizViewModelMapper>();
             services.AddTransient<ListeningTaskViewModelMapper>();
             services.AddTransient<ListeningQuizViewModelMapper>();
+            services.AddTransient<WritingTaskViewModelMapper>();
+            services.AddTransient<WritingQuizViewModelMapper>();
 
             // Identity
             //services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
