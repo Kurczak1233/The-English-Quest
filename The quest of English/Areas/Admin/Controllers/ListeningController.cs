@@ -54,7 +54,7 @@ namespace The_quest_of_English.Areas
             return View(QuizzesViewModel);
         }
 
-        public async Task<IActionResult> GrammarCreateQuiz()
+        public async Task<IActionResult> ListeningCreateQuiz()
         {
             ListeningQuizViewModel quiz = new ListeningQuizViewModel();
             var userId = User.Identity.GetUserId();
@@ -65,8 +65,8 @@ namespace The_quest_of_English.Areas
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [ActionName("GrammarCreateQuiz")]
-        public async Task<IActionResult> GrammarCreateQuizPost(ListeningQuizViewModel quiz)
+        [ActionName("ListeningCreateQuiz")]
+        public async Task<IActionResult> ListeningCreateQuizPost(ListeningQuizViewModel quiz)
         {
             if (ModelState.IsValid)
             {
@@ -77,7 +77,7 @@ namespace The_quest_of_English.Areas
                     if (item.Name == quiz.Name)
                     {
                         ModelState.AddModelError("Name", "There already is a quiz named like that!");
-                        return View("GrammarCreateQuiz");
+                        return View("ListeningCreateQuiz");
                     }
                     //Else there is no name like that -- continue.
                 }
@@ -96,7 +96,7 @@ namespace The_quest_of_English.Areas
             }
         }
 
-        public async Task<IActionResult> GrammarModifyQuiz(string level)
+        public async Task<IActionResult> ListeningModifyQuiz(string level)
         {
             var QuizesList = await _listeningQuizManager.GetAllQuizzesFiltered(level);
             var QuizzesViewModel = _listeningQuizViewModelMapper.Map(QuizesList);
@@ -120,7 +120,7 @@ namespace The_quest_of_English.Areas
             return RedirectToAction(quiz.Level);
         }
 
-        public async Task<IActionResult> GrammarDeleteQuiz(string level)
+        public async Task<IActionResult> ListeningDeleteQuiz(string level)
         {
             var QuizesList = await _listeningQuizManager.GetAllQuizzesFiltered(level);
             var QuizzesViewModel = _listeningQuizViewModelMapper.Map(QuizesList);
@@ -128,7 +128,7 @@ namespace The_quest_of_English.Areas
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> GrammarDeleteQuiz(int id)
+        public async Task<IActionResult> ListeningDeleteQuiz(int id)
         {
             var Quiz = await _listeningQuizManager.GetAllQuizzes();
             var ActualQuiz = Quiz.Where(x => x.Id == id).SingleOrDefault();

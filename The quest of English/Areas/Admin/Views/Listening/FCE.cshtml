@@ -7,7 +7,7 @@
 <main class="container" id="main">
     <div class="row d-flex justify-content-center">
         <div class="col-8 ">
-            <p class="font-size-biggish text-center mt-5 mb-5">Grammar FCE</p>
+            <p class="font-size-biggish text-center mt-5 mb-5">Listening FCE</p>
             @if (User.IsInRole(SD.AdminUser))
             {
                 if (Model.ToList().Count > 0)
@@ -26,7 +26,7 @@
 
                 <div class="indent-blue"></div>
                 <div class="col-12 text-center">
-                    <p class="font-size-biggish mt-3">Quizes available:</p>
+                    <p class="font-size-biggish mt-3">Quizzes available:</p>
                     <section class="font-size-medium">
                         @foreach (var item in @Model)
                         {
@@ -48,9 +48,9 @@
                     </a>
                     <div class="text-right font-size-rather-small" id="grammar">
                         <div class="col-12 card card-body border-0 text-left">
-                            <p>Grammar is considered the hardest part of English language. Whenever you meet an idiom or a phrasal verb you may feel confused!</p>
+                            <p>Listening tends to be quite tricky. Cambridge exam is supposed to check how well you understand all contexts of listening framgent.</p>
                             <p class="font-weight-bold">Tips:</p>
-                            <p>Read the whole sentence several times. Grammar rules tend to be detemined by many words and dependencies. Sometimes the context may be helpful.</p>
+                            <p>Try to determine which words are trying to mislead you. Focus on the part the questions concentrate on.</p>
                             <p class="border-0 font-size-medium">FCE</p>
                             <p>FCE is the easiest one of Cambridge tests. It is definitely the easiest way to obtain a great proof of your abilities.</p>
                         </div>

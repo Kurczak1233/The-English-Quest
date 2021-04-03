@@ -44,15 +44,15 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="Areas\Admin\Views\Listening\GrammarCreateQuiz.cshtml">
+    <Content Update="Areas\Admin\Views\Listening\ListeningCreateQuiz.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="Areas\Admin\Views\Listening\GrammarDeleteQuiz.cshtml">
+    <Content Update="Areas\Admin\Views\Listening\ListeningDeleteQuiz.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="Areas\Admin\Views\Listening\GrammarModifyQuiz.cshtml">
+    <Content Update="Areas\Admin\Views\Listening\ListeningModifyQuiz.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>

@@ -82,6 +82,8 @@ namespace The_quest_of_English
             services.AddTransient<GrammarQuizViewModelMapper>();
             services.AddTransient<ReadingTaskViewModelMapper>();
             services.AddTransient<ReadingQuizViewModelMapper>();
+            services.AddTransient<ListeningTaskViewModelMapper>();
+            services.AddTransient<ListeningQuizViewModelMapper>();
 
             // Identity
             //services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
