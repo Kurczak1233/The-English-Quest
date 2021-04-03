@@ -53,7 +53,7 @@ namespace The_quest_of_English
             services.AddTransient<DTOMapper<SampleTestQA, SampleTestQADto>>();
             services.AddTransient<DTOMapper<PlacementTestTask, PlacementTestTaskDTO>>();
             services.AddTransient<GrammarQuizMapper>();
-            services.AddTransient<DTOMapper<GrammarTask, GrammarTaskDto>>();
+            services.AddTransient<DTOMapper<GrammarTask, ListeningTaskDto>>();
             services.AddTransient<ApplicationUserManager>();
             services.AddTransient<EncouragementPostitionManager>();
             services.AddTransient<SampleTestQAManager>();

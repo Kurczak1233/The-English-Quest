@@ -19,7 +19,7 @@ namespace TheEnglishQuest
         public int WritingPercentagePoints { get; set; } = 0;
         public string Level { get; set; }
         public byte[] Picture { get; set; }
-        public IEnumerable<GrammarQuizViewModel> GrammarQuizzes{ get; set; }
+        public IEnumerable<ListeningQuizViewModel> GrammarQuizzes{ get; set; }
 
     }
 }

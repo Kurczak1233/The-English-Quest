@@ -6,7 +6,7 @@ using TheEnglishQuestCore;
 
 namespace The_quest_of_English.ViewModelMapper
 {
-    public class GrammarTaskViewModelMapper : ViewModelMapper<GrammarTaskDto, GrammarTasksViewModel>
+    public class GrammarTaskViewModelMapper : ViewModelMapper<ListeningTaskDto, GrammarTasksViewModel>
     {
     }
 }
