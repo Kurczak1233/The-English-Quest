@@ -19,7 +19,7 @@
                         <p class="font-size-medium">@item.Name</p>
                     </div>
                     <div class="col-1 d-flex align-items-center">
-                        <a asp-action="ModifySpecifiedQuiz" asp-controller="Writing" class="btn btn-info" type="button">
+                        <a asp-action="ModifySpecifiedQuiz" asp-controller="Writing" asp-route-id="@item.Id" class="btn btn-info" type="button">
                             <i class="bi bi-gear"></i>
                         </a>
                     </div>

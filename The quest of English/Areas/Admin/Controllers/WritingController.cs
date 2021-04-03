@@ -79,7 +79,7 @@ namespace The_quest_of_English
             }
             else
             {
-                return RedirectToAction("CAE");
+                return RedirectToAction("AllLevels");
             }
         }
 
@@ -104,7 +104,7 @@ namespace The_quest_of_English
         {
             var QuizDto = _writingQuizViewModelMapper.Map(quiz);
             await _writingQuizManager.ModifyQuiz(QuizDto);
-            return RedirectToAction(quiz.Level);
+            return RedirectToAction("AllLevels");
         }
 
         public async Task<IActionResult> WritingDeleteQuiz()
@@ -121,7 +121,7 @@ namespace The_quest_of_English
             var ActualQuiz = Quiz.Where(x => x.Id == id).SingleOrDefault();
             string level = ActualQuiz.Level;
             await _writingQuizManager.RemoveQuiz(ActualQuiz);
-            return RedirectToAction(level);
+            return RedirectToAction("AllLevels");
         }
 
 
