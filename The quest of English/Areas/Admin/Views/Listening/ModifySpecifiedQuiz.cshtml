@@ -1,0 +1,29 @@
+﻿@model ListeningQuizViewModel
+@{
+    ViewData["Title"] = "ModifySpecifiedQuiz";
+}
+
+<main class="container p-5">
+    <form method="post">
+        <div class="row">
+
+            <div class="light-blue-color col-xl-8 col-sm-10 offset-sm-1 offset-xl-2" style="margin-top: 50px; border-radius:50px;">
+                <div class="row mt-3 mb-3">
+                    <div class="col-3 offset-1 mt-2">
+                        <label for="QuizName">Quiz name:</label>
+                    </div>
+                    <div class="col-6 d-flex align-items-center">
+                        <input asp-for="@Model.Name" type="text" class="form-control" id="QuizName">
+                    </div>
+                </div>
+                @Html.HiddenFor(x => x.Level, Model.Level)
+                <div class="row mb-3">
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn warm-orange-color">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</main>
+

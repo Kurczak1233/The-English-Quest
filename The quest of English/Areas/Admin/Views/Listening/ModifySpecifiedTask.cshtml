@@ -1,0 +1,17 @@
+﻿@model ListeningTasksViewModel
+@{
+    ViewData["Title"] = "ModifySpecifiedTask";
+}
+
+@if (Model.TaskType == SD.Radio4)
+{
+    <partial name="_ListeningTestTaskRadio4" model="@Model" />
+}
+@if (Model.TaskType == SD.Radio3)
+{
+    <partial name="_ListeningTestTaskRadio3" model="@Model" />
+}
+@if (Model.TaskType == SD.Form)
+{
+    <partial name="_ListeningTestTaskForm" model="@Model" />
+}
