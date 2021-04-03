@@ -47,13 +47,15 @@ namespace The_quest_of_English
             services.AddTransient<IGrammarTaskRepository, GrammarTaskRepository>();
             services.AddTransient<IReadingQuizRepository, ReadingQuizRepository>();
             services.AddTransient<IReadingTaskRepository, ReadingTaskRepository>();
+            services.AddTransient<IListeningQuizRepository, ListeningQuizRepository>();
+            services.AddTransient<IListeningTaskRepository, ListeningTaskRepository>();
             //Mapper
             services.AddTransient<DTOMapper<ApplicationUser, ApplicationUserDto>>();
             services.AddTransient<DTOMapper<EncouragementPosition, EncouragementPositionDto>>();
             services.AddTransient<DTOMapper<SampleTestQA, SampleTestQADto>>();
             services.AddTransient<DTOMapper<PlacementTestTask, PlacementTestTaskDTO>>();
             services.AddTransient<GrammarQuizMapper>();
-            services.AddTransient<DTOMapper<GrammarTask, ListeningTaskDto>>();
+            services.AddTransient<DTOMapper<GrammarTask, GrammarTaskDto>>();
             services.AddTransient<ApplicationUserManager>();
             services.AddTransient<EncouragementPostitionManager>();
             services.AddTransient<SampleTestQAManager>();
@@ -65,8 +67,11 @@ namespace The_quest_of_English
             services.AddTransient<ReadingQuizManager>();
             services.AddTransient<ReadingQuizMapper>();
             services.AddTransient<DTOMapper<ReadingTask, ReadingTaskDto>>();
-
-
+            //Listening mappers
+            services.AddTransient<ListeningTaskManager>();
+            services.AddTransient<ListeningQuizManager>();
+            services.AddTransient<ListeningQuizMapper>();
+            services.AddTransient<DTOMapper<ListeningTask, ListeningTaskDto>>();
 
             //Main ViewModel
             services.AddTransient<EncouragementPoisitonViewModelMapper>();
