@@ -5,7 +5,7 @@ using TheEnglishQuestDatabase;
 
 namespace TheEnglishQuestCore
 {
-    public class ReadingQuizManager
+    public class ReadingQuizManager : ReadingQuizMapper, IReadingQuizDto
     {
         protected readonly IReadingQuizRepository _ReadingQuizRepository;
         protected readonly IReadingTaskRepository _ReadingTaskRepository;

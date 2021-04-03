@@ -6,7 +6,7 @@ using TheEnglishQuestDatabase.Entities;
 
 namespace TheEnglishQuestCore
 {
-    public class GrammarQuizManager : GrammarQuizMapper, IGrammarQuiz
+    public class GrammarQuizManager : GrammarQuizMapper, IGrammarQuizDto
     {
         protected readonly IGrammarQuizRepository _GrammarQuizRepository;
         protected readonly IGrammarTaskRepository _GrammarTaskRepository;

@@ -60,7 +60,7 @@ namespace The_quest_of_English.Areas.Admin.Controllers
 
         public async Task<IActionResult> GrammarCreateQuiz()
         {
-            ListeningQuizViewModel quiz = new ListeningQuizViewModel();
+            GrammarQuizViewModel quiz = new GrammarQuizViewModel();
             var userId = User.Identity.GetUserId();
             var user = await _applicationUserManager.GetLoggedUser(userId);
             var userViewModel = _applicationUserViewModelMapper.Map(user);
@@ -70,7 +70,7 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("GrammarCreateQuiz")]
-        public async Task<IActionResult> GrammarCreateQuizPost(ListeningQuizViewModel quiz)
+        public async Task<IActionResult> GrammarCreateQuizPost(GrammarQuizViewModel quiz)
         {
             if (ModelState.IsValid)
             {
@@ -117,7 +117,7 @@ namespace The_quest_of_English.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ModifySpecifiedQuiz(ListeningQuizViewModel quiz)
+        public async Task<IActionResult> ModifySpecifiedQuiz(GrammarQuizViewModel quiz)
         {
             var QuizDto = _grammarQuizViewModelMapper.Map(quiz);
             await _grammarQuizManager.ModifyQuiz(QuizDto);
@@ -166,14 +166,14 @@ namespace The_quest_of_English.Areas.Admin.Controllers
 
         public IActionResult CreateTask(int quizId)
         {
-            ListeningTasksViewModel task = new ListeningTasksViewModel();
+            GrammarTasksViewModel task = new GrammarTasksViewModel();
             task.GrammarQuizId = quizId;
             return View(task);
         }
         [HttpPost]
         [AutoValidateAntiforgeryToken]
         [ActionName("CreateTask")]
-        public IActionResult CreateTaskPost(ListeningTasksViewModel task)
+        public IActionResult CreateTaskPost(GrammarTasksViewModel task)
         {
             return RedirectToAction("BuildTaskQuestionAndAnswear", new { ChosenType = task.TaskType, QuizId = task.GrammarQuizId });
         }
@@ -181,7 +181,7 @@ namespace The_quest_of_English.Areas.Admin.Controllers
 
         public IActionResult BuildTaskQuestionAndAnswear(string ChosenType, int quizId)
         {
-            ListeningTasksViewModel task = new ListeningTasksViewModel
+            GrammarTasksViewModel task = new GrammarTasksViewModel
             {
                 GrammarQuizId = quizId,
                 TaskType = ChosenType
@@ -191,7 +191,7 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("BuildTaskQuestionAndAnswear")]
-        public async Task<IActionResult> BuildTaskQuestionAndAnswearPost(ListeningTasksViewModel task)
+        public async Task<IActionResult> BuildTaskQuestionAndAnswearPost(GrammarTasksViewModel task)
         {
             var taskDto = _grammarTaskViewModelMapper.Map(task);
             await _grammarTaskManager.AddNew(taskDto);
@@ -214,7 +214,7 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("ModifySpecifiedTask")]
-        public async Task<IActionResult> ModifySpecifiedTaskPost(ListeningTasksViewModel task)
+        public async Task<IActionResult> ModifySpecifiedTaskPost(GrammarTasksViewModel task)
         {
             var taskDto = _grammarTaskViewModelMapper.Map(task);
             await _grammarTaskManager.ModifyTask(taskDto);

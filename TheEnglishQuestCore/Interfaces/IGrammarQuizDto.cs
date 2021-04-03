@@ -4,7 +4,7 @@ using TheEnglishQuestDatabase;
 
 namespace TheEnglishQuestCore
 {
-    public interface IGrammarQuiz
+    public interface IGrammarQuizDto
     {
         Task<bool> AddNewQuiz(GrammarQuizDto quiz, string userId);
         Task<bool> RemoveQuiz(GrammarQuizDto quiz);

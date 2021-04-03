@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
+using TheEnglishQuestCore;
 using TheEnglishQuestCore.Managers;
 
 namespace The_quest_of_English.Areas
@@ -34,21 +36,21 @@ namespace The_quest_of_English.Areas
         }
         public async Task<IActionResult> FCE()
         {
-            var QuizesList = await _grammarQuizManager.GetAllQuizzesFiltered(SD.FCE);
-            var QuizzesViewModel = _grammarQuizViewModelMapper.Map(QuizesList);
+            var QuizesList = await _listeningQuizManager.GetAllQuizzesFiltered(SD.FCE);
+            var QuizzesViewModel = _listeningQuizViewModelMapper.Map(QuizesList);
             return View(QuizzesViewModel);
         }
         public async Task<IActionResult> CAE()
         {
 
-            var QuizesList = await _grammarQuizManager.GetAllQuizzesFiltered(SD.CAE);
-            var QuizzesViewModel = _grammarQuizViewModelMapper.Map(QuizesList);
+            var QuizesList = await _listeningQuizManager.GetAllQuizzesFiltered(SD.CAE);
+            var QuizzesViewModel = _listeningQuizViewModelMapper.Map(QuizesList);
             return View(QuizzesViewModel);
         }
         public async Task<IActionResult> CPE()
         {
-            var QuizesList = await _grammarQuizManager.GetAllQuizzesFiltered(SD.CPE);
-            var QuizzesViewModel = _grammarQuizViewModelMapper.Map(QuizesList);
+            var QuizesList = await _listeningQuizManager.GetAllQuizzesFiltered(SD.CPE);
+            var QuizzesViewModel = _listeningQuizViewModelMapper.Map(QuizesList);
             return View(QuizzesViewModel);
         }
 
@@ -68,8 +70,8 @@ namespace The_quest_of_English.Areas
         {
             if (ModelState.IsValid)
             {
-                var quizes = await _grammarQuizManager.GetAllQuizzes();
-                var quizesVM = _grammarQuizViewModelMapper.Map(quizes);
+                var quizes = await _listeningQuizManager.GetAllQuizzes();
+                var quizesVM = _listeningQuizViewModelMapper.Map(quizes);
                 foreach (var item in quizesVM)
                 {
                     if (item.Name == quiz.Name)
@@ -81,11 +83,11 @@ namespace The_quest_of_English.Areas
                 }
                 //
                 var userId = User.Identity.GetUserId();
-                var quizDto = _grammarQuizViewModelMapper.Map(quiz);
-                await _grammarQuizManager.AddNewQuiz(quizDto, userId);
-                await _grammarQuizManager.RemoveQuiz(quizDto);
+                var quizDto = _listeningQuizViewModelMapper.Map(quiz);
+                await _listeningQuizManager.AddNewQuiz(quizDto, userId);
+                await _listeningQuizManager.RemoveQuiz(quizDto);
                 //Getting Quiz from DB with assigned Id
-                var quizVM = await _grammarQuizManager.FindQuizByName(quiz.Name);
+                var quizVM = await _listeningQuizManager.FindQuizByName(quiz.Name);
                 return RedirectToAction("ShowQuiz", new { quizId = quizVM.Id }); //Name of variable must be inside annonymus obj!
             }
             else
@@ -96,16 +98,16 @@ namespace The_quest_of_English.Areas
 
         public async Task<IActionResult> GrammarModifyQuiz(string level)
         {
-            var QuizesList = await _grammarQuizManager.GetAllQuizzesFiltered(level);
-            var QuizzesViewModel = _grammarQuizViewModelMapper.Map(QuizesList);
+            var QuizesList = await _listeningQuizManager.GetAllQuizzesFiltered(level);
+            var QuizzesViewModel = _listeningQuizViewModelMapper.Map(QuizesList);
             return View(QuizzesViewModel);
         }
 
         public async Task<IActionResult> ModifySpecifiedQuiz(int id)
         {
-            var Quizes = await _grammarQuizManager.GetAllQuizzes();
+            var Quizes = await _listeningQuizManager.GetAllQuizzes();
             var Quiz = Quizes.Where(x => x.Id == id).SingleOrDefault();
-            var QuizVm = _grammarQuizViewModelMapper.Map(Quiz);
+            var QuizVm = _listeningQuizViewModelMapper.Map(Quiz);
             return View(QuizVm);
         }
 
@@ -113,25 +115,25 @@ namespace The_quest_of_English.Areas
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ModifySpecifiedQuiz(ListeningQuizViewModel quiz)
         {
-            var QuizDto = _grammarQuizViewModelMapper.Map(quiz);
-            await _grammarQuizManager.ModifyQuiz(QuizDto);
+            var QuizDto = _listeningQuizViewModelMapper.Map(quiz);
+            await _listeningQuizManager.ModifyQuiz(QuizDto);
             return RedirectToAction(quiz.Level);
         }
 
         public async Task<IActionResult> GrammarDeleteQuiz(string level)
         {
-            var QuizesList = await _grammarQuizManager.GetAllQuizzesFiltered(level);
-            var QuizzesViewModel = _grammarQuizViewModelMapper.Map(QuizesList);
+            var QuizesList = await _listeningQuizManager.GetAllQuizzesFiltered(level);
+            var QuizzesViewModel = _listeningQuizViewModelMapper.Map(QuizesList);
             return View(QuizzesViewModel);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> GrammarDeleteQuiz(int id)
         {
-            var Quiz = await _grammarQuizManager.GetAllQuizzes();
+            var Quiz = await _listeningQuizManager.GetAllQuizzes();
             var ActualQuiz = Quiz.Where(x => x.Id == id).SingleOrDefault();
             string level = ActualQuiz.Level;
-            await _grammarQuizManager.RemoveQuiz(ActualQuiz);
+            await _listeningQuizManager.RemoveQuiz(ActualQuiz);
             return RedirectToAction(level);
         }
 
@@ -143,12 +145,12 @@ namespace The_quest_of_English.Areas
         public async Task<IActionResult> ShowQuiz(int quizId)
         {
             //Get User
-            var quiz = await _grammarQuizManager.FindQuiz(quizId);
-            var quizVM = _grammarQuizViewModelMapper.Map(quiz);
+            var quiz = await _listeningQuizManager.FindQuiz(quizId);
+            var quizVM = _listeningQuizViewModelMapper.Map(quiz);
             var userId = User.Identity.GetUserId();
             var user = await _applicationUserManager.GetLoggedUser(userId);
             var userVm = _applicationUserViewModelMapper.Map(user);
-            QuizModelAndUserViewModel model = new QuizModelAndUserViewModel()
+            QuizModelAndUserViewModelListening model = new QuizModelAndUserViewModelListening()
             {
                 Quiz = quizVM,
                 ApplicationUser = userVm,
@@ -161,7 +163,7 @@ namespace The_quest_of_English.Areas
         public IActionResult CreateTask(int quizId)
         {
             ListeningTasksViewModel task = new ListeningTasksViewModel();
-            task.GrammarQuizId = quizId;
+            task.ListeningQuizId = quizId;
             return View(task);
         }
         [HttpPost]
@@ -169,7 +171,7 @@ namespace The_quest_of_English.Areas
         [ActionName("CreateTask")]
         public IActionResult CreateTaskPost(ListeningTasksViewModel task)
         {
-            return RedirectToAction("BuildTaskQuestionAndAnswear", new { ChosenType = task.TaskType, QuizId = task.GrammarQuizId });
+            return RedirectToAction("BuildTaskQuestionAndAnswear", new { ChosenType = task.TaskType, QuizId = task.ListeningQuizId });
         }
 
 
@@ -177,7 +179,7 @@ namespace The_quest_of_English.Areas
         {
             ListeningTasksViewModel task = new ListeningTasksViewModel
             {
-                GrammarQuizId = quizId,
+                ListeningQuizId = quizId,
                 TaskType = ChosenType
             };
             return View(task);
@@ -187,22 +189,22 @@ namespace The_quest_of_English.Areas
         [ActionName("BuildTaskQuestionAndAnswear")]
         public async Task<IActionResult> BuildTaskQuestionAndAnswearPost(ListeningTasksViewModel task)
         {
-            var taskDto = _grammarTaskViewModelMapper.Map(task);
-            await _grammarTaskManager.AddNew(taskDto);
-            return RedirectToAction("ShowQuiz", new { quizId = task.GrammarQuizId });
+            var taskDto = _listeningTaskViewModelMapper.Map(task);
+            await _listeningTaskManager.AddNew(taskDto);
+            return RedirectToAction("ShowQuiz", new { quizId = task.ListeningQuizId });
         }
         public async Task<IActionResult> ModifyTask(int quizId)
         {
-            var SelectedQuiz = await _grammarQuizManager.FindQuiz(quizId);
-            var Tasks = SelectedQuiz.GrammarTasks;
-            var TasksVm = _grammarQuizViewModelMapper.Map(Tasks);
+            var SelectedQuiz = await _listeningQuizManager.FindQuiz(quizId);
+            var Tasks = SelectedQuiz.ListeningTasks;
+            var TasksVm = _listeningQuizViewModelMapper.Map(Tasks);
             return View(TasksVm);
         }
 
         public async Task<IActionResult> ModifySpecifiedTask(int taskId)
         {
-            var SelectedTask = await _grammarTaskManager.FindTask(taskId);
-            var TaskVm = _grammarTaskViewModelMapper.Map(SelectedTask);
+            var SelectedTask = await _listeningTaskManager.FindTask(taskId);
+            var TaskVm = _listeningTaskViewModelMapper.Map(SelectedTask);
             return View(TaskVm);
         }
         [HttpPost]
@@ -210,16 +212,16 @@ namespace The_quest_of_English.Areas
         [ActionName("ModifySpecifiedTask")]
         public async Task<IActionResult> ModifySpecifiedTaskPost(ListeningTasksViewModel task)
         {
-            var taskDto = _grammarTaskViewModelMapper.Map(task);
-            await _grammarTaskManager.ModifyTask(taskDto);
-            return RedirectToAction("ShowQuiz", new { quizId = task.GrammarQuizId });
+            var taskDto = _listeningTaskViewModelMapper.Map(task);
+            await _listeningTaskManager.ModifyTask(taskDto);
+            return RedirectToAction("ShowQuiz", new { quizId = task.ListeningQuizId });
         }
 
         public async Task<IActionResult> DeleteTask(int quizId)
         {
-            var SelectedQuiz = await _grammarQuizManager.FindQuiz(quizId);
-            var Tasks = SelectedQuiz.GrammarTasks;
-            var TasksVm = _grammarQuizViewModelMapper.Map(Tasks);
+            var SelectedQuiz = await _listeningQuizManager.FindQuiz(quizId);
+            var Tasks = SelectedQuiz.ListeningTasks;
+            var TasksVm = _listeningQuizViewModelMapper.Map(Tasks);
             return View(TasksVm);
         }
 
@@ -228,9 +230,9 @@ namespace The_quest_of_English.Areas
         [ActionName("DeleteTask")]
         public async Task<IActionResult> DeleteTaskPost(int taskId)
         {
-            var Entity = await _grammarTaskManager.FindTask(taskId);
-            int quizId = Entity.GrammarQuizId;
-            await _grammarTaskManager.Delete(Entity);
+            var Entity = await _listeningTaskManager.FindTask(taskId);
+            int quizId = Entity.ListeningQuizId;
+            await _listeningTaskManager.Delete(Entity);
             return RedirectToAction("ShowQuiz", new { quizId = quizId });
         }
     }
