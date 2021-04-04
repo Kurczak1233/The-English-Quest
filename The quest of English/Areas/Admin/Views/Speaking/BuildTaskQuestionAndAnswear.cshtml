@@ -1,0 +1,17 @@
+﻿@model SpeakingTaskViewModel
+@{
+    ViewData["Title"] = "BuildTaskQuestionAndAnswear";
+}
+
+@if (Model.TaskType == SD.Radio4)
+{
+    <partial name="_SpeakingTestTaskRadio4" model="@Model" />
+}
+@if (Model.TaskType == SD.Radio3)
+{
+    <partial name="_SpeakingTestTaskRadio3" model="@Model" />
+}
+@if (Model.TaskType == SD.Form)
+{
+    <partial name="_SpeakingTestTaskForm" model="@Model" />
+}

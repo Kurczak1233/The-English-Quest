@@ -169,7 +169,7 @@ namespace The_quest_of_English.Areas.Admin.Controllers
         {
             SpeakingTaskViewModel task = new SpeakingTaskViewModel
             {
-                WritingQuizId = quizId,
+                SpeakingQuizId = quizId,
                 TaskType = ChosenType
             };
             return View(task);
