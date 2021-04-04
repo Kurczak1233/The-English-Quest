@@ -1,6 +1,4 @@
-﻿@model The_quest_of_English.Models.ViewModels.AnswearsAndQuestionsList
-@using The_quest_of_English.Models.ViewModels
-@{
+﻿@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -640,8 +638,6 @@
         }
     });
     //Checking answears
-    var ar = @Html.Raw(Json.Serialize(Model.Answears));
-    console.log(ar);
     let answears = ['We have to live here now.',
 "I can not tolarate you.",
 "You are joking me.",

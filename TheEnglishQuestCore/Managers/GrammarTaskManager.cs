@@ -2,8 +2,6 @@
 using System.Linq;
 using System.Threading.Tasks;
 using TheEnglishQuestDatabase;
-using TheEnglishQuestDatabase.Repositories.Interfaces;
-
 namespace TheEnglishQuestCore
 {
     public class GrammarTaskManager : DTOManager<GrammarTask, GrammarTaskDto>, IGrammarTaskDto

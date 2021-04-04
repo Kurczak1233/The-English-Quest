@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Linq;
 using System.Threading.Tasks;
-using The_quest_of_English.Models;
-using The_quest_of_English.Models.ViewModels;
 using TheEnglishQuestCore.Managers;
 
 namespace The_quest_of_English.Controllers
@@ -12,17 +9,13 @@ namespace The_quest_of_English.Controllers
     {
         private readonly EncouragementPoisitonViewModelMapper _EPositionsMapper;
         private readonly EncouragementPostitionManager _EnouragementPositionManager;
-        private readonly SampleTestQAViewModelMapper _SampleTestQAViewModelMapper;
-        private readonly SampleTestQAManager _SampleTestQAManager;
+
+
         public HomeController(EncouragementPoisitonViewModelMapper eMapper,
-            EncouragementPostitionManager eManager,
-            SampleTestQAViewModelMapper sampletestmodel,
-            SampleTestQAManager stQA)
+            EncouragementPostitionManager eManager)
         {
             _EPositionsMapper = eMapper;
             _EnouragementPositionManager = eManager;
-            _SampleTestQAViewModelMapper = sampletestmodel;
-            _SampleTestQAManager = stQA;
         }
 
         public async Task<IActionResult> Index()
@@ -35,18 +28,18 @@ namespace The_quest_of_English.Controllers
         public async Task<IActionResult> SampleEnglishTest()
         {
 
-            var AllListDto = await _SampleTestQAManager.GetAllValues();
-            var AnswearList = AllListDto.Select(x => x.Answear).ToList();
-            var dtos = await _SampleTestQAManager.GetAllValues();
-            var entities = _SampleTestQAViewModelMapper.Map(dtos);
-            AnswearsAndQuestionsList model = new AnswearsAndQuestionsList()
-            {
-                Answears = AnswearList,
-                SampleTestQAViewModels = entities.ToList()
-            };
+            //var AllListDto = await _SampleTestQAManager.GetAllValues();
+            //var AnswearList = AllListDto.Select(x => x.Answear).ToList();
+            //var dtos = await _SampleTestQAManager.GetAllValues();
+            //var entities = _SampleTestQAViewModelMapper.Map(dtos);
+            //AnswearsAndQuestionsList model = new AnswearsAndQuestionsList()
+            //{
+            //    Answears = AnswearList,
+            //    SampleTestQAViewModels = entities.ToList()
+            //};
 
 
-            return View(model);
+            return View();
         }
 
         public IActionResult Contact()

@@ -1,21 +1,17 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using The_quest_of_English.Controllers;
-using The_quest_of_English.Models;
 using The_quest_of_English.ViewModelMapper;
 using TheEnglishQuestCore;
 using TheEnglishQuestCore.Managers;
 using TheEnglishQuestDatabase;
 using TheEnglishQuestDatabase.Entities;
 using TheEnglishQuestDatabase.Repositories;
-using TheEnglishQuestDatabase.Repositories.Interfaces;
 using TheQuestOfEnglishDatabase;
 
 namespace The_quest_of_English
@@ -41,7 +37,6 @@ namespace The_quest_of_English
             //Db
             services.AddTransient<IEncouragementPositionRepository, EncouragementPositionRepository>();
             services.AddTransient<IApplicationUserRepository, ApplicationUserRepository>();
-            services.AddTransient<ISampleTestQARepostitory, SampleTestQARepository>();
             services.AddTransient<IPlacementTestTaskRepository, PlacementTestTaskRepository>();
             services.AddTransient<IGrammarQuizRepository, GrammarQuizRepository>();
             services.AddTransient<IGrammarTaskRepository, GrammarTaskRepository>();
@@ -56,13 +51,11 @@ namespace The_quest_of_English
             //Mapper
             services.AddTransient<DTOMapper<ApplicationUser, ApplicationUserDto>>();
             services.AddTransient<DTOMapper<EncouragementPosition, EncouragementPositionDto>>();
-            services.AddTransient<DTOMapper<SampleTestQA, SampleTestQADto>>();
             services.AddTransient<DTOMapper<PlacementTestTask, PlacementTestTaskDTO>>();
             services.AddTransient<GrammarQuizMapper>();
             services.AddTransient<DTOMapper<GrammarTask, GrammarTaskDto>>();
             services.AddTransient<ApplicationUserManager>();
             services.AddTransient<EncouragementPostitionManager>();
-            services.AddTransient<SampleTestQAManager>();
             services.AddTransient<PlacementTestTaskManager>();
             services.AddTransient<GrammarTaskManager>();
             services.AddTransient<GrammarQuizManager>();
@@ -90,7 +83,6 @@ namespace The_quest_of_English
             //Main ViewModel
             services.AddTransient<EncouragementPoisitonViewModelMapper>();
             services.AddTransient<ApplicationUserViewModelMapper>();
-            services.AddTransient<SampleTestQAViewModelMapper>();
             services.AddTransient<PlacementTestTaskViewModelMapper>();
             services.AddTransient<GrammarTaskViewModelMapper>();
             services.AddTransient<GrammarQuizViewModelMapper>();

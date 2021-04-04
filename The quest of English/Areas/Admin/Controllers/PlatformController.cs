@@ -1,13 +1,9 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using The_quest_of_English.Models;
-using The_quest_of_English.Models.ViewModels;
 using The_quest_of_English.ViewModelMapper;
 using TheEnglishQuest;
 using TheEnglishQuestCore;
