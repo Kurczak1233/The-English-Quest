@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EncouragementPositionViewModel>
+﻿
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -66,7 +66,62 @@
             <img src="/images/QuestionMark.png" style="height:350px;" class="img-fluid" />
         </div>
         <div id="EncouragementLinks" class="text-md-left text-center mt-3 col-12 col-md-5">
-            <partial name="_EncouragementButtonsAndContent" model="@Model" />
+            <a id="obj" class="text-decoration-none" data-toggle="collapse" href="#1" role="button" aria-expanded="false" aria-controls="1">
+                <h2 class="d-block">Popularity&nbsp;&nbsp;<i class="bi bi-plus-square-fill"></i></h2>
+            </a>
+            <div class="collapse text-right font-size-rather-small" id="1">
+                <div class="col-12 card card-body border-0">
+                    <p class="text-left">English is the most popular language over the world!</p>
+                </div>
+            </div>
+            <a id="obj" class="text-decoration-none" data-toggle="collapse" href="#2" role="button" aria-expanded="false" aria-controls="2">
+                <h2 class="d-block">Possibilities&nbsp;&nbsp;<i class="bi bi-plus-square-fill"></i></h2>
+            </a>
+            <div class="collapse text-right font-size-rather-small" id="2">
+                <div class="col-12 card card-body border-0">
+                    <p class="text-left">You will be able to speak to almost everyone. Learning english will make you be more knowledgeable and more elequent</p>
+                </div>
+            </div>
+            <a id="obj" class="text-decoration-none" data-toggle="collapse" href="#3" role="button" aria-expanded="false" aria-controls="3">
+                <h2 class="d-block">Accessibility&nbsp;&nbsp;<i class="bi bi-plus-square-fill"></i></h2>
+            </a>
+            <div class="collapse text-right font-size-rather-small" id="3">
+                <div class="col-12 card card-body border-0">
+                    <p class="text-left">Most of the internet content is written in English. Once you learn it you will be able to read and watch almost everything in web!</p>
+                </div>
+            </div>
+            <a id="obj" class="text-decoration-none" data-toggle="collapse" href="#4" role="button" aria-expanded="false" aria-controls="4">
+                <h2 class="d-block">Pleasure&nbsp;&nbsp;<i class="bi bi-plus-square-fill"></i></h2>
+            </a>
+            <div class="collapse text-right font-size-rather-small" id="4">
+                <div class="col-12 card card-body border-0">
+                    <p class="text-left">Many people derive immense pleasure from learning english. The more aware you are about your language, the better you feel!</p>
+                </div>
+            </div>
+            <a id="obj" class="text-decoration-none" data-toggle="collapse" href="#5" role="button" aria-expanded="false" aria-controls="5">
+                <h2 class="d-block">Prestige&nbsp;&nbsp;<i class="bi bi-plus-square-fill"></i></h2>
+            </a>
+            <div class="collapse text-right font-size-rather-small" id="5">
+                <div class="col-12 card card-body border-0">
+                    <p class="text-left">The way you speak - especially in foreing language, makes you look more intelligent. This is definitely something which may impress your friends or colleagues!</p>
+                </div>
+            </div>
+            <a id="obj" class="text-decoration-none" data-toggle="collapse" href="#6" role="button" aria-expanded="false" aria-controls="6">
+                <h2 class="d-block">Knowledge&nbsp;&nbsp;<i class="bi bi-plus-square-fill"></i></h2>
+            </a>
+            <div class="collapse text-right font-size-rather-small" id="6">
+                <div class="col-12 card card-body border-0">
+                    <p class="text-left">Not only will you learn the basics of English grammar, but also of other subjects! When you read a text you will have to understand it's merits which may broaden your horizons.</p>
+                </div>
+            </div>
+            <a id="obj" class="text-decoration-none" data-toggle="collapse" href="#7" role="button" aria-expanded="false" aria-controls="7">
+                <h2 class="d-block">Development&nbsp;&nbsp;<i class="bi bi-plus-square-fill"></i></h2>
+            </a>
+            <div class="collapse text-right font-size-rather-small" id="7">
+                <div class="col-12 card card-body border-0">
+                    <p class="text-left">After a while, you will be able to take some English tests. If you pass those, you will be able to work up your way to the top in your company.</p>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -78,7 +133,7 @@
         </div>
     </div>
     <div id="visability" class="invisible circle warm-orange-color position-absolute p-0 col-12 font-size-big text-center d-flex align-items-center justify-content-center" style="height:300px; top: 0px;">
-        <div id="secondBlock" @*style="top: 15%;left: auto;*@>
+        <div id="secondBlock">
             <div class="justify-content-center">
                 <p class="dark-blue-text-color col-12">Explore the platform!</p>
                 <a asp-controller="User" asp-action="Register" id="visable" class=" btn text-white btn-lg dark-blue-color">Sign up</a>
@@ -105,6 +160,14 @@
     </div>
 </section>
 <script>
+    $('[id="obj"]').each(function () {
+        $(this).on("click", function () {
+        var div = $(this).next();
+        var divId = "#" + div.attr("Id");
+        $(divId).toggle('500');
+        $("i", this).toggleClass("bi-plus-square-fill bi-dash-square-fill");
+        });
+    })
     //Initial values
     var scrollTop = $(document).scrollTop();
     var elementOffset = $('#visability').offset().top;

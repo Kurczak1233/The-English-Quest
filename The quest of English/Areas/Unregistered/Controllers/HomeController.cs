@@ -7,38 +7,19 @@ namespace The_quest_of_English.Controllers
     [Area("Unregistered")]
     public class HomeController : Controller
     {
-        private readonly EncouragementPoisitonViewModelMapper _EPositionsMapper;
-        private readonly EncouragementPostitionManager _EnouragementPositionManager;
 
 
-        public HomeController(EncouragementPoisitonViewModelMapper eMapper,
-            EncouragementPostitionManager eManager)
+        public HomeController()
         {
-            _EPositionsMapper = eMapper;
-            _EnouragementPositionManager = eManager;
         }
 
         public async Task<IActionResult> Index()
         {
-            var positions = await _EnouragementPositionManager.GetAllPositions();
-            var entities = _EPositionsMapper.Map(positions);
-            return View(entities);
+            return View();
         }
 
         public async Task<IActionResult> SampleEnglishTest()
         {
-
-            //var AllListDto = await _SampleTestQAManager.GetAllValues();
-            //var AnswearList = AllListDto.Select(x => x.Answear).ToList();
-            //var dtos = await _SampleTestQAManager.GetAllValues();
-            //var entities = _SampleTestQAViewModelMapper.Map(dtos);
-            //AnswearsAndQuestionsList model = new AnswearsAndQuestionsList()
-            //{
-            //    Answears = AnswearList,
-            //    SampleTestQAViewModels = entities.ToList()
-            //};
-
-
             return View();
         }
 

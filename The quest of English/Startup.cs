@@ -35,7 +35,6 @@ namespace The_quest_of_English
             //.AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             //Db
-            services.AddTransient<IEncouragementPositionRepository, EncouragementPositionRepository>();
             services.AddTransient<IApplicationUserRepository, ApplicationUserRepository>();
             services.AddTransient<IPlacementTestTaskRepository, PlacementTestTaskRepository>();
             services.AddTransient<IGrammarQuizRepository, GrammarQuizRepository>();
@@ -50,12 +49,10 @@ namespace The_quest_of_English
             services.AddTransient<ISpeakingQuizRepository, SpeakingQuizRepository>();
             //Mapper
             services.AddTransient<DTOMapper<ApplicationUser, ApplicationUserDto>>();
-            services.AddTransient<DTOMapper<EncouragementPosition, EncouragementPositionDto>>();
             services.AddTransient<DTOMapper<PlacementTestTask, PlacementTestTaskDTO>>();
             services.AddTransient<GrammarQuizMapper>();
             services.AddTransient<DTOMapper<GrammarTask, GrammarTaskDto>>();
             services.AddTransient<ApplicationUserManager>();
-            services.AddTransient<EncouragementPostitionManager>();
             services.AddTransient<PlacementTestTaskManager>();
             services.AddTransient<GrammarTaskManager>();
             services.AddTransient<GrammarQuizManager>();
@@ -81,7 +78,6 @@ namespace The_quest_of_English
             services.AddTransient<DTOMapper<SpeakingTask, SpeakingTaskDto>>();
 
             //Main ViewModel
-            services.AddTransient<EncouragementPoisitonViewModelMapper>();
             services.AddTransient<ApplicationUserViewModelMapper>();
             services.AddTransient<PlacementTestTaskViewModelMapper>();
             services.AddTransient<GrammarTaskViewModelMapper>();
