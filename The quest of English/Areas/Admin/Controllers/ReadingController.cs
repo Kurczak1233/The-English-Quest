@@ -99,9 +99,19 @@ namespace The_quest_of_English
 
         public async Task<IActionResult> ReadingModifyQuiz(string level)
         {
-            var QuizesList = await _readingQuizManager.GetAllQuizzesFiltered(level);
-            var QuizzesViewModel = _readingQuizViewModelMapper.Map(QuizesList);
-            return View(QuizzesViewModel);
+            if (User.IsInRole(SD.OrdinaryUser))
+            {
+                var QuizesList = await _readingQuizManager.GetAllQuizzesFiltered(level);
+                var UsersQuizes = QuizesList.Where(x => x.UserId == User.Identity.GetUserId());
+                var UsersQuizesViewModel = _readingQuizViewModelMapper.Map(UsersQuizes);
+                return View(UsersQuizesViewModel);
+            }
+            else
+            {
+                var QuizesList = await _readingQuizManager.GetAllQuizzesFiltered(level);
+                var QuizzesViewModel = _readingQuizViewModelMapper.Map(QuizesList);
+                return View(QuizzesViewModel);
+            }
         }
 
         public async Task<IActionResult> ModifySpecifiedQuiz(int id)
@@ -123,9 +133,19 @@ namespace The_quest_of_English
 
         public async Task<IActionResult> ReadingDeleteQuiz(string level)
         {
-            var QuizesList = await _readingQuizManager.GetAllQuizzesFiltered(level);
-            var QuizzesViewModel = _readingQuizViewModelMapper.Map(QuizesList);
-            return View(QuizzesViewModel);
+            if (User.IsInRole(SD.OrdinaryUser))
+            {
+                var QuizesList = await _readingQuizManager.GetAllQuizzesFiltered(level);
+                var UsersQuizes = QuizesList.Where(x => x.UserId == User.Identity.GetUserId());
+                var UsersQuizesViewModel = _readingQuizViewModelMapper.Map(UsersQuizes);
+                return View(UsersQuizesViewModel);
+            }
+            else
+            {
+                var QuizesList = await _readingQuizManager.GetAllQuizzesFiltered(level);
+                var QuizzesViewModel = _readingQuizViewModelMapper.Map(QuizesList);
+                return View(QuizzesViewModel);
+            }
         }
         [HttpPost]
         [ValidateAntiForgeryToken]

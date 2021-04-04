@@ -85,9 +85,19 @@ namespace The_quest_of_English
 
         public async Task<IActionResult> WritingModifyQuiz()
         {
-            var QuizesList = await _writingQuizManager.GetAllQuizzes();
-            var QuizzesViewModel = _writingQuizViewModelMapper.Map(QuizesList);
-            return View(QuizzesViewModel);
+            if (User.IsInRole(SD.OrdinaryUser))
+            {
+                var QuizesList = await _writingQuizManager.GetAllQuizzes();
+                var UsersQuizes = QuizesList.Where(x => x.UserId == User.Identity.GetUserId());
+                var UsersQuizesViewModel = _writingQuizViewModelMapper.Map(UsersQuizes);
+                return View(UsersQuizesViewModel);
+            }
+            else
+            {
+                var QuizesList = await _writingQuizManager.GetAllQuizzes();
+                var QuizzesViewModel = _writingQuizViewModelMapper.Map(QuizesList);
+                return View(QuizzesViewModel);
+            }
         }
 
         public async Task<IActionResult> ModifySpecifiedQuiz(int id)
@@ -109,9 +119,19 @@ namespace The_quest_of_English
 
         public async Task<IActionResult> WritingDeleteQuiz()
         {
-            var QuizesList = await _writingQuizManager.GetAllQuizzes();
-            var QuizzesViewModel = _writingQuizViewModelMapper.Map(QuizesList);
-            return View(QuizzesViewModel);
+            if (User.IsInRole(SD.OrdinaryUser))
+            {
+                var QuizesList = await _writingQuizManager.GetAllQuizzes();
+                var UsersQuizes = QuizesList.Where(x => x.UserId == User.Identity.GetUserId());
+                var UsersQuizesViewModel = _writingQuizViewModelMapper.Map(UsersQuizes);
+                return View(UsersQuizesViewModel);
+            }
+            else
+            {
+                var QuizesList = await _writingQuizManager.GetAllQuizzes();
+                var QuizzesViewModel = _writingQuizViewModelMapper.Map(QuizesList);
+                return View(QuizzesViewModel);
+            }
         }
         [HttpPost]
         [ValidateAntiForgeryToken]

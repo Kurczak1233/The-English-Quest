@@ -88,9 +88,19 @@ namespace The_quest_of_English.Areas.Admin.Controllers
 
         public async Task<IActionResult> SpeakingModifyQuiz()
         {
-            var QuizesList = await _SpeakingQuizManager.GetAllQuizzes();
-            var QuizzesViewModel = _SpeakingQuizViewModelMapper.Map(QuizesList);
-            return View(QuizzesViewModel);
+            if (User.IsInRole(SD.OrdinaryUser))
+            {
+                var QuizesList = await _SpeakingQuizManager.GetAllQuizzes();
+                var UsersQuizes = QuizesList.Where(x => x.UserId == User.Identity.GetUserId());
+                var UsersQuizesViewModel = _SpeakingQuizViewModelMapper.Map(UsersQuizes);
+                return View(UsersQuizesViewModel);
+            }
+            else
+            {
+                var QuizesList = await _SpeakingQuizManager.GetAllQuizzes();
+                var QuizzesViewModel = _SpeakingQuizViewModelMapper.Map(QuizesList);
+                return View(QuizzesViewModel);
+            }
         }
 
         public async Task<IActionResult> ModifySpecifiedQuiz(int id)
@@ -112,9 +122,19 @@ namespace The_quest_of_English.Areas.Admin.Controllers
 
         public async Task<IActionResult> SpeakingDeleteQuiz()
         {
-            var QuizesList = await _SpeakingQuizManager.GetAllQuizzes();
-            var QuizzesViewModel = _SpeakingQuizViewModelMapper.Map(QuizesList);
-            return View(QuizzesViewModel);
+            if (User.IsInRole(SD.OrdinaryUser))
+            {
+                var QuizesList = await _SpeakingQuizManager.GetAllQuizzes();
+                var UsersQuizes = QuizesList.Where(x => x.UserId == User.Identity.GetUserId());
+                var UsersQuizesViewModel = _SpeakingQuizViewModelMapper.Map(UsersQuizes);
+                return View(UsersQuizesViewModel);
+            }
+            else
+            {
+                var QuizesList = await _SpeakingQuizManager.GetAllQuizzes();
+                var QuizzesViewModel = _SpeakingQuizViewModelMapper.Map(QuizesList);
+                return View(QuizzesViewModel);
+            }
         }
         [HttpPost]
         [ValidateAntiForgeryToken]

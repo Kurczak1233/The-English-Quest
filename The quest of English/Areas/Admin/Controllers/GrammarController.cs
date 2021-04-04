@@ -102,9 +102,19 @@ namespace The_quest_of_English.Areas.Admin.Controllers
 
         public async Task<IActionResult> GrammarModifyQuiz(string level)
         {
-            var QuizesList = await _grammarQuizManager.GetAllQuizzesFiltered(level);
-            var QuizzesViewModel = _grammarQuizViewModelMapper.Map(QuizesList);
-            return View(QuizzesViewModel);
+            if (User.IsInRole(SD.OrdinaryUser))
+            {
+                var QuizesList = await _grammarQuizManager.GetAllQuizzesFiltered(level);
+                var UsersQuizes = QuizesList.Where(x => x.UserId == User.Identity.GetUserId());
+                var UsersQuizesViewModel = _grammarQuizViewModelMapper.Map(UsersQuizes);
+                return View(UsersQuizesViewModel);
+            }
+            else
+            {
+                var QuizesList = await _grammarQuizManager.GetAllQuizzesFiltered(level);
+                var QuizzesViewModel = _grammarQuizViewModelMapper.Map(QuizesList);
+                return View(QuizzesViewModel);
+            }
         }
 
         public async Task<IActionResult> ModifySpecifiedQuiz(int id)

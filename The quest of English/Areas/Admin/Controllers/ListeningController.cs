@@ -98,9 +98,19 @@ namespace The_quest_of_English.Areas
 
         public async Task<IActionResult> ListeningModifyQuiz(string level)
         {
-            var QuizesList = await _listeningQuizManager.GetAllQuizzesFiltered(level);
-            var QuizzesViewModel = _listeningQuizViewModelMapper.Map(QuizesList);
-            return View(QuizzesViewModel);
+            if (User.IsInRole(SD.OrdinaryUser))
+            {
+                var QuizesList = await _listeningQuizManager.GetAllQuizzesFiltered(level);
+                var UsersQuizes = QuizesList.Where(x => x.UserId == User.Identity.GetUserId());
+                var UsersQuizesViewModel = _listeningQuizViewModelMapper.Map(UsersQuizes);
+                return View(UsersQuizesViewModel);
+            }
+            else
+            {
+                var QuizesList = await _listeningQuizManager.GetAllQuizzesFiltered(level);
+                var QuizzesViewModel = _listeningQuizViewModelMapper.Map(QuizesList);
+                return View(QuizzesViewModel);
+            }
         }
 
         public async Task<IActionResult> ModifySpecifiedQuiz(int id)
@@ -122,9 +132,19 @@ namespace The_quest_of_English.Areas
 
         public async Task<IActionResult> ListeningDeleteQuiz(string level)
         {
-            var QuizesList = await _listeningQuizManager.GetAllQuizzesFiltered(level);
-            var QuizzesViewModel = _listeningQuizViewModelMapper.Map(QuizesList);
-            return View(QuizzesViewModel);
+            if (User.IsInRole(SD.OrdinaryUser))
+            {
+                var QuizesList = await _listeningQuizManager.GetAllQuizzesFiltered(level);
+                var UsersQuizes = QuizesList.Where(x => x.UserId == User.Identity.GetUserId());
+                var UsersQuizesViewModel = _listeningQuizViewModelMapper.Map(UsersQuizes);
+                return View(UsersQuizesViewModel);
+            }
+            else
+            {
+                var QuizesList = await _listeningQuizManager.GetAllQuizzesFiltered(level);
+                var QuizzesViewModel = _listeningQuizViewModelMapper.Map(QuizesList);
+                return View(QuizzesViewModel);
+            }
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
