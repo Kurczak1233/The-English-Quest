@@ -51,6 +51,8 @@ namespace The_quest_of_English
             services.AddTransient<IListeningTaskRepository, ListeningTaskRepository>();
             services.AddTransient<IWritingTaskRepository, WritingTaskRepository>();
             services.AddTransient<IWritingQuizRepository, WritingQuizRepository>();
+            services.AddTransient<ISpeakingTaskRepository, SpeakingTaskRepository>();
+            services.AddTransient<ISpeakingQuizRepository, SpeakingQuizRepository>();
             //Mapper
             services.AddTransient<DTOMapper<ApplicationUser, ApplicationUserDto>>();
             services.AddTransient<DTOMapper<EncouragementPosition, EncouragementPositionDto>>();
@@ -79,7 +81,11 @@ namespace The_quest_of_English
             services.AddTransient<WritingQuizManager>();
             services.AddTransient<WritingQuizMapper>();
             services.AddTransient<DTOMapper<WritingTask, WritingTaskDto>>();
-
+            //speaking mappers
+            services.AddTransient<SpeakingTaskManager>();
+            services.AddTransient<SpeakingQuizManager>();
+            services.AddTransient<SpeakingQuizMapper>();
+            services.AddTransient<DTOMapper<SpeakingTask, SpeakingTaskDto>>();
 
             //Main ViewModel
             services.AddTransient<EncouragementPoisitonViewModelMapper>();
@@ -94,10 +100,12 @@ namespace The_quest_of_English
             services.AddTransient<ListeningQuizViewModelMapper>();
             services.AddTransient<WritingTaskViewModelMapper>();
             services.AddTransient<WritingQuizViewModelMapper>();
+            services.AddTransient<SpeakingTaskViewModelMapper>();
+            services.AddTransient<SpeakingQuizViewModelMapper>();
 
             // Identity
             //services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
-            //.AddDefaultTokenProviders() //Tokeny gdy ktoœ zapomni has³a
+            //.AddDefaultTokenProviders() //Tokens in case somebody forget their password
             //.AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddIdentity<IdentityUser, IdentityRole>(options => 
@@ -140,10 +148,6 @@ namespace The_quest_of_English
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{area=Unregistered}/{controller=Home}/{action=Index}");
-
-                //endpoints.MapControllerRoute(
-                //name: "Admin",
-                //pattern: "Admin/{controller=Home}/{action=Index}");
             });
 
             serviceProvider.GetService<ApplicationDbContext>().Database.Migrate();
