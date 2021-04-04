@@ -40,10 +40,159 @@
                                     Grammar
                                 </div>
                             </div>
-                            @await Html.PartialAsync("QuestionAndAnswearPartial", new AnswearsAndQuestionsList { Answears = Model.Answears.Take(5) , SampleTestQAViewModels = @Model.SampleTestQAViewModels.Take(5)})
-                        <div class="text-center mt-5 mb-5">
-                            <button id="checkAnswearsGrammar" type="submit" class="btn warm-orange-color">Check answears</button>
-                        </div>
+                            <section id="questionAndAnswears">
+                                <div class="row mt-3">
+                                    <div class="question-circle text-center ml-4">
+                                        <strong class="font-size-medium question">1</strong>
+                                    </div>
+                                    <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small">
+                                        <p>We&nbsp;<span class="font-weight-bold font-italic dark-blue-text-color">ended up</span>&nbsp;renting an old house.</p>
+                                    </div>
+                                </div>
+                                <div class="form-check" id="checkAnswears">
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="0" id="GrammarAnswear1">
+                                        <label class="form-check-label" for="GrammarAnswear1">
+                                            It is no longer actual.
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="0" id="GrammarAnswear2">
+                                        <label class="form-check-label" for="GrammarAnswear2">
+                                            The house is now renovated.
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="0" id="GrammarAnswear3">
+                                        <label class="form-check-label" for="GrammarAnswear3">
+                                            We have to live here now.
+                                        </label>
+                                    </div>
+                                </div>
+                            </section>
+                            <section id="questionAndAnswears">
+                                <div class="row mt-3">
+                                    <div class="question-circle text-center ml-4">
+                                        <strong class="font-size-medium question">2</strong>
+                                    </div>
+                                    <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small">
+                                        <p>I can not&nbsp;<span class="font-weight-bold font-italic dark-blue-text-color">put up with</span>&nbsp;you.</p>
+                                    </div>
+                                </div>
+                                <div class="form-check" id="checkAnswears">
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="1" id="GrammarAnswear4">
+                                        <label class="form-check-label" for="GrammarAnswear4">
+                                            I can not tolarate you.
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="1" id="GrammarAnswear5">
+                                        <label class="form-check-label" for="GrammarAnswear5">
+                                            I can not keep up with you.
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="1" id="GrammarAnswear6">
+                                        <label class="form-check-label" for="GrammarAnswear6">
+                                            I can not live with you.
+                                        </label>
+                                    </div>
+                                </div>
+                            </section>
+                            <section id="questionAndAnswears">
+                                <div class="row mt-3">
+                                    <div class="question-circle text-center ml-4">
+                                        <strong class="font-size-medium question">3</strong>
+                                    </div>
+                                    <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small">
+                                        <p>You are&nbsp;<span class="font-weight-bold font-italic dark-blue-text-color">pulling my leg!</span>&nbsp;</p>
+                                    </div>
+                                </div>
+                                <div class="form-check" id="checkAnswears">
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="2" id="GrammarAnswear7">
+                                        <label class="form-check-label" for="GrammarAnswear7">
+                                            You are joking me.
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="2" id="GrammarAnswear8">
+                                        <label class="form-check-label" for="GrammarAnswear8">
+                                            You are holding my leg.
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="2" id="GrammarAnswear9">
+                                        <label class="form-check-label" for="GrammarAnswear9">
+                                            You are hurting me!
+                                        </label>
+                                    </div>
+                                </div>
+                            </section>
+                            <section id="questionAndAnswears">
+                                <div class="row mt-3">
+                                    <div class="question-circle text-center ml-4">
+                                        <strong class="font-size-medium question">4</strong>
+                                    </div>
+                                    <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small">
+                                        <p>The Poles rarely make such comparisons, and never without ... (&nbsp;<span class="font-weight-bold font-italic dark-blue-text-color">provoke</span>&nbsp;).</p>
+                                    </div>
+                                </div>
+                                <div class="form-check" id="checkAnswears">
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="3" id="GrammarAnswear10">
+                                        <label class="form-check-label" for="GrammarAnswear10">
+                                            Provocation
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="3" id="GrammarAnswear11">
+                                        <label class="form-check-label" for="GrammarAnswear11">
+                                            Provoctioning
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="3" id="GrammarAnswear12">
+                                        <label class="form-check-label" for="GrammarAnswear12">
+                                            Provocing
+                                        </label>
+                                    </div>
+                                </div>
+                            </section>
+                            <section id="questionAndAnswears">
+                                <div class="row mt-3">
+                                    <div class="question-circle text-center ml-4">
+                                        <strong class="font-size-medium question">5</strong>
+                                    </div>
+                                    <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small">
+                                        <p>The Yorkie shares its ancient ... with all dog breeds.&nbsp;<span class="font-weight-bold font-italic dark-blue-text-color"></span>&nbsp;</p>
+                                    </div>
+                                </div>
+                                <div class="form-check" id="checkAnswears">
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="4" id="GrammarAnswear13">
+                                        <label class="form-check-label" for="GrammarAnswear13">
+                                            legacy
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="4" id="GrammarAnswear14">
+                                        <label class="form-check-label" for="GrammarAnswear14">
+                                            ancestry
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="4" id="GrammarAnswear15">
+                                        <label class="form-check-label" for="GrammarAnswear15">
+                                            heritage
+                                        </label>
+                                    </div>
+                                </div>
+                            </section>
+                            <div class="text-center mt-5 mb-5">
+                                <button id="checkAnswearsGrammar" type="submit" class="btn warm-orange-color">Check answears</button>
+                            </div>
                         </section>
                         <hr id="secondSection" />
                         <section id="readingSection">
@@ -53,10 +202,159 @@
                                     Reading
                                 </div>
                             </div>
-                            @await Html.PartialAsync("QuestionAndAnswearPartial", new AnswearsAndQuestionsList { Answears = Model.Answears.Skip(5).Take(5), SampleTestQAViewModels = @Model.SampleTestQAViewModels.Skip(5).Take(5) })
-                        <div class="text-center mt-5 mb-5">
-                            <button id="checkAnswearsReading" type="submit" class="btn warm-orange-color">Check answears</button>
-                        </div>
+                            <section id="questionAndAnswears">
+                                <div class="row mt-3">
+                                    <div class="question-circle text-center ml-4">
+                                        <strong class="font-size-medium question">1</strong>
+                                    </div>
+                                    <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small">
+                                        <p>Lewis would like to see the number of marine protected areas in the world increase from 3 per cent to 10 per cent in an attempt to reverse the damage caused by human activity such as overfishing, polluting and littering.&nbsp;<span class="font-weight-bold font-italic dark-blue-text-color"></span>&nbsp;</p>
+                                    </div>
+                                </div>
+                                <div class="form-check" id="checkAnswears">
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="5" id="ReadingAnswear1">
+                                        <label class="form-check-label" for="ReadingAnswear1">
+                                            The main reason why environment is devastated is that people are eating too much.
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="5" id="ReadingAnswear2">
+                                        <label class="form-check-label" for="ReadingAnswear2">
+                                            Lewis says that we may reverse the damage dealt to the environment.
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="5" id="ReadingAnswear3">
+                                        <label class="form-check-label" for="ReadingAnswear3">
+                                            It is clear that increasing the number of marine protected areas will help the envrionment.
+                                        </label>
+                                    </div>
+                                </div>
+                            </section>
+                            <section id="questionAndAnswears">
+                                <div class="row mt-3">
+                                    <div class="question-circle text-center ml-4">
+                                        <strong class="font-size-medium question">2</strong>
+                                    </div>
+                                    <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small">
+                                        <p>It is hoped that it might foster a new generation of Sahrawi film-makers, especially as this year, the festival also celebrated the opening of a permanent film, radio and television school in a neighbouring camp.&nbsp;<span class="font-weight-bold font-italic dark-blue-text-color"></span>&nbsp;</p>
+                                    </div>
+                                </div>
+                                <div class="form-check" id="checkAnswears">
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="6" id="ReadingAnswear4">
+                                        <label class="form-check-label" for="ReadingAnswear4">
+                                            A new generation of Sahrawi film-makers will be discouraged from making new films.
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="6" id="ReadingAnswear5">
+                                        <label class="form-check-label" for="ReadingAnswear5">
+                                            A new generation of Sahrawi film-makers will be encouraged to make new films.
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="6" id="ReadingAnswear6">
+                                        <label class="form-check-label" for="ReadingAnswear6">
+                                            A new generation of Sahrawi film-makers will benefit from making new films.
+                                        </label>
+                                    </div>
+                                </div>
+                            </section>
+                            <section id="questionAndAnswears">
+                                <div class="row mt-3">
+                                    <div class="question-circle text-center ml-4">
+                                        <strong class="font-size-medium question">3</strong>
+                                    </div>
+                                    <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small">
+                                        <p>I have to admit that the potential consequences of creating something that can match or surpass human intelligence frighten me. Even now, scientists are teaching computers how to learn on their own.&nbsp;<span class="font-weight-bold font-italic dark-blue-text-color"></span>&nbsp;</p>
+                                    </div>
+                                </div>
+                                <div class="form-check" id="checkAnswears">
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="7" id="ReadingAnswear7">
+                                        <label class="form-check-label" for="ReadingAnswear7">
+                                            The author is intrigued about the future of human kind.
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="7" id="ReadingAnswear8">
+                                        <label class="form-check-label" for="ReadingAnswear8">
+                                            The author is concerned about the future of human kind.
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="7" id="ReadingAnswear9">
+                                        <label class="form-check-label" for="ReadingAnswear9">
+                                            The author is scared of robots.
+                                        </label>
+                                    </div>
+                                </div>
+                            </section>
+                            <section id="questionAndAnswears">
+                                <div class="row mt-3">
+                                    <div class="question-circle text-center ml-4">
+                                        <strong class="font-size-medium question">4</strong>
+                                    </div>
+                                    <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small">
+                                        <p>Granted, there have been a few teething problems: one woman who was asleep on the floor had her hair eaten by her robot vacuum cleaner and there have been fatal accidents with self-driving cars. But progress always comes at a cost, and for me the advantages far outweigh the disadvantages.&nbsp;<span class="font-weight-bold font-italic dark-blue-text-color"></span>&nbsp;</p>
+                                    </div>
+                                </div>
+                                <div class="form-check" id="checkAnswears">
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="8" id="ReadingAnswear10">
+                                        <label class="form-check-label" for="ReadingAnswear1">
+                                            The author do not appreciate the possible consequences.
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="8" id="ReadingAnswear11">
+                                        <label class="form-check-label" for="ReadingAnswear11">
+                                            The author does not see a problem with artificial inteligence.
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="8" id="ReadingAnswear12">
+                                        <label class="form-check-label" for="ReadingAnswear12">
+                                            The author thinks that humanity will definitely benefit from cooperating with robots.
+                                        </label>
+                                    </div>
+                                </div>
+                            </section>
+                            <section id="questionAndAnswears">
+                                <div class="row mt-3">
+                                    <div class="question-circle text-center ml-4">
+                                        <strong class="font-size-medium question">5</strong>
+                                    </div>
+                                    <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small">
+                                        <p>The prevailing notion that wind power is too costly results largely from early research which focused on turbines with huge blades that stood hundreds of metres tall. These machines were not designed for ease of production or maintenance, and they were enormously expensive.&nbsp;<span class="font-weight-bold font-italic dark-blue-text-color"></span>&nbsp;</p>
+                                    </div>
+                                </div>
+                                <div class="form-check" id="checkAnswears">
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="9" id="ReadingAnswear13">
+                                        <label class="form-check-label" for="ReadingAnswear13">
+                                            Wind power generates not enough money to be profitable.
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="9" id="ReadingAnswear14">
+                                        <label class="form-check-label" for="ReadingAnswear14">
+                                            The structure of machines is far too complicated.
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="9" id="ReadingAnswear15">
+                                        <label class="form-check-label" for="ReadingAnswear15">
+                                            It is widely known that wind power is the best source of cheap energy.
+                                        </label>
+                                    </div>
+                                </div>
+                            </section>
+                            <div class="text-center mt-5 mb-5">
+                                <button id="checkAnswearsReading" type="submit" class="btn warm-orange-color">Check answears</button>
+                            </div>
                         </section>
                         <hr id="thirdsection" />
                         <section id="writingSection">
@@ -66,10 +364,160 @@
                                     Writing
                                 </div>
                             </div>
-                            @await Html.PartialAsync("QuestionAndAnswearPartial", new AnswearsAndQuestionsList { Answears = Model.Answears.Skip(10).Take(5), SampleTestQAViewModels = @Model.SampleTestQAViewModels.Skip(10).Take(5) })
-                        <div class="text-center mt-5 mb-5">
-                            <button id="checkAnswearsWriting" onclick="CheckAnswears" type="submit" class="btn warm-orange-color">Check answears</button>
-                        </div>
+                            <section id="questionAndAnswears">
+                                <div class="row mt-3">
+                                    <div class="question-circle text-center ml-4">
+                                        <strong class="font-size-medium question">1</strong>
+                                    </div>
+                                    <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small">
+                                        <p>Which noun below is correct?&nbsp;<span class="font-weight-bold font-italic dark-blue-text-color"></span>&nbsp;</p>
+                                    </div>
+                                </div>
+                                <div class="form-check" id="checkAnswears">
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="10" id="WritingAnswear1">
+                                        <label class="form-check-label" for="WritingAnswear1">
+                                            Loyality
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="10" id="WritingAnswear2">
+                                        <label class="form-check-label" for="WritingAnswear2">
+                                            Loyalty
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="10" id="WritingAnswear3">
+                                        <label class="form-check-label" for="WritingAnswear3">
+                                            Loyaity
+                                        </label>
+                                    </div>
+                                </div>
+                            </section>
+                            <section id="questionAndAnswears">
+                                <div class="row mt-3">
+                                    <div class="question-circle text-center ml-4">
+                                        <strong class="font-size-medium question">2</strong>
+                                    </div>
+                                    <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small">
+                                        <p>Which form of word is correct?&nbsp;<span class="font-weight-bold font-italic dark-blue-text-color"></span>&nbsp;</p>
+                                    </div>
+                                </div>
+                                <div class="form-check" id="checkAnswears">
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="11" id="WritingAnswear4">
+                                        <label class="form-check-label" for="WritingAnswear4">
+                                            Embarrassment
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="11" id="WritingAnswear5">
+                                        <label class="form-check-label" for="WritingAnswear5">
+                                            Embarassment
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="11" id="WritingAnswear6">
+                                        <label class="form-check-label" for="WritingAnswear6">
+                                            Embarrasment
+                                        </label>
+                                    </div>
+                                </div>
+                            </section>
+                            <section id="questionAndAnswears">
+                                <div class="row mt-3">
+                                    <div class="question-circle text-center ml-4">
+                                        <strong class="font-size-medium question">3</strong>
+                                    </div>
+                                    <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small">
+                                        <p>Peter's leaving at the end of this week - ... his anxiety to get his work finished.&nbsp;<span class="font-weight-bold font-italic dark-blue-text-color"></span>&nbsp;</p>
+                                    </div>
+                                </div>
+                                <div class="form-check" id="checkAnswears">
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="12" id="WritingAnswear7">
+                                        <label class="form-check-label" for="WritingAnswear7">
+                                            Hence
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="12" id="WritingAnswear8">
+                                        <label class="form-check-label" for="WritingAnswear8">
+                                            Furthermore
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="12" id="WritingAnswear9">
+                                        <label class="form-check-label" for="WritingAnswear9">
+                                            Nonetheless
+                                        </label>
+                                    </div>
+                                </div>
+                            </section>
+                            <section id="questionAndAnswears">
+                                <div class="row mt-3">
+                                    <div class="question-circle text-center ml-4">
+                                        <strong class="font-size-medium question">4</strong>
+                                    </div>
+                                    <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small">
+                                        <p>What is the best form to start a complain letter?&nbsp;<span class="font-weight-bold font-italic dark-blue-text-color"></span>&nbsp;</p>
+                                    </div>
+                                </div>
+                                <div class="form-check" id="checkAnswears">
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="13" id="WritingAnswear10">
+                                        <label class="form-check-label" for="WritingAnswear10">
+                                            I am highly dissatisfied with...
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="13" id="WritingAnswear11">
+                                        <label class="form-check-label" for="WritingAnswear11">
+                                            Reffering to...
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="13" id="WritingAnswear12">
+                                        <label class="form-check-label" for="WritingAnswear12">
+                                            I will be forced to take a legal action...
+                                        </label>
+                                    </div>
+                                </div>
+                            </section>
+                            <section id="questionAndAnswears">
+                                <div class="row mt-3">
+                                    <div class="question-circle text-center ml-4">
+                                        <strong class="font-size-medium question">5</strong>
+                                    </div>
+                                    <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small">
+                                        <p>Which spelling is correct?&nbsp;<span class="font-weight-bold font-italic dark-blue-text-color"></span>&nbsp;</p>
+                                    </div>
+                                </div>
+                                <div class="form-check" id="checkAnswears">
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="14" id="WritingAnswear13">
+                                        <label class="form-check-label" for="WritingAnswear13">
+                                            Conscientious
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="14" id="WritingAnswear14">
+                                        <label class="form-check-label" for="WritingAnswear14">
+                                            Conscientous
+                                        </label>
+                                    </div>
+                                    <div class="mt-1 form-check offset-1 answearRadio">
+                                        <input class="form-check-input" type="radio" name="14" id="WritingAnswear15">
+                                        <label class="form-check-label" for="WritingAnswear15">
+                                            Consceintious
+                                        </label>
+                                    </div>
+                                </div>
+                            </section>
+                            @*@await Html.PartialAsync("QuestionAndAnswearPartial", new AnswearsAndQuestionsList { Answears = Model.Answears.Skip(10).Take(5), SampleTestQAViewModels = @Model.SampleTestQAViewModels.Skip(10).Take(5) })*@
+                            <div class="text-center mt-5 mb-5">
+                                <button id="checkAnswearsWriting" onclick="CheckAnswears" type="submit" class="btn warm-orange-color">Check answears</button>
+                            </div>
                         </section>
                         <hr id="lastSectionn" />
                     </div>
@@ -194,19 +642,32 @@
     //Checking answears
     var ar = @Html.Raw(Json.Serialize(Model.Answears));
     console.log(ar);
+    let answears = ['We have to live here now.',
+"I can not tolarate you.",
+"You are joking me.",
+"Provocation",
+"ancestry",
+"Lewis says that we may reverse the damage dealt to the environment.",
+"A new generation of Sahrawi film-makers will be encouraged to make new films.",
+"The author is concerned about the future of human kind.",
+"The author thinks that humanity will definitely benefit from cooperating with robots.",
+"The structure of machines is far too complicated.",
+"Loyalty",
+"Embarrassment",
+"Hence",
+"I am highly dissatisfied with...",
+"Conscientious"]
 
     function CheckAnswears(string) {
         var counter = 0;
         $(string).one("click", function () {
-            console.log($('#checkAnswears'));
             $('[id = "checkAnswears"]').each(function () {
                 var elId = $(this).find("input[type=radio]:checked").attr('id');
                 var radioLabelValue = $("label[for='" + elId + "']").text();
                 var trimStr = $.trim(radioLabelValue);
-                var trimStr2 = $.trim(ar[counter]);
+                var trimStr2 = answears[counter];
                 console.log(trimStr2);
                 console.log(trimStr);
-                console.log(elId);
                 if (trimStr2 == trimStr) {
                     $("label[for='" + elId + "']").css("background-color", "rgba(0,255,127, 0.2)");
                 }
