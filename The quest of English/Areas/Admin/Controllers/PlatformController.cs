@@ -48,21 +48,21 @@ namespace The_quest_of_English
         {
             if (ModelState.IsValid)
             {
-                if (model.CroppedPicture == null) //When something goes wrong
-                {
-                    var file = HttpContext.Request.Form.Files; //Getting file from context
-                    byte[] p1 = null;
-                    using (var filestream1 = file[0].OpenReadStream())
-                    {
-                        using (var ms1 = new MemoryStream())
-                        {
-                            filestream1.CopyTo(ms1);
-                            p1 = ms1.ToArray();
-                        }
-                    }
-                    model.Picture = p1;
-                }
-                else //Recieved string with extra beggining info from form
+                //if (model.CroppedPicture == null) //When something goes wrong
+                //{
+                //    var file = HttpContext.Request.Form.Files; //Getting file from context
+                //    byte[] p1 = null;
+                //    using (var filestream1 = file[0].OpenReadStream())
+                //    {
+                //        using (var ms1 = new MemoryStream())
+                //        {
+                //            filestream1.CopyTo(ms1);
+                //            p1 = ms1.ToArray();
+                //        }
+                //    }
+                //    model.Picture = p1;
+                //}
+                if (model.CroppedPicture != null)  //Recieved string with extra beggining info from form
                 {
                     var base64 = model.CroppedPicture.Substring(22); //Clearing the beggining (it seems that convert needs only base64 part.)
                     byte[] bytes = Encoding.ASCII.GetBytes(base64);

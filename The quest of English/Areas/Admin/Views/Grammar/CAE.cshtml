@@ -8,9 +8,8 @@
     <div class="row d-flex justify-content-center">
         <div class="col-8 ">
             <p class="font-size-biggish text-center mt-5 mb-5">Grammar CAE</p>
-            @if (User.IsInRole(SD.AdminUser))
-            {
-                if (Model.ToList().Count > 0)
+
+                @if (Model.ToList().Count > 0)
                 {
                     var obj = Model.ToList()[0];
                     <partial name="AdminPaneIButtonsInEnglishSections" model="obj" />
@@ -21,7 +20,7 @@
                         <a asp-controller="Grammar" asp-action="GrammarCreateQuiz" class="btn btn-success">Create quiz</a>
                     </div>
                 }
-            }
+           
             <div class="row justify-content-center mt-5">
 
                 <div class="indent-blue"></div>

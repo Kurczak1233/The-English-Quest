@@ -12,17 +12,18 @@
             @{if (Model.Level == null)
                 {
                     <p class="text-center mt-5 font-size-big">Welcome to the platform!</p>
-                    <p class="text-center font-size-medium">You have to complete the placement test before you gain access to the plaftorm.</p>
+                    <p class="text-center font-size-medium">Here you may attempt a placement test exam before enter the plaftorm.</p>
                     <p class="text-center mt-3">
-                        Placement test involves answearing multiple questions related to general English knowledge. Accordingly to your test results you will gain access to multiple sections where you can continue further learning process.
-                        It is mandatory to solve the test. You should be able to understand the questions in order to continue the learning process, because the platform is made for intermediate and advanced English users! Despite the result you achieve, you will have access to all of the resources. Solving the test will tell us on what level are you currently being on and how to improve the platform.
+                        Placement test involves answearing multiple questions related to general English knowledge. Accordingly to your test results you will be assessed in multiple sections. If you do not like to solve the test, just continue further learning process.
+                        You should be able to understand the questions in order to continue the learning process, because the platform is made for intermediate and advanced English users! Despite the result you achieve, you will have access to all of the resources. Solving the test will tell us on what level are you currently being on and how to improve the platform.
                     </p>
                     <div class="text-center mt-5">
                         <a asp-controller="Platform" asp-action="PlacementTest" class="btn warm-orange-color" type="button" aria-label="PlacementTestButton">Take the placement test</a>
                     </div>
-                }
-                else
-                {
+                    <p class="text-center mt-3">Or just use navigation bar to move to the sections.</p>
+                        }
+                        else
+                        {
                     <p class="text-center mt-3 font-size-big">Welcome to the platform!</p>
                     <p class="text-center mt-2 mb-3 font-size-rather-small">This platform is created by users for users, so feel free to comment or contribute to the platform!</p>
                     <p class="text-center mt-2 mb-3 font-size-rather-small">Navigate to the section that interest you the most:</p>
@@ -87,9 +88,9 @@
                             </div>
                         </div>
                     </div>
-                }
-            }
-        </article>
+                    }
+                    }
+                </article>
         <aside class="mt-5 pt-4 col-xl-3 mb-5 mb-xl-0">
             <div class="row">
                 <div class="col-12 text-center">
