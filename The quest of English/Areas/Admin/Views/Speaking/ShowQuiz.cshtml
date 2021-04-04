@@ -166,4 +166,12 @@
         $("#resultMax").text(counter);
         $("#resultRow").attr("hidden", false);
     });
+
+    var navListOffset = $('#NavigationList').offset().top - $('#main').offset().top - 66;
+    $('#NavigationList').css("margin-top", navListOffset)
+    $(document).scroll(function () {
+        var WindowToTop = $(window).scrollTop();
+        console.log(WindowToTop);
+        $('#NavigationList').css("margin-top", WindowToTop);
+    });
 </script>
