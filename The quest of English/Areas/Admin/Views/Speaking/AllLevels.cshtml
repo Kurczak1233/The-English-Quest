@@ -8,20 +8,18 @@
     <div class="row d-flex justify-content-center">
         <div class="col-8 ">
             <p class="font-size-biggish text-center mt-5 mb-5">Speaking</p>
-            @if (User.IsInRole(SD.AdminUser))
+            @if (Model.ToList().Count > 0)
             {
-                if (Model.ToList().Count > 0)
-                {
-                    var obj = Model.ToList()[0];
-                    <partial name="AdminPaneIButtonsInEnglishSectionsSpeaking" model="obj" />
-                }
-                else
-                {
-                    <div class="d-flex justify-content-center mb-3" id="adminPanel">
-                        <a asp-controller="Speaking" asp-action="SpeakingCreateQuiz" class="btn btn-success">Create quiz</a>
-                    </div>
-                }
+                var obj = Model.ToList()[0];
+                <partial name="AdminPaneIButtonsInEnglishSectionsSpeaking" model="obj" />
             }
+            else
+            {
+                <div class="d-flex justify-content-center mb-3" id="adminPanel">
+                    <a asp-controller="Speaking" asp-action="SpeakingCreateQuiz" class="btn btn-success">Create quiz</a>
+                </div>
+            }
+
             <div class="row justify-content-center mt-5">
 
                 <div class="indent-blue"></div>
