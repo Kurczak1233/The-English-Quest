@@ -28,10 +28,6 @@ namespace TheEnglishQuestDatabase
         public async Task<IdentityResult> AddUser(ApplicationUser user, string password, string typeofUser)
         {
             var result = await _userManager.CreateAsync(user, password);
-            if (!await _roleManager.RoleExistsAsync(typeofUser))
-            {
-                await _roleManager.CreateAsync(new IdentityRole(typeofUser));
-            }
             if (result.Succeeded)
             {
                 var result2 = await _userManager.AddToRoleAsync(user, typeofUser);
