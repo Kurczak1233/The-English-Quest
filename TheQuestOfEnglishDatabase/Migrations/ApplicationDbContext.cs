@@ -23,5 +23,8 @@ namespace TheQuestOfEnglishDatabase
         public DbSet<ListeningQuiz> ListegningQuizes { get; set; }
         public DbSet<WritingTask> WritingTasks { get; set; }
         public DbSet<WritingQuiz> WritingQuizzes { get; set; }
+        public DbSet<SpeakingTask> SpeakingTasks { get; set; }
+        public DbSet<SpeakingQuiz> SpeakingQuizzes { get; set; }
+
     }
 }
