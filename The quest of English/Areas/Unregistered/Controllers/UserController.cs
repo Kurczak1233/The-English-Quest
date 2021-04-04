@@ -43,7 +43,7 @@ namespace The_quest_of_English.Controllers
                     Email = model.Email,
                 };
                 var userDto = _applicationUserViewModelMapper.Map(user);
-                var resultAdd = await _applicationUserManager.AddUser(userDto, model.Password, SD.AdminUser);
+                var resultAdd = await _applicationUserManager.AddUser(userDto, model.Password, SD.OrdinaryUser);
                 if (resultAdd.Succeeded)
                 {
                     

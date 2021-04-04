@@ -48,7 +48,7 @@ namespace The_quest_of_English
         {
             if (ModelState.IsValid)
             {
-                if (model.CroppedPicture.Length == 0) //When something goes wrong
+                if (model.CroppedPicture == null) //When something goes wrong
                 {
                     var file = HttpContext.Request.Form.Files; //Getting file from context
                     byte[] p1 = null;
