@@ -2,7 +2,7 @@
 
 namespace TheEnglishQuestDatabase
 {
-    public class WritingTask : PlacementTestTask
+    public class WritingTask : QuizTask
     {
         [ForeignKey("WritingQuiz")]
         public int WritingQuizId { get; set; }

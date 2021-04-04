@@ -10,7 +10,7 @@
         <section class="row mt-3 mb-3">
             <div class="col-8 text-center">
                 <span class="mb-3 d-flex justify-content-center font-size-biggish">Admin section</span>
-                <a asp-controller="Platform" asp-action="CreateQuestion" class="btn btn-success">Create question</a> 
+                <a asp-controller="Platform" asp-action="CreateQuestion" class="btn btn-success">Create question</a>
                 <a asp-controller="Platform" asp-action="ModifyQuestion" class="btn-info btn">Modify question</a>
                 <a asp-controller="Platform" asp-action="DeleteQuestion" class="btn-danger btn">Delete question</a>
             </div>
@@ -20,58 +20,62 @@
     <div class="row">
         <div class="col-8">
 
-            @{ int IdCounter = 0;
-                int counter = 1;}
-
-            @foreach (var item in Model.Tasks)
+            @if (Model.Tasks != null)
             {
 
-                <section id="questionAndAnswears">
-                    <div class="row mt-3">
-                        <div class="question-circle text-center ml-4">
-                            <strong class="font-size-medium question">@counter</strong> @*Numer zadania i punkty*@
+                int IdCounter = 0;
+                int counter = 1;
+
+                foreach (var item in Model.Tasks)
+                {
+
+                    <section id="questionAndAnswears">
+                        <div class="row mt-3">
+                            <div class="question-circle text-center ml-4">
+                                <strong class="font-size-medium question">@counter</strong> @*Numer zadania i punkty*@
+                            </div>
+                            <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small mt-1">
+                                <p><span id="FirstQuestionPart">@item.QuestionFirstPart</span>&nbsp;<span id="DecorationPart" class="dark-blue-text-color font-weight-bold font-italic">@item.QuestionDecoratedPart</span>&nbsp;<span id="SecondQuestionPart">@item.QuestionSecondPart</span></p>
+                            </div>
                         </div>
-                        <div class="col-10 ml-2 d-flex align-items-center font-size-rather-small mt-1">
-                            <p><span id="FirstQuestionPart">@item.QuestionFirstPart</span>&nbsp;<span id="DecorationPart" class="dark-blue-text-color font-weight-bold font-italic">@item.QuestionDecoratedPart</span>&nbsp;<span id="SecondQuestionPart">@item.QuestionSecondPart</span></p>
+                        <div class="form-check" id="checkAnswears">
+                            <div class="mt-1 form-check ml-5 answearRadio">
+                                <input class="form-check-input" type="radio" name="@counter" id="@IdCounter">
+                                <label class="form-check-label" for="@IdCounter">
+                                    @item.FirstAnswear
+                                </label>
+                            </div>
+                            @{IdCounter++;}
+                            <div class="mt-1 form-check ml-5 answearRadio">
+                                <input class="form-check-input" type="radio" name="@counter" id="@IdCounter">
+                                <label class="form-check-label" for="@IdCounter">
+                                    @item.SecondAnswear
+                                </label>
+                            </div>
+                            @{IdCounter++;}
+                            <div class="mt-1 form-check ml-5 answearRadio">
+                                <input class="form-check-input" type="radio" name="@counter" id="@IdCounter">
+                                <label class="form-check-label" for="@IdCounter">
+                                    @item.ThirdAnswear
+                                </label>
+                            </div>
+                            @{IdCounter++;}
+                            <div class="mt-1 form-check ml-5 answearRadio">
+                                <input class="form-check-input" type="radio" name="@counter" id="@IdCounter">
+                                <label class="form-check-label" for="@IdCounter">
+                                    @item.FourthAnswear
+                                </label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-check" id="checkAnswears">
-                        <div class="mt-1 form-check ml-5 answearRadio">
-                            <input class="form-check-input" type="radio" name="@counter" id="@IdCounter">
-                            <label class="form-check-label" for="@IdCounter">
-                                @item.FirstAnswear
-                            </label>
-                        </div>
-                        @{IdCounter++;}
-                        <div class="mt-1 form-check ml-5 answearRadio">
-                            <input class="form-check-input" type="radio" name="@counter" id="@IdCounter">
-                            <label class="form-check-label" for="@IdCounter">
-                                @item.SecondAnswear
-                            </label>
-                        </div>
-                        @{IdCounter++;}
-                        <div class="mt-1 form-check ml-5 answearRadio">
-                            <input class="form-check-input" type="radio" name="@counter" id="@IdCounter">
-                            <label class="form-check-label" for="@IdCounter">
-                                @item.ThirdAnswear
-                            </label>
-                        </div>
-                        @{IdCounter++;}
-                        <div class="mt-1 form-check ml-5 answearRadio">
-                            <input class="form-check-input" type="radio" name="@counter" id="@IdCounter">
-                            <label class="form-check-label" for="@IdCounter">
-                                @item.FourthAnswear
-                            </label>
-                        </div>
-                    </div>
-                </section>
-                counter++;
-                IdCounter++;
+                    </section>
+                    counter++;
+                    IdCounter++;
+                }
             }
             <div class="row">
                 <div class="col-12 d-flex justify-content-center mt-5">
                     <form method="post">
-                        <input type="text" id="input" hidden asp-for="Points" value="xd"/>
+                        <input type="text" id="input" hidden asp-for="Points" value="xd" />
                         <button class="btn warm-orange-color" type="submit" onclick="CheckAnswears()">Submit</button>
                     </form>
                 </div>
@@ -84,33 +88,35 @@
     </div>
 </main>
 <script>
-    @{ List<string> answears = new List<string>();
+    @if (Model.Tasks != null)
+    {
+        List<string> answears = new List<string>();
         foreach (var item in Model.Tasks)
         {
             answears.Add(item.CorrectAnswear);
         }
-        }
         var ar = @Html.Raw(Json.Serialize(answears));
-    var counter = 0;
-    var test = 5;
-    var pointsCounter = 0;
-    function CheckAnswears() {
-        $("[id = questionAndAnswears]").each(function () {
-            var elId = $(this).find("input[type=radio]:checked").attr('id');
-            var radioLabelValue = $("label[for='" + elId + "']").text();
-            var trimStr = $.trim(ar[counter]);
-            var trimStr2 = $.trim(radioLabelValue);
-            console.log(trimStr);
-            console.log(trimStr2);
-            if (trimStr2 === trimStr) {
-                $("label[for='" + elId + "']").css("background-color", "rgba(0,255,127, 0.2)");
-                pointsCounter++;
-            }
-            else {
-                $("label[for='" + elId + "']").css("background-color", "rgba(255, 77, 71, 0.2)");
-            }
-            counter++;
-        })
-        $("#input").attr("value", pointsCounter);
     }
+            var counter = 0;
+            var test = 5;
+            var pointsCounter = 0;
+            function CheckAnswears() {
+        $("[id = questionAndAnswears]").each(function () {
+                    var elId = $(this).find("input[type=radio]:checked").attr('id');
+                    var radioLabelValue = $("label[for='" + elId + "']").text();
+                    var trimStr = $.trim(ar[counter]);
+                    var trimStr2 = $.trim(radioLabelValue);
+                    console.log(trimStr);
+                    console.log(trimStr2);
+                    if (trimStr2 === trimStr) {
+                $("label[for='" + elId + "']").css("background-color", "rgba(0,255,127, 0.2)");
+                        pointsCounter++;
+                    }
+                    else {
+                $("label[for='" + elId + "']").css("background-color", "rgba(255, 77, 71, 0.2)");
+                    }
+                    counter++;
+                })
+        $("#input").attr("value", pointsCounter);
+        }
 </script>

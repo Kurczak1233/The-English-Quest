@@ -2,7 +2,7 @@
 
 namespace The_quest_of_English
 {
-    public class SpeakingTaskViewModel : PlacementTestTaskViewModel
+    public class SpeakingTaskViewModel : TaskViewModel
     {
         public int SpeakingQuizId { get; set; }
         public string TaskType { get; set; }

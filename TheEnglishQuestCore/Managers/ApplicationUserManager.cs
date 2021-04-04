@@ -51,14 +51,14 @@ namespace TheEnglishQuestCore.Managers
         {
             return await _ApplicationUserRepository.LogIn(username, password);
         }
-        public async System.Threading.Tasks.Task AssignLevel(double points, string userId)
+        public async Task AssignLevel(double points, string userId)
         {
-            await _ApplicationUserRepository.AssignLevel(points, userId);
+             await _ApplicationUserRepository.AssignLevel(points, userId);
         }
 
-        public async System.Threading.Tasks.Task LogOut()
+        public async Task LogOut()
         {
-            await _ApplicationUserRepository.LogOut();
+             await _ApplicationUserRepository.LogOut();
         }
 
     }
