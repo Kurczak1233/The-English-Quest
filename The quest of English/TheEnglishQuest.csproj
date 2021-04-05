@@ -143,8 +143,4 @@
     <_ContentIncludedByDefault Remove="Areas\Admin\Views\Listening\BuildTaskQuestionAndAnswear.cshtml" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Properties\ServiceDependencies\" />
-  </ItemGroup>
-
 </Project>
