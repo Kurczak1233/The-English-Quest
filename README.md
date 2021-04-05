@@ -32,7 +32,7 @@ Future.
 I am looking towards learning React framework and of course improving javascript.
 There is a lot to learn in design patterns field of study. I will definitely focus more on those.
 I feel that I should slowly introduce more advanced functionalities in my projects and learn more advanced (and new) C# functionalities.
-I will have to create one small desktop project, so I will definitely learn some WPF.
+I have to create one small desktop project, so I will definitely learn some WPF.
 Learn testing finally. In my opinion, programmer is not developer. Developer has to test his applications.
 
 ![image](https://user-images.githubusercontent.com/56559419/113618166-93261600-9657-11eb-8edf-3872e5f51aa1.png)
